@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div id="hi"></div>   
+
+        <script>
+            var person = {
+
+                name : "devish",
+                city : "bangalore"
+
+            }
+
+            person.mobile=9880610007
+            person["email"]="devishd@gmail.com"
+            
+
+            
+
+            for(a in person){document.write(a+ ":"+person[a]+"<br>")}
+
+
+
+
+        document.write("<br>person name :"+person.name+
+            "<br> person city :"+person.city+
+            "<br> person mobile number :"+person.mobile+
+            "<br> person email :"+person.email)
+
+            var results=""
+            for(a in person){
+                results=results+a+":"+person[a]+"<br>"
+            }
+            
+            document.getElementById("hi").innerHTML=results
+
+
+
+        </script>
+    </body>
+</html>

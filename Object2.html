@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+
+<body>
+    <div id="hello"></div>
+    <script>
+        var car ={
+            name:"kia",
+            model:"zxi"
+
+        }
+        car.price="10.6 l"
+        car["insurance"]=100000
+
+        for(a in car){document.write(a+ ":" + car[a]+"<br>")}
+       
+
+        document.write("<br>car name :" + car.name+
+        "<br>car model :"+car.model+
+        "<br> car price :"+car.price+
+        "<br> car insurance :"+ car.insurance )
+
+        var results=""
+        for(a in car){
+            results=results+a+":"+car[a]+"<br>"
+
+        }
+
+        document.getElementById("hello").innerHTML=results
+
+        
+
+
+    </script>
+</body>
+
+</html>

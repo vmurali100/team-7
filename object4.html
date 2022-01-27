@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div id="hi"></div>
+
+        <script>
+            var earth = {
+                continent:"europe",
+                country:"england",
+                city:"milton keynes"
+
+            }
+
+            for(a in earth){document.write(a+":"+earth[a]+"<br>")}
+
+            document.write("<br>continent name : "+earth.continent+
+            "<br> country name:"+earth.country+
+            "<br> city name :"+earth.city)
+
+            var results=""
+            for(a in earth){
+                results=results+a+":"+earth[a]+"<br>"
+            }
+            document.getElementById("hi").innerHTML=results
+
+            
+        </script>
+
+
+    </body>
+</html>
