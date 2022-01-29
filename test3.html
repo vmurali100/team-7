@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div id="hi"></div>
+        <button onclick="showobjectgetelementid()">showobjectgetelementid</button> <br />
+        
+
+        <script>
+            var person = {
+
+                name : "devish",
+                city : "bangalore"
+
+            }
+
+            person.mobile=9880610007
+            person["email"]="devishd@gmail.com"
+
+            var results=""
+            for(a in person){
+                results=results+a+":"+person[a]+"<br>"}
+
+
+            function showobjectgetelementid () {
+                
+                document.getElementById("hi").innerHTML=results
+                }
+
+        
+           
+
+
+            
+        </script>
+    </body>
+</html>
