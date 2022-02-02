@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div id="demo"></div>
+        <script>
+
+            var earth = {
+
+                continent:"asia",
+                country:"india"
+
+            }
+            earth.state="karnataka"
+            earth["city"]="bangalore"
+
+            for(a in earth){document.write(a+":"+earth[a]+"<br>")}
+            
+
+            document.write("<br>continent name :"+earth.continent+
+            "<br>country name :"+earth.country+
+            "<br>state name:"+earth.state+
+            "<br> city name :"+earth.city)
+
+            var results=""
+            for(a in earth){
+                results=results+a+":"+earth[a]+"<br>"
+            }
+
+            document.getElementById("demo").innerHTML=results+"<br>"
+            
+
+
+            
+
+
+        </script>
+    </body>
+</html>

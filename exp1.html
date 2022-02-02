@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+
+        <form action="">
+            <label for="fname">user name :</label>
+            <input type="text" id="name"><br>
+            <label for="fname">password:</label>
+            <input type="text" id="pass"><br>
+            <label for="fname">confirm passowrd:</label>
+            <input type="text" id="confirmpass"><br>
+            <label for="fname">Email:</label>
+            <input type="text" id="email"><br>
+            <label for="fname">first name:</label>
+            <input type="text" id="firstn"><br>
+            <label for="fname">last name:</label>
+            <input type="text" id="lastn"><br>
+            <button type="button" onclick="getchara()"> Register</button>
+
+
+
+        </form>
+        
+       
+        <script>
+            function getchara(){
+                // var username=document.getElementById("name").value 
+                // var password=document.getElementById("pass").value 
+                // var confirmpassword=document.getElementById("confirmpass").value 
+                // var email=document.getElementById("email").value 
+                // var firstn=document.getElementById("firstn").value 
+                // var lastn=document.getElementById("lastn").value 
+                //console.log(username,password,confirmpassword,email,firstn,lastn)
+
+                // var person={
+                //     UserName:username,
+                //     Password:password,
+                //     Confirmpassword:confirmpassword,
+                //     Email:email,
+                //     firstname:firstn,
+                //     Lastname:lastn
+
+                // var person ={
+                //     username,
+                //     password,
+                //     confirmpassword,
+                //     email,
+                //     firstn,
+                //     lastn
+
+                // }
+
+                // var person = {
+                //     UsersName:document.getElementById("name").value,
+                //     Password:document.getElementById("pass").value,
+                //     Confirmpassowrd:document.getElementById("confirmpass").value,
+                //     email:document.getElementById("email").value,
+                //     FirstName:document.getElementById("firstn").value,
+                //     LastName:document.getElementById("lastn").value
+                
+                
+                   var person = {
+                       name:"",
+                       pass:"",
+                       confirmpass:"",
+                       email:"",
+                       firstn:"",
+                       lastn:""
+                   } 
+                   for(a in person){
+                       person[a]=document.getElementById(a).value
+
+
+                   }
+
+
+
+
+                
+
+        
+
+
+
+                
+
+                   
+
+
+                
+                console.log(person)
+            }
+        </script>
+
+        
+
+        
+</body>
+</html>

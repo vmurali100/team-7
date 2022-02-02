@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+
+    </head>
+    <body>
+        <form>
+           <label for="fname">First name:</label> 
+           <input class="hello" type="text" name="devish"id="fname"><br>
+           <button type="button" onclick="getuser()">getuser </button>
+
+
+        </form>
+
+        <script>
+            function getuser(){
+                var Firstname = document.getElementsByName("devish").value
+            }
+
+            function getuser(){
+                var Firstname = document.getElementsByClassName("hello").value
+            }
+
+            function getuser(){
+                var Firstname = document.querySelector("input").value
+            }
+
+
+        </script>
+
+    </body>
+</html>

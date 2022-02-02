@@ -1,0 +1,24 @@
+<html>
+    <head>
+
+
+    </head>
+    <body>
+        <form>
+           <label for="fname">First name:</label> 
+           <input class="hello" type="text" name="devish"id="fname"><br>
+           <button type="button" onclick="getuser()">Get user</button>
+
+
+        </form>
+
+        <script>
+            function getuser(){
+                var Firstname = document.getElementsByName("devish")[0].value
+                console.log(Firstname);
+            }
+
+        </script>
+
+</body>
+</html>
