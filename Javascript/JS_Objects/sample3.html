@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+      <div id="demo"></div>
+    <script>
+      var student = {
+        id: 1,
+        name: "Leanne Graham",
+        username: "Bret",
+        email: "Sincere@april.biz",
+        address: "somke",
+        phone: "1-770-736-8031 x56442",
+        website: "hildegard.org",
+        company: "rrr",
+      };
+
+    //   Step 1 : Display Object with Document write method. 
+    //   Step 2 : Display Object with document.getElementById .
+    //   Step 3 : Use for In loop to display object with Document.write and document.getElementById
+   
+    var results = ""
+      for (a in student) {
+        // console.log(a);
+        // document.write(a + " : " + student[a] + "<br>");
+        results = results+a + " : "+student[a]+"<br>"
+      }
+
+      document.getElementById("demo").innerHTML=results
+      // for in loop
+    </script>
+  </body>
+</html>
