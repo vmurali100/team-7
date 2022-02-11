@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img:hover{
+            width: 220px !important;
+            height: 150px !important;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        var allImageAddress = ["https://cdn.pixabay.com/photo/2016/11/23/13/48/beach-1852945_960_720.jpg",
+        "https://cdn.pixabay.com/photo/2014/12/16/22/25/woman-570883_960_720.jpg",
+        "https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989_960_720.jpg",
+        "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_960_720.jpg",
+        "https://cdn.pixabay.com/photo/2014/02/27/16/10/tree-276014_960_720.jpg",
+        "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_960_720.jpg",
+        "https://cdn.pixabay.com/photo/2014/01/22/19/44/flower-field-250016_960_720.jpg",
+        "https://cdn.pixabay.com/photo/2013/08/20/15/47/poppies-174276_960_720.jpg",
+        "https://cdn.pixabay.com/photo/2013/04/04/12/34/mountains-100367_960_720.jpg",
+        "https://cdn.pixabay.com/photo/2015/04/23/21/59/tree-736877_960_720.jpg"]
+
+        for(i=0;i<100;i++){
+            var myImage = document.createElement("img")
+            //myImage.setAttribute("src", allImageAddress[i])
+            if(i>=10){
+                myImage.setAttribute("src", allImageAddress[0]) 
+            }else{
+                myImage.setAttribute("src", allImageAddress[i])
+            }
+            myImage.style.width="200px"
+            myImage.style.margin="2px"
+            myImage.style.height="140px"
+
+            document.body.appendChild(myImage)
+        }
+    </script>
+</body>
+</html>

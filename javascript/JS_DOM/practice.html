@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="fname">First Name : </label>
+    <input type="text" name="" id="fname"><br>
+    <label for="lname">Last Name : </label>
+    <input type="text" name="" id="lname"><br>
+    <label for="email">Email : </label>
+    <input type="text" name="" id="email"><br>
+    <label for="city">City : </label>
+    <input type="text" name="" class="city"><br>
+    <label for="state">State : </label>
+    <input type="text" name="ststate" id="state"><br>
+    <button type="button" onclick="getUser()">Get Details</button>
+    <script>
+        function getUser() {
+            var fisrtName = document.getElementById("fname").value
+            var lasttName = document.getElementsByTagName("input")[1].value
+            var email = document.querySelectorAll("input")[2].value
+            var city = document.getElementsByClassName("city")[0].value
+            var state = document.getElementsByName("ststate")[0].value
+            console.log(fisrtName, lasttName,  email,  city, state);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Student Details</h2>
+    <div id="demo"></div>
+    <script>
+        var student = {
+            firstName : "Vijay",
+            lastName : "Kohli",
+            age : 27,
+            rollnumber : 15,
+            div : "A"
+        }
+
+        //document.write("Name : " + student.firstName + " " + student.lastName + "<br>"
+        //+"Age : " + student.age + "<br>"
+        //+"Roll Number : " + student.rollnumber + "<br>"
+        //+"Division : " + student.div)
+
+        //document.getElementById("demo").innerHTML = "Name : " + student.firstName + " " + student.lastName + "<br>"
+        //+ "Age : " + student.age + "<br>"
+        //+ "Roll Number : " + student.rollnumber + "<br>"
+        //+ "Division : " + student.div 
+
+        var results = ""
+        for(a in student){
+            //document.write(a + " : " + student[a] + "<br>")
+            results = results + a + " : " + student[a] + "<br>"
+        }
+
+        document.getElementById("demo").innerHTML = results
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div><br>
+
+    <button onclick="showFunction1()">show Object Document get Element by id</button><br>
+    <button onclick="showFunction2()">show Object Document for loop</button><br>
+    <button onclick="showFunction()">show Object Document write</button><br>
+    <script>
+         var car = {
+             name : "fiat",
+             model : 500,
+             wieght : "850kg",
+             color : "white",
+             average : "25km/ltr"
+         }
+
+         function showFunction(){
+             document.write("Name : " + car.name + "<br>"
+             +"Model : " + car.model + "<br>"
+             +"Weight : " + car.wieght + "<br>"
+             +"Color : " + car.color + "<br>"
+             +"Average : " + car.average + "<br>")
+         }
+
+         function showFunction1(){
+             document.getElementById("demo").innerHTML = "Name : " + car.name + "<br>"
+             +"Model : " + car.model + "<br>"
+             +"Weight : " + car.wieght + "<br>"
+             +"Color : " + car.color + "<br>"
+             +"Average : " + car.average + "<br>"
+         }
+
+         function showFunction2(){
+            var results = ""
+            for(a in car){
+                results = results + a + " : " + car[a] + "<br>"
+            }
+
+            document.getElementById("demo").innerHTML = results
+
+             //for(a in car){
+                // document.write(a + " : " + car[a] + "<br>")
+             //}
+         }
+
+         
+    </script>
+</body>
+</html>

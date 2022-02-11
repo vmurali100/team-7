@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Country Details</h2>
+    <div id="demo"></div>
+
+    <script>
+       var country = {
+            countryname : "India",
+            countrycapital : "Delhi",
+            nationalanimal : "Tiger",
+            nationalbird : "Peacock",
+            nationalfruit : "Mango",
+            nationalsport : "Hockey",
+            currency : "Rupee",
+            population : "138 cr",
+            states : 28,
+            cities : 4000
+        }
+
+        //document.write("Country Name : "+country.countryname+
+        //"<br> Country Capital : "+country.countrycapital+
+        //"<br> National Animal : "+country.nationalanimal+
+        //"<br> National Bird : "+country.nationalbird+
+        //"<br> National Fruit : "+country.nationalfruit+
+        //"<br> National Sport : "+country.nationalsport+
+        //"<br> Currency : "+country.currency+
+        //"<br> Population : "+country.population+
+        //"<br> States : "+country.states+
+        //"<br> Cities : "+country.cities)
+
+        //document.getElementById("demo").innerHTML = "Country Name : "+country.countryname+
+        //"<br> Country Capital : "+country.countrycapital+
+        //"<br> National Animal : "+country.nationalanimal+
+        //"<br> National Bird : "+country.nationalbird+
+        //"<br> National Fruit : "+country.nationalfruit+
+        //"<br> National Sport : "+country.nationalsport+
+        //"<br> Currency : "+country.currency+
+        //"<br> Population : "+country.population+
+        //"<br> States : "+country.states+
+        //"<br> Cities : "+country.cities
+
+        
+        var results = ""
+        for(a in country) {
+            //document.write(a + " : " + country[a] + "<br>")
+            results = results + a + " : " + country[a] + "<br>"
+        }
+
+        document.getElementById("demo").innerHTML = results
+    </script>
+</body>
+</html>

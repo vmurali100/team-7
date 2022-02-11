@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #000000;
+        }
+        .wrapper{
+            width: 630px;
+            margin: 0 auto;
+            background-color: white;
+        }
+        .container{
+            width: 620px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .usform{
+            width: 600px;
+            margin: 0 auto;
+        }
+        .usform input{
+            width: 505px;
+            padding: 8px;
+        }
+        .dform{
+            width: 600px;
+        }
+        .half{
+            width: 280px;
+            display: inline-block;
+            margin: 15px 0;
+        }
+        .half input{
+            width: 220px;
+        }
+        .halft{
+            width: 300px;
+            display: inline-block;
+            margin: 15px 0;
+
+        }
+        .halft input{
+            width: 220px;
+        }
+        .ipbutton button{
+            width: 525px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: rgb(115, 191, 241);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="ft">
+                <h2>
+                    Create An Account
+                </h2>
+                <p>
+                    Enter all fileds to complete registration
+                </p>
+            </div>
+            <div class="usform">
+                    <label for=""><b>Username</b></label><br>
+                    <input type="text" name="" id="username"><br>
+                    <div class="dform">
+                        <div class="half">
+                            <label for=""><b>Password</b></label><br>
+                            <input type="text" name="" id="pass">
+                        </div>
+                        <div class="halft"> 
+                            <label for=""><b>Confirm Password</b></label><br>
+                            <input type="text" name="" id="cpass">
+                        </div>
+                    </div>
+                    <label for=""><b>Email</b></label><br>
+                    <input type="text" name="" id="email"><br>
+                    <div class="dform">
+                        <div class="half">
+                            <label for=""><b>First Name</b></label><br>
+                            <input type="text" name="" id="fname">
+                        </div>
+                        <div class="halft"> 
+                            <label for=""><b>Last Name</b></label><br>
+                            <input type="text" name="" id="lname">
+                        </div>
+                    </div>
+                    <div class="ipbutton">
+                        <button type="button" onclick="getUser()">Regiter</button>
+                    </div>
+            </div>       
+        </div>
+    </div>
+    
+
+    <script>
+        function getUser() {
+            //var Username = document.getElementById("username").value
+            //var Password = document.getElementById("pass").value
+            //var Confirmpassword = document.getElementById("cpass").value
+            //var Email = document.getElementById("email").value
+            //var firstName = document.getElementById("fname").value
+            //var lastName = document.getElementById("lname").value
+
+            //console.log(Username, Password, Confirmpassword, Email, firstName, lastName);
+
+
+            //var person = {
+                //Username : Username,
+                //Password : Password,
+                //Confirmpassword : Confirmpassword,
+                //Email : Email,
+                //firstName : firstName,
+                //lastName : lastName,
+            //}
+
+            //var person = {
+                //Username,
+                //Password,
+                //Confirmpassword,
+                //Email,
+                //firstName,
+                //lastName
+            //}
+
+            var person = {
+                username:"",
+                pass:"",
+                cpass:"",
+                email:"",
+                fname:"",
+                lname:""
+            }
+            
+            for(a in person){
+                person[a]=document.getElementById(a).value
+            }
+
+            console.log(person);
+        }
+    </script>
+</body>
+</html>
