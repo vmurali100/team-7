@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="Name" onchange="Sai()">
+        <option value=""selected>Click Here</option>
+    </select>
+
+    <hr>
+    <ul></ul>
+    <script src="./food.js"></script>
+    <script>
+        var Ravi = {}
+        function Raju(){
+            console.log(food);
+            food.forEach(Deena => {               
+                var opt = document.createElement("option")
+                opt.setAttribute("value",JSON.stringify(Deena))
+                opt.innerHTML=Deena.Name
+                document.querySelector("select").appendChild(opt)                
+            });
+        }
+        function Sai(){
+            var Surya = document.getElementById("Name").value
+            Ram = JSON.parse(Surya)
+            RajKumar()
+        }
+        function RajKumar(){
+            document.querySelector("ul").innerHTML=""
+            Ram.Types.forEach((Types)=>{
+                var iLi=document.createElement("li")
+                iLi.innerHTML=Types
+                document.querySelector("ul").appendChild(iLi)
+            })
+        }
+        Raju()
+    </script>
+</body>
+</html>

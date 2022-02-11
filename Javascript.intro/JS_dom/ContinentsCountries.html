@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="Continent" onchange="getCountries()">
+        <option value="" selected>select continent</option>
+    </select>
+
+    <hr>
+
+    <ul></ul>
+
+    <script src="./ContinentsCountries.js"></script>
+    <script>
+        var selectedContinent={}
+        function displyAllContinent(){
+            console.log(WorldContinent);
+            WorldContinent.forEach(details => {
+                console.log(details);  
+                var opt = document.createElement("option")
+                opt.setAttribute("value", JSON.stringify(details))
+        
+                opt.innerHTML=details.Continent
+                document.querySelector("select").appendChild(opt)              
+            });
+        }
+
+        function getCountries(){
+            var Continent=document.getElementById("Continent").value
+            selectedContinent=JSON.parse(Continent)
+            displayCountries()
+        }
+
+        function displayCountries(){
+            document.querySelector("ul").innerHTML=""
+            selectedContinent.Countries.forEach((Countries)=>{
+                var myLi = document.createElement("li")
+                myLi.innerHTML=Countries
+                document.querySelector("ul").appendChild(myLi)
+            })
+        }
+        displyAllContinent()
+    </script>
+</body>
+</html> 

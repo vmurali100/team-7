@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="sample"></div>
+    <div id="#"></div>
+    <!-- <div id="1"></div>
+    <div id="2"></div>
+    <div id="3"></div>
+    <div id="4"></div>
+    <div id="5"></div>
+    <div id="6"></div>
+    <div id="7"></div>
+    <div id="8"></div>
+    <div id="9"></div> -->    
+    <button onclick="Raju() ">click on me</button> <br><br>
+    <button onclick="REHAMAN() ">click here</button><br><br>
+
+    <script>
+        var nature1={
+            topic:"Nature"        
+        }
+      function deena(){
+          document.getElementById("sample").innerHTML=
+          "Topic : "+nature1.topic+"<br><br>"          
+      }
+      deena()
+
+      var nature2={
+            sno:"01",
+            name:"Glaciers And Icebergs",
+            specification:"The Largest Island in the World",
+            country:"Greenaland",
+            Information:"Combine the world's largest Island with a total population of only 55000 and Greenland."
+         }
+       
+        Raju=function(){
+            for(a in nature2){
+                document.write(a+" : "+nature2[a]+"<br>")
+            }
+        }
+         Raju()
+          document.write("<br>")
+         
+        var nature3={
+              sno:"02",
+              name:"Amazon River",
+              specification:"The Largest River in the World",
+              country:"South America",
+              Information:"South America is the Largest River by discharge volume of water in the world, and the dispated largest river in the world in comparison to the Nile river."
+             }
+
+             REHAMAN=function(){
+                 for (a in nature3){
+                     document.write(a+" : "+nature3[a]+"<br>")
+                 }
+             }
+             REHAMAN()
+    </script>
+</body>
+</html>
