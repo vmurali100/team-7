@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getUsers()">Get Users</button>
+    <script>
+       function getUsers(){
+        //  XMLHttpRequest  Is used to Get the Data From Server
+        var getInfo = new XMLHttpRequest();
+        getInfo.onreadystatechange = function (){
+            if(getInfo.readyState == 4 && getInfo.status == 200){
+                console.log(getInfo.response)
+                JSON.parse(getInfo.response).forEach(element => {
+                    document.write(element+"<br/>")
+                });
+            }
+        }
+
+        getInfo.open("GET","http://localhost:3000/users")
+        getInfo.send()
+        // To With Draw the Cash 
+        // 1. With Drawl form will be filled .
+        // 2. It will be Submitted to Cash Counter .
+        // 3. Account Details will be verifed and will be send to Manager 
+        // 4. Approved form will react to Cash Counter.
+        // 5. Will reveive money when our turn comes 
+       }
+    </script>
+</body>
+</html>
