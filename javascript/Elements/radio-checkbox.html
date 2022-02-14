@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="radio" name="gender" value="Male">Male <br>
+    <input type="radio" name="gender" value="Female">Female <br>
+    <br>
+    <br>
+    <input type="checkbox" name="subject" value="HTML">HTML <br>
+    <input type="checkbox" name="subject" value="CSS">CSS <br>
+    <input type="checkbox" name="subject" value="JS">JS <br>
+    <input type="checkbox" name="subject" value="ReactJs">ReactJs <br>
+    <button type="button" onclick="getValue()">Get Details</button> 
+
+    <script>
+        function getValue(){
+            var person = {
+                gender: "",
+                subjects: []
+            }
+            var radioButton = document.getElementsByName("gender")
+            radioButton.forEach((element)=>{
+                if(element.checked == true){
+                    person.gender = element.value
+                }
+            })
+
+            var allCheckBoxes = document.getElementsByName("subject")
+            allCheckBoxes.forEach((cb)=>{
+                if(cb.checked == true){
+                    person.subjects.push(cb.value)
+                }
+            })
+
+
+            console.log(person)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="username">Username</label><br>
+    <input type="text" name="" id="username"><br>
+    <label for="fname">First Name</label><br>
+    <input type="text" name="" id="fname"><br>
+    <label for="lname">Last Name</label><br>
+    <input type="text" name="" id="lname"><br>
+    <label for="email">Email</label><br>
+    <input type="text" name="" id="email"><br>
+    <label for="password">Passowrd</label><br>
+    <input type="text" name="" id="password"><br>
+    <label for="Cpasword">Confirm Passowrd</label><br>
+    <input type="text" name="" id="Cpassword"><br>
+    <input type="radio" name="gender" value="male"> Male <br>
+    <input type="radio" name="gender" value="female"> Female <br>
+    <input type="checkbox" name="subject" value="HTML"> HTML <br>
+    <input type="checkbox" name="subject" value="CSS"> CSS <br>
+    <input type="checkbox" name="subject" value="JS"> JS <br>
+    <input type="checkbox" name="subject" value="ReactJs"> ReactJs <br>
+
+    <button type="button" onclick="getValue()">Get Details</button>
+    <br>
+    <br>
+
+    <div id="demo"></div>
+
+    <script>
+        function getValue(){
+            var stValue = {
+                username : "",
+                fname : "",
+                lname : "",
+                email : "",
+                password : "",
+                Cpassword : ""
+            }
+
+            var results = ""
+            for(a in stValue){
+                stValue[a] = document.getElementById(a).value
+               results = results + a + " : " + stValue[a] + "<br>"
+            }
+
+            var person = {
+                gender : "",
+                subjects : []
+            }
+
+            var radioButton = document.getElementsByName("gender")
+            radioButton.forEach((element) => {
+                if(element.checked == true){
+                    person.gender = element.value
+                }
+            });
+
+            var checkBOX = document.getElementsByName("subject")
+            checkBOX.forEach((cb)=>{
+                if(cb.checked == true){
+                    person.subjects = cb.value
+                }
+            })
+
+            var results1 = ""
+            for(a in person){
+                results1 = results1 + a + " : " + person[a] + "<br>"
+            }
+            
+            var myInfo = document.getElementById("demo")
+            myInfo.innerHTML = results + results1  
+           
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #000000;
+        }
+        .wrapper{
+            width: 630px;
+            margin: 0 auto;
+            background-color: white;
+        }
+        .container{
+            width: 620px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .usform{
+            width: 600px;
+            margin: 0 auto;
+        }
+        .usform input{
+            width: 505px;
+            padding: 8px;
+        }
+        .dform{
+            width: 600px;
+        }
+        .half{
+            width: 280px;
+            display: inline-block;
+            margin: 15px 0;
+        }
+        .half input{
+            width: 220px;
+        }
+        .halft{
+            width: 300px;
+            display: inline-block;
+            margin: 15px 0;
+
+        }
+        .halft input{
+            width: 220px;
+        }
+        .ipbutton button{
+            width: 525px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: rgb(115, 191, 241);
+        }
+        .forbuttons input{
+            width: 50px;
+            padding: 8px;
+        }
+        .bthalf{
+            width: 260px;
+            display: inline-block;
+            margin: 15px 0;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="ft">
+                <h2>
+                    Create An Account
+                </h2>
+                <p>
+                    Enter all fileds to complete registration
+                </p>
+            </div>
+            <div class="usform">
+                    <label for=""><b>Username</b></label><br>
+                    <input type="text" name="" id="username"><br>
+                    <div class="dform">
+                        <div class="half">
+                            <label for=""><b>Password</b></label><br>
+                            <input type="text" name="" id="pass">
+                        </div>
+                        <div class="halft"> 
+                            <label for=""><b>Confirm Password</b></label><br>
+                            <input type="text" name="" id="cpass">
+                        </div>
+                    </div>
+                    <label for=""><b>Email</b></label><br>
+                    <input type="text" name="" id="email"><br>
+                    <div class="dform">
+                        <div class="half">
+                            <label for=""><b>First Name</b></label><br>
+                            <input type="text" name="" id="fname">
+                        </div>
+                        <div class="halft"> 
+                            <label for=""><b>Last Name</b></label><br>
+                            <input type="text" name="" id="lname">
+                        </div>
+                    </div>
+                    <div class="forbuttons">
+                        <div class="bthalf">
+                            <input type="radio" name="gender" value="Male">Male <br>
+                            <input type="radio" name="gender" value="Female">Female <br>
+                        </div>
+                        <div class="bthalf">
+                            <input type="checkbox" name="subject" value="HTML">HTML <br>
+                            <input type="checkbox" name="subject" value="CSS">CSS <br>
+                            <input type="checkbox" name="subject" value="JS">JS <br>
+                            <input type="checkbox" name="subject" value="ReactJs">ReactJs <br>
+                        </div>
+                        
+                    </div>
+                    <div class="ipbutton">
+                        <button type="button" onclick="getValue()">Regiter</button>
+                    </div>
+            </div> 
+            <br>
+            <div id="demo"></div>
+        </div>
+    </div>
+    
+
+    <script>
+        function getValue(){
+            var stvalue = {
+                username:"",
+                pass:"",
+                cpass:"",
+                email:"",
+                fname:"",
+                lname:""
+            }
+
+            var person = {
+                gender: "",
+                subjects: []
+            }
+            
+            var radioButton = document.getElementsByName("gender")
+            radioButton.forEach((element)=>{
+                if(element.checked == true){
+                    person.gender = element.value
+                }
+            })
+
+            var allCheckBoxes = document.getElementsByName("subject")
+            allCheckBoxes.forEach((cb)=>{
+                if(cb.checked == true){
+                    person.subjects.push(cb.value)
+                }
+            })
+            
+
+            var results=""
+                for(a in stvalue){
+                     stvalue[a] = document.getElementById(a).value
+                     results = results + a + " : " + stvalue[a] + "<br>"
+                }
+
+            var results1=""
+                for(a in person){
+                    results1 =  results1 + a + " : " + person[a] + "<br>"
+                }
+
+            document.getElementById("demo").innerHTML = results + results1
+        }
+    </script>
+</body>
+</html>
