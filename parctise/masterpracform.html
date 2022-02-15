@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        
+        <form action="">
+            <label for="fname">First name : </label>
+            <input id="firstname" type="text"><br>
+            <label for="fname">last name : </label>
+            <input id="lname" type="text"><br>
+            <label for="fname">email : </label>
+            <input id="email" type="text"><br>
+            <label for="fname">mobile number : </label>
+            <input id="mnumber" type="text"><br>
+            <label for="fname">location </label>
+            <input id="location" type="text"><br>
+            <button type="button" onclick="getdetails()">get details</button>
+
+
+
+
+        </form>
+        
+
+
+        <script>
+            function getdetails(){
+                // var fname=document.getElementById("firstname").value
+                // var lname=document.getElementById("lname").value
+                // var email=document.getElementById("email").value
+                // var mnumber=document.getElementById("mnumber").value
+                // var location=document.getElementById("location").value
+
+                // console.log(fname,lname,email,mnumber,location)
+
+                var results={
+                    firstname,
+                    lname,
+                    email,
+                    mnumber,
+                    location
+
+
+
+                }
+
+                for(a in results){
+
+                    results[a]=document.getElementById(a).value
+                }
+                console.log(results)
+
+                
+
+            }
+
+            
+
+
+
+
+
+
+
+        </script>
+    </body>
+
+
+</html>

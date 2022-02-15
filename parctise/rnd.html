@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+      <div id="demo"></div>
+      <input type="radio" name="gender" value="Male" > Male <br>
+    <input type="radio" name="gender" value="Female"> Female <br>
+
+    <br>
+    <input type="checkbox" name="subject" value="HTML" > HTML  <br>
+    <input type="checkbox" name="subject" value="CSS" > CSS  <br>
+    <input type="checkbox" name="subject" value="JS"> JS <br>
+    <input type="checkbox" name="subject" value="ReactJS" > RectJS <br>
+    <br> <br>
+    <form action="">
+      <label for="">Username</label>
+      <input type="text" name="" id="Username" /><br /><br />
+
+      <label for="">Password</label>
+      <input type="text" name="" id="Password" /><br /><br />
+
+      <label for="">ConfirmPassword</label>
+      <input type="text" name="" id="ConfirmPassword" /><br /><br />
+
+      <label for="">Email</label>
+      <input type="text" name="" id="Email" /><br /><br />
+
+      <label for="">firstname</label>
+      <input type="text" name="" id="firstname" /><br /><br />
+
+      <label for="">lastname</label>
+      <input type="text" name="" id="lastname" /><br /><br />
+      <button type="button" onclick="jai()">REGISTER</button>
+    </form>
+
+    <script>
+      function jai() {
+        var hello = {
+                gender:"",
+                subjects:[]
+            }
+            var allRadioBtns = document.getElementsByName("gender")
+            allRadioBtns.forEach((element)=>{
+                if(element.checked==true){
+                    hello.gender = element.value
+                }
+            })
+
+            var allCheckboxes=document.getElementsByName("subject")
+            allCheckboxes.forEach((cb)=>{
+                if(cb.checked == true){
+                    hello.subjects.push(cb.value)
+                }
+            })
+        var Username = document.getElementById("Username").value;
+        var Password = document.getElementById("Password").value;
+        var ConfirmPassword = document.getElementById("ConfirmPassword").value;
+        var Email = document.getElementById("Email").value;
+        var firstname = document.getElementById("firstname").value;
+        var lastname = document.getElementById("lastname").value;
+
+        var person = {
+          Username,
+          Password,
+          ConfirmPassword,
+          Email,
+          firstname,
+          lastname,
+        };
+        var results=""
+            for(a in person){
+                results=results+a+":"+person[a]+"<br>"
+            }
+
+            var results2=""
+            for(b in hello){
+                results2=results2+b+":"+hello[b]+"<br>"
+            }
+
+        document.getElementById("demo").innerHTML=results+"<br>"+results2+"<br>"
+      }
+    </script>
+  </body>
+</html>

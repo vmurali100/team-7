@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+
+        <div id="devish"></div>
+        <button onclick="showtheresult()">show the result</button>
+        <script>
+            var earth ={
+
+             continent:"asia",
+             country:"india",
+             state:"karnataka",
+             city:"bangalore"
+
+
+
+
+}
+
+            earth.location="indiranagar"
+
+            function showtheresult(){
+                var results="" 
+            for(a in earth){
+                results=results+a+":"+earth[a]+"<br>"
+            }
+
+            document.getElementById("devish").innerHTML=(results)
+
+            }
+
+            
+
+           
+            
+
+
+            
+ 
+
+
+        </script>
+    </body>
+</html>

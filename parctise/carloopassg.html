@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<h2>Car table</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Fueltype</th>
+    <th>TransmissionType</th>
+    <th>Seater</th>
+    
+  </tr>
+  <tbody>
+      
+
+  </tbody>
+  
+</table>
+
+
+
+</body>
+<script src="./carobject.js"></script>
+
+<script>
+    var cardata = car[0]
+    
+    
+    for(i=0;i<car.length;i++){
+        var mytr=document.createElement("tr")
+
+        for(a in car[0]){
+        var mytd=document.createElement("td")
+        mytd.innerHTML=car[i][a]
+        mytr.appendChild(mytd)
+
+    }
+    document.querySelector("tbody").appendChild(mytr)
+
+    }
+    
+
+   
+    
+
+    
+</script>
+
+</html>
+

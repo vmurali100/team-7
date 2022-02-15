@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=   , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="Brand" onchange="getDiscription()">
+        <option value="" selected>Select Brand</option>
+    </select>
+
+    <hr>
+
+    <ul>
+        
+    </ul>
+    <script src="./cardropdown.js"></script>
+    <script>
+        var selectedBrand = {}
+        function displayAllBrands(){
+            console.log(car);
+            car.forEach(details => {
+                var opt = document.createElement("option")
+                opt.setAttribute("value",JSON.stringify(details))
+                opt.innerHTML = details.Brand
+                document.querySelector("select").appendChild(opt)
+            });
+        }
+        function getDiscription() {
+            var Brand = document.getElementById("Brand").value
+            selectedBrand = JSON.parse(Brand)
+            displayDiscription()
+        }
+        function displayDiscription(){
+            document.querySelector("ul").innerHTML=""
+            selectedBrand.Discription.forEach((dist)=>{
+                var myLi = document.createElement("li")
+                myLi.innerHTML=dist
+                document.querySelector("ul").appendChild(myLi)
+            })
+        }
+        displayAllBrands()
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+      <div id="demo"></div>
+    <form action="">
+      <label for="">Username</label>
+      <input type="text" name="" id="Username" /><br /><br />
+
+      <label for="">Password</label>
+      <input type="text" name="" id="Password" /><br /><br />
+
+      <label for="">ConfirmPassword</label>
+      <input type="text" name="" id="ConfirmPassword" /><br /><br />
+
+      <label for="">Email</label>
+      <input type="text" name="" id="Email" /><br /><br />
+
+      <label for="">firstname</label>
+      <input type="text" name="" id="firstname" /><br /><br />
+
+      <label for="">lastname</label>
+      <input type="text" name="" id="lastname" /><br /><br />
+      <button type="button" onclick="jai()">REGISTER</button>
+    </form>
+
+    <script>
+      function jai() {
+        var Username = document.getElementById("Username").value;
+        var Password = document.getElementById("Password").value;
+        var ConfirmPassword = document.getElementById("ConfirmPassword").value;
+        var Email = document.getElementById("Email").value;
+        var firstname = document.getElementById("firstname").value;
+        var lastname = document.getElementById("lastname").value;
+
+        var person = {
+          Username,
+          Password,
+          ConfirmPassword,
+          Email,
+          firstname,
+          lastname,
+        };
+        var results=""
+            for(a in person){
+                results=results+a+":"+person[a]+"<br>"
+            }
+
+        document.getElementById("demo").innerHTML=results
+      }
+    </script>
+  </body>
+</html>

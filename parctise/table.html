@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<h2>A basic HTML table</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Make</th>
+    <th>Fueltype</th>
+  </tr>
+  <tbody>
+      
+
+  </tbody>
+  
+</table>
+
+
+
+</body>
+<script>
+    for(i=0;i<10;i++){
+        var mytr=document.createElement("tr")
+        var td1=document.createElement("td")
+        td1.innerHTML=("maruthi")
+        var td2=document.createElement("td")
+        td2.innerHTML=("swift")
+        var td3=document.createElement("td")
+        td3.innerHTML=("2011")
+        var td4=document.createElement("td")
+        td4.innerHTML=("petrol")
+
+        mytr.appendChild(td1)
+        mytr.appendChild(td2)
+        mytr.appendChild(td3)
+        mytr.appendChild(td4)
+        document.querySelector("tbody").appendChild(mytr)
+
+
+
+    }
+</script>
+</html>
+

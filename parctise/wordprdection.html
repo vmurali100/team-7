@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <input type="text" id="search" onkeyup="getserach()">
+        <div id="demo"></div>
+        <script src="userfl.js"></script>
+        <script>
+            var result=null
+            function getserach(){
+                var getvalue=document.getElementById("search").value
+                
+
+                 results=user.find(function(dis){
+                    return dis.lname == getvalue
+
+                    
+                })
+                displayresult()
+            }
+                function displayresult(){
+                    if(results){
+                        var info=""
+                        for(a in results){
+                            info+=results[a]+"<br>"
+                        }
+                        document.getElementById("demo").innerHTML=info
+                    }else{document.getElementById("demo").innerHTML=" "
+
+                    }
+                }
+            
+
+
+        </script>
+    </body>
+</html>
