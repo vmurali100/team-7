@@ -1,94 +1,19 @@
 {
-    "users":[
-        {
-            "fname": "Murali ",
-            "lname": "Ortiz",
-            "tel": "(516)900-6674",
-            "address": "1097 Mattis Dr",
-            "city": "Canton",
-            "state": "NC",
-            "zip": 55428
-        },
-        {
-            "fname": "Rosalinda",
-            "lname": "Hampton",
-            "tel": "(348)744-0757",
-            "address": "3188 Porta Ct",
-            "city": "Anchorage",
-            "state": "MA",
-            "zip": 69677
-        },
-        {
-            "fname": "Minhajuddin",
-            "lname": "Holliday",
-            "tel": "(951)298-8346",
-            "address": "8937 Sollicitudin Ct",
-            "city": "Sun Prairie",
-            "state": "SD",
-            "zip": 33713
-        },
-        {
-            "fname": "Girish",
-            "lname": "Hippert",
-            "tel": "(646)750-4618",
-            "address": "2150 Ac Ct",
-            "city": "Lakewood",
-            "state": "NJ",
-            "zip": 98418
-        },
-        {
-            "fname": "Catherine",
-            "lname": "Sweet",
-            "tel": "(364)693-4264",
-            "address": "2185 Et Ave",
-            "city": "Kelso",
-            "state": "ND",
-            "zip": 86860
-        },
-        {
-            "fname": "Leslie",
-            "lname": "Roman",
-            "tel": "(752)453-7801",
-            "address": "173 Elementum Dr",
-            "city": "Torrington",
-            "state": "UT",
-            "zip": 86827
-        },
-        {
-            "fname": "Sunghoon",
-            "lname": "Blalock",
-            "tel": "(706)230-5616",
-            "address": "5621 Curabitur Ave",
-            "city": "Rolling Meadows",
-            "state": "MT",
-            "zip": 89972
-        },
-        {
-            "fname": "Xin",
-            "lname": "Saur",
-            "tel": "(741)027-1945",
-            "address": "5914 Quis Dr",
-            "city": "Streamwood",
-            "state": "DE",
-            "zip": 14524
-        },
-        {
-            "fname": "Hanne",
-            "lname": "Bessey",
-            "tel": "(702)088-9632",
-            "address": "2108 Ac Rd",
-            "city": "Riverside",
-            "state": "ND",
-            "zip": 71989
-        },
-        {
-            "fname": "Cenna",
-            "lname": "Devereaux",
-            "tel": "(838)235-3080",
-            "address": "8605 Lacus Rd",
-            "city": "Austin",
-            "state": "OH",
-            "zip": 72496
-        }
-    ]
+  "users": [
+    {
+      "fname": "Murali",
+      "lname": "Veesambattu",
+      "id": 1
+    },
+    {
+      "fname": "murali",
+      "lname": "veesamb",
+      "id": 2
+    },
+    {
+      "fname": "VM Deepthi",
+      "lname": "Reddy",
+      "id": 3
+    }
+  ]
 }

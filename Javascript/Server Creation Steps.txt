@@ -1,0 +1,13 @@
+Server Creation Steps 
+
+1. Create a Folder .. Fake Server 
+2. Run npm init --yes
+3. Run "npm instal json-server -g"
+4. run "npm install json-server"
+5. Create a file Called db.json
+6. create an Object with End Points
+7. Run the server with "json-server --watch db.json"
+
+https://www.npmjs.com/package/json-server
+
+https://www.youtube.com/watch?v=uqWFsdbb14M
