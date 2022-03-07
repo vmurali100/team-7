@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="project3.css">
+    <title>Registration form</title>
+</head>
+<body>
+    <div class="registration-form">
+        <h1>Registration form</h1>
+        <form>
+            <p>Full Name:</p>
+            <input type="text" name="full-name" id="fullname" placeholder="Full name">
+            <p>User name</p>
+            <input type="email" name="user-name" id="username" placeholder="User name">
+            <p>Email:</p>
+            <input type="email" name="email" id="email" placeholder="Email">
+            <p>password:</p>
+            <input type="password" name="password" id="password" placeholder="Password">
+            <button type="submit" onclick="function2()">Click here</button>
+        </form>
+    </div>
+    <script>
+        var registeredUsers = JSON.parse(localStorage.getItem("users"));
+        if(registeredUsers == null){
+            registeredUsers = []
+        }
+        function function2(){
+            console.log('some error');
+            prompt('some error');
+            var user = {
+                fullname : "",
+                username : "",
+                email : "",
+                password : ""
+            }
+            registeredUsers.push(user);
+            localStorage.setItem("users", JSON.stringify(registeredUsers));
+            
+        }
+
+    </script>
+</body>
+</html>

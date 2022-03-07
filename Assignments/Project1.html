@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="project1_css.css" type="text/css">
+    <title>Project1 registration form</title>
+</head>
+<body>
+    <label>please enter email</label>
+    <br>
+    <input type="email" name="email" id="email" placeholder="enter your email">
+    <br>
+    <br>
+    <label>pl enter username</label>
+    <br>
+    <input type="email" name="username" id="username" placeholder="enter your username">
+    <br>
+    <br>
+    <label>pl enter password</label>
+    <br>
+    <input type="password" name="password" id="password" placeholder="enter your password">
+    <br>
+    <br>
+    <label>confirm password</label>
+    <br>
+    <input type="password" name="confirmpassword" id="confirmpassword" placeholder="confirm your password">
+    <br>
+    <br>
+    <label>Gender: </label>
+    <br>
+    &nbsp;&nbsp;&nbsp;
+    <input type="radio" name="gender" id="male">
+    &nbsp;
+    <span id="male">Male</span>
+    &nbsp;&nbsp;&nbsp;
+    <input type="radio" name="gender" id="female">
+    &nbsp;
+    
+    <span id="female">Female</span>
+    <br><br>
+    <label>Known language: </label>
+    <br>
+    &nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name = "lang" id="urdu">
+    &nbsp;
+    <span id="urdu">Urdu</span>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name = "lang" id="manipuri">
+    &nbsp;
+    <span id="urdu">manipuri</span>
+    <br><br>
+
+    <button type="submit" onclick="function1()">Submit</button>
+</body>
+<script>
+    var registeredUsers = JSON.parse(localStorage.getItem("users"));
+    if(registeredUsers == null){
+        registeredUsers = []
+    }
+    function function1(){
+        
+        var user = {
+            email: "",
+            username: "",
+            password: "",
+            confirmpassword: ""
+        }
+        for(a in user){
+            user[a] = document.getElementById(a).value
+        }
+        registeredUsers.push(user);
+        localStorage.setItem("users", JSON.stringify(registeredUsers));
+        window.location.href="Login_form_for_BOM.html"
+        
+    }
+
+</script>
+</html>
