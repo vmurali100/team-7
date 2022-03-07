@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Employee Name:</label>
+        <input type="text" id="empname"><br>
+        <label for="">Email:</label>
+        <input type="text" id="email"><br>
+        <input type="text" id="id" hidden><br>
+    </form>
+    <button type="button" onclick="empDetails()" id="getdetails">Get Details</button> <br>
+    <button type="button" onclick="updateDetails()" id="updatedetails" style="display: none;">Update Details</button> <br>
+    <hr>
+    <table border="1">
+        <thead>
+            <th>Employee Name</th>
+            <th>Email</th>
+            <th>ID</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        function empDetails(){
+            var employee = {
+                empname: "",
+                email: "",
+                id: ""
+            }
+            for(a in employee){
+                employee[a] = document.getElementById(a).value
+            }
+            
+            var postUser = new XMLHttpRequest()
+            postUser.onreadystatechange = function(){
+                if(postUser.readyState == 4 && postUser.status == 201){
+                    employee = JSON.parse(postUser.response)
+                }
+            }
+            postUser.open("POST", "http://localhost:3000/users2")
+            postUser.setRequestHeader("Content-Type", "application/json")
+            postUser.send(JSON.stringify(employee))
+        }
+
+        function displayLatestEmployee(){
+            var getInfo = new XMLHttpRequest()
+            getInfo.onreadystatechange = function(){
+                if(getInfo.readyState == 4 && getInfo.status == 200){
+                    users2 = JSON.parse(getInfo.response)
+                    displayInTable(users2)
+                }
+            }
+            getInfo.open("GET", "http://localhost:3000/users2")
+            getInfo.send()
+        }
+
+        function displayInTable(users2){
+            for(i = 0; i < users2.length; i++){
+                var myTr = document.createElement("tr")
+                for(a in users2[0]){
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = users2[i][a]
+                    myTr.appendChild(myTd)
+                }
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "getUser("+i+")")
+                editBtn.innerHTML = "EDIT"
+                editTd.appendChild(editBtn)
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteUser("+i+")")
+                deleteBtn.innerHTML = "DELETE"
+                deleteTd.appendChild(deleteBtn)
+                myTr.appendChild(deleteTd)
+
+                document.querySelector("tbody").appendChild(myTr)
+            }
+        }
+
+        displayLatestEmployee()
+
+        function getUser(i){
+            for(a in users2[i]){
+                document.getElementById(a).value = users2[i][a]
+            }
+            document.getElementById("getdetails").style.display = "none"
+            document.getElementById("updatedetails").style.display = "block"
+        }
+
+        function updateDetails(){
+            var employee = {
+                empname : "",
+                email: "",
+                id: ""
+            }
+
+            for(a in employee){
+                employee[a] = document.getElementById(a).value
+            }
+
+            var postUser = new XMLHttpRequest()
+            postUser.onreadystatechange = function (){
+                if(postUser.readyState == 4 && postUser.status == 200){
+                    console.log("details updated")
+                    document.getElementById("getdetails").style.display = "block"
+                    document.getElementById("updatedetails").style.display = "none"
+                }
+            }
+            postUser.open("PUT", "http://localhost:3000/users2/"+employee.id)
+            postUser.setRequestHeader("Content-Type", "application/json")
+            postUser.send(JSON.stringify(employee))
+        }
+
+        function deleteUser(i){
+            var postUser = new XMLHttpRequest()
+            postUser.onreadystatechange = function (){
+                if(postUser.readyState == 4 && postUser.status == 200){
+                    console.log("details deleted")
+                }
+            }
+            postUser.open("DELETE", "http://localhost:3000/users2/"+users2[i].id)
+            postUser.send()
+        }
+    </script>
+</body>
+</html>
