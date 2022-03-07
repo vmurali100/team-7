@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+
+    button {
+        color: green;
+        background-color: burlywood;
+    }
+</style>
+
+<body>
+    <form>
+        <label for="">Roll No</label><br>
+        <input type="text" name="" id="rnumber"><br><br>
+
+        <label for="">Student Name</label><br>
+        <input type="text" name="" id="ename"><br><br>
+
+        <label for="">Gender</label><br>
+        <input type="text" name="" id="pic"><br><br>
+
+        <label for="">Group</label><br>
+        <input type="text" name="" id="group"><br><br>
+    </form>
+
+    <button type="button" onclick="takeup()">Enter Get Data(S)</button>
+
+    <script>
+        // var info=[]
+        var info = JSON.parse(localStorage.getItem("info"))
+        if (info == null) {
+            info = []
+        }
+        function takeup() {
+            var data = {
+                rnumber: "",
+                ename: "",
+                pic: "",
+                group: ""
+            }
+            for (a in data) {
+                data[a] = document.getElementById(a).value
+            }
+            info.push(data)
+            localStorage.setItem("info", JSON.stringify(info))
+
+            window.location.href = "Selectstudent.html"
+
+        }
+    </script>
+</body>
+
+</html>

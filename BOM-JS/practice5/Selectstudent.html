@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        text-align: center;
+    }   
+</style>
+<body>
+    <form >
+        <label for="">Student Name</label><br>
+        <input type="text" name="" id="ename"><br><br>
+
+        <label for="">Roll number</label><br>
+        <input type="text" name="" id="rnumber"><br><br>
+    </form>
+
+    <button type="button" onclick="GotoAttendence()">Processing..</button>
+
+    <script>
+        function GotoAttendence(){
+            var myresult={
+              ename:"",
+              rnumber:""
+}
+for(a in myresult){
+    myresult[a]=document.getElementById(a).value
+}
+
+var info=JSON.parse(localStorage.getItem("info"))
+
+let check=info.find((moon)=>{
+  return moon.ename===myresult.ename && moon.rnumber===myresult.rnumber
+})
+
+if(check){
+    window.location.href="Outputpage.html"
+}else{
+    document.querySelector("p").style.display="block"
+}
+        }
+    </script>
+</body>
+</html>

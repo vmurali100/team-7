@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <form>
+        <label for="">Date of birth</label><br>
+        <input type="text" name="" id="birth"><br><br>
+
+        <label for="">Gender</label><br>
+        <input type="text" name="" id="gen"><br><br>
+    </form>
+
+    <button type="button" onclick="update()">Update Data</button>
+
+    <p style="color: red; display: none;">Plese enter correct informations</p>
+
+    <script>
+        function update() {
+            var myresult = {
+                birth: "",
+                gen: ""
+            }
+            for (a in myresult) {
+                myresult[a] = document.getElementById(a).value
+            }
+
+            var info = JSON.parse(localStorage.getItem("info"))
+
+            let check = info.find((moon) => {
+                return moon.birth === myresult.birth && moon.gen === myresult.gen
+            })
+
+            if (check) {
+                window.location.href = "Verifying.html"
+            } else {
+                document.querySelector("p").style.display = "block"
+            }
+        }
+    </script>
+</body>
+
+</html>

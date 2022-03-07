@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        text-align: center;
+    }
+    button{
+        color: green;
+        background-color: burlywood;
+    }
+</style>
+<body>
+        <h1>Create An Email Account</h1>
+    <form>
+        <label for="">User Name</label><br>
+        <input type="text" name="" id="user"><br><br>
+       
+
+        <label for="">Password</label><br>
+        <input type="text" name="" id="pass"><br><br>
+
+        <label for="">Email Id</label><br>
+        <input type="text" name="" id="mail"><br><br>
+
+        <label for="">Confirm Password</label><br>
+        <input type="text" name="" id="con"><br><br>
+    </form>
+    
+    <button type="button" onclick="getdata()">Register</button>
+
+    <script>    
+        // var info=[]
+        var surya=JSON.parse(localStorage.getItem("surya"))
+        if(surya==null){
+            surya=[]
+        }
+     function getdata(){
+       var raju={
+         user:"",
+         mail:"",
+         pass:"",
+         con:""
+       }
+       for(a in raju){
+        raju[a]=document.getElementById(a).value
+       }
+       surya.push(raju)
+       localStorage.setItem("surya",JSON.stringify(surya))
+
+       window.location.href="Login.html"
+     }
+    </script>
+</body>
+</html>

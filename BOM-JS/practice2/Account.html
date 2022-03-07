@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+
+    button {
+        color: green;
+        background-color: burlywood;
+    }
+</style>
+
+<body>
+    <h1>Customer Account Details</h1>
+    <form>
+        <label for="">Name</label><br>
+        <input type="text" name="" id="fnname"><br><br>
+
+        <label for="">Account Number</label><br>
+        <input type="text" name="" id="anumber"><br><br>
+
+        <label for="">IFSC Code</label><br>
+        <input type="text" name="" id="code"><br><br>
+
+        <label for="">PIN number</label><br>
+        <input type="text" name="" id="pnumber"><br><br>
+    </form>
+
+    <button type="button" onclick="Mydatalog()">Sin In</button>
+
+    <script>
+        // var info=[]
+        var info = JSON.parse(localStorage.getItem("info"))
+        if (info == null) {
+            info = []
+        }
+        function Mydatalog() {
+            var data = {
+                fnname: "",
+                anumber: "",
+                code: "",
+                pnumber: ""
+            }
+            for (a in data) {
+                data[a] = document.getElementById(a).value
+            }
+            info.push(data)
+            localStorage.setItem("info", JSON.stringify(info))
+
+            window.location.href = "Loginn.html"
+
+        }
+    </script>
+</body>
+
+</html>

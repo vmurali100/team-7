@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <form>
+        <label for="">Account Number</label><br>
+        <input type="text" name="" id="anumber"><br><br>
+
+        <label for="">IFSC code</label><br>
+        <input type="text" name="" id="code"><br><br>
+    </form>
+
+    <button type="button" onclick="Logedin()">Log In</button>
+
+    <p style="color: red; display: none;">Please enter Correct IFSC code....</p>
+
+    <script>
+        function Logedin() {
+            var myresult = {
+              anumber:"",
+              code:""
+            }
+            for (a in myresult) {
+                myresult[a] = document.getElementById(a).value
+            }
+
+            var info = JSON.parse(localStorage.getItem("info"))
+
+            let check = info.find((moon) => {
+                return moon.anumber === myresult.anumber && moon.code=== myresult.code
+            })
+
+            if (check) {
+                window.location.href = "Checking.html"
+            } else {
+                document.querySelector("p").style.display = "block"
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="">Tell phone number</label>
+        <input type="text" name="" id="about"><br><br>
+
+        <label for="">STD number</label>
+        <input type="text" name="" id="talk"><br><br>
+    </form>
+
+    <button type="button" onclick="Findout()">Find enter</button>
+
+    <script>
+        function Findout() {
+            var myresult = {
+                about: "",
+                talk: ""
+            }
+            for (a in myresult) {
+                myresult[a] = document.getElementById(a).value
+            }
+
+            var info = JSON.parse(localStorage.getItem("info"))
+
+            let check = info.find((moon) => {
+                return moon.about === myresult.about && moon.talk === myresult.talk
+            })
+
+            if (check) {
+                window.location.href = "historycall.html"
+            } else {
+                document.querySelector("p").style.display = "block"
+            }
+        }
+    </script>
+</body>
+
+</html>

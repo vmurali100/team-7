@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+
+    button {
+        color: green;
+        background-color: burlywood;
+    }
+</style>
+
+<body>
+    <form>
+        <label for="">Product Name</label><br>
+        <input type="text" name="" id="peru"><br><br>
+
+        <label for="">Price</label><br>
+        <input type="text" name="" id="rs"><br><br>
+
+        <label for="">GST</label><br>
+        <input type="text" name="" id="gst"><br><br>
+
+        <label for="">Transations Type</label><br>
+        <input type="text" name="" id="selec"><br><br>
+    </form>
+
+    <button type="button" onclick="details()">Enter Product Details</button>
+
+    <script>
+        // var info=[]
+        var info = JSON.parse(localStorage.getItem("info"))
+        if (info == null) {
+            info = []
+        }
+        function details() {
+            var data = {
+                peru: "",
+                rs: "",
+                gst: "",
+                selec: ""
+            }
+            for (a in data) {
+                data[a] = document.getElementById(a).value
+            }
+            info.push(data)
+            localStorage.setItem("info", JSON.stringify(info))
+
+            window.location.href = "purchese.html"
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+
+    button {
+        color: green;
+        background-color: burlywood;
+    }
+</style>
+
+<body>
+    <form>
+        <label for="">Telephone Number</label><br>
+        <input type="text" name="" id="about"><br><br>
+
+        <label for="">STD number</label><br>
+        <input type="text" name="" id="talk"><br><br>
+
+        <label for="">Mobile Number</label><br>
+        <input type="text" name="" id="mnumber"><br><br>
+
+        <label for="">Voky toky number</label><br>
+        <input type="text" name="" id="toky"><br><br>
+    </form>
+
+    <button type="button" onclick="dataoftell()">Enter</button>
+
+    <script> // var info=[]
+        var info = JSON.parse(localStorage.getItem("info"))
+        if (info == null) {
+            info = []
+        }
+        function dataoftell() {
+            var data = {
+                about: "",
+                talk: "",
+                mnumber: "",
+                toky: ""
+            }
+            for (a in data) {
+                data[a] = document.getElementById(a).value
+            }
+            info.push(data)
+            localStorage.setItem("info", JSON.stringify(info))
+
+            window.location.href = "Find.html"
+
+        }
+    </script>
+</body>
+
+</html>

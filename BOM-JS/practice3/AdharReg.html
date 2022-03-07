@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+
+    button {
+        color: green;
+        background-color: burlywood;
+    }
+</style>
+
+<body>
+
+    <h1>Adhar Athentications Updating......</h1>
+    <form>
+        <label for="">Adhar number</label><br>
+        <input type="text" name="" id="no"><br><br>
+
+        <label for="">Date of Birth</label><br>
+        <input type="text" name="" id="birth"><br><br>
+
+        <label for="">Gender</label><br>
+        <input type="text" name="" id="gen"><br><br>
+
+        <label for="">Address</label><br>
+        <input type="text" name="" id="Addres"><br><br>
+    </form>
+
+    <button type="button" onclick="adding()">Check</button>
+
+    <script>
+        // var info=[]
+        var info = JSON.parse(localStorage.getItem("info"))
+        if (info == null) {
+            info = []
+        }
+        function adding() {
+            var data = {
+                no: "",
+                birth: "",
+                gen: "",
+                Addres: ""
+            }
+            for (a in data) {
+                data[a] = document.getElementById(a).value
+            }
+            info.push(data)
+            localStorage.setItem("info", JSON.stringify(info))
+
+            window.location.href = "Update.html"
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+</style>
+
+<body>
+
+    <form>
+        <label for="">Product Name</label>
+        <input type="text" name="" id="peru"><br><br>
+
+        <label for="">Price</label>
+        <input type="text" name="" id="rs"><br><br>
+    </form>
+
+    <button type="button" onclick="entry()">Enter</button>
+
+    <script>
+        function entry() {
+            var myresult = {
+                peru: "",
+                rs: ""
+            }
+            for (a in myresult) {
+                myresult[a] = document.getElementById(a).value
+            }
+
+            var info = JSON.parse(localStorage.getItem("info"))
+
+            let check = info.find((moon) => {
+                return moon.peru === myresult.peru && moon.rs === myresult.rs
+            })
+
+            if (check) {
+                window.location.href = "Bill.html"
+            } else {
+                document.querySelector("p").style.display = "block"
+            }
+        }
+    </script>
+</body>
+
+</html>
