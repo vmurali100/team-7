@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+      body {
+    margin-top: -54px;
+}
+    h2 {
+    margin-left: 328px;
+    margin-top: -340px;
+}
+    img {
+    width: 1066px;
+    height: 158px;
+    margin-top: 34px;
+}
+form {
+    margin-left: 392px;
+}
+button {
+    margin-left: 616px;
+    margin-top: 10px;
+    padding: 11px;
+    background-color: red;
+    color: white;
+}
+b{
+    margin-left: 342px;
+}
+</style>
+<body>
+    <div id="1">
+        <img src="https://s3.ap-southeast-1.amazonaws.com/cdn.deccanchronicle.com/sites/default/files/emblem%20(1)_0_0_0.jpg" alt="">
+    </div>
+    <img style="width: 240px; height: 200px; margin-top: 50px;" src="https://yt3.ggpht.com/ytc/AKedOLQQ15ELnDDwXOm16Lo0-A6vmglHDxdLJmkTV4m3Cw=s900-c-k-c0x00ffffff-no-rj" alt="">
+    <img style="width: 300px; height: 300px; margin-left: 500px;" src="https://i.pinimg.com/736x/0f/67/10/0f6710f6cd1da610de4034221ff36809.jpg" alt="">  
+    <h2>JANASENA PARTY MEMBERSHIP</h2>
+    <form>
+        <label for="">Full Name</label>
+        <input type="text" name="" id="fullName"><br><br>
+        <label for="">Mobile No</label>
+        <input type="text" name="" id="mobileNo"><br><br>
+            </form>
+    <button type="button" onclick="Kalyan()">S U B M I T</button>
+    <b style="color: red; display: none;">Please Enter Valid Details <br>
+         If You Give Invalid Details The Membership Will Be Canceled</b>
+    <script>
+        function Kalyan(){
+            var Rehaman = {
+                fullName:"",
+                mobileNo:""                
+            }
+            for (a in Rehaman){
+                Rehaman[a] = document.getElementById(a).value
+            }
+            var Star = JSON.parse(localStorage.getItem("Star"))
+            let check = Star.find((Hii)=>{
+                return Hii.fullName === Rehaman.fullName && Hii.mobileNo === Rehaman.mobileNo 
+            })
+            if(check){
+                window.location.href = "partyst.html"
+            }else{
+                document.querySelector("b").style.display = "block"
+            }            
+        }
+    </script>
+</body>
+</html>

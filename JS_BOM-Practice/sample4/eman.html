@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+    margin-left: 385px;
+    margin-top: 50px;
+}
+h2 {
+    margin-top: -37px;
+}
+</style>
+<body>
+    <img style="width: 350px; height: 200px; margin-top: -50px;" src="https://www.bitrefill.com/content/cn/b_rgb%3AFFFFFF%2Cc_pad%2Ch_600%2Cw_1200/v1553602667/flipkart.jpg" alt="">
+    <h2>Create your Seller Account</h2>
+    <form>
+        <label for="">Phone no</label>
+        <input type="text" name="" id="phoneNo"><br><br>
+        <!-- <b style="color: rgb(255, 136, 0); display: block;">Please Enter Your Valid Phone Number</b> <br> -->
+
+        <label for="">Enter OTP</label>
+        <input type="text" name="" id="enterOTP">
+        <!-- <h3 style="color: blue;">We have sent an One Time Password (OTP) <br>
+            in a SMS to this this mobile number</h3> -->
+    </form> 
+    <button type="button" onclick="login()">Save</button>
+    <p style="color: red; display: none;">Invalid OTP number</p>
+    <script>
+        function login(){
+            var Info = {
+                phoneNo:"",
+                enterOTP:""
+            }
+            for (a in Info){
+                Info[a] = document.getElementById(a).value
+            }            
+
+            var Details = JSON.parse(localStorage.getItem("Details"))
+
+            let check = Details.find((Love)=>{
+                return Love.phoneNo === Info.phoneNo && Love.enterOTP === Info.enterOTP
+            })
+            if (check){
+                window.location.href = "final.html"
+            }else{              
+                document.querySelector("p").style.display = "block"
+            }
+        }
+    </script>
+</body>
+</html>

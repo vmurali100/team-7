@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h2 {
+    margin-top: -37px;
+}
+body {
+    margin-left: 385px;
+}
+</style>
+<body>
+    
+    <img style="width: 350px; height: 200px; margin-top: -50px;" src="https://www.bitrefill.com/content/cn/b_rgb%3AFFFFFF%2Cc_pad%2Ch_600%2Cw_1200/v1553602667/flipkart.jpg" alt="">
+    <h2>Create your Seller Account</h2>
+    <form>
+        <label for="">Email</label>
+        <input type="text" name="" id="mail"><br><br>
+        <!-- <h4 style="color: green; display: block;">Enter Your Email Address</h4> -->
+
+        <label for="">Phone no</label>
+        <input type="text" name="" id="phoneNo"><br><br>
+        <!-- <b style="color: rgb(255, 136, 0); display: block;">Please Enter Your Valid Phone Number</b> <br> -->
+
+        <label for="">Enter OTP</label>
+        <input type="text" name="" id="enterOTP"><br><br>
+        <!-- <p style="color: blue;">We have sent an One Time Password (OTP) <br>
+        in a SMS to this this mobile number</p>
+ -->
+        <label for="">Name</label>
+        <input type="text" name="" id="Name"><br><br>
+        <!-- <strong style="color: red; display: block;">Enter Your Full Name</strong><br> -->
+
+        <label for="">Set Password</label>
+        <input type="text" name="" id="setPassword"><br><br>
+        <!-- <i style="color: darkmagenta; display: block;">Set Password Minimum 4 characters</i><br> -->
+    </form>
+    <button type="button" onclick="CreateAccount()">SIGN UP</button>
+    <script>
+        var Details = JSON.parse(localStorage.getItem("Details"))
+        if (Details == null) {
+            Details = []
+        }
+        function CreateAccount() {
+            var Student = {
+                mail: "",
+                phoneNo: "",
+                enterOTP: "",
+                Name: "",
+                setPassword: ""
+            }
+            for (a in Student) {
+                Student[a] = document.getElementById(a).value
+            }
+            Details.push(Student)
+            localStorage.setItem("Details", JSON.stringify(Details))
+            window.location.href = "eman.html"
+
+        }
+       
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="">User Name</label>
+        <input type="text" name="" id="userName"><br><br>
+        <label for="">Password</label>
+        <input type="password" name="" id="password"><br><br>
+    </form>
+    <button type="button" onclick="loginForm()">Submit</button>
+    <p style="color: red; display: none;">Invalid User...Please Check</p>
+    <script>
+        function loginForm() {
+            var Info = {
+                userName:"",
+                password: ""                
+            }
+            for (a in Info) {
+                Info[a] = document.getElementById(a).value
+            }
+
+            var getInfo = JSON.parse(localStorage.getItem("getInfo"))
+
+            let check = getInfo.find((hello) => {
+                return hello.userName === Info.userName && hello.password === Info.password 
+            })
+            if (check) {
+                window.location.href = "dashbourd.html"
+            } else {
+                document.querySelector("p").style.display = "block"
+            }
+
+        }
+    </script>
+</body>
+
+</html>

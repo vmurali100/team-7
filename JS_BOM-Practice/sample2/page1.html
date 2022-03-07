@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     body{
+        margin-left: 400px;
+        margin-top: 40px;
+    }
+</style>
+<body>
+    <form>
+        <label for="">Name</label>
+        <input type="text" name="" id="name"><br><br>
+        <label for="">Phone Number</label>
+        <input type="text" name="" id="phoneNumber"><br><br>
+        <label for="">Online method</label>
+        <input type="text" name="" id="onlineMethod"><br><br>
+        <label for="">Amount</label>
+        <input type="text" name="" id="amount"><br><br>
+    </form>
+    <button type="button" onclick="Raju()">Click</button>
+    <script>
+        var Rehaman = JSON.parse(localStorage.getItem("Rehaman"))
+        if (Rehaman == null){
+            Rehaman = []
+        }
+        function Raju(){
+            var Deena = {
+                name:"",
+                phoneNumber:"",
+                onlineMethod:"",
+                amount:""
+            }
+            for (a in Deena){
+                Deena[a] = document.getElementById(a).value
+            }
+            Rehaman.push(Deena)
+            localStorage.setItem("Rehaman",JSON.stringify(Rehaman))
+
+            window.location.href="page2.html"
+        }
+    </script>
+</body>
+</html>

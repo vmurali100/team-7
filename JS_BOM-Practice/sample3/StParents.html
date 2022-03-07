@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="">Student Name</label>
+        <input type="text" name="" id="studentName"><br><br>
+        <label for="">Pass/Fail</label>
+        <input type="text" name="" id="passFail"><br><br>
+    </form>
+    <button type="button" onclick="Data()" style="background-color: rgb(218, 218, 35); color: blue;">Click</button>
+    <p style="color: red; display: none;">Invalid Detials Please Give the Correct Details</p>
+    <script>
+        function Data(){
+            var Raju = {
+                studentName:"",
+                passFail:""
+            }
+            for (a in Raju){
+            Raju[a] = document.getElementById(a).value
+            }
+            var Perfect = JSON.parse(localStorage.getItem("Perfect"))
+            let check = Perfect.find((Boys)=>{
+                return Boys.studentName === Raju.studentName && Boys.passFail === Raju.passFail
+            })
+            if (check){
+                window.location.href = "Student.html"
+            }else{
+                document.querySelector("p").style.display = "block"
+            }
+            
+        }
+    </script>
+</body>
+</html>
