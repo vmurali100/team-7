@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Username:</label>
+    <input type="text" id="uname"><br>
+    <label for="">Password:</label>
+    <input type="text" id="pass"><br>
+    <input type="text" id="id" hidden>
+    <button type="button" onclick="addUser()" id="addBtn">Add Details</button>
+    <button type="" onclick="updateUser()" id="updateUser" style="display: none;">Update Details</button>
+    <br>
+    <br>
+    <table border="1">
+        <thead>
+            <th>Username</th>
+            <th>Password</th>
+            <th>ID</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        function addUser(){
+            var user = {
+                uname: "",
+                pass: "",
+                id: ""
+            }
+             for(a in user){
+                 user[a] = document.getElementById(a).value
+             }
+             var postUser = new XMLHttpRequest()
+             postUser.onreadystatechange=function(){
+                 if(postUser.status == 201 && postUser.readyState == 4){
+                     console.log("users created")
+                 }
+             }
+             postUser.open("POST", "http://localhost:3000/details");
+             postUser.setRequestHeader("Content-Type", "application/json")
+             postUser.send(JSON.stringify(user))       
+        }
+
+        function displayLatestUsers(){
+            var getInfo = new XMLHttpRequest();
+            getInfo.onreadystatechange = function(){
+                if (getInfo.readyState == 4 && getInfo.status == 200){
+                    details = JSON.parse(getInfo.response)
+                    displayUsersInTable(details)
+                }
+            }
+            getInfo.open("GET", "http://localhost:3000/details");
+            getInfo.send()    
+        }
+
+        function displayUsersInTable(details){
+            for(i=0; i < details.length; i++){
+                var myTr = document.createElement("tr")
+                for(a in details[0]){
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = details[i][a]
+                    myTr.appendChild(myTd)
+                }
+                var editTd = document.createElement("td")
+                var deleteTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.innerHTML = "EDIT";
+                editBtn.setAttribute("onclick", "editUser("+i+")")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteUser("+i+")")
+                deleteBtn.innerHTML = "DELETE";
+                editTd.appendChild(editBtn);
+                deleteTd.appendChild(deleteBtn);
+                myTr.appendChild(editTd);
+                myTr.appendChild(deleteTd);
+                document.querySelector("tbody").appendChild(myTr)
+            }
+        }
+
+        displayLatestUsers()
+        
+        function editUser(i){
+            for(a in details[i]){
+                document.getElementById(a).value = details[i][a]
+            }
+            document.getElementById("addBtn").style.display = "none"
+            document.getElementById("updateUser").style.display = "block"
+        }
+
+        function updateUser(){
+            var user = {
+                uname: "",
+                pass: "",
+                id: ""
+            }
+             for(a in user){
+                 user[a] = document.getElementById(a).value
+             }
+             var postUser = new XMLHttpRequest()
+             postUser.onreadystatechange=function(){
+                 if(postUser.status == 200 && postUser.readyState == 4){
+                     console.log("users created")
+                     document.getElementById("addBtn").style.display = "block"
+                     document.getElementById("updateUser").style.display = "none"
+                 }
+             }
+             postUser.open("PUT", "http://localhost:3000/details/"+user.id);
+             postUser.setRequestHeader("Content-Type", "application/json")
+             postUser.send(JSON.stringify(user))
+        }
+
+        function deleteUser(i){
+
+            var postUser = new XMLHttpRequest()
+             postUser.onreadystatechange=function(){
+                 if(postUser.status == 200 && postUser.readyState == 4){
+                     console.log("users deleted successfully")
+                 }
+             }
+             postUser.open("DELETE", "http://localhost:3000/details/"+details[i].id);
+             postUser.send()
+        }
+    </script>
+</body>
+</html>

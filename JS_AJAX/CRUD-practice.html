@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Student Name:</label>
+    <input type="text" id="sname"><br>
+    <label for="">Roll No:</label>
+    <input type="text" id="rno"><br>
+    <input type="text" id="id" hidden><br>
+
+    <button type="button" onclick="studentDetails()" id="addBtn">Get Details</button><br>
+    <button type="button" onclick="updateDetails()" id="updateBtn" style="display: none;">Update Details</button><br>
+    <hr>
+    <table border="1">
+        <thead>
+            <th>Student Name</th>
+            <th>Roll No</th>
+            <th>ID</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        function studentDetails(){
+            var user = {
+                sname:"",
+                rno:"",
+                id:""
+            }
+
+            for(a in user){
+                user[a] = document.getElementById(a).value
+            }
+            var postUser = new XMLHttpRequest()
+            postUser.onreadystatechange = function(){
+                if(postUser.readyState == 4 && postUser.status == 201){
+                    user[a] = JSON.parse(postUser.respone())
+                }
+            }
+            postUser.open("POST", "http://localhost:3000/users1")
+            postUser.setRequestHeader("Content-Type", "application/json")
+            postUser.send(JSON.stringify(user))
+        }
+
+        function displayLatestStudentDetails(){
+            var getInfo = new XMLHttpRequest()
+            getInfo.onreadystatechange = function(){
+                if(getInfo.readyState == 4 && getInfo.status == 200){
+                    users1 = JSON.parse(getInfo.response)
+                    displayInTable(users1)
+                } 
+            }
+            getInfo.open("GET", "http://localhost:3000/users1")
+            getInfo.send()
+        }
+
+        function displayInTable(users1){
+            for(i = 0; i < users1.length; i++){
+                var myTr = document.createElement("tr")
+                    for(a in users1[0]){
+                        var myTd = document.createElement("td")
+                        myTd.innerHTML = users1[i][a]
+                        myTr.appendChild(myTd)
+                    }
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editDetails("+i+")")
+                editBtn.innerHTML = "EDIT"
+                editTd.appendChild(editBtn)
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteDetails("+i+")")
+                deleteBtn.innerHTML = "DELETE"
+                deleteTd.appendChild(deleteBtn)
+                myTr.appendChild(deleteTd)
+
+                document.querySelector("tbody").appendChild(myTr)
+            }
+        }
+
+        displayLatestStudentDetails()
+
+        function editDetails(i){
+            for(a in users1[i]){
+                document.getElementById(a).value = users1[i][a]
+            }
+            document.getElementById("addBtn").style.display = "none"
+            document.getElementById("updateBtn").style.display = "block"
+        }
+
+        function updateDetails(){
+           var user = {
+               sname:"",
+               rno:"",
+               id:""
+           } 
+           for(a in user){
+                user[a] = document.getElementById(a).value
+            }
+            var postUser = new XMLHttpRequest()
+            postUser.onreadystatechange = function(){
+                if(postUser.readyState == 4 && postUser.status == 200){
+                    document.getElementById("addBtn").style.display = "block"
+                    document.getElementById("updateBtn").style.display = "none"
+                }
+            }
+            postUser.open("PUT", "http://localhost:3000/users1/"+user.id)
+            postUser.setRequestHeader("Content-Type", "application/json")
+            postUser.send(JSON.stringify(user))
+        }
+
+        function deleteDetails(i){
+            var postUser = new XMLHttpRequest()
+            postUser.onreadystatechange = function(){
+                if(postUser.readyState == 4 && postUser.status == 200){
+                    console.log("details deleted")
+                }
+            }
+            postUser.open("DELETE", "http://localhost:3000/users1/"+users1[i].id)
+            postUser.send()
+        }
+
+    </script>
+</body>
+</html>

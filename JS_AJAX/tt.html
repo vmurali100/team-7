@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Username:</label>
+        <input type="text" id="uname"><br>
+        <label for="">Password:</label>
+        <input type="text" id="pass"><br>
+        <input type="text" id="id" hidden>
+        <button type="button" onclick="addUser()" id="adduser">add details</button>
+        <button type="button" onclick="updateUser()" id="updateuser" style="display:none">Update Details</button>
+        <hr>
+        <table border="1">
+            <thead>
+                <th>Username</th>
+                <th>Password</th>
+                <th>ID</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+        <script>
+            function addUser(){
+                var user = {
+                    uname:"",
+                    pass:"",
+                    id:""
+                }
+
+                for(a in user){
+                    user[a] = document.getElementById(a).value
+                }
+
+                var postUser = new XMLHttpRequest()
+                postUser.onreadystatechange = function(){
+                    if(postUser.readyState == 4 && postUser.status == 201){
+                        console.log("created by user");
+                    }
+                }
+                postUser.open("POST", "http://localhost:3000/details")
+                postUser.setRequestHeader("Content-Type", "application/json")
+                postUser.send(JSON.stringify(user))
+            }
+
+            function displayLatestDetails(){
+                var getInfo = new XMLHttpRequest();
+                getInfo.onreadystatechange = function(){
+                    if(getInfo.readyState == 4 && getInfo.status == 200){
+                        details  = JSON.parse(getInfo.response)
+                        displayDetailsInTable(details)
+                    }
+                }
+                getInfo.open("GET", "http://localhost:3000/details");
+                getInfo.send()
+            }
+
+            function displayDetailsInTable(details){
+                for(i=0; i < details.length; i++){
+                   var myTr = document.createElement("tr")
+                   for(a in details[0]){
+                       var myTd = document.createElement("td")
+                       myTr.appendChild(myTd)
+                       myTd.innerHTML = details[i][a]
+                   }
+                   var editTd = document.createElement("td")
+                   var editBtn = document.createElement("button")
+                   editBtn.innerHTML = "EDIT"
+                   editBtn.setAttribute("onclick", "editUser("+i+")")
+                   editTd.appendChild(editBtn)
+                   myTr.appendChild(editTd)
+
+                   var deleteTd = document.createElement("td")
+                   var deleteBtn = document.createElement("button")
+                   deleteBtn.innerHTML = "DELETE"
+                   deleteBtn.setAttribute("onclick", "deleteUser("+i+")")
+                   deleteTd.appendChild(deleteBtn)
+                   myTr.appendChild(deleteTd)
+
+                   document.querySelector("tbody").appendChild(myTr) 
+                }
+            }
+
+            displayLatestDetails()
+
+            function editUser(i){
+                for(a in details[i]){
+                    document.getElementById(a).value = details[i][a]
+                }
+                document.getElementById("adduser").style.display = "none"
+                document.getElementById("updateuser").style.display = "block"
+            }
+
+            function updateUser(){
+            var user = {
+                uname: "",
+                pass: "",
+                id: ""
+            }
+             for(a in user){
+                 user[a] = document.getElementById(a).value
+             }
+             var postUser = new XMLHttpRequest()
+             postUser.onreadystatechange=function(){
+                 if(postUser.status == 200 && postUser.readyState == 4){
+                     console.log("users created")
+                     document.getElementById("adduser").style.display = "block"
+                     document.getElementById("updateUser").style.display = "none"
+                 }
+             }
+             postUser.open("PUT", "http://localhost:3000/details"+user.id);
+             postUser.setRequestHeader("Content-Type", "application/json")
+             postUser.send(JSON.stringify(user))
+        }
+
+        </script>
+    </form>
+</body>
+</html>
