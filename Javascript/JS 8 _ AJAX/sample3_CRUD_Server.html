@@ -52,7 +52,7 @@
                     console.log("User Created")
                 }
             }
-            postUser.open("POST", "http://localhost:3000/users");
+            postUser.open("POST", "http://localhost:3000/suri");
             postUser.setRequestHeader("Content-Type", "application/json")
             postUser.send(JSON.stringify(user))
         }
@@ -66,7 +66,7 @@
                     displayUsersInTable(users)
                 }
             }
-            var url = "http://localhost:3000/users"
+            var url = "http://localhost:3000/suri"
             getInfo.open("GET", url)
             getInfo.send()
         }
@@ -92,7 +92,7 @@
 
                 editTd.appendChild(editBtn);
                 deleteTd.appendChild(deleteBtn);
-                myTr.appendChild(editTd);
+            myTr.appendChild(editTd);
                 myTr.appendChild(deleteTd);
                 document.querySelector("tbody").appendChild(myTr)
             }
@@ -125,7 +125,7 @@
                     document.getElementById("updateBtn").style.display="none"
                 }
             }
-            postUser.open("PUT", "http://localhost:3000/users/"+user.id);
+            postUser.open("PUT", "http://localhost:3000/suri"+user.id);
             postUser.setRequestHeader("Content-Type", "application/json")
             postUser.send(JSON.stringify(user))
 
@@ -140,11 +140,11 @@
                    console.log("User Deleted Successfully")
                 }
             }
-            postUser.open("DELETE", "http://localhost:3000/users/"+users[i].id);
+            postUser.open("DELETE", "http://localhost:3000/suri"+users[i].id);
             postUser.send()
         }
         // 5. Delete a User 
     </script>
 </body>
 
-</html>
+</html> 
