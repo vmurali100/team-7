@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            width: 120px;
+            margin-left: 69px;
+        }
+    </style>
+</head>
+
+<body
+    style="background: rgb(221, 9, 133); border: solid; width: 255px; height: 247px; margin: 0 auto;margin-top: 52px;">
+
+    <table style="background-color:rgb(83, 3, 50);width: 255px;height: 230px; ">
+        <form action="">
+
+            <legend style="color: white;">Login Form</legend>
+            <tr>
+                <td> <label for="">Email</label></td>
+                <td> <input type="text" name="" id="mail"></td>
+            </tr>
+            <tr>
+                <td> <label for="">Password</label></td>
+                <td> <input type="text" name="" id="password"></td>
+
+            </tr>
+
+        </form>
+
+    </table>
+    <button type="button" onclick="displayvalue()">Login</button>
+    <p style="color: red; display: none;">Invalid Data</p>
+    <script>
+        function displayvalue() {
+            var sample = {
+                mail: "",
+                password: ""
+            }
+            for (a in sample) {
+                sample[a] = document.getElementById(a).value
+            }
+            getinfo = JSON.parse(localStorage.getItem("getinfo"))
+            let check = getinfo.find((jio) => {
+                return jio.mail === sample.mail && jio.password === sample.password
+            })
+            if (check) {
+                window.location.href = "third.html"
+            } else {
+                document.querySelector("p").style.display = "block"
+            }
+            console.log()
+
+
+        }
+    </script>
+</body>
+
+</html>

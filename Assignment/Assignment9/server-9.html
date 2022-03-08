@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">brand </label>
+        <input type="text" name="" id="brand"><br>
+
+        <label for="">color </label>
+        <input type="text" name="" id="color"><br>
+
+        <label for="">price </label>
+        <input type="text" name="" id="price">
+        <input type="text" name="" id="id" hidden>
+    </form>
+    <button type="button" onclick="create()" id="1">create</button>
+    <button type="button" onclick="updatedata()" style="display: none;" id="2" ></button>
+    <table border="1">
+        <thead>
+            <th>brand</th>
+            <th>color</th>
+            <th>price</th>
+            <th>sl</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+    <script>
+        // create
+        var rohini = []
+
+        function create() {
+            var data = {
+                brand: "",
+                color: "",
+                price: ""
+            }
+            for (a in data) {
+                data[a] = document.getElementById(a).value
+            }
+            console.log(data)
+            var postdata = new XMLHttpRequest();
+            postdata.onreadystatechange = function () {
+                if (postdata.status == 201 && postdata.readyState == 4) {
+
+                }
+            }
+            postdata.open("Post", "http://localhost:3000/ms")
+            postdata.setRequestHeader("Content-Type", "application/json")
+            postdata.send(JSON.stringify(data))
+        }
+
+        // Readdata
+        function Readdata() {
+            var getdata = new XMLHttpRequest();
+            getdata.onreadystatechange = function () {
+                if (getdata.readyState == 4 && getdata.status == 200) {
+                    rohini = JSON.parse(getdata.response)
+                    displaydata(rohini)
+
+                }
+            }
+            var url = "http://localhost:3000/ms"
+            getdata.open("Get", url)
+            getdata.send()
+        }
+
+        // Displaydata
+
+        function displaydata(rohini) {
+            for (i=0; i<rohini.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in rohini[0]) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = rohini[i][a]
+                    mytr.appendChild(mytd)
+                   
+                }
+
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                mytr.appendChild(edittd)
+                edittd.appendChild(editBtn)
+                editBtn.innerHTML = "Edit"
+                editBtn.setAttribute("onclick", "editdata(" + i + ")")
+
+                var deletetd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                mytr.appendChild(deletetd)
+                deletetd.appendChild(deleteBtn)
+                deleteBtn.innerHTML = "Delete"
+                deleteBtn.setAttribute("onclick", "deletedata(" + i + ")")
+
+            }
+        }
+        Readdata()
+
+        //   editdata
+        function editdata(i) {
+            for (a in rohini[i]) {
+                document.getElementById(a).value = rohini[i][a]
+            }
+            document.getElementById("1").style.display = "none"
+            document.getElementById("2").style.display = "block"
+
+        }
+
+        // deletedata
+        function deletedata(i) {
+            var postdata = new XMLHttpRequest();
+            postdata.onreadystatechange = function () {
+                if (postdata.status == 200 && postdata.readyState == 4) {
+
+                }
+            }
+            postdata.open("Delete", "http://localhost:3000/ms/" + Value[i].id)
+            postdata.send()
+
+        }
+
+        // updatedata
+        function updatedata() {
+            var data = {
+                brand: "",
+                color: "",
+                price: "",
+                id: ""
+            }
+            for (a in data) {
+                data[a] = document.getElementById(a).value
+            }
+            console.log(data)
+            var postdata = new XMLHttpRequest();
+            postdata.onreadystatechange = function () {
+                if (postdata.status == 200 && postdata.readyState == 4) {
+                    document.getElementById("1").style.display = "block"
+                    document.getElementById("2").style.display = "none"
+
+                }
+            }
+            postdata.open("Put", "http://localhost:3000/ms/" + data.id)
+            postdata.setRequestHeader("Content-Type", "application/json")
+            postdata.send(JSON.stringify(data))
+
+        }
+    </script>
+
+
+</body>
+
+</html>

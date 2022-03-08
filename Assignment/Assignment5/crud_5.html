@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">EmplyeeName</label>
+        <input type="text" name="" id="EmplyeeName"><br>
+
+        <label for="">EmployeeId</label>
+        <input type="text" name="" id="EmployeeId"><br>
+
+        <label for="">Department</label>
+        <input type="text" name="" id="Department"><br>
+       
+    </form>
+    <br>
+    <button type="button" onclick="getData()" id="GetValue">GetValue</button>
+    <button type="button" onclick="Dispaly()" id="update" style="display: none;">update</button>
+    <br>
+    <table border="1">
+        <thead>
+            <th>EmplyeeName</th>
+            <th>EmployeeId</th>
+            <th>Department</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+
+        var emty;
+
+
+        // Step:1-Cread
+        var info=JSON.parse(localStorage.getItem("info"))
+        if( info==null){
+            info=[]
+        }
+        function getData(){
+            var EDetails={
+                EmplyeeName:"",
+                EmployeeId:"",
+                Department:"",
+            }
+            for( a in EDetails){
+                EDetails[a]=document.getElementById(a).value
+            }
+            console.log(EDetails)
+            info.push(EDetails)
+            Read()
+            CleareForm(EDetails)
+            localStorage.setItem("info",JSON.stringify(info))
+        }
+
+        // Step:2-Read
+        function Read(){
+            document.querySelector("tbody").innerHTML=""
+
+            info.forEach((EDetails,i)=>{
+                var mytr=document.createElement("tr")
+                for(a in EDetails){
+                    var mytd=document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML=EDetails[a]
+                }
+                var EditTd=document.createElement("td")
+                var EditBtn=document.createElement("button")
+                mytr.appendChild(EditTd)
+                EditTd.appendChild(EditBtn)
+                EditBtn.innerHTML="Edit"
+                EditBtn.setAttribute("onclick", "EditData("+i+")")
+
+
+                var DeleteTd=document.createElement("td")
+                var DeleteBtn=document.createElement("button")
+                mytr.appendChild(DeleteTd)
+                DeleteTd.appendChild(DeleteBtn)
+                DeleteBtn.innerHTML="Delete"
+                DeleteBtn.setAttribute("onclick","DeleteData("+i+")")
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        Read()
+
+        //step:3-clearForm
+        function CleareForm(EDetails){
+            for( a in EDetails){
+                document.getElementById(a).value=""
+            }
+        }
+        // step:4-edit
+        function EditData(i){
+            var don=info[i]
+            for(a in don){
+                document.getElementById(a).value=don[a]
+            }
+            emty=i
+            document.getElementById("GetValue").style.display="none"
+            document.getElementById("update").style.display="block"
+
+
+        }
+        //step:5-delete
+        function DeleteData(i){
+            info.splice(i,1)
+            localStorage.setItem("info",JSON.stringify(info))
+            Read()
+        }
+        //step:6-display
+        function Dispaly(){
+            var EDetails={
+                EmplyeeName:"",
+                EmployeeId:"",
+                Department:"",
+            }
+            for( a in EDetails){
+                EDetails[a]=document.getElementById(a).value
+            }
+            example[emty]=EDetails
+            CleareForm(EDetails)
+            Read()
+            localStorage.setItem("info",JSON.stringify(info))
+
+            document.getElementById("GetValue").style.display="block"
+            document.getElementById("update").style.display="none"
+
+        }
+
+
+    </script>
+    
+</body>
+</html>

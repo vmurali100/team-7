@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Continent</label>
+        <input type="text" name="" id="Continent"><br>
+
+        <label for="">Country</label>
+        <input type="text" name="" id="Country"><br>
+
+        <label for="">State</label>
+        <input type="text" name="" id="State"><br>
+
+        <label for="">District</label>
+        <input type="text" name="" id="District">
+    </form>
+    <button type="button" onclick="createData()" id="Submit">Submit</button>
+    <button type="button" onclick="update()" id="Update" style="display: none;">Update</button>
+    <table border="1">
+        <thead>
+            <th>Continent</th>
+            <th>Country</th>
+            <th>State</th>
+            <th>District</th>   
+            <th>Edit</th>    
+            <th>Delete</th>    
+        </thead>
+        <tbody>
+
+        </tbody>
+
+    </table>
+    <script>
+        var niranjan;
+
+   var thala=JSON.parse(localStorage.getItem("thala"))
+   if (thala==null){
+       thala=[]
+   }
+//    step:1
+        function createData(){
+            var cont={
+                Continent:"",
+                Country:"",
+                State:"",
+                District:""
+            }
+            for(a in cont){
+                cont[a]=document.getElementById(a).value
+            }
+            console.log(cont)
+            thala.push(cont)
+            ReadValue()
+            clearForm(cont)
+            localStorage.setItem("thala",JSON.stringify(thala))
+        }
+
+    //    step:2
+
+        function ReadValue(){
+            document.querySelector("tbody").innerHTML=""
+            thala.forEach((cont,i)=>{
+             var mytr=document.createElement("tr")
+             for(a in cont){
+                 var mytd=document.createElement("td")
+                 mytr.appendChild(mytd)
+                 mytd.innerHTML=cont[a]                 
+             }
+             var EditTd=document.createElement("td")
+             var EditBtn=document.createElement("button")
+             mytr.appendChild(EditTd)
+             EditTd.appendChild(EditBtn)
+             EditBtn.innerHTML="Edit"
+             EditBtn.setAttribute("onclick","EditUser("+i+")")
+
+             var DeleteTd=document.createElement("td")
+             var DeleteBtn=document.createElement("button")
+             mytr.appendChild(DeleteTd)
+             DeleteTd.appendChild(DeleteBtn) 
+             DeleteBtn.innerHTML="Delete" 
+             DeleteBtn.setAttribute("onclick","DeleteUser("+i+")")          
+
+             document.querySelector("tbody").appendChild(mytr)
+
+            })
+
+        }
+        ReadValue()
+
+        // step:3 clearForm
+        function clearForm(cont){
+            for(a in cont){
+                document.getElementById(a).value=""
+            }
+        }
+        // step:4 EditUser
+        function EditUser(i){
+            var Deena=thala[i]
+            for(a in Deena){
+                document.getElementById(a).value=Deena[a]
+
+            }
+            niranjan=i
+            document.getElementById("Submit").style.display="none" 
+            document.getElementById("Update").style.display="block"
+
+
+        }
+    //   step:5 DeleteUser
+    function DeleteUser(i){
+        thala.splice(i,1)
+        localStorage.setItem("thala",JSON.stringify(thala))
+        ReadValue()
+
+    }
+    // step:6 update
+    function update(){
+        var cont={
+                Continent:"",
+                Country:"",
+                State:"",
+                District:""
+            }
+            for(a in cont){
+                cont[a]=document.getElementById(a).value
+            }
+            ReadValue()
+            clearForm(cont)
+            thala[niranjan]=cont
+            localStorage.setItem("thala",JSON.stringify(thala))
+
+            document.getElementById("Submit").style.display="block"
+            document.getElementById("Update").style.display="none"
+
+    }
+
+
+
+
+    </script>
+    
+</body>
+</html>

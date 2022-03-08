@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">MovieName</label>
+        <input type="text" name="" id="MovieName"><br>
+
+        <label for="">Director</label>
+        <input type="text" name="" id="Director"><br>
+
+        <label for="">Producer</label>
+        <input type="text" name="" id="Producer">
+        <input type="text" name="" id="id" hidden>
+    </form>
+    <button type="button" onclick="create()" id="1">Enter</button>
+    <button type="button" onclick="update()" id="2" style="display: none;">Update</button>
+    <table border="1">
+        <thead>
+            <th>MovieName</th>
+            <th>Director</th>
+            <th>Producer</th>
+            <th>Id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var emty = []
+        function create() {
+            var data = {
+                MovieName: "",
+                Director: "",
+                Producer: ""
+            }
+            for (a in data) {
+                data[a] = document.getElementById(a).value
+            }
+            console.log(data)
+            var postvalue = new XMLHttpRequest();
+            postvalue.onreadystatechange = function () {
+                if (postvalue.status == 201 && postvalue.readyState == 4) {
+
+                }
+            }
+            postvalue.open("Post", "http://localhost:3000/flower")
+            postvalue.setRequestHeader("Content-Type", "application/json")
+            postvalue.send(JSON.stringify(data))
+
+        }
+
+        // read
+        function Read() {
+            var getvalue = new XMLHttpRequest();
+            getvalue.onreadystatechange = function () {
+                if (getvalue.readyState == 4 && getvalue.status == 200) {
+                    emty = JSON.parse(getvalue.response)
+                    display(emty)
+
+                }
+            }
+            var url = "http://localhost:3000/flower"
+            getvalue.open("Get", url)
+            getvalue.send()
+        }
+
+        //display
+        function display(emty) {
+            for (i = 0; i < emty.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in emty[0]) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = emty[i][a]
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                var edittd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                mytr.appendChild(edittd)
+                edittd.appendChild(editBtn)
+                editBtn.innerHTML = "Edit"
+                editBtn.setAttribute("onclick", "editdata(" + i + ")")
+
+                var deletetd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                mytr.appendChild(deletetd)
+                deletetd.appendChild(deleteBtn)
+                deleteBtn.innerHTML = "Delete"
+                deleteBtn.setAttribute("onclick", "deletedata(" + i + ")")
+
+            }
+        }
+        Read()
+
+        // editdata
+        function editdata(i) {
+            for (a in emty[i]) {
+                document.getElementById(a).value = emty[i][a]
+            }
+            document.getElementById("1").style.display = "none"
+            document.getElementById("2").style.display = "block"
+
+        }
+        // deletedata
+        function deletedata(i) {
+            var postvalue = new XMLHttpRequest();
+            postvalue.onreadystatechange = function () {
+                if (postvalue.status == 200 && postvalue.readyState == 4) {
+
+                }
+            }
+            postvalue.open("delete", "http://localhost:3000/flower/" + emty[i].id)
+            postvalue.send()
+
+        }
+        // update
+        function update() {
+            var data = {
+                MovieName: "",
+                Director: "",
+                Producer: "",
+                id:""
+            }
+            for (a in data) {
+                data[a] = document.getElementById(a).value
+            }
+            console.log(data)
+            var postvalue = new XMLHttpRequest();
+            postvalue.onreadystatechange = function () {
+                if (postvalue.status == 200 && postvalue.readyState == 4) {
+                    document.getElementById("1").style.display = "block"
+                    document.getElementById("2").style.display = "none"
+
+                }
+            }
+            postvalue.open("Put", "http://localhost:3000/flower/" + data.id)
+            postvalue.setRequestHeader("Content-Type", "application/json")
+            postvalue.send(JSON.stringify(data))
+
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

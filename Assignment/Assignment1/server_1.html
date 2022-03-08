@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">HeroName</label>
+        <input type="text" name="" id="HeroName"><br>
+
+        <label for="">Age</label>
+        <input type="text" name="" id="Age"><br>
+
+        <label for="">languege</label>
+        <input type="text" name="" id="languege"><br>
+
+        <label for="">Color</label>
+        <input type="text" name="" id="Color">
+        <input type="text" name="" id="id" hidden>
+    </form>
+    <button type="button" onclick="createValue()" id="Submit">Submit</button>
+    <button type="button" onclick="DisplayValue()" style="display: none;" id="update">update</button>
+    <table border="1">
+        <thead>
+            <th>HeroName</th>
+            <th>Age</th>
+            <th>languege</th>
+            <th>Color</th>
+            <th>id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+
+        var users = []
+        //    1. createData
+        function createValue() {
+            var sample = {
+                HeroName: "",
+                Age: "",
+                languege: "",
+                Color: ""
+            }
+            for (a in sample) {
+                sample[a] = document.getElementById(a).value
+            }
+            console.log(sample)
+            var postData = new XMLHttpRequest()
+            postData.onreadystatechange = function () {
+                if (postData.status == 201 && postData.readyState == 4) {
+
+                }
+
+            }
+            postData.open("Post", "http://localhost:3000/Users")
+            postData.setRequestHeader("Content-Type", "application/json")
+            postData.send(JSON.stringify(sample))
+        }
+        //  2 .ReadData
+        function Read() {
+            var ReadData = new XMLHttpRequest()
+            ReadData.onreadystatechange = function () {
+                if (ReadData.readyState == 4 && ReadData.status == 200) {
+                    users = JSON.parse(ReadData.response)
+                    displayData(users)
+
+                }
+            }
+            var url = "http://localhost:3000/Users"
+            ReadData.open("Get", url)
+            ReadData.send()
+        }
+
+        // 3. displayData
+
+        function displayData(users) {
+            for (i = 0; i < users.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in users[0]) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = users[i][a]
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                var EditTd = document.createElement("td")
+                var EditBtn = document.createElement("button")
+                mytr.appendChild(EditTd)
+                EditTd.appendChild(EditBtn)
+                EditBtn.innerHTML = "Edit"
+                EditBtn.setAttribute("onclick", "EditValue(" + i + ")")
+
+                var DeleteTd = document.createElement("td")
+                var DeleteBtn = document.createElement("button")
+                mytr.appendChild(DeleteTd)
+                DeleteTd.appendChild(DeleteBtn)
+                DeleteBtn.innerHTML = "Delete"
+                DeleteBtn.setAttribute("onclick", "DeleteValue(" + i + ")")
+            }
+        }
+        Read()
+
+        // edi tvalue
+        function EditValue(i) {
+            for (a in users[i]) {
+                document.getElementById(a).value = users[i][a]
+            }
+            document.getElementById("Submit").style.display = "none"
+            document.getElementById("update").style.display = "block"
+        }
+
+        //Delete value
+        function DeleteValue(i) {           
+            var postData = new XMLHttpRequest()
+            postData.onreadystatechange = function () {
+                if (postData.status == 200 && postData.readyState == 4) {
+
+                }
+
+            }
+            postData.open("Delete", "http://localhost:3000/Users/" +users[i].id)
+            postData.send()
+
+        }
+        function DisplayValue() {
+
+            var sample = {
+                HeroName: "",
+                Age: "",
+                languege: "",
+                Color: ""
+            }
+            for (a in sample) {
+                sample[a] = document.getElementById(a).value
+            }
+            console.log(sample)
+            var postData = new XMLHttpRequest()
+            postData.onreadystatechange = function () {
+                if (postData.status == 200 && postData.readyState == 4) {
+                    document.getElementById("Submit").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+
+                }
+
+            }
+            postData.open("Put", "http://localhost:3000/Users/" + sample.id)
+            postData.setRequestHeader("Content-Type", "application/json")
+            postData.send(JSON.stringify(sample))
+        }
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

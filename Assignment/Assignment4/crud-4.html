@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Surname</label>
+        <input type="text" name="" id="Surname"><br>
+
+        <label for="">Name</label>
+        <input type="text" name="" id="Name"><br>
+
+        <label for="">MotherName</label>
+        <input type="text" name="" id="MotherName"><br>
+
+        <label for="">FatherName</label>
+        <input type="text" name="" id="FatherName">
+    </form>
+    <br>
+    <button type="button" onclick="getData()" id="GetValue">GetValue</button>
+    <button type="button" onclick="Dispaly()" id="update" style="display: none;">update</button>
+    <br>
+    <table border="1">
+        <thead>
+            <th>Surname</th>
+            <th>Name</th>
+            <th>MotherName</th>
+            <th>FatherName</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+
+        var emty;
+
+
+        // Step:1-Cread
+        var example=JSON.parse(localStorage.getItem("example"))
+        if( example==null){
+            example=[]
+        }
+        function getData(){
+            var Demo={
+                Surname:"",
+                Name:"",
+                MotherName:"",
+                FatherName:""
+            }
+            for( a in Demo){
+                Demo[a]=document.getElementById(a).value
+            }
+            console.log(Demo)
+            example.push(Demo)
+            Read()
+            CleareForm(Demo)
+            localStorage.setItem("example",JSON.stringify(example))
+        }
+
+        // Step:2-Read
+        function Read(){
+            document.querySelector("tbody").innerHTML=""
+
+            example.forEach((Demo,i)=>{
+                var mytr=document.createElement("tr")
+                for(a in Demo){
+                    var mytd=document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML=Demo[a]
+                }
+                var EditTd=document.createElement("td")
+                var EditBtn=document.createElement("button")
+                mytr.appendChild(EditTd)
+                EditTd.appendChild(EditBtn)
+                EditBtn.innerHTML="Edit"
+                EditBtn.setAttribute("onclick", "EditData("+i+")")
+
+
+                var DeleteTd=document.createElement("td")
+                var DeleteBtn=document.createElement("button")
+                mytr.appendChild(DeleteTd)
+                DeleteTd.appendChild(DeleteBtn)
+                DeleteBtn.innerHTML="Delete"
+                DeleteBtn.setAttribute("onclick","DeleteData("+i+")")
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        Read()
+
+        //step:3-clearForm
+        function CleareForm(Demo){
+            for( a in Demo){
+                document.getElementById(a).value=""
+            }
+        }
+        // step:4-edit
+        function EditData(i){
+            var Raju=example[i]
+            for(a in Raju){
+                document.getElementById(a).value=Raju[a]
+            }
+            emty=i
+            document.getElementById("GetValue").style.display="none"
+            document.getElementById("update").style.display="block"
+
+
+        }
+        //step:5-delete
+        function DeleteData(i){
+            example.splice(i,1)
+            localStorage.setItem("example",JSON.stringify(example))
+            Read()
+        }
+        //step:6-display
+        function Dispaly(){
+            var Demo={
+                Surname:"",
+                Name:"",
+                MotherName:"",
+                FatherName:""
+            }
+            for( a in Demo){
+                Demo[a]=document.getElementById(a).value
+            }
+            example[emty]=Demo
+            CleareForm(Demo)
+            Read()
+            localStorage.setItem("example",JSON.stringify(example))
+
+            document.getElementById("GetValue").style.display="block"
+            document.getElementById("update").style.display="none"
+
+        }
+
+
+    </script> 
+</body>
+</html>

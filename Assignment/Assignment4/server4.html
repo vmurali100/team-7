@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">college</label>
+        <input type="text" name="" id="a"><br>
+
+        <label for="">Group</label>
+        <input type="text" name="" id="b"><br>
+
+        <label for="">address</label>
+        <input type="text" name="" id="c"><br>
+
+        <label for="">number</label>
+        <input type="text" name="" id="d">
+        <input type="text" name="" id="id" hidden>
+
+    </form>
+    <button type="button" onclick="CreateUser()" id="abc">Enter</button>
+    <button type="button" onclick="UpdateUser()" id="cba" style="display: none;">Update</button>
+    <table border="1">
+        <thead>
+            <th>college</th>
+            <th>Groups</th>
+            <th>address</th>
+            <th>number</th>
+            <th>Sl.no</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        //    1. CreateUser
+        Users = []
+        function CreateUser() {
+            var User = {
+                a: "",
+                b: "",
+                c: "",
+                d: ""
+            }
+            for (a in User) {
+                User[a] = document.getElementById(a).value
+            }
+            var postUser = new XMLHttpRequest();
+            postUser.onreadystatechange = function () {
+                if (postUser.status == 201 && postUser.readyState == 4) {
+                }
+            }
+            postUser.open("Post", "http://localhost:3000/niki")
+            postUser.setRequestHeader("Content-Type", "application/json")
+            postUser.send(JSON.stringify(User))
+        }
+
+        // 2 .ReadValue
+
+        function ReadUser() {
+            var GetUser = new XMLHttpRequest();
+            GetUser.onreadystatechange = function () {
+                if (GetUser.readyState == 4 && GetUser.status == 200) {
+                    Users = JSON.parse(GetUser.response)
+                    DisplyUser(Users)
+                }
+            }
+            var url = "http://localhost:3000/niki"
+            GetUser.open("Get", url)
+            GetUser.send()
+        }
+        // DisplayUserIn Table
+        function DisplyUser(Users) {
+            for (i = 0; i < Users.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in Users[0]) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = Users[i][a]
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd=document.createElement("td")
+                var deletetd=document.createElement("td")                
+                mytr.appendChild(edittd)
+                mytr.appendChild(deletetd)
+
+                var editbtn=document.createElement("button")
+                var deletebtn=document.createElement("button")
+                 edittd.appendChild(editbtn)
+                 deletetd.appendChild(deletebtn)
+
+                 editbtn.setAttribute("onclick","EditUser("+i+")")
+                 deletebtn.setAttribute("onclick","DeleteUser("+i+")")
+
+                 editbtn.innerHTML="Edit"
+                 deletebtn.innerHTML="Delete"               
+                
+            }
+        }
+        ReadUser()
+
+        // EditUser;
+        function EditUser(i) {
+            for (a in Users[i]) {
+                document.getElementById(a).value = Users[i][a]
+            }
+            document.getElementById("abc").style.display = "none"
+            document.getElementById("cba").style.display = "block"
+
+
+        }
+        //DeleteUser;
+
+        function DeleteUser(i) {
+            var postUser = new XMLHttpRequest();
+            postUser.onreadystatechange = function () {
+                if (postUser.status == 200 && postUser.readyState == 4) {
+                }
+
+            }
+            postUser.open("Delete","http://localhost:3000/niki/"+Users[i].id)
+            postUser.send()
+
+        }
+
+        // Update User
+        function UpdateUser() {
+            var User = {
+                a: "",
+                b: "",
+                c: "",
+                d: "",
+                id: ""
+            }
+            for (a in User) {
+                User[a] = document.getElementById(a).value
+            }
+            var postUser = new XMLHttpRequest();
+            postUser.onreadystatechange = function () {
+                if (postUser.status == 200 && postUser.readyState == 4) {
+                    document.getElementById("abc").style.display = "block"
+                    document.getElementById("cba").style.display = "none"
+
+                }
+            }
+            postUser.open("Put", "http://localhost:3000/niki/" + User.id)
+            postUser.setRequestHeader("Content-Type", "application/json")
+            postUser.send(JSON.stringify(User))
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

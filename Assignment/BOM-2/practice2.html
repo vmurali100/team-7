@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table>
+        <form action="">
+            <tr>
+                <td> <label for="">Phone Number</label></td>
+                <td> <input type="text" name="" id="pnumber"></td>
+
+            </tr>
+            <tr>
+                <td> <label for="">OTP</label></td>
+                <td><input type="text" name="" id="OTP"></td>
+            </tr>
+        </form>
+    </table>
+    <button type="button" onclick="display()">click</button>
+    <p style="color: red; display: none;">Please Enter valid Data</p>
+    <script>
+        function display(){
+            var Emty={
+                pnumber:"",
+                OTP:""
+            }
+            for(a in Emty){
+                Emty[a]=document.getElementById(a).value
+            }
+            var Rohini=JSON.parse(localStorage.getItem("Rohini"))
+            let check=Rohini.find((hii)=>{
+                return hii.pnumber===Emty.pnumber && hii.OTP===Emty.OTP
+            })
+            if(check){
+                window.location.href="practice3.html"
+            }else{
+                document.querySelector("p").style.display="block"
+            }
+
+        }
+    </script>
+</body>
+</html>

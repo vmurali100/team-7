@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">ExaminationCenter</label>
+        <input type="text" name="" id="ExaminationCenter"><br>
+
+        <label for="">Examinor</label>
+        <input type="text" name="" id="Examinor"><br>
+
+        <label for="">RoomNumber</label>
+        <input type="text" name="" id="RoomNumber">
+        <input type="text" name="" id="id" hidden>
+    </form>
+    <button type="button" onclick="Create()" id="1">Enter</button>
+    <button type="button" onclick="update()" id="2" style="display: none;">update</button>
+
+    <table border="1">
+        <thead>
+            <th>ExaminationCenter</th>
+            <th>Examinor</th>
+            <th>RoomNumber</th>
+            <th>ID</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var Emty = []
+        // create
+        function Create() {
+            var rehaman = {
+                ExaminationCenter: "",
+                Examinor: "",
+                RoomNumber: ""
+            }
+            for (a in rehaman) {
+                rehaman[a] = document.getElementById(a).value
+            }
+            console.log(rehaman)
+            var user = new XMLHttpRequest();
+            user.onreadystatechange = function () {
+                if (user.status == 201 && user.readyState == 4) {
+
+                }
+            }
+            user.open("post", "  http://localhost:3000/posts")
+            user.setRequestHeader("Content-Type", "application/json")
+            user.send(JSON.stringify(rehaman))
+        }
+
+        // Read
+
+        function Read() {
+            var person = new XMLHttpRequest();
+            person.onreadystatechange = function () {
+                if (person.readyState == 4 && person.status == 200) {
+                    Emty = JSON.parse(person.response)
+                    display(Emty)
+
+                }
+            }
+            var url = " http://localhost:3000/posts"
+            person.open("Get", url)
+            person.send()
+        }
+
+        //    display
+        function display(Emty) {
+            for (i = 0; i < Emty.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in Emty[0]) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = Emty[i][a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                var edittd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                mytr.appendChild(edittd)
+                edittd.appendChild(editBtn)
+                editBtn.innerHTML = "Edit"
+                editBtn.setAttribute("onclick", "editdata(" + i + ")")
+
+                var deletetd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                mytr.appendChild(deletetd)
+                deletetd.appendChild(deleteBtn)
+                deleteBtn.innerHTML = "Delete"
+                deleteBtn.setAttribute("onclick", "deletedata(" + i + ")")
+
+            }
+
+        }
+        Read()
+        // edit
+        function editdata(i) {
+            for (a in Emty[i]) {
+                document.getElementById(a).value = Emty[i][a]
+            }
+            document.getElementById("1").style.display = "none"
+            document.getElementById("2").style.display = "block"
+
+        }
+        // delete
+        function deletedata(i) {
+            var user = new XMLHttpRequest();
+            user.onreadystatechange = function () {
+                if (user.status == 200 && user.readyState == 4) {
+
+                }
+            }
+            user.open("delete", "  http://localhost:3000/posts/" + Emty[i].id)
+            user.send()
+
+        }
+        // update
+        function update() {
+            var rehaman = {
+                ExaminationCenter: "",
+                Examinor: "",
+                RoomNumber: ""
+            }
+            for (a in rehaman) {
+                rehaman[a] = document.getElementById(a).value
+            }
+            console.log(rehaman)
+            var user = new XMLHttpRequest();
+            user.onreadystatechange = function () {
+                if (user.status == 200 && user.readyState == 4) {
+                    document.getElementById("1").style.display = "block"
+                    document.getElementById("2").style.display = "none"
+
+                }
+            }
+            user.open("post", "  http://localhost:3000/posts/" + rehaman.id)
+            user.setRequestHeader("Content-Type", "application/json")
+            user.send(JSON.stringify(rehaman))
+
+        }
+
+    </script>
+
+</body>
+
+</html>
