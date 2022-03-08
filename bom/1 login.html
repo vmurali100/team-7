@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta  NameonCard="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for=" NameonCard"> NameonCard</label> <br>
+        <input type="text" id="NameonCard"> <br> <br>
+        <label for="CVV">CVV</label> <br>
+        <input type="number" id="CVV"> <br> <br>
+        <button type="button" onclick="loginuser()">Login</button>
+        <p style="color: rgb(255, 145, 0);text-align: center;display: none;">Invalid login Deta .... Please check</p>
+    </form>
+
+    <script>
+        function loginuser(){
+            let loggedinuser={
+                NameonCard:"",
+                CVV:""
+            }
+            for(a in loggedinuser){
+            loggedinuser[a]=document.getElementById(a).value
+            }
+            var users=JSON.parse(localStorage.getItem("users"))
+            let check=users.find((us)=>{
+                return us. NameonCard==loggedinuser. NameonCard && us.CVV==loggedinuser.CVV})
+            if(check){
+                window.location.href=" 1 dashboard.html"       
+            }else{
+                document.querySelector("p").style.display="block"
+            }
+            console.log(check)
+           
+        }
+    </script>
+</body>
+</html>

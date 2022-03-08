@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="myname"> Myname</label>
+        <input type="text" id="myname"> <br>
+        <label for="fathername">Fathername</label>
+        <input type="text" id="fathername"> <br>
+        <label for="mothername">Mothername</label>
+        <input type="text" id="mothername"> <br>
+        <label for="broname">Brorname</label>
+        <input type="text" id="broname"> <br>
+        <label for="auntyname">Auntyname</label>
+        <input type="text" id="auntyname"> <br>
+        <button type="button" onclick="details()">Details</button>
+    </form>
+    <br>
+    <table border="1">
+        <thead>
+            <th> Myname</th>
+            <th>Fathername</th>
+            <th>Mothername</th>
+            <th>Brorname</th>
+            <th>Auntyname</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        // create a user
+        var Family=[]
+        
+        function details() {
+            var Members = {
+                myname: "",
+                fathername: "",
+                mothername: "",
+                broname: "",
+                auntyname: ""
+            }
+            for (a in Members) {
+                Members[a] = document.getElementById(a).value
+            }
+            Family.push(Members)
+           
+            displayallMembers()
+            clearform(Members)
+        }
+
+        // read a user
+        function displayallMembers() {
+            document.querySelector("tbody").innerHTML=""   
+            Family.forEach((Members,i) => {
+                var mytr = document.createElement("tr")
+                for (a in Members) {
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=Members[a]
+                    mytr.appendChild(mytd)
+                }
+                var edittd=document.createElement("td")
+                var deletetd=document.createElement("td")
+                
+                var editbtn=document.createElement("button")
+                editbtn.innerHTML="edit"
+                editbtn.setAttribute("onclick","editMembers("+i+")")
+                var deletebtn=document.createElement("button")
+                deletebtn.innerHTML="delete"
+                deletebtn.setAttribute("onclick","deleteMembers("+i+")")
+
+                edittd.appendChild(editbtn)
+                deletetd.appendChild(deletebtn)
+                 mytr.appendChild(edittd)
+                 mytr.appendChild(deletetd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+
+        // clearing the form
+        function clearform(Members){
+            for(a in Members){
+                document.getElementById(a).value=""
+            }
+        }
+
+        // update a user
+        function editMembers(i){
+            var selectedMembers=Family[i]
+               for(a in selectedMembers) {
+                   document.getElementById(a).value=selectedMembers[a]
+               }           
+        }
+
+        // delete a user
+        function deleteMembers(i){
+            Family.splice(i,1) 
+               localStorage.setItem("Family",JSON.stringify(Family))
+               displayallMembers()       
+        }
+
+    </script>
+</body>
+
+</html>

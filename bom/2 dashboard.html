@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="name"> Name</label>
+        <input type="text" id="name"> <br>
+        <label for="age">Age</label>
+        <input type="number" id="age"> <br>
+        <label for="street">Street</label>
+        <input type="text" id="street"> <br>
+        <label for="house">House No</label>
+        <input type="text" id="house"> <br>
+        <label for="village">Village</label>
+        <input type="text" id="village"> <br>
+        <button type="button" onclick="details()">Details</button>
+    </form>
+    <br>
+    <table border="1">
+        <thead>
+            <th> Name</th>
+            <th>Age</th>
+            <th>Street</th>
+            <th>House No</th>
+            <th>Village</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        // create a user
+        var persons=[]
+        
+        function details() {
+            var person = {
+                name: "",
+                age: "",
+                street: "",
+                house: "",
+                village: ""
+            }
+            for (a in person) {
+                person[a] = document.getElementById(a).value
+            }
+            persons.push(person)
+           
+            displayallperson()
+            clearform(person)
+        }
+
+        // read a user
+        function displayallperson() {
+            document.querySelector("tbody").innerHTML=""   
+            persons.forEach((person,i) => {
+                var mytr = document.createElement("tr")
+                for (a in person) {
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=person[a]
+                    mytr.appendChild(mytd)
+                }
+                var edittd=document.createElement("td")
+                var deletetd=document.createElement("td")
+                
+                var editbtn=document.createElement("button")
+                editbtn.innerHTML="edit"
+                editbtn.setAttribute("onclick","editperson("+i+")")
+                var deletebtn=document.createElement("button")
+                deletebtn.innerHTML="delete"
+                deletebtn.setAttribute("onclick","deleteperson("+i+")")
+
+                edittd.appendChild(editbtn)
+                deletetd.appendChild(deletebtn)
+                 mytr.appendChild(edittd)
+                 mytr.appendChild(deletetd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+
+        // clearing the form
+        function clearform(person){
+            for(a in person){
+                document.getElementById(a).value=""
+            }
+        }
+
+        // update a user
+        function editperson(i){
+            var selectedperson=persons[i]
+               for(a in selectedperson) {
+                   document.getElementById(a).value=selectedperson[a]
+               }           
+        }
+
+        // delete a user
+        function deleteperson(i){
+            persons.splice(i,1) 
+               localStorage.setItem("persons",JSON.stringify(persons))
+               displayallperson()       
+        }
+
+    </script>
+</body>
+
+</html>

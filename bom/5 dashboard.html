@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="Virat"> Virat</label>
+        <input type="text" id="Virat"> <br>
+        <label for="Rohit">Rohit</label>
+        <input type="text" id="Rohit"> <br>
+        <label for="Dhoni">Dhoni</label>
+        <input type="text" id="Dhoni"> <br>
+        <label for="house">Yuvaraj</label>
+        <input type="text" id="house"> <br>
+        <label for="Rahul">Rahul</label>
+        <input type="text" id="Rahul"> <br>
+        <button type="button" onclick="details()">Details</button>
+    </form>
+    <br>
+    <table border="1">
+        <thead>
+            <th> Virat</th>
+            <th>Rohit</th>
+            <th>Dhoni</th>
+            <th>Yuvaraj</th>
+            <th>Rahul</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        // create a user
+        var Players=[]
+        
+        function details() {
+            var Player = {
+                Virat: "",
+                Rohit: "",
+                Dhoni: "",
+                house: "",
+                Rahul: ""
+            }
+            for (a in Player) {
+                Player[a] = document.getElementById(a).value
+            }
+            Players.push(Player)
+           
+            displayallPlayer()
+            clearform(Player)
+        }
+
+        // read a user
+        function displayallPlayer() {
+            document.querySelector("tbody").innerHTML=""   
+            Players.forEach((Player,i) => {
+                var mytr = document.createElement("tr")
+                for (a in Player) {
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=Player[a]
+                    mytr.appendChild(mytd)
+                }
+                var edittd=document.createElement("td")
+                var deletetd=document.createElement("td")
+                
+                var editbtn=document.createElement("button")
+                editbtn.innerHTML="edit"
+                editbtn.setAttribute("onclick","editPlayer("+i+")")
+                var deletebtn=document.createElement("button")
+                deletebtn.innerHTML="delete"
+                deletebtn.setAttribute("onclick","deletePlayer("+i+")")
+
+                edittd.appendChild(editbtn)
+                deletetd.appendChild(deletebtn)
+                 mytr.appendChild(edittd)
+                 mytr.appendChild(deletetd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+
+        // clearing the form
+        function clearform(Player){
+            for(a in Player){
+                document.getElementById(a).value=""
+            }
+        }
+
+        // update a user
+        function editPlayer(i){
+            var selectedPlayer=Players[i]
+               for(a in selectedPlayer) {
+                   document.getElementById(a).value=selectedPlayer[a]
+               }           
+        }
+
+        // delete a user
+        function deletePlayer(i){
+            Players.splice(i,1) 
+               localStorRohit.setItem("Players",JSON.stringify(Players))
+               displayallPlayer()       
+        }
+
+    </script>
+</body>
+
+</html>

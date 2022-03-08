@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="fname"> FName1</label>
+        <input type="text" id="fname1"> <br>
+        <label for="fname"> FName2</label>
+        <input type="text" id="fname2"> <br>
+        <label for="fname"> FName3</label>
+        <input type="text" id="fname3"> <br>
+        <label for="fname"> FName4</label>
+        <input type="text" id="fname4"> <br>
+        <label for="fname"> FName5</label>
+        <input type="text" id="fname5"> <br>
+        <button type="button" onclick="details()">Details</button>
+    </form>
+    <br>
+    <table border="1">
+        <thead>
+            <th>FName1</th>
+            <th>FName2</th>
+            <th>FName3</th>
+            <th>FName4</th>
+            <th>FName5</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        // create a user
+        var Friends=[]
+        
+        function details() {
+            var Friend = {
+                fname1: "",
+                fname2: "",
+                fname3: "",
+                fname4: "",
+                fname5: ""
+            }
+            for (a in Friend) {
+                Friend[a] = document.getElementById(a).value
+            }
+            Friends.push(Friend)
+           
+            displayallFriend()
+            clearform(Friend)
+        }
+
+        // read a user
+        function displayallFriend() {
+            document.querySelector("tbody").innerHTML=""   
+            Friends.forEach((Friend,i) => {
+                var mytr = document.createElement("tr")
+                for (a in Friend) {
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=Friend[a]
+                    mytr.appendChild(mytd)
+                }
+                var edittd=document.createElement("td")
+                var deletetd=document.createElement("td")
+                
+                var editbtn=document.createElement("button")
+                editbtn.innerHTML="edit"
+                editbtn.setAttribute("onclick","editFriend("+i+")")
+                var deletebtn=document.createElement("button")
+                deletebtn.innerHTML="delete"
+                deletebtn.setAttribute("onclick","deleteFriend("+i+")")
+
+                edittd.appendChild(editbtn)
+                deletetd.appendChild(deletebtn)
+                 mytr.appendChild(edittd)
+                 mytr.appendChild(deletetd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+
+        // clearing the form
+        function clearform(Friend){
+            for(a in Friend){
+                document.getElementById(a).value=""
+            }
+        }
+
+        // update a user
+        function editFriend(i){
+            var selectedFriend=Friends[i]
+               for(a in selectedFriend) {
+                   document.getElementById(a).value=selectedFriend[a]
+               }           
+        }
+
+        // delete a user
+        function deleteFriend(i){
+            Friends.splice(i,1) 
+               localStorage.setItem("Friends",JSON.stringify(Friends))
+               displayallFriend()       
+        }
+
+    </script>
+</body>
+
+</html>
