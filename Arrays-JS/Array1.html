@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var family=["Sruthi","Vishal","Selvi","Raghupathi"]        
+
+        family.push("Surya Sp")
+        family.push("Durya")
+
+        family.unshift("Loki ")
+        family.unshift("Asha")
+
+        family.pop("Balaji")
+        family.shift("Kruthika")
+
+        family.sort()
+        family.reverse()
+
+        family.splice(2,0,"Love")
+
+
+        var family=family.every(function(name){
+            return name.length==5
+        })
+        console.log(family)
+
+
+
+        // var let6 =family.find(function(name){
+        //     return name.length==6
+        // })
+        // console.log(let6)
+
+
+        // var let10=family.filter(function(name){
+        //     return  name.length==10
+        // })
+        // console.log(let10)
+
+
+        // family.forEach (function(name,i){
+        //     document.write(i+" .  "+name+"<br>")
+        // })
+        // console.log(family)
+
+        // var surya=family.map((family)=>{
+        //     return family[a]+"@gmail.com"+"<br>"
+            
+        // })   
+        // document.write(family)
+    </script>
+</body>
+</html>
