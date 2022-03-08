@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h2 style="text-align: center;"><strong>Welcome To Dashboard</strong></h2>
+</head>
+<body>
+    <body>
+        <label for="">First Name</label>
+        <input type="text" name="" id="fname"><br>
+        <label for="">Last Name<label>
+        <input type="text" name="" id="lname"><br>
+        <label for="">City</label>
+        <input type="text" name="" id="city"><br>
+        <label for="">Email</label>
+        <input type="text" name="" id="email"><br>
+        <button type="buton" onclick="getUser()" id="addUser">Add User</button>
+        <button type="button" onclick="updateUser()"  id="updateUserBtn" style="display: none" >Update User</button>
+           
+        <table border="1"> 
+            <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>City</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+    
+            </tbody>
+        </table>
+</body>
+<script>
+    var teachers=JSON.parse(localStorage.getItem("teachers"));
+    var index;
+
+    if(teachers==null){
+        teachers=[]
+    }
+
+    function getUser(){
+        var teacher={
+            fname:"",
+            lname:"",
+            email:"",
+            city:""
+        }
+        for (a in teacher){
+            teacher[a]=document.getElementById(a).value
+            console.log(a)
+        }
+        teachers.push(teacher)
+        localStorage.setItem("teachers",JSON.stringify(teachers))
+        displayAllUser()
+        clearForm(teacher)
+    }
+
+    function displayAllUser(){
+        document.querySelector("tbody").innerHTML=""
+        teachers.forEach((teacher,i)=>{
+            var myTr=document.createElement("tr")
+            for ( a in teacher  ){
+                var myTd=document.createElement("td")
+                myTd.innerHTML=teacher[a]
+                myTr.appendChild(myTd)
+            }
+
+            var editTd=document.createElement("td")
+            var deleteTd=document.createElement("td")
+
+            var editBtn=document.createElement("button")
+            editBtn.innerHTML="EDIT"
+            editBtn.setAttribute("onclick","editUser("+ i +")")
+            
+            var deleteBtn=document.createElement("button")
+            deleteBtn.innerHTML="DELETE"
+            deleteBtn.setAttribute("onclick","deleteUser("+ i +")")
+
+            myTr.appendChild(editTd)
+            myTr.appendChild(deleteTd)
+            editTd.appendChild(editBtn)
+            deleteTd.appendChild(deleteBtn)
+
+            document.querySelector("tbody").appendChild(myTr)
+
+        })
+    }
+    displayAllUser()
+
+    function editUser(i){
+        index=i;
+
+        document.getElementById("addUser").style.display="none"
+        document.getElementById("updateUserBtn").style.display="block"
+
+        var selectUser = teachers[i]
+        for (a in selectUser){
+            document.getElementById(a).value=selectUser[a]
+        }
+
+
+    }
+
+    function updateUser(){
+        var teacher={
+            fname:"",
+            lname:"",
+            email:"",
+            city:""
+        }
+        for (a in teacher){
+            teacher[a]=document.getElementById(a).value 
+            console.log(a)
+        }
+        teachers[index]=teacher;
+        localStorage.setItem("teachers",JSON.stringify(teachers))
+        displayAllUser()
+        clearForm(teacher)
+    }
+
+    function deleteUser(i){
+        teachers.splice(i,1)
+        localStorage.setItem("teachers",JSON.stringify(teachers))
+        // clearForm(teacher)
+        displayAllUser()
+        
+
+    } 
+
+    function clearForm(teacher){
+        for (a in teacher){
+            document.getElementById(a).value=""
+        }
+    }
+</script>
+</html>
