@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="border: 3px solid;width:450px ;height:250px ; position: relative;right: -300px;"><br>
+ <form >
+       <label for="">phone number</label>
+       <input type="text" name="" id="phone" style="position: relative ;right: -45px;"><br><br>
+
+       <label for="">email</label>
+       <input type="text" name="" id="email" style="position: relative ;right: -100px;"><br><br>
+
+
+ </form>  
+ <button type="button" onclick="book()" style="position: relative;right: -200px;">log-in</button>
+ <p style="color: red;display: none;">Please Enter Corret email</p>
+<script>
+      function book() {
+            var deena = {
+                phone: "",
+                email: ""
+            }
+            for (a in deena) {
+                deena[a] = document.getElementById(a).value
+            }
+            var thala = JSON.parse(localStorage.getItem("thala"))
+            let check = thala.find((seen) => {
+                return seen.phone == deena.phone && seen.email == deena.email
+            })
+            if (check) {
+                window.location.href = "sample3.html"
+            }
+            else {
+                document.querySelector("p").style.display = "block"
+            }
+
+
+        }
+
+</script>
+</body>
+</html>

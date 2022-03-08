@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="">email</label>
+        <input type="text" name="" id="email"><br><br>
+
+        <label for="">password</label>
+        <input type="text" name="" id="password"><br><br>
+        
+    </form>
+    <button type="button" onclick="person()" style="background-color: yellow;">log-in</button>
+    <p style="color: red; display: none;" >sorry you entered incorret..please enter corret password</p>
+    <script>
+        function person(){
+            var thala={
+                email:"",
+                password:""
+            }
+            for(a in thala){
+                thala [a]=document.getElementById(a).value
+            }
+            var deena=JSON.parse(localStorage.getItem("deena"))
+            let check=deena.find((rock)=>{
+                return rock.email===thala.email && rock.password===thala.password
+            })
+            if(check){
+                window.location.href="dashboard.html"
+            }
+            else{
+                document.querySelector("p").style.display="block"
+            }
+            
+        }
+    </script>
+</body>
+</html>
