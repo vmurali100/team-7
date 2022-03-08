@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">User Name :-</label>
+        <input type="text" name="" id="Username"><br><br>
+        <label for="">Password :-</label>
+        <input type="text" name="" id="Password"><br><br>
+        <label for="">Confirm Password :-</label>
+        <input type="text" name="" id="Conpassword"><br><br>
+        <label for="">Email ID :-</label>
+        <input type="text" name="" id="EmailId"><br><br>
+        <label for="">First Name :-</label>
+        <input type="text" name="" id="Firstname"><br><br>
+        <label for="">Last Name :-</label>
+        <input type="text" name="" id="Lastname"><br><br>
+
+        <button type="button" onclick="MY()">Tap to Register</button>
+    </form>
+
+    <script>
+
+        function MY(){
+
+            var Username=document.getElementById("Username").value
+            var Password=document.getElementById("Password").value
+            var Conpassword=document.getElementById("Conpassword").value
+            var EmailId=document.getElementById("EmailId").value
+            var Firstname=document.getElementById("Firstname").value
+            var Lastname=document.getElementById("Lastname").value
+
+        // Type :3   
+            var person={
+                 Username:document.getElementById("Username").value,
+                 Password:document.getElementById("Password").value,
+                 Conpassword:document.getElementById("Conpassword").value,
+                 EmailId:document.getElementById("EmailId").value,
+                 Firstname:document.getElementById("Firstname").value,
+                 Lastname:document.getElementById("Lastname").value
+            }
+
+            console.log(person)  
+
+        }
+    </script>   
+</body>
+</html>
