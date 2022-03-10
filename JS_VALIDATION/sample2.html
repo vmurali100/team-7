@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="">Email</label>
+        <input type="text" name="" id="mail" onkeyup="emailValid()"><br>
+        <p style="color: red;" id="1">Please Enter Valid Email Id</p>
+
+        <label for="">Phone no</label>
+        <input type="text" name="" id="phoneNo" onkeyup="phoneValid()"><br>
+        <p style="color: red;" id="2">Please Enter Rester Phone Number</p>
+
+        <label for="">Enter OTP</label>
+        <input type="text" name="" id="enterOTP" onkeyup="OPTvalid()"><br>
+        <p style="color: red;" id="3">We Will Send OTP In Your Phone Number,<br> Please Enter OTP </p>
+
+        <label for="">Name</label>
+        <input type="text" name="" id="Name" onkeyup="nameValid()"><br>
+        <p style="color: red;" id="4">Please Enter Your Name</p>
+
+        <label for="">Set Password</label>
+        <input type="password" name="" id="setPassword" onkeyup="passValid()"><br>
+        <p style="color: red;" id="5">Please Set Yuor New Passwod</p>
+    </form>
+    <button disabled>SIGN UP</button>
+    <script>
+        function emailValid() {
+            var Z = document.getElementById("mail").value
+
+            if (Z.length >= 2) {
+                document.getElementById("1").style.display = "none"
+                document.querySelector("button").removeAttribute("disabled")
+            } else {
+                document.getElementById("1").style.display = "block"
+                document.querySelector("button").setAttribute("disabled", true)
+            }
+        }
+
+        function phoneValid(){
+            var R = document.getElementById("phoneNo").value
+
+            if (R.length >=10){
+                document.getElementById("2").style.display = "none"
+                document.querySelector("button").removeAttribute("disabled")
+            }else{
+                document.getElementById("2").style.display = "block"
+                document.querySelector("button").setAttribute("disabled",true)
+            }
+        }
+
+        function OPTvalid(){
+            var S = document.getElementById("enterOTP").value
+
+            if (S.length >=4){
+                document.getElementById("3").style.display = "none"
+                document.querySelector("button").removeAttribute("disabled")
+            }else{
+                document.getElementById("3").style.display = "block"
+                document.querySelector("button").setAttribute("disabled",true)
+            }
+        }
+
+        function nameValid(){
+            var H = document.getElementById("Name").value
+
+            if (H.length >=5){
+                document.getElementById("4").style.display = "none"
+                document.querySelector("button").removeAttribute("disabled")
+            }else{
+                document.getElementById("4").style.display = "block"
+                document.querySelector("button").setAttribute("disabled",true)
+            }
+        }
+
+        function passValid(){
+            var L = document.getElementById("setPassword").value
+
+            if (L.length >=6){
+                document.getElementById("5").style.display = "none"
+                document.querySelector("button").removeAttribute("disabled")
+            }else{
+                document.getElementById("5").style.display = "block"
+                document.querySelector("button").setAttribute("disabled",true)
+            }
+        }
+    </script>
+</body>
+
+</html>
