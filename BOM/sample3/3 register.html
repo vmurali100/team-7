@@ -13,15 +13,58 @@
         <div class="card py-5 px-3">
             <h2 class="m-0">Mobile phone verification</h2><span class="mobile-text">Enter the code we just send on your mobile phone <b class="text-danger">+91 8098086887</b></span>
             <div class="d-flex flex-row mt-5">
-                <input type="text" id="one" class="form-control" autofocus="">
-                <input type="text" id="two" class="form-control">
-                <input type="text" id="three" class="form-control">
-                <input type="text" id="four" class="form-control"></div>
+                <input type="text" id="one"  onkeyup="code()" class="form-control" autofocus="">
+                <input type="text" id="two"  onkeyup="code()" class="form-control">
+                <input type="text" id="three"   onkeyup="code()" class="form-control">
+                <input type="text" id="four"   onkeyup="code()" class="form-control"><br><br>
+
+            </div>
+            <p style="color: darkred;display: none;" id="otperror" >Enter 4 digit code </p>            
+
             <div class="text-center mt-5"><span class="d-block mobile-text">Don't receive the code?</span><span class="font-weight-bold text-danger cursor">Resend</span></div>
-            <button type="button" onclick="verified()">Verify</button>
+            <button type="button" onclick="verified()" disabled>verify</button>
         </div>
     </div>
     <script>
+        function code(){
+            var one=document.getElementById("one").value
+            var two=document.getElementById("two").value
+            var three=document.getElementById("three").value
+            var four=document.getElementById("four").value
+            
+            if(one.length>0){
+                document.querySelector("button").removeAttribute("disable")
+                document.getElementById("otperror").style.display="none"
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+                document.getElementById("otperror").style.display="block"
+            }
+
+            if(two.length>0){
+                document.querySelector("button").removeAttribute("disable")
+                document.getElementById("otperror").style.display="none"
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+                document.getElementById("otperror").style.display="block"
+            }
+
+            if(three.length>0){
+                document.querySelector("button").removeAttribute("disable")
+                document.getElementById("otperror").style.display="none"
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+                document.getElementById("otperror").style.display="block"
+            }
+
+            if(four.length>0){
+                document.querySelector("button").removeAttribute("disable")
+                document.getElementById("otperror").style.display="none"
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+                document.getElementById("otperror").style.display="block"
+            }
+            
+        }
         var verifyuser=JSON.parse(localStorage.getItem("verifyusers"))
         if(verifyuser==null){
             verifyuser=[]
