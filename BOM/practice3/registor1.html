@@ -15,11 +15,13 @@
                 <form>
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" onkeyup="validate()">
+                      <p style="color: red;display: none;" id="emailError">Please Enter Valid Email</p>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Username </label>
-                        <input type="email" class="form-control" id="username" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="username" aria-describedby="emailHelp" onkeyup="validate()">
+                        <p style="color: red;display: none;" id="usernameError">Please enter atleast 5 characters</p>
                       </div>
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -30,13 +32,31 @@
                         <input type="password" class="form-control" id="confirmpassword">
                       </div>
                    
-                    <button type="button" class="btn btn-primary" onclick="registerUser()">Submit</button>
+                    <button type="button" class="btn btn-primary" onclick="registerUser()"disabled>Submit</button>
                   </form>
             </div>
             <div class="col"></div>
         </div>
     </div>
     <script>
+         function validate(){
+        var email=document.getElementById("email").value
+        var username=document.getElementById("username").value
+        if(email.length > 0){
+          document.querySelector("button").removeAttribute("disabled")
+          document.getElementById("emailError").style.display="none"
+        }else{
+          document.querySelector("button").setAttribute("disabled",true)
+          document.getElementById("emailError").style.display="block"
+        }
+        if(username.length >=5){
+          document.querySelector("button").removeAttribute("disabled")
+          document.getElementById("usernameError").style.display="none"
+        }else{
+          document.querySelector("button").setAttribute("disabled",true)
+          document.getElementById("usernameError").style.display="block"
+        }
+      }
         var registerUsers=JSON.parse(localStorage.getItem("users"))
         if(registerUsers==null){
             registerUsers=[]

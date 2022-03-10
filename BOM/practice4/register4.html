@@ -16,7 +16,8 @@
             <form class="row g-3">
                 <div class="col-md-6">
                   <label for="inputEmail4" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email">
+                  <input type="email" class="form-control" id="email" onkeyup="validate()">
+                  <p style="color: red;display: none;" id="emailError">Please Enter Valid Email</p>
                 </div>
                 <div class="col-md-6">
                   <label for="inputPassword4" class="form-label">Password</label>
@@ -24,7 +25,8 @@
                 </div>
                 <div class="col-12">
                   <label for="inputAddress" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="address" placeholder="1234 Main St">
+                  <input type="text" class="form-control" id="address" placeholder="1234 Main St" onkeyup="validate()">
+                  <p style="color: red;display: none;"id="addressError">Enter Address as per Aadhar address</p>
                 </div>
                 
                 <div class="col-md-6">
@@ -52,6 +54,25 @@
    </div>
   
    <script>
+     function validate(){
+      var email=document.getElementById("email").value
+      var address=document.getElementById("address").value
+
+      if(email.length > 0){
+          document.querySelector("button").removeAttribute("disabled")
+          document.getElementById("emailError").style.display="none"
+        }else{
+          document.querySelector("button").setAttribute("disabled",true)
+          document.getElementById("emailError").style.display="block"
+        }
+      if(address.length >=6){
+        document.querySelector("button").removeAttribute("disabled")
+          document.getElementById("addressError").style.display="none"
+      }else{
+        document.querySelector("button").setAttribute("disabled",true)
+          document.getElementById("addressError").style.display="block"
+      }
+     }
        var registerUsers=JSON.parse(localStorage.getItem("users"))
        if(registerUsers==null){
            registerUsers=[]

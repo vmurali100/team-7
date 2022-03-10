@@ -16,7 +16,8 @@
             <form class="row g-3">
                 <div class="col-md-6">
                   <label for="inputEmail4" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email">
+                  <input type="email" class="form-control" id="email" onkeyup="validate()">
+                  <p style="color: red;display: none;" id="emailError">Enter Valid Email</p>
                 </div>
                 <div class="col-md-6">
                   <label for="inputPassword4" class="form-label">Password</label>
@@ -43,7 +44,7 @@
                
                
                 <div class="col-12">
-                  <button type="button" class="btn btn-primary" onclick="registerUser()">Sign up</button>
+                  <button type="button" class="btn btn-primary" onclick="registerUser()" disabled>Sign up</button>
                 </div>
               </form>
            </div>
@@ -52,6 +53,18 @@
    </div>
   
    <script>
+     
+     function validate(){
+       var email=document.getElementById("email").value
+       if(email.length > 0){
+         document.querySelector("button").removeAttribute("disabled")
+         document.getElementById("emailError").style.display="none"
+       }else{
+         document.querySelector("button").setAttribute("disabled",true)
+         document.getElementById("emailError").style.display="block"
+       }
+     } 
+
        var registerUsers=JSON.parse(localStorage.getItem("users"))
        if(registerUsers==null){
            registerUsers=[]
