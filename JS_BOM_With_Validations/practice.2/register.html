@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <form>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>First name </label>   
+                              <input type="text" class="form-control" placeholder="" id="fname" onkeyup="formValidate()">
+                              <p style="color: red; display: none;" id="ferror">First Name should be at least 6 characters</p>
+                        </div> <!-- form-group end.// -->
+                        <div class="col form-group">
+                            <label>Last name</label>
+                              <input type="text" class="form-control" placeholder=" " id="lname" onkeyup="formValidate()">
+                              <p style="color: red; display: none;" id="lerror">Last Name should be at least 8 characters</p>
+                        </div> <!-- form-group end.// -->
+                    </div> <!-- form-row end.// -->
+                    <div class="form-group">
+                        <label>Email address</label>
+                        <input type="email" class="form-control" placeholder="" id="email" onkeyup="formValidate()">
+                        <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <p style="color: red; display: none;" id="eerror">Email should be at least 10 characters</p>
+                    </div> <!-- form-group end.// -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label>City</label>
+                          <input type="text" class="form-control" id="city" onkeyup="formValidate()">
+                          <p style="color: red; display: none;" id="cerror">City should be at least 4 characters</p>
+                        </div> <!-- form-group end.// -->
+                        <div class="form-group col-md-6">
+                          <label>Country</label>
+                          <select id="country" class="form-control" >
+                            <option> Choose...</option>
+                              <option>Uzbekistan</option>
+                              <option>Russia</option>
+                              <option>United States</option>
+                              <option>India</option>
+                              <option>Afganistan</option>
+                          </select>
+                        </div> <!-- form-group end.// -->
+                    </div> <!-- form-row.// -->
+                    <div class="form-group">
+                        <label>password</label>
+                        <input class="form-control" type="password" id="password" onkeyup="formValidate()">
+                        <p style="color: red; display: none;" id="passerror">Password should be at least 12 characters</p>
+                    </div> <!-- form-group end.// -->  <br>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary btn-block" onclick="registerUser()" disabled> Register  </button>
+                    </div> <!-- form-group// -->                                    
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <script>
+        function formValidate(){
+            var fval = document.getElementById("fname").value
+            var lval = document.getElementById("lname").value
+            var eval = document.getElementById("email").value
+            var cval = document.getElementById("city").value
+            var pval = document.getElementById("password").value
+
+            if(fval.length >= 6 && lval.length >= 8 && eval.length >= 10 && cval.length >= 4 && pval.length >= 12){
+                document.querySelector("button").removeAttribute("disabled")
+            }else{
+                document.querySelector("button").setAttribute("disabled", true)
+            }
+            if(fval.length >= 6){
+                document.getElementById("ferror").style.display = "none"
+            }else{
+                document.getElementById("ferror").style.display = "block"
+            }
+            if(lval.length >= 8){
+                document.getElementById("lerror").style.display = "none"
+            }else{
+                document.getElementById("lerror").style.display = "block"
+            }
+            if(eval.length >= 8){
+                document.getElementById("eerror").style.display = "none"
+            }else{
+                document.getElementById("eerror").style.display = "block"
+            }
+            if(cval.length >= 4){
+                document.getElementById("cerror").style.display = "none"
+            }else{
+                document.getElementById("cerror").style.display = "block"
+            }
+            if(pval.length >= 12){
+                document.getElementById("passerror").style.display = "none"
+            }else{
+                document.getElementById("passerror").style.display = "block"
+            }
+        }
+        function registerUser(){
+            var user = {
+                fname: "",
+                lname: "",
+                email: "",
+                city: "",
+                country: "",
+                password: ""
+            }
+
+            for(a in user){
+                user[a] = document.getElementById(a).value
+            }
+
+            var registerAllUser = JSON.parse(localStorage.getItem("users"))
+            if(registerAllUser == null){
+                registerAllUser=[]
+            }
+            registerAllUser.push(user)
+            localStorage.setItem("users", JSON.stringify(registerAllUser))
+
+            window.location.href="login.html"
+        }
+    </script>
+</body>
+</html>
