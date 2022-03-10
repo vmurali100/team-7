@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="border: 2px solid; width:245px ;height:470px ;position: relative;right: -600px;top:70px;">
+    <form>
+        <br>
+        
+        <legend style="position: relative;right: -60px;font-size: 30px;color: blue;">Facebook</legend><br>
+        <label for="">UserName</label>
+        <input type="text" name="" id="user" onkeyup="facebook()">
+        <p style="color: red;" id="userError">Please Enter User Name </p><br><br>
+
+        <label for="">Password</label>
+        <input type="password" name="" id="pass" onkeyup="facebook()">
+        <p style="color: red;" id="passError"> Please Enter Password  </p><br>
+
+        <label for="">Confirm <br> Password</label>
+        <input type="password" name="" id="confirm" onkeyup="facebook()">
+        <p style="color: red;" id="confirmError">Please Enter Confirm Password</p><br><br>
+    </form>
+    <button style="position: relative;right: -80px;" disabled>Log In</button>
+    <h6  style="position: relative;right: -25px;color: blue;">Forgotten account?Sign up for Facebook</h6>
+    <script>
+        function facebook() {
+            var user = document.getElementById("user").value
+            var pass = document.getElementById("pass").value
+            var confirm = document.getElementById("confirm").value
+
+            if (user.length >= 6) {
+                document.getElementById("userError").style.display = "none"
+                document.querySelector("button").removeAttribute("disabled")
+            }
+            else {
+                document.getElementById("userError").style.display = "block"
+                document.querySelector("button").setAttribute("disabled", true)
+            }
+            if (pass.length >= 10) {
+                document.getElementById("passError").style.display = "none"
+                document.querySelector("button").removeAttribute("disabled")
+            }
+            else {
+                document.getElementById("passError").style.display = "block"
+                document.querySelector("button").setAttribute("disabled", true)
+            }
+            if (confirm.length >= 10) {
+                document.getElementById("confirmError").style.display = "none"
+                document.querySelector("button").removeAttribute("disabled")
+            }
+            else {
+                document.getElementById("confirmError").style.display = "block"
+                document.querySelector("button").setAttribute("disabled", true)
+            }
+        }
+    </script>
+</body>
+
+</html>

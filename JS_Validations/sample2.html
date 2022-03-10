@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="border: 3px solid; width: 295px; height: 500px;position: relative; right: -570px ;top: 60px; background-color: yellow "> 
+    <h3 style="position: relative;right: -80px;">Student</h3>
+    <form>
+    <label for="">Name</label>
+    <input type="text" name="" id="name" onkeyup="student()">
+    <p style="color: red; " id="nameError">Name Should Be At Least 10 Characters </p><br><br>
+
+    <label for="">Email</label>
+    <input type="text" name="" id="email"onkeyup="student()" >
+    <p style="color: red;" id="emailError">Please Enter Email</p><br><br>
+
+    <label for="">Password</label>
+    <input type="password" name="" id="pass" onkeyup="student()">
+    <p style="color: red;" id="passError">Please Enter password</p><br><br>
+
+    <label for="">Confirm Password</label>
+    <input type="password" name="" id="confirm" onkeyup="student()">
+    <p style="color: red;" id="confirmError">Please Enter confirm password</p><br>
+
+
+    </form>
+    <button style="position: relative;right: -90px;" disabled>submit</button>
+
+    <script>
+        function student(){
+          
+              var name=document.getElementById("name").value
+              var email=document.getElementById("email").value
+              var pass=document.getElementById("pass") .value
+              var confirm=document.getElementById("confirm").value
+
+            if( name.length>=10){
+                document.getElementById("nameError").style.display="none"
+                document.querySelector("button").removeAttribute("disabled")
+            }
+            else{
+                document.getElementById("nameError").style.display="block"
+                document.querySelector("button").setAttribute("disabled",true)
+            }
+            if(email.length>=0){
+                document.getElementById("emailError").style.display="none"
+                document.querySelector("button").removeAttribute("disabled")
+            }
+            else{
+                document.getElementById("emailError").style.display="block"
+                document.querySelector("button").setAttribute("disabled",true)
+            }
+            if(pass.length>=7){
+                document.getElementById("passError").style.display="none"
+                document.querySelector("button").removeAttribute("disabled")
+            }
+            else{
+                document.getElementById("passError").style.display="block"
+                document.querySelector("button").setAttribute("disabled",true)
+            }
+            if(confirm.length>=7){
+                document.getElementById("confirmError").style.display="none"
+                document.querySelector("button").removeAttribute("disabled")
+            }
+            else{
+                document.getElementById("confirmError").style.display="block"
+                document.querySelector("button").setAttribute("disabled",true)
+            }
+        }
+    </script>
+</body>
+</html> 
