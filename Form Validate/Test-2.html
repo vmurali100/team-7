@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>                             
+    
+</style>
+
+<body>
+    <form>
+        <label for="">UserName :</label>
+        <input type="text" name="" id="Uname" onkeyup="validate()"><br>
+        <p style="color: red; display: none;" id="a">Please enter a valid User name ...atlest 5 characters</p>
+
+        <label for="">Password :</label>
+        <input type="text" name="" id="Pass" onkeyup="validate()"><br>
+        <p style="color: red; display: none;" id="b">You enter incorrect Password Enter Correct Password...</p>
+
+
+        <label for="">Con-Password :</label>
+        <input type="text" name="" id="Con" onkeyup="validate()"><br>
+        <p style="color: red; display: none;" id="c">Enter atlest 6 characters....</p>
+    </form>
+
+    <button type="button" disabled>Submit</button>
+
+
+    <script>
+        function validate() {
+            var person = {
+                User: document.getElementById("Uname").value,
+                Passw: document.getElementById("Pass").value,
+                Confirm: document.getElementById("Con").value
+            }
+
+            if (person.User.length >= 5) {
+                document.getElementById("a").style.display="none"
+            } else {
+                document.getElementById("a").style.display="block"
+            }
+
+            if (person.Passw.length >= 4) {
+                document.getElementById("b").style.display="none"
+            } else {
+                document.getElementById("b").style.display="block"
+            }
+
+            if (person.Confirm.length >= 6) {
+                document.getElementById("c").style.display="none"
+            } else {
+                document.getElementById("c").style.display="block"
+            }
+
+            if(person.User.length >= 5 && person.Passw.length >= 4 &&person.Confirm.length >= 6 ){
+               document.querySelector("button").removeAttribute("disabled")
+            }else{
+                document.querySelector("button").setAttribute("disabled" ,true)
+            }
+        }
+    </script>
+</body>
+
+</html>
