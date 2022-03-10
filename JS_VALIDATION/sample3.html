@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Movie Name</label>
+        <input type="text" name="" id="a1" onkeyup="Validation()"><br>
+        <p style="color: rgb(38, 0, 255);" id="A">Please Enter Movie Name</p>
+
+        <label for="">Hero Name</label>
+        <input type="text" name="" id="a2" onkeyup="Validation()"><br>
+        <p style="color: crimson;" id="B">Please Enter Hero Name</p>
+
+        <label for="">Heroine Name</label>
+        <input type="text" name="" id="a3" onkeyup="Validation()"><br>
+        <p style="color: green;" id="C">Please Enter Heroine Name</p>
+
+        <label for="">Director</label>
+        <input type="text" name="" id="a4" onkeyup="Validation()"><br>
+        <p style="color: darkred;" id="D">Please Enter Director Name</p>
+
+        <label for="">Release Date</label>
+        <input type="text" name="" id="a5" onkeyup="Validation()"><br>
+        <p style="color: mediumvioletred;" id="E">Please Enter Movie Release Date</p>
+        <button disabled>Submit</button>
+
+    </form>
+    <script>
+        function Validation() {
+            var AllValid = {
+                a1: document.getElementById("a1").value,
+                a2: document.getElementById("a2").value,
+                a3: document.getElementById("a3").value,
+                a4: document.getElementById("a4").value,
+                a5: document.getElementById("a5").value
+
+            }
+            if (AllValid.a1.length >=4) {
+                document.getElementById("A").style.display = "none"
+            } else {
+                document.getElementById("A").style.display = "block"
+
+            }
+            if (AllValid.a2.length >= 6) {
+                document.getElementById("B").style.display = "none"
+            } else {
+                document.getElementById("B").style.display = "block"
+
+            }
+            if(AllValid.a3.length>=3){
+                document.getElementById("C").style.display="none"
+            }else{
+                document.getElementById("C").style.display="block"
+            }
+            if(AllValid.a4.length>=6){
+                document.getElementById("D").style.display="none"
+            }else{
+                document.getElementById("D").style.display="block"
+            }
+            if(AllValid.a5.length>=1){
+                document.getElementById("E").style.display="none"
+            }else{
+                document.getElementById("E").style.display="block"
+
+            }
+            if(AllValid.a1.length >= 4 && llValid.a2.length >= 6 &&  AllValid.a3.length>=3 && AllValid.a4.length>=6 && AllValid.a5.length>=1 ){
+                document.querySelector("button").removeAttribute("disabled")
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+            }
+        }
+    </script>
+</body>
+
+</html>
