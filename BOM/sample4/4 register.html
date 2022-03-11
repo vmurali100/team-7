@@ -23,31 +23,72 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" id="name" name="txtName" class="form-control" placeholder="Your Name *"
+                        <input type="text" id="name" onkeyup="drop()" name="txtName" class="form-control" placeholder="Your Name *"
                             value="" />
+                        <p style="color: darkmagenta;display: none;" id="nameerr" >Enter atleast 6 character</p>    
                     </div>
                     <div class="form-group">
-                        <input type="text" id="email" name="txtEmail" class="form-control" placeholder="Your Email *"
+                        <input type="text" id="email" onkeyup="drop()" name="txtEmail" class="form-control" placeholder="Your Email *"
                             value="" />
+                        <p style="color: darkmagenta;display: none;" id="emailerr">Enter currently using Email</p>    
                     </div>
                     <div class="form-group">
-                        <input type="text" id="phone" name="txtPhone" class="form-control"
+                        <input type="text" id="phone" onkeyup="drop()" name="txtPhone" class="form-control"
                             placeholder="Your Phone Number *" value="" />
+                        <p style="color: darkmagenta;display: none;" id="phoneerr">Using your mobile number</p>    
                     </div>
 
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <textarea name="txtMsg" id="message" class="form-control" placeholder="Your Message *"
+                        <textarea name="txtMsg" id="message" onkeyup="drop()" class="form-control" placeholder="Your Message *"
                             style="width: 100%; height: 150px;"></textarea>
+                        <p style="color: darkmagenta;display: none;" id="meserr">Enter correct reason</p>    
                     </div>
                 </div>
                 <br>
-                <button type="button" onclick="readoption()">Send Message</button>
+                <button type="button" onclick="readoption()" disabled>Send Message</button>
             </div>
         </form>
     </div>
     <script>
+        function drop(){
+            var name=document.getElementById("name").value
+            var email=document.getElementById("email").value
+            var phone=document.getElementById("phone").value
+            var message=document.getElementById("message").value
+            if(name.length>=6){
+                document.querySelector("button").removeAttribute("disabled")
+                document.getElementById("nameerr").style.display="none"
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+                document.getElementById("nameerr").style.display="block"
+            }
+
+            if(email.length>0){
+                document.querySelector("button").removeAttribute("disabled")
+                document.getElementById("emailerr").style.display="none"
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+                document.getElementById("emailerr").style.display="block"
+            }
+
+            if(phone.length>=10){
+                document.querySelector("button").removeAttribute("disabled")
+                document.getElementById("phoneerr").style.display="none"
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+                document.getElementById("phoneerr").style.display="block"
+            }
+
+            if(message.length>0){
+                document.querySelector("button").removeAttribute("disabled")
+                document.getElementById("meserr").style.display="none"
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+                document.getElementById("meserr").style.display="block"
+            }
+        }
         var senduser=JSON.parse(localStorage.getItem("sendusers"))
         if(senduser==null){
             senduser=[]
