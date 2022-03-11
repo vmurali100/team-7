@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <select name="" id="man" onchange="getname()">
+        <option value="" selected>More Continent</option>
+    </select>
+    <ul>   </ul>
+
+    <script src="Dropdown.js"></script>
+
+    <script>
+        var surya = {}
+
+        function names() {
+            console.log(worldContinent)
+
+            worldContinent.forEach(suri => {
+                var opt = document.createElement("option")
+                opt.setAttribute("value", JSON.stringify(suri))
+                opt.innerHTML = suri.Continent
+                document.querySelector("select").appendChild(opt)
+            });
+        }
+
+        //   getting 
+        function getname() {
+            var allu = document.getElementById("man").value
+            surya = JSON.parse(allu)
+            displayname()
+        }
+
+        // display
+        function displayname() {
+            document.querySelector("ul").innerHTML = ""
+            surya.Countries.forEach((good) => {
+                var myli = document.createElement("li")
+                myli.innerHTML = good
+                document.querySelector("ul").appendChild(myli)
+            })
+        }
+        names()
+    </script>
+
+</body>
+
+</html>

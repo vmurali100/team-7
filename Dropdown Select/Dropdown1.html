@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select name="" id="friends" onchange="called()">
+        <option value="value" selected>Select Friends</option>
+    </select>
+
+    <ul>
+
+    </ul>
+    <script src="Dropdown1.js"></script>
+    <script>
+
+        var Myname = {}
+
+        function call() {
+            console.log(details)
+
+            details.forEach((fun) => {
+                var opt = document.createElement("option")
+                opt.setAttribute("value", JSON.stringify(fun))
+                opt.innerHTML = fun.friend
+                document.querySelector("select").appendChild(opt)
+
+            });
+        }
+        function called() {
+            var friend = document.getElementById("friends").value
+            Myname = JSON.parse(friend)
+            surya()
+        }
+
+        function surya() {
+            document.querySelector("ul").innerHTML = ""
+            Myname.family.forEach((fam) => {
+                var myli = document.createElement("li")
+                myli.innerHTML = fam
+                document.querySelector("ul").appendChild(myli)
+            })
+
+        }
+        call()        
+    </script>
+</body>
+
+</html>
