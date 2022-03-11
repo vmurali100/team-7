@@ -26,18 +26,20 @@
                                 <form id="register-form" role="form" autocomplete="off" class="form" method="post">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <select class="form-control" id="sel1">
+                                            <select class="form-control" id="sel1" onkeyup="forget()">
                                                 <option selected="true" disabled="disabled">Please Select Security Question</option>
                                                 <option>Which is your favorite movie?</option>
                                                 <option>What is your pet's name?</option>
                                                 <option>What is the name of your village?</option>
+                                                <p style="color: darkgoldenrod;display: none;" id="seller">choose correct one Question</p>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                            <input id="forgetAnswer" name="forgetAnswer" placeholder="Answer" class="form-control"  type="text">
+                                            <input id="forgetAnswer" onkeyup="forget()" name="forgetAnswer" placeholder="Answer" class="form-control"  type="text">
+                                            <p style="color: rgb(184, 75, 11);display: none;" id="forerr">Enter correct password</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -53,9 +55,31 @@
             </div>
         
     
-    <button type="button" onclick="reset()">Send Message</button>
+    <button type="button" onclick="reset()" disabled>Send Message</button>
 </div>
 <script>
+    function forget(){
+        var sel1=document.getElementById("sel1").value
+        var forgetAnswer=document.getElementById("forgetAnswer").value
+        if(sel1.length>0){
+                document.querySelector("button").removeAttribute("disabled")
+                document.getElementById("seller").style.display="none"
+
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+                document.getElementById("seller").style.display="block"
+        }
+
+        if(forgetAnswer.length>=4){
+                document.querySelector("button").removeAttribute("disabled")
+                document.getElementById("forerr").style.display="none"
+
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+                document.getElementById("forerr").style.display="block"
+        }
+
+    }
     var user=JSON.parse(localStorage.getItem("users"))
     if(user==null){
         user=[]
