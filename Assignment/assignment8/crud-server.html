@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Dog Price</label>
+        <input type="text" name="" id="dog"> <br><br>
+        <label for="">Cat Price</label>
+        <input type="text" name="" id="cat"> <br><br>
+        <label for="">Rabbit Price</label>
+        <input type="text" name="" id="rabbit"> <br><br>
+        <label for="">Parrot Price</label>
+        <input type="text" name="" id="parrot"> <br><br>
+        <input type="text" name="" id="id" hidden> <br><br>
+
+        <button type="button" onclick="Enter()" id="up">Submit</button>
+        <button type="button" onclick="updating()" id="dwn" style="display: none;">update</button>
+
+    </form>
+    <table border="1">
+        <thead>
+            <th>Dog Price</th>
+            <th>Cat Price</th>
+            <th>Rabbit Price</th>
+            <th>Parrot Price</th>
+            <th>iD</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        var ctr = []
+        function Enter() {
+            var msr = {
+                dog: "",
+                cat: "",
+                rabbit: "",
+                parrot: ""
+            }
+            for (a in msr) {
+                msr[a] = document.getElementById(a).value
+            }
+            var post = new XMLHttpRequest();
+            post.onreadystatechange = function () {
+                if (post.status == 201 && post.readyState == 4) {
+
+                }
+            }
+            post.open("POST", " http://localhost:3000/raj ")
+            post.setRequestHeader("Content-Type", "application/json")
+            post.send(JSON.stringify(msr))
+        }
+
+        function studying() {
+            var study = new XMLHttpRequest()
+            study.onreadystatechange = function () {
+                if (study.readyState == 4 && study.status == 200) {
+                    ctr = JSON.parse(study.response)
+                    display(ctr)
+                }
+            }
+            var url = " http://localhost:3000/raj "
+            study.open("Get", url)
+            study.send()
+        }
+
+        function display(ctr) {
+            for (i = 0; i < ctr.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in ctr[0]) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = ctr[i][a]
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                var deltd = document.createElement("td")
+                mytr.appendChild(edittd)
+                mytr.appendChild(deltd)
+
+                var editbtn = document.createElement("button")
+                var delbtn = document.createElement("button")
+                edittd.appendChild(editbtn)
+                deltd.appendChild(delbtn)
+
+                editbtn.innerHTML = "edit"
+                delbtn.innerHTML = "delete"
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                delbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+            }
+        }
+        studying()
+
+
+        function edituser(i) {
+            for (a in ctr[i]) {
+                document.getElementById(a).value = ctr[i][a]
+            }
+            document.getElementById("up").style.display = "none"
+            document.getElementById("dwn").style.display = "block"
+
+        }
+
+
+        function deleteuser(i) {
+            var post = new XMLHttpRequest();
+            post.onreadystatechange = function () {
+                if (post.status == 200 && post.readyState == 4) {
+
+                }
+            }
+            post.open("DELETE", " http://localhost:3000/raj/" + ctr[i].id)
+            post.send()
+        }
+
+
+        function updating() {
+            var msr = {
+                dog: "",
+                cat: "",
+                rabbit: "",
+                parrot: "",
+                id: ""
+            }
+            for (a in msr) {
+                msr[a] = document.getElementById(a).value
+            }
+            var post = new XMLHttpRequest();
+            post.onreadystatechange = function () {
+                if (post.status == 200 && post.readyState == 4) {
+                    document.getElementById("up").style.display = "block"
+                    document.getElementById("dwn").style.display = "none"
+                }
+            }
+            post.open("PUT", " http://localhost:3000/raj/" + msr.id)
+            post.setRequestHeader("Content-Type", "application/json")
+            post.send(JSON.stringify(msr))
+
+        }
+    </script>
+</body>
+
+</html>

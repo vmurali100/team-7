@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin-left: 300px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="">Names</label>
+    <input  type="text" name="" id="name" style="position: relative; right: -35px;" > <br><br>
+    <label for="">Password</label> 
+    <input type="text" name="" id="pass" style="position: relative; right: -17px;"> <br><br>
+
+    </form>
+    <button type="button" onclick="Enter()">Submit</button>
+
+    <script>
+        var hai = JSON.parse(localStorage.getItem("hai"))
+        if( hai == null){
+            hai =[]
+        }
+        function Enter(){
+            var sa = {
+                name:"",
+                pass:""
+            }
+            for( a in sa){
+                sa[a]= document.getElementById(a).value
+            }
+            hai.push(sa)
+            localStorage.setItem("hai",JSON.stringify(hai))
+
+            window.location.href="login1.html"
+        }
+    </script>
+</body>
+</html>

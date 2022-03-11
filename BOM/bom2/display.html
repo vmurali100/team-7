@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+          body {
+    margin-left: 400px;
+    margin-top: 40px;
+}
+table#myTable {
+    background-color: deepskyblue;
+}
+
+   
+
+    </style>
+</head>
+<body>
+    <!-- <form action="">
+        <label for="">StudentName</label>
+        <input type="text" name="" id="sname"> <br><br>
+        <label for="">Class</label>
+        <input type="text" name="" id="class"> <br><br>
+        <label for="">ID Num</label> 
+        <input type="text" name="" id="id"> <br><br>
+        <label for="">Subject</label> 
+        <input type="text" name="" id="subj"> <br><br>
+        <label for="">Fees</label> 
+        <input type="text" name="" id="fee"> <br><br>
+        
+        <button type="button" onclick="getdata()" id="sub">Submit</button>
+        <button type="button" onclick="update()" id="up" style="display: none;">Update</button>
+
+    </form>
+    <table border="1">
+        <thead>
+            <th>StudentName</th>
+            <th>Class</th>
+            <th>ID Num</th>
+            <th>Subject</th>
+            <th>Fees</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    
+    <script>
+
+       
+
+        var index;
+    var sadik = JSON.parse(localStorage.getItem("sadik"))
+    if (sadik == null) {
+        sadik = []
+    }
+    function getdata() {
+        var object = {
+            sname:"",
+                class:"",
+                id:"",
+                subj:"",
+                fee:""
+        }
+        for (a in object) {
+            object[a] = document.getElementById(a).value
+        }
+
+        console.log(object)
+        sadik.push(object)
+        clear(object)
+
+        localStorage.setItem("sadik", JSON.stringify(sadik))
+        display()
+        edituser(i)
+
+    }
+
+
+    function display() {
+         document.querySelector("tbody").innerHTML = ""   
+        sadik.forEach((object, i) => {
+            var mytr = document.createElement("tr")   
+            for (a in object) {
+                var mytd = document.createElement("td")
+                mytd.innerHTML = object[a]
+                mytr.appendChild(mytd) 
+            }
+            document.querySelector("tbody").appendChild(mytr)
+
+            var edittd = document.createElement("td")
+            var deltd = document.createElement("td")
+            mytr.appendChild(edittd)
+            mytr.appendChild(deltd)
+
+
+            var editbtn = document.createElement("button")
+            var deltbtn = document.createElement("button")
+            edittd.appendChild(editbtn)
+            deltd.appendChild(deltbtn)
+
+            editbtn.innerHTML = "edit"
+            deltbtn.innerHTML = "delete"
+            editbtn.setAttribute("onclick", "edituser(" + i + ")")
+            deltbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+
+        })
+    }
+    display()
+
+
+
+    function clear(object) {
+        for (a in object) {
+            document.getElementById(a).value = ""
+        }
+    }
+
+
+
+    function edituser(i) {
+        index = i
+        document.getElementById("sub").style.display = "none"
+        document.getElementById("up").style.display = "block"
+
+
+        var suri = sadik[i]
+        for (a in suri) {
+            document.getElementById(a).value = suri[a]
+        }
+
+    }
+
+
+    function deleteuser(i) {
+        sadik.splice(i, 1)
+        localStorage.setItem("sadik", JSON.stringify(sadik))
+        display()
+    }
+
+
+    function update() {
+        var object = {
+            sname:"",
+                class:"",
+                id:"",
+                subj:"",
+                fee:""
+        }
+        for (a in object) {
+            object[a] = document.getElementById(a).value
+        }
+
+        sadik[index] = object
+        localStorage.setItem("sadik", JSON.stringify(sadik))
+        display()
+        clear(object)
+        document.getElementById("sub").style.display = "block"
+        document.getElementById("up").style.display = "none"
+
+
+    }
+    </script> -->
+    <table id="myTable" border="1">
+        <thead>
+            <th>S.no</th>
+            <th>StudentNames</th>
+            <th>Class</th>
+            <th>ID Number</th>
+            <th>Subject</th>
+            <th>Fees</th>
+           
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+<script>
+
+    var Studentdetails = [
+        {
+            "S.no" :"1",
+            "StudentNames":"sadik",
+            "Class":"10th",
+            "ID Number":"1230",
+            "Subject":"English",
+            "Fees":"50000"
+
+        },
+        {
+            "S.no" :"2",
+            "StudentNames":"Deena",
+            "Class":"9",
+            "ID Number":"12300",
+            "Subject":"Hindi",
+            "Fees":"49000"
+        },
+        {
+            "S.no" :"3",
+            "StudentNames":"Raju",
+            "Class":"8",
+            "ID Number":"12301",
+            "Subject":"Telugu",
+            "Fees":"44000"
+        },
+        {
+            "S.no" :"4",
+            "StudentNames":"Surya",
+            "Class":"7",
+            "ID Number":"12302",
+            "Subject":"Telugu",
+            "Fees":"46000"
+        },
+        {
+            "S.no" :"5",
+            "StudentNames":"Balaji",
+            "Class":"10",
+            "ID Number":"123",
+            "Subject":"Tamil",
+            "Fees":"54000"
+        }
+    ]
+
+    for(i=0;i<Studentdetails.length;i++){
+        console.log(Studentdetails)
+        var myTr = document.createElement("tr")
+        for(a in Studentdetails[i]){
+            var myTd = document.createElement("td")
+            myTd.innerHTML = Studentdetails[i][a]
+            myTr.appendChild(myTd);
+        }
+        document.getElementById("myTable").appendChild(myTr)
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="">
+        <label for="">State</label>
+        <input type="text" name="" id="state"> <br> <br>
+        <label for="">City</label>
+        <input type="text" name="" id="city"> <br><br>
+        <label for="">Town</label>
+        <input type="text" name="" id="town"> <br><br>
+        <label for="">Area</label>
+        <input type="text" name="" id="area"> <br> <br>
+        
+        
+    
+        <button type="button" onclick="Register()" id="adduser">Enter</button>
+        <button type="button" onclick="update()" id="updateuser" style="display: none;">Update user</button>
+    
+    </form>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>City</th>
+                <th>Town</th>
+                <th>Area</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+        </tbody>
+        
+    </table>
+    
+    <script>
+    
+        // Creat a user 
+        var fruits = JSON.parse(localStorage.getItem("fruits"))
+        var index;
+        if (fruits == null) {
+            fruits = []
+        }
+        
+        function Register() {
+    
+            var fruit = {
+                state: "",
+                city: "",
+                town: "",
+                area: ""
+            
+            }
+    
+            for (a in fruit) {
+                fruit[a] = document.getElementById(a).value
+            }
+            fruits.push(fruit)
+            displaydetails()
+            localStorage.setItem("fruits", JSON.stringify(fruits))
+            clearing(fruit)
+    
+        }
+    
+        // Read a user 
+            function displaydetails(){
+                document.querySelector("tbody").innerHTML = ""
+    
+                fruits.forEach((value1,i)=>{
+                    var mytr = document.createElement("tr")
+                for (a in value1) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML =value1[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+    
+                var edittd = document.createElement("td")
+                var deltd = document.createElement("td")
+                mytr.appendChild(edittd)
+                mytr.appendChild(deltd)
+    
+                var editbtn = document.createElement("button")
+                editbtn.innerHTML = "edit"
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                var delbtn = document.createElement("button")
+                delbtn.innerHTML = "delete"
+                delbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                edittd.appendChild(editbtn)
+                deltd.appendChild(delbtn)
+                })
+            
+            }
+            displaydetails()
+    
+    
+              //  edit  a user 
+        function edituser(i) {
+            index = i
+            document.getElementById("adduser").style.display = "none"
+            document.getElementById("updateuser").style.display = "block"
+    
+            var ravi = fruits[i]
+            for (a in fruits[i]) {
+                document.getElementById(a).value = ravi[a]
+            }
+    
+        }
+    
+    
+         //  delete a user 
+         function deleteuser(i) {
+            fruits.splice(i, 1)
+            localStorage.setItem("fruits", JSON.stringify(fruits))
+    
+            displaydetails()
+    
+        }
+    
+    
+        // update a user 
+        function update() {
+            var fruit = {
+                state: "",
+                city: "",
+                town: "",
+                area: ""
+            }
+    
+    
+            for (a in fruit) {
+                fruit[a] = document.getElementById(a).value
+            }
+    
+            fruits[index] = fruit
+            localStorage.setItem("fruits", JSON.stringify(fruits))
+    
+            displaydetails()
+            clearing(fruit)
+            document.getElementById("adduser").style.display = "block"
+            document.getElementById("updateuser").style.display = "none"
+    
+        }
+    
+    
+            // Clear a user 
+            function clearing(fruit) {
+            for (a in fruit) {
+                document.getElementById(a).value = ""
+            }
+        }
+    
+    </script>
+</body>
+</html>

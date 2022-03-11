@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Fruit one</label>
+        <input type="text" name="" id="a"> <br><br>
+        <label for="">Fruit two</label>
+        <input type="text" name="" id="b"> <br><br>
+        <label for="">Fruit three</label>
+        <input type="text" name="" id="c"> <br> <br>
+        <label for="">Fruit four</label>
+        <input type="text" name="" id="d"> <br><br>
+        <input type="text" name="" id="id" hidden> <br><br>
+
+        <button type="button" onclick="submit()" id="dwn">Enter</button>
+
+        <button type="button" onclick="updating()" style="display: none;" id="up"> updater</button>
+
+    </form>
+    <table border="1">
+        <thead>
+            <th>Fruit one</th>
+            <th>Fruit two</th>
+            <th>Fruit three</th>
+            <th>Fruit four</th>
+            <th>Id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var data = []
+        function submit() {
+            var info = {
+                a: "",
+                b: "",
+                c: "",
+                d: ""
+            }
+            for (a in info) {
+                info[a] = document.getElementById(a).value
+            }
+            var postin = new XMLHttpRequest();
+            postin.onreadystatechange = function () {
+                if (postin.status == 201 && postin.readyState == 4) {
+
+                }
+            }
+            postin.open("POST", "http://localhost:3000/rehaman")
+            postin.setRequestHeader("Content-Type", "application/json")
+            postin.send(JSON.stringify(info))
+
+        }
+
+
+        function display() {
+            var dis = new XMLHttpRequest();
+            dis.onreadystatechange = function () {
+                if (dis.readyState == 4 && dis.status == 200) {
+                    data = JSON.parse(dis.response)
+                    displaytable(data)
+                }
+            }
+            var url = "http://localhost:3000/rehaman"
+            dis.open("GET", url)
+            dis.send()
+        }
+
+
+        function displaytable(data) {
+            for (i = 0; i < data.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in data[0]) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerText = data[i][a]
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                var editbtn = document.createElement("button")
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                editbtn.innerHTML = "edit"
+                edittd.appendChild(editbtn)
+                mytr.appendChild(edittd)
+
+                var deltd = document.createElement("td")
+                var delbtn = document.createElement("button")
+                delbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                delbtn.innerHTML = "delete"
+                deltd.appendChild(delbtn)
+                mytr.appendChild(deltd)
+
+            }
+        }
+        display()
+
+        function edituser(i) {
+            document.getElementById("dwn").style.display = "none"
+            document.getElementById("up").style.display = "block"
+            for (a in data[i]) {
+                document.getElementById(a).value = data[i][a]
+            }
+        }
+
+        function deleteuser(i) {
+            var postin = new XMLHttpRequest();
+            postin.onreadystatechange = function () {
+                if (postin.status == 200 && postin.readyState == 4) {
+
+                }
+            }
+            postin.open("DELETE", "http://localhost:3000/rehaman/" + data[i].id)
+            postin.send()
+        }
+
+        function updating() {
+            var info = {
+                a: "",
+                b: "",
+                c: "",
+                d: "",
+                id: ""
+            }
+            for (a in info) {
+                info[a] = document.getElementById(a).value
+            }
+            var postin = new XMLHttpRequest();
+            postin.onreadystatechange = function () {
+                if (postin.status == 200 && postin.readyState == 4) {
+                    document.getElementById("dwn").style.display = "none"
+                    document.getElementById("up").style.display = "block"
+                }
+            }
+            postin.open("PUT", "http://localhost:3000/rehaman/" + info.id)
+            postin.setRequestHeader("Content-Type", "application/json")
+            postin.send(JSON.stringify(info))
+        }
+
+
+    </script>
+</body>
+
+</html> 

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Lapy</label>
+        <input type="text" name="" id="lapy"> <br> <br>
+        <label for="">Color</label>
+        <input type="text" name="" id="color"> <br> <br>
+        <label for="">Brand</label>
+        <input type="text" name="" id="brand"> <br> <br>
+        <label for="">Price</label>
+        <input type="text" name="" id="price"> <br> <br>
+        <input type="text" name="" id="id" hidden> <br><br>
+
+        <button type="button" onclick="Sumitform()" id="addBtn">Submit</button>
+
+        <button type="button" onclick="update()" style="display: none;" id="updateBtn">update</button>
+        
+    </form>
+    <table border="1">
+        <thead>
+
+            <th>Lapy</th>
+            <th>Color</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        var deenas = []
+        function Sumitform(){
+           var deena =  {
+                lapy: "",
+                color: "",
+                brand: "",
+                price: ""
+            }
+            for (a in deena) {
+                deena[a] = document.getElementById(a).value
+            }
+            var postuser = new XMLHttpRequest()
+            postuser.onreadystatechange= function () {
+                if(postuser.status == 201 && postuser.readystate == 4) {
+                    // displaydeena()
+                }
+            }
+    
+            postuser.open("POST","http://localhost:3000/surya");
+            postuser.setRequestHeader("content-Type","application/json")
+            postuser.send(JSON.stringify(deena))
+        }
+
+
+        function displaydeena(){
+            var deenadata = new XMLHttpRequest();
+            deenadata.onreadystatechange = function() {
+                    if (deenadata.readyState == 4 && deenadata.status == 200) {
+                        deenas = JSON.parse(deenadata.response)
+                        displaydeenatable(deenas)
+                    }
+                }
+                var url = "http://localhost:3000/surya"
+                deenadata.open("GET", url)
+                deenadata.send()
+        }
+
+
+        function displaydeenatable(deenas){
+                for (i=0; i< deenas.length; i++) {
+                    var myTr = document.createElement("tr")
+                    for ( a in deenas[0]) {
+                        var myTd = document.createElement("td")
+                        myTd.innerHTML = deenas[i][a]
+                        myTr.appendChild(myTd)
+                    }
+                    var edittd = document.createElement("td")
+                    var editbtn = document.createElement("button")
+                    editbtn.setAttribute("onclick","edituser("+i+")")
+                    editbtn.innerHTML = "edit"
+                    edittd.appendChild(editbtn)
+                    myTr.appendChild(edittd)
+    
+                    var deltd = document.createElement("td")
+                    var delbtn = document.createElement("button")
+                    delbtn.setAttribute("onclick","deleteuser("+i+")")
+                    delbtn.innerHTML="delete"
+                    deltd.appendChild(delbtn)
+                    myTr.appendChild(deltd)
+    
+                    document.querySelector("tbody").appendChild(myTr)
+                    
+                }
+            }
+            displaydeena()
+
+
+            function edituser(i){
+                for (a in deenas[i]){
+                    document.getElementById(a).value = deenas[i][a]
+                }
+                document.getElementById("addBtn").style.display = "none"
+                document.getElementById("updateBtn").style.display = "block"
+            }
+
+            function deleteuser(i) {
+                var postuser = new XMLHttpRequest()
+            postuser.onreadystatechange= function () {
+                if(postuser.status == 200 && postuser.readystate == 4) {
+                    
+                }
+            }
+    
+            postuser.open("DELETE","http://localhost:3000/surya/"+ deenas[i].id);
+            postuser.send()
+            }
+
+            function update(){
+                var deena =  {
+                lapy: "",
+                color: "",
+                brand: "",
+                price: "",
+                id : ""
+            }
+            for (a in deena) {
+                deena[a] = document.getElementById(a).value
+            }
+            var postuser = new XMLHttpRequest()
+            postuser.onreadystatechange= function () {
+                if(postuser.status == 200 && postuser.readystate == 4) {
+                    DocumentType.getElementById("addBtn").style.display = "block"
+                DocumentType.getElementById("updateBtn").style.display = "none"
+                }
+            }
+    
+            postuser.open("PUT","http://localhost:3000/surya/"+ deena.id);
+            postuser.setRequestHeader("content-Type","application/json")
+            postuser.send(JSON.stringify(deena))
+            }
+            // console.log(deenas) 
+    </script>
+
+</body>
+</html>

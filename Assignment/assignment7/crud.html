@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Distric</label>
+        <input type="text" name="" id="distric"> <br><br>
+        <label for="">Population</label>
+        <input type="text" name="" id="population"> <br><br>
+        <label for="">Men</label>
+        <input type="text" name="" id="men"> <br><br>
+        <label for="">Women</label>
+        <input type="text" name="" id="women">
+
+        <button type="button" onclick="Form()" id="e">Submit</button>
+
+        <button type="button" onclick="updateuser()" id="up" style="display: none;">update</button>
+
+    </form>
+    <table border="1">
+        <thead>
+            <th>Distric</th>
+            <th>Population</th>
+            <th>Men</th>
+            <th>Women</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var index;
+        var main = JSON.parse(localStorage.getItem(main))
+        if (main == null) {
+            main = []
+        }
+        function Form() {
+            var object = {
+                distric: "",
+                population: "",
+                men: "",
+                women: ""
+            }
+            for (a in object) {
+                object[a] = document.getElementById(a).value
+            }
+            main.push(object)
+            localStorage.setItem("main", JSON.stringify(main))
+            clear(object)
+            displayobj()
+            edituser(i)
+        }
+
+        // display a user 
+
+        function displayobj() {
+            document.querySelector("tbody").innerHTML = ""
+            main.forEach((object, i) => {
+                var mytr = document.createElement("tr")
+                for (a in object) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = object[a]
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                var deltd = document.createElement("td")
+                mytr.appendChild(edittd)
+                mytr.appendChild(deltd)
+
+                var editbtn = document.createElement("button")
+                var delbtn = document.createElement("button")
+
+                edittd.appendChild(editbtn)
+                deltd.appendChild(delbtn)
+
+                editbtn.innerHTML = "edit"
+                delbtn.innerHTML = "delete"
+
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                delbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+
+            })
+
+        }
+        displayobj()
+
+
+        // Clear a user 
+        function clear(object) {
+            for (a in object) {
+                document.getElementById(a).value = ""
+            }
+        }
+
+        // edit a user 
+        function edituser(i) {
+             document.getElementById("e").style.display="none"
+                document.getElementById("up").style.display= "block"
+            index = i
+            var hellow = main[i]
+            for (a in hellow) {
+                document.getElementById(a).value = hellow[a]
+            }
+        }
+
+        // delete a user 
+
+        function deleteuser(i) {
+            main.splice(i, 1)
+            localStorage.setItem("main", JSON.stringify(main))
+
+            displayobj()
+        }
+
+
+            // update a user 
+            function updateuser(){
+                var object = {
+                distric: "",
+                population:"",
+                men:"",
+                women :""
+            }
+            for(a in object){
+                object[a]= document.getElementById(a).value
+            }
+                main[index] = object
+            localStorage.setItem("main", JSON.stringify(main))
+
+                displayobj()
+                clear(object)
+
+                document.getElementById("e").style.display="block"
+                document.getElementById("up").style.display= "none"
+            }
+                console.log(main)
+    </script>
+</body>
+
+</html>

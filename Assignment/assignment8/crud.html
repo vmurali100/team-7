@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Powerstar</label>
+        <input type="text" name="" id="power"> <br><br>
+        <label for="">Mahesh</label>
+        <input type="text" name="" id="super"> <br><br>
+        <label for="">Allu</label>
+        <input type="text" name="" id="stylish"> <br><br>
+        <label for="">AAli</label>
+        <input type="text" name="" id="joke"> <br><br>
+
+        <button type="button" onclick="Enter()" id="down">Submit</button>
+
+        <button type="button" onclick="updateform()" style="display: none;" id="up">updatde</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>Powerstar</th>
+            <th>Mahesh</th>
+            <th>Allu</th>
+            <th>AAli</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+    var index;
+     var head = []
+    
+    function Enter() {
+        var oo = {
+            power: "",
+            super: "",
+            stylish: "",
+            joke: ""
+        }
+        for (a in oo) {
+            oo[a] = document.getElementById(a).value
+        }
+        head.push(oo)
+        clear(oo)
+        displayoo()
+        edituser(i)
+
+    }
+
+    function displayoo() {
+        document.querySelector("tbody").innerHTML = ""
+        head.forEach((oo, i) => {
+            var mytr = document.createElement("tr")
+            for (a in oo) {
+                var mytd = document.createElement("td")
+                mytd.innerHTML = oo[a]
+                mytr.appendChild(mytd)
+            }
+            document.querySelector("tbody").appendChild(mytr)
+
+            var edittd = document.createElement("td")
+            var deltd = document.createElement("td")
+            mytr.appendChild(edittd)
+            mytr.appendChild(deltd)
+
+            var editbtn = document.createElement("button")
+            var delbtn = document.createElement("button")
+
+            edittd.appendChild(editbtn)
+            deltd.appendChild(delbtn)
+
+            editbtn.innerHTML = "edit"
+            delbtn.innerHTML = "delete"
+
+            editbtn.setAttribute("onclick", "edituser(" + i + ")")
+            delbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+
+        })
+    }
+    displayoo()
+
+
+    // clear a user
+    function clear(oo) {
+        for (a in oo) {
+            document.getElementById(a).value = ""
+        }
+    }
+
+    // edit  a user  
+    function edituser(i) {
+        document.getElementById("down").style.display = "none"
+        document.getElementById("up").style.display = "block"
+        index = i
+        var dear = head[i]
+        for (a in dear) {
+            document.getElementById(a).value = dear[a]
+        }
+    }
+
+
+    // delete a user 
+    function deleteuser(i) {
+        head.splice(i, 1)
+        displayoo()
+
+    }
+
+    // update a user 
+
+    function updateform() {
+        var oo = {
+            power: "",
+            super: "",
+            stylish: "",
+            joke: ""
+        }
+
+        for (a in oo) {
+            oo[a] = document.getElementById(a).value
+        }
+
+        head[index] = oo
+
+        displayoo()
+        clear(oo)
+        document.getElementById("down").style.display = "block"
+        document.getElementById("up").style.display = "none"
+    }
+</script> 
+</body>
+</html>

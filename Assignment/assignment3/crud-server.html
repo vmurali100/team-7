@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form >
+        <label for="">FruitName</label>
+        <input type="text" name="" id="fname"> <br><br>
+        <label for="">Color</label>
+        <input type="text" name="" id="color"> <br><br>
+        <input type="text" name="" id="id" hidden> <br><br>
+    
+    
+        <button type="button" onclick="adduser()" id="addBtn">Submit</button>
+        <button type="button" onclick="updateuser()" style="display: none;" id="updateBtn">update</button>
+    
+    </form>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>FruitName</th>
+                    <th>Color</th>
+                    <th>Id</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            </tbody>
+        </table>
+    <script>
+        // creat a user 
+         var users = []
+        function adduser(){
+            var user ={
+                fname: "",
+                color: "",
+            }
+         console.log(user)
+            for(a in user){
+                user[a]= document.getElementById(a).value
+            }
+            var postuser = new XMLHttpRequest()
+            postuser.onreadystatechange= function () {
+                if(postuser.status == 201 && postuser.readystate == 4) {
+                    //  displaylatestuser()
+                }
+            }
+    
+            postuser.open("POST","http://localhost:3000/student");
+            postuser.setRequestHeader("content-Type","application/json")
+            postuser.send(JSON.stringify(user))
+        }
+    
+            // display a user 
+    
+            function displaylatestuser() {
+                var getinfo = new XMLHttpRequest();
+                getinfo.onreadystatechange = function() {
+                    if (getinfo.readyState == 4 && getinfo.status == 200) {
+                        // console.log(getinfo.response)
+                        users = JSON.parse(getinfo.response)
+                        displaylatestuserintable(users)
+                    }
+                }
+                var url = "http://localhost:3000/student"
+                getinfo.open("GET", url)
+                getinfo.send()
+            }
+    
+            // Creat a table 
+    
+            function displaylatestuserintable(users){
+                for (i=0; i< users.length; i++) {
+                    var myTr = document.createElement("tr")
+                    for ( a in users[0]) {
+                        var myTd = document.createElement("td")
+                        myTd.innerHTML = users[i][a]
+                        myTr.appendChild(myTd)
+                    }
+                     
+    
+                     var edittd = document.createElement("td")
+                    var editbtn = document.createElement("button")
+                    editbtn.setAttribute("onclick","edituser("+i+")")
+                    editbtn.innerHTML = "edit"
+                    edittd.appendChild(editbtn)
+                    myTr.appendChild(edittd)
+    
+                    var deltd = document.createElement("td")
+                    var delbtn = document.createElement("button")
+                    delbtn.setAttribute("onclick","deleteuser("+i+")")
+                    delbtn.innerHTML="delete"
+                    deltd.appendChild(delbtn)
+                    myTr.appendChild(deltd)
+    
+               
+    
+                    document.querySelector("tbody").appendChild(myTr)
+    
+                    
+                }
+            }
+            displaylatestuser()
+             
+            // Edit a user 
+    
+            function edituser(i){
+                for (a in users[i]){
+                    document.getElementById(a).value = users[i][a]
+                }
+                document.getElementById("addBtn").style.display = "none"
+                document.getElementById("updateBtn").style.display = "block"
+            }
+    
+    
+            // Update a user 
+    
+            function updateuser(){
+                var user ={
+                fname: "",
+                color: "",
+                id : ""
+            }
+         console.log(user)
+            for(a in user){
+                user[a]= document.getElementById(a).value
+            }
+            var postuser = new XMLHttpRequest()
+            postuser.onreadystatechange= function () {
+                if(postuser.status == 200 && postuser.readystate == 4) {
+                    DocumentType.getElementById("addBtn").style.display = "block"
+                DocumentType.getElementById("updateBtn").style.display = "none"
+                }
+            }
+    
+            postuser.open("PUT","http://localhost:3000/student"+ user.id);
+            postuser.setRequestHeader("content-Type","application/json")
+            postuser.send(JSON.stringify(user))
+            }
+    
+    
+            // Delete a user 
+    
+            function deleteuser(i) {
+                var postuser = new XMLHttpRequest()
+            postuser.onreadystatechange= function () {
+                if(postuser.status == 200 && postuser.readystate == 4) {
+                    
+                }
+            }
+    
+            postuser.open("DELETE","http://localhost:3000/student/"+ users[i].id);
+            postuser.send()
+            }
+    
+                console.log("users")
+    
+    
+    
+    
+    </script>
+</body>
+</html>

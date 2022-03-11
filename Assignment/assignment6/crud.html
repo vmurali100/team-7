@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Lapy</label>
+        <input type="text" name="" id="lapy"> <br> <br>
+        <label for="">Color</label>
+        <input type="text" name="" id="color"> <br> <br>
+        <label for="">Brand</label>
+        <input type="text" name="" id="brand"> <br> <br>
+        <label for="">Price</label>
+        <input type="text" name="" id="price"> <br> <br>
+
+        <button type="button" onclick="Sumitform()" id="e">Enter</button>
+
+        <button type="button" onclick="updates()" style="display: none;" id="f">UPDate</button>
+
+    </form>
+    <table border="1">
+        <thead>
+
+            <th>Lapy</th>
+            <th>Color</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        
+        var sadik =JSON.parse(localStorage.getItem("sadik"))
+        var index;
+        if(sadik==null){
+            sadik=[]
+        }
+        function Sumitform() {
+            var obj = {
+                lapy: "",
+                color: "",
+                brand: "",
+                price: ""
+            }
+            for (a in obj) {
+                obj[a] = document.getElementById(a).value
+            }
+            console.log(obj)
+            sadik.push(obj)
+            localStorage.setItem("sadik",JSON.stringify(sadik))
+            clearing(obj)
+            display()
+            edituser(i)
+
+        }
+
+        // Display a user 
+
+        function display() {
+            document.querySelector("tbody").innerHTML = ""
+            sadik.forEach((obj, i) => {
+                var mytr = document.createElement("tr")
+                for (a in obj) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = obj[a]
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                mytr.appendChild(edittd)
+                var deltd = document.createElement("td")
+                mytr.appendChild(deltd)
+
+                var editbtn = document.createElement("button")
+                var delbtn = document.createElement("button")
+                edittd.appendChild(editbtn)
+                deltd.appendChild(delbtn)
+
+                editbtn.innerHTML = "Edit"
+                delbtn.innerHTML = "delete"
+
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                delbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+
+
+            })
+        }
+        display()
+
+        // Clear a user 
+
+        function clearing(obj) {
+            for (a in obj) {
+                document.getElementById(a).value = ""
+            }
+        }
+
+        // edit  a  user  
+
+        function edituser(i) {
+            document.getElementById("e").style.display="none"
+            document.getElementById("f").style.display="block"
+            index=i
+            var hai = sadik[i]
+            for (a in hai) {
+                document.getElementById(a).value = hai[a]
+
+            }
+        }
+
+
+        // delete a user 
+        function deleteuser(i) {
+            sadik.splice(i, 1)
+            localStorage.setItem("sadik",JSON.stringify(sadik))
+            display()
+        }
+
+        // Update a user 
+        function updates(){
+            var obj = {
+                lapy: "",
+                color: "",
+                brand: "",
+                price: ""
+            }
+            for (a in obj) {
+                obj[a] = document.getElementById(a).value
+            }
+              sadik[index]=obj
+            localStorage.setItem("sadik",JSON.stringify(sadik))
+            display()
+            clearing(obj) 
+            document.getElementById("e").style.display="block"
+            document.getElementById("f").style.display="none"
+           
+            
+        }
+
+    </script>
+</body>
+
+</html>

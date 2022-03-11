@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Distric</label>
+        <input type="text" name="" id="distric"> <br><br>
+        <label for="">Population</label>
+        <input type="text" name="" id="population"> <br><br>
+        <label for="">Men</label>
+        <input type="text" name="" id="men"> <br><br>
+        <label for="">Women</label>
+        <input type="text" name="" id="women"> <br><br>
+
+        <input type="text" name="" id="id" hidden> <br> <br>
+
+    </form>
+
+    <button type="button" onclick="Form()" id="e">Submit</button>
+
+    <button type="button" onclick="update()" id="up" style="display: none;">Update</button>
+
+
+    <table border="1">
+        <thead>
+            <th>Distric</th>
+            <th>Population</th>
+            <th>Men</th>
+            <th>Women</th>
+            <th>Id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var sai = []
+        function Form() {
+            var hari = {
+                distric: "",
+                population: "",
+                men: "",
+                women: ""
+            }
+            for (a in hari) {
+                hari[a] = document.getElementById(a).value
+            }
+            var postuser = new XMLHttpRequest()
+            postuser.onreadystatechange = function () {
+                if (postuser.status == 201 && postuser.readystate == 4) {
+                    // displayhari()
+                }
+            }
+
+            postuser.open("POST", "http://localhost:3000/rehaman");
+            postuser.setRequestHeader("Content-Type", "application/json")
+            postuser.send(JSON.stringify(hari))
+        }
+
+
+        function displayhari() {
+            var haridata = new XMLHttpRequest();
+            haridata.onreadystatechange = function () {
+                if (haridata.readyState == 4 && haridata.status == 200) {
+                    sai = JSON.parse(haridata.response)
+                    displayharitable(sai)
+                }
+            }
+            var url = "http://localhost:3000/rehaman"
+            haridata.open("GET", url)
+            haridata.send()
+        }
+
+
+        function displayharitable(sai) {
+            for (i = 0; i < sai.length; i++) {
+                var myTr = document.createElement("tr")
+                for (a in sai[0]) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = sai[i][a]
+                    myTr.appendChild(myTd)
+                }
+                var edittd = document.createElement("td")
+                var editbtn = document.createElement("button")
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                editbtn.innerHTML = "edit"
+                edittd.appendChild(editbtn)
+                myTr.appendChild(edittd)
+
+                var deltd = document.createElement("td")
+                var delbtn = document.createElement("button")
+                delbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                delbtn.innerHTML = "delete"
+                deltd.appendChild(delbtn)
+                myTr.appendChild(deltd)
+
+                document.querySelector("tbody").appendChild(myTr)
+
+            }
+        }
+        displayhari()
+
+
+        function edituser(i) {
+            for (a in sai[i]) {
+                document.getElementById(a).value = sai[i][a]
+            }
+            document.getElementById("e").style.display = "none"
+            document.getElementById("up").style.display = "block"
+        }
+
+        function deleteuser(i) {
+            var postuser = new XMLHttpRequest()
+            postuser.onreadystatechange = function () {
+                if (postuser.status == 200 && postuser.readystate == 4) {
+
+                }
+            }
+
+            postuser.open("DELETE", "http://localhost:3000/rehaman/" + sai[i].id);
+            postuser.send()
+        }
+
+        function update() {
+            var hari = {
+                distric: "",
+                population: "",
+                men: "",
+                women: "",
+                id: ""
+            }
+            for (a in hari) {
+                hari[a] = document.getElementById(a).value
+            }
+            var postuser = new XMLHttpRequest()
+            postuser.onreadystatechange = function () {
+                if (postuser.status == 200 && postuser.readystate == 4) {
+                    DocumentType.getElementById("e").style.display = "block"
+                    DocumentType.getElementById("up").style.display = "none"
+                }
+            }
+
+            postuser.open("PUT", "http://localhost:3000/rehaman" + hari.id);
+            postuser.setRequestHeader("content-Type", "application/json")
+            postuser.send(JSON.stringify(hari))
+        }
+        // console.log(sai) 
+    </script>
+</body>
+
+</html>

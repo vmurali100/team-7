@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">User Name</label>
+        <input type="text" name="" id="name" onkeyup="validate()">
+        <p style="color: red; display: none; " id="one"> Please enter atleast 5 characters</p><br><br>
+
+        <label for="">Password</label>
+        <input type="text" name="" id="pass" onkeyup="validate()">
+        <p style="color: red; display: none; " id="two">Please enter atleast 6 characters</p><br><br>
+
+        <label for="">Confirm Password</label>
+        <input type="text" name="" id="cpass" onkeyup="validate()">
+        <p style="color: red; display: none; " id="three">Please enter atleast 4 characters</p><br><br>
+
+    </form>
+    <button type="button" disabled>Submit</button>
+
+    <script>
+        function validate() {
+            var sai = {
+                fname: document.getElementById("name").value,
+                password: document.getElementById("pass").value,
+                cpassword: document.getElementById("cpass").value
+            }
+
+            if (sai.fname.length >= 5) {
+                document.getElementById("one").style.display="none"
+                // document.querySelector("button").removeAttribute("disabled")
+            } else {
+                document.getElementById("one").style.display="block"
+                // document.querySelector("button").setAttribute("disabled",true)
+            }
+
+            if (sai.password.length >= 6) {
+                document.getElementById("two").style.display="none"
+                // document.querySelector("button").removeAttribute("disabled")
+
+            } else {
+                document.getElementById("two").style.display="block"
+                // document.querySelector("button").setAttribute("disabled",true)
+
+            }
+
+            if (sai.cpassword.length >= 4) {
+                document.getElementById("three").style.display="none"
+                // document.querySelector("button").removeAttribute("disabled")
+
+            } else {
+                document.getElementById("three").style.display="block"
+                // document.querySelector("button").setAttribute("disabled",true)
+
+            }
+
+            if(sai.fname.length >= 5 && sai.password.length >= 6 && sai.cpassword.length >= 4){
+                document.querySelector("button").removeAttribute("disabled")
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+
+            }
+        }
+    </script>
+</body>
+
+</html>

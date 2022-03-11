@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+
+        body {
+    margin-left: 400px;
+    margin-top: 40px;
+}
+input#class {
+    margin-left: 56px;
+}
+input#id {
+    margin-left: 11px;
+}
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="">StudentDetails</label>
+        <input type="text" name="" id="sname"> <br><br>
+        <label for="">Class</label>
+        <input type="text" name="" id="class"> <br><br>
+        <label for="">ID Number:</label>
+        <input type="text" name="" id="id"> <br><br>
+
+        <button type="button" onclick="Enter()">submit</button>
+    </form>
+
+    <script>
+
+        var array = JSON.parse(localStorage.getItem("array"))
+        if(array == null){
+            array = []
+        }
+        function Enter(){
+            var obj = {
+                sname :"",
+                class :"",
+                id:""
+            }
+            for(a in obj){
+                obj[a] = document.getElementById(a).value
+            }
+            array.push(obj)
+            localStorage.setItem("array",JSON.stringify(array))
+
+            window.location.href="loginn.html"
+        }
+    </script>
+</body>
+</html>

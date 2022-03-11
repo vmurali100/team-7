@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Pen Price</label>
+        <input type="text" name="" id="pen"> <br><br>
+        <label for="">Pencil Price</label>
+        <input type="text" name="" id="pe"> <br><br>
+        <label for="">Eraser Price</label>
+        <input type="text" name="" id="er"> <br><br>
+        <label for="">Scale Price</label>
+        <input type="text" name="" id="scale">
+        <input type="text" name="" id="id" hidden><br><br>
+    </form>
+
+    <button type="button" onclick="Submitform()" id="add">Enter</button>
+
+    <button type="button" onclick="updateing()" id="less" style="display: none;"> update</button>
+
+    <table border="1">
+        <thead>
+            <th>Pen Price</th>
+            <th>Pencil Price</th>
+            <th>Eraser Price</th>
+            <th>Scale Price</th>
+            <th>ID</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        var sadik = []
+        function Submitform() {
+            var obj = {
+                pen: "",
+                pe: "",
+                er: "",
+                scale: ""
+            }
+            for (a in obj) {
+                obj[a] = document.getElementById(a).value
+            }
+            var post = new XMLHttpRequest();
+            post.onreadystatechange = function () {
+                if (post.status == 201 && post.readyState == 4) {
+
+                }
+            }
+            post.open("POST", "http://localhost:3000/Apple ")
+            post.setRequestHeader("content-Type", "application/json")
+            post.send(JSON.stringify(obj))
+        }
+
+
+        function reading() {
+            var read = new XMLHttpRequest();
+            read.onreadystatechange = function () {
+                if (read.readyState == 4 && read.status == 200) {
+                    sadik = JSON.parse(read.response)
+                    display(sadik)
+                }
+            }
+            var url = "http://localhost:3000/Apple "
+            read.open("GET", url)
+            read.send()
+
+        }
+
+
+        function display(obj) {
+            for (i = 0; i < sadik.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in sadik[0]) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = sadik[i][a]
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                var deltd = document.createElement("td")
+                mytr.appendChild(edittd)
+                mytr.appendChild(deltd)
+
+                var editbtn = document.createElement("button")
+                var delbtn = document.createElement("button")
+                edittd.appendChild(editbtn)
+                deltd.appendChild(delbtn)
+
+                editbtn.innerHTML = "edit"
+                delbtn.innerHTML = "delete"
+                editbtn.setAttribute("onclick", "edituser("+i+")")
+                delbtn.setAttribute("onclick", "deleteuser("+i+")")
+
+            }
+        }
+        reading()
+
+        function edituser(i) {
+            document.getElementById("add").style.display = "none"
+            document.getElementById("less").style.display = "block"
+            for (a in sadik[i]) {
+                document.getElementById(a).value = sadik[i][a]
+            }
+        }
+
+
+
+        function deleteuser(i) {
+            var post = new XMLHttpRequest();
+            post.onreadystatechange = function () {
+                if (post.status == 200 && post.readyState == 4) {
+
+                }
+            }
+            post.open("DELETE", "http://localhost:3000/Apple/" + sadik[i].id)
+            post.send()
+        }
+
+
+        function updateing() {
+            var obj = {
+                pen: "",
+                pe: "",
+                er: "",
+                scale: "",
+                id: ""
+            }
+            for (a in obj) {
+                obj[a] = document.getElementById(a).value
+            }
+            var post = new XMLHttpRequest();
+            post.onreadystatechange = function () {
+                if (post.status == 200 && post.readyState == 4) {
+                    document.getElementById("add").style.display = "block"
+                    document.getElementById("less").style.display = "none"
+                }
+            }
+            post.open("PUT", "http://localhost:3000/Apple/ "+obj.id)
+            post.setRequestHeader("content-Type", "application/json")
+            post.send(JSON.stringify(obj))
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="">Confirm Password</label>
+        <input type="text" name="" id="cpas"> <br><br>
+
+        <label for="">Phone</label>
+        <input type="text" name="" id="phone"> <br><br>
+
+    </form>
+
+    <button type="button" onclick="gonext()">Submit</button>
+
+    <p style="color: red; display: none;">This is Invalid...@</p>
+
+    <script>
+        function gonext() {
+            var ob = {
+                cpas: "",
+                phone: ""
+            }
+            for (a in ob) {
+                ob[a] = document.getElementById(a).value
+            }
+            var amazon = JSON.parse(localStorage.getItem("amazon"))
+
+           let check = amazon.find ((Hii)=>{
+               return Hii.cpas === ob.cpas && Hii.phone === ob.phone
+           })
+            if (check) {
+                window.location.href = "display.html"
+            } else {
+                document.querySelector("p").style.display = "block"
+            }
+            
+        }
+    </script>
+</body>
+</html>

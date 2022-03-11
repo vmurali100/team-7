@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">FruitName</label>
+        <input type="text" name="" id="name"> <br> <br>
+        <label for="">Color</label>
+        <input type="text" name="" id="color"> <br><br>
+        <label for="">Price</label>
+        <input type="text" name="" id="price"> <br><br>
+        <label for="">Phone</label>
+        <input type="text" name="" id="phone"> <br> <br>
+        <label for="">Taste</label>
+        <input type="text" name="" id="taste"> <br> <br>
+        <label for="">Place</label>
+        <input type="text" name="" id="place"> <br> <br>   
+        <label for="">State</label>
+        <input type="text" name="" id="state"> <br> <br>
+
+        <button type="button" onclick="Register()" id="adduser">Enter</button>
+        <button type="button" onclick="update()" id="updateuser" style="display: none;">Update user</button>
+
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Color</th>
+                <th>price</th>
+                <th>Phone</th>
+                <th>Place</th>
+                <th>taste</th>
+                <th>State</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+        
+    </table>
+
+    <script>
+
+        // Creat a user 
+        var other = JSON.parse(localStorage.getItem("other"))
+        var index;
+        if (other == null) {
+            other = []
+        }
+        
+        function Register() {
+
+            var person = {
+                name: "",
+                color: "",
+                price: "",
+                phone: "",
+                place: "",
+                taste: "",
+                state: ""
+            }
+
+            for (a in person) {
+                person[a] = document.getElementById(a).value
+            }
+            other.push(person)
+            displaydetails()
+            localStorage.setItem("other", JSON.stringify(other))
+
+            clearing(person)
+
+        }
+
+        // Read a user 
+            function displaydetails(){
+                document.querySelector("tbody").innerHTML = ""
+
+                other.forEach((value1,i)=>{
+                    var mytr = document.createElement("tr")
+                for (a in value1) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML =value1[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                var deltd = document.createElement("td")
+                mytr.appendChild(edittd)
+                mytr.appendChild(deltd)
+
+                var editbtn = document.createElement("button")
+                editbtn.innerHTML = "edit"
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                var delbtn = document.createElement("button")
+                delbtn.innerHTML = "delete"
+                delbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                edittd.appendChild(editbtn)
+                deltd.appendChild(delbtn)
+                })
+            
+            }
+            displaydetails()
+
+
+              //  edit  a user 
+        function edituser(i) {
+            index = i
+            document.getElementById("adduser").style.display = "none"
+            document.getElementById("updateuser").style.display = "block"
+
+            var ravi = other[i]
+            for (a in other[i]) {
+                document.getElementById(a).value = ravi[a]
+            }
+
+        }
+
+
+         //  delete a user 
+         function deleteuser(i) {
+            other.splice(i, 1)
+            localStorage.setItem("other", JSON.stringify(other))
+
+            displaydetails()
+
+        }
+
+
+        // update a user 
+        function update() {
+            var person = {
+                name: "",
+                color: "",
+                price: "",
+                phone: "",
+                place: "",
+                taste: "",
+                state: ""
+            }
+
+
+            for (a in person) {
+                person[a] = document.getElementById(a).value
+            }
+
+            other[index] = person
+            localStorage.setItem("other", JSON.stringify(other))
+
+            displaydetails()
+            clearing(person)
+            document.getElementById("adduser").style.display = "block"
+            document.getElementById("updateuser").style.display = "none"
+
+        }
+
+      
+
+
+            // Clear a user 
+            function clearing(person) {
+            for (a in person) {
+                document.getElementById(a).value = ""
+            }
+        }
+
+    </script>
+</body>
+</html>

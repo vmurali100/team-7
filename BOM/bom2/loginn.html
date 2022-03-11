@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+          body {
+    margin-left: 400px;
+    margin-top: 40px;
+}
+
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="">ID Number:</label>
+        <input type="text" name="" id="id"> <br><br>
+
+        <button type="button" onclick="Submitform()">Submit</button>
+        <p style="color: red; display: none;">Invalid Identity...</p>
+    </form>
+    <script>
+  function Submitform(){
+            var one = {
+                id: ""
+                
+            }
+            for(a in one){
+                one[a] = document.getElementById(a).value
+            } 
+            var array = JSON.parse(localStorage.getItem("array"))
+
+            let check = array.find((hai)=>{
+                return hai.id=== one.id 
+
+            })
+            if(check){
+                window.location.href= "display.html"
+            
+            } else{
+                document.querySelector("p").style.display="block"
+
+            }
+            
+            
+            
+        }
+
+    </script>
+</body>
+</html>

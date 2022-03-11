@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="">
+        <label for="">Fruit one</label>
+        <input type="text" name="" id="a"> <br><br>
+        <label for="">Fruit two</label>
+        <input type="text" name="" id="b"> <br><br>
+        <label for="">Fruit three</label>
+        <input type="text" name="" id="c"> <br> <br>
+        <label for="">Fruit four</label>
+        <input type="text" name="" id="d"> <br><br>
+
+        <button type="button" onclick="Order()" id="dwn">Enter</button>
+
+        <button type="button" onclick="update()" style="display: none;" id="up"> updater</button>
+
+    </form>
+    <table border="1">
+        <thead>
+            <th>Fruit one</th>
+            <th>Fruit two</th>
+            <th>Fruit three</th>
+            <th>Fruit four</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+         var shaik= JSON.parse(localStorage.getItem("shaik"))
+         if( shaik== null){
+             shaik = []
+         }
+          var index;
+        function Order(){
+            var sadik = {
+                a : "",
+                b : "",
+                c : "",
+                d : ""
+            }
+            for(a in sadik){
+                sadik[a]= document.getElementById(a).value
+            }
+
+            shaik.push(sadik)
+            localStorage.setItem("shaik",JSON.stringify(shaik))
+            displaysadik()
+            clear(sadik)
+            editing(i)
+            // console.log(shaik)
+        }
+
+
+        function displaysadik(){
+            document.querySelector("tbody").innerHTML = ""
+
+            shaik.forEach((sadik , i)=>{
+                var mytr = document.createElement("tr")
+                for(a in sadik){
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML=sadik[a]
+                    mytr.appendChild(mytd)
+                    
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var editd = document.createElement("td")
+                var deltd = document.createElement("td")
+                mytr.appendChild(editd)
+                mytr.appendChild(deltd)
+
+                var editbtn = document.createElement("button")
+                var delbtn = document.createElement("button")
+                editd.appendChild(editbtn)
+                deltd.appendChild(delbtn)
+
+                editbtn.innerHTML= "edit"
+                delbtn.innerHTML = "delete"
+                editbtn.setAttribute("onclick", "editing("+i+")")
+                delbtn.setAttribute("onclick", "deleting("+i+")")
+            })
+        }   
+
+        displaysadik()
+
+
+        function clear(sadik){
+            for(a in sadik){
+                document.getElementById(a).value = ""
+                
+            }
+        }
+
+
+        function editing(i){
+            index = i
+            document.getElementById("dwn").style.display= "none"
+            document.getElementById("up").style.display = "block"
+
+            var change = shaik[i]
+            for( a in change){
+                document.getElementById(a).value = change[a]
+            }
+        }
+
+
+        function deleting(i){
+            shaik.splice(i,1)
+            displaysadik()
+            localStorage.setItem("shaik",JSON.stringify(shaik))
+        }
+
+        function update(){
+            var sadik = {
+                a : "",
+                b : "",
+                c : "",
+                d : ""
+            }
+            for(a in sadik){
+                sadik[a]= document.getElementById(a).value
+            }
+            shaik[index] = sadik
+            localStorage.setItem("shaik",JSON.stringify(shaik))
+            displaysadik()
+            clear(sadik)
+            document.getElementById("dwn").style.display= "block"
+            document.getElementById("up").style.display = "none"
+        }
+        console.log(shaik)
+
+    </script>                 
+</body>
+</html>

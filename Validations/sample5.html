@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 0auto;
+            margin-left: 350px;
+        }
+
+        form {
+            width: 300px;
+            border: 2px solid;
+            background-color: pink;
+
+        }
+
+        img {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: 410px;
+            top: 28px;
+        }
+
+        a {
+            text-decoration-line: none;
+        }
+    </style>
+
+<body>
+    <form action="">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png"
+            alt="">
+        <h2 style="color: blue; text-align: center;"><i>Instagram</i></h2>
+        <label for="">User Name</label>
+        <input type="text" name="" id="name" onkeyup="valid()">
+        <p style="color: red;" id="one">Enter atleast 8 characters</p> <br>
+        <label for="">Password</label>
+        <input type="text" name="" id="pass" onkeyup="valid()">
+        <p style="color: red;" id="two">Enter atleast 10 characters</p>
+
+        <button disabled style="margin-left: 15px;">Sign in</button>
+        <p><a href="">forgot password?</a></p>
+    </form>
+
+
+    <script>
+        function valid() {
+            var hai = {
+                fname: document.getElementById("name").value,
+                pass: document.getElementById("pass").value
+            }
+            if (hai.fname.length >= 8) {
+                document.getElementById("one").style.display = "none"
+                document.querySelector("button").removeAttribute("disabled")
+            } else {
+                document.getElementById("one").style.display = "block"
+                document.getElementById("button").setAttribute("disabled", true)
+            }
+
+            if (hai.pass.length >= 10) {
+                document.getElementById("two").style.display = "none"
+                document.querySelector("button").removeAttribute("disabled")
+
+            } else {
+                document.getElementById("two").style.display = "block"
+                document.getElementById("button").setAttribute("disabled", true)
+
+            }
+        }
+    </script>
+</body>
+
+</html>

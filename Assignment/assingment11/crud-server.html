@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Powerstar</label>
+        <input type="text" name="" id="power"> <br><br>
+        <label for="">Mahesh</label>
+        <input type="text" name="" id="super"> <br><br>
+        <label for="">Allu</label>
+        <input type="text" name="" id="stylish"> <br><br>
+        <label for="">AAli</label>
+        <input type="text" name="" id="joke"> <br><br>
+        <input type="text" name="" id="id" hidden>
+
+        <button type="button" onclick="Enter()" id="add">Submit</button>
+
+        <button type="button" onclick="updateing()" style="display: none;" id="less">updatde</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>Powerstar</th>
+            <th>Mahesh</th>
+            <th>Allu</th>
+            <th>AAli</th>
+            <th>id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var sadik = []
+        function Enter() {
+            var oo = {
+                power: "",
+                super: "",
+                stylish: "",
+                joke: ""
+            }
+            for (a in oo) {
+                oo[a] = document.getElementById(a).value
+            }
+
+            var post = new XMLHttpRequest();
+            post.onreadystatechange = function () {
+                if (post.status == 201 && post.readyState == 4) {
+
+                }
+            }
+            post.open("POST", "http://localhost:3000/suri ")
+            post.setRequestHeader("content-Type", "application/json")
+            post.send(JSON.stringify(oo))
+        }
+
+
+        function reading() {
+            var read = new XMLHttpRequest();
+            read.onreadystatechange = function () {
+                if (read.readyState == 4 && read.status == 200) {
+                    sadik = JSON.parse(read.response)
+                    display(sadik)
+                }
+            }
+            var url = "http://localhost:3000/suri"
+            read.open("GET", url)
+            read.send()
+
+        }
+
+
+        function display(sadik) {
+            for (i = 0; i < sadik.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in sadik[0]) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = sadik[i][a]
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                var deltd = document.createElement("td")
+                mytr.appendChild(edittd)
+                mytr.appendChild(deltd)
+
+                var editbtn = document.createElement("button")
+                var delbtn = document.createElement("button")
+                edittd.appendChild(editbtn)
+                deltd.appendChild(delbtn)
+
+                editbtn.innerHTML = "edit"
+                delbtn.innerHTML = "delete"
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                delbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+
+            }
+        }
+        reading()
+
+        function edituser(i) {
+            document.getElementById("add").style.display = "none"
+            document.getElementById("less").style.display = "block"
+            for (a in sadik[i]) {
+                document.getElementById(a).value = sadik[i][a]
+            }
+        }
+
+
+
+        function deleteuser(i) {
+            var post = new XMLHttpRequest();
+            post.onreadystatechange = function () {
+                if (post.status == 200 && post.readyState == 4) {
+
+                }
+            }
+            post.open("DELETE", "http://localhost:3000/suri/" + sadik[i].id)
+            post.send()
+        }
+
+
+        function updateing() {
+            var oo = {
+                power: "",
+                super: "",
+                stylish: "",
+                joke: "",
+                id:""
+            }
+            for (a in oo) {
+                oo[a] = document.getElementById(a).value
+            }
+            var post = new XMLHttpRequest();
+            post.onreadystatechange = function () {
+                if (post.status == 200 && post.readyState == 4) {
+                    document.getElementById("add").style.display = "block"
+                    document.getElementById("less").style.display = "none"
+                }
+            }
+            post.open("PUT", "http://localhost:3000/suri/" + oo.id)
+            post.setRequestHeader("content-Type", "application/json")
+            post.send(JSON.stringify(oo))
+        }
+
+
+
+    </script>
+</body>
+
+</html>

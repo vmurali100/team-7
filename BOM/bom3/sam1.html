@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>AMAZON Form</h1>
+    <form action="">
+        <label for="">RegisterName</label>
+        <input type="text" name="" id="name"> <br><br>
+        <label for="">Email</label>
+        <input type="text" name="" id="email"> <br><br>
+        <label for="">Password</label> 
+        <input type="text" name="" id="pas"> <br><br>
+        <label for="">Confirm Password</label> 
+        <input type="text" name="" id="cpas"> <br><br>
+        <label for="">Phone</label>
+        <input type="text" name="" id="phone"> <br><br>
+        <label for="">OTP</label>
+        <input type="text" name="" id="otp"> <br><br>
+
+        <button type="button" onclick="Enter()">Submit</button>
+    </form>
+
+    <script>
+        var amazon =JSON.parse(localStorage.getItem("amazon"))
+        if(amazon == null){
+            amazon= []
+        }
+        function Enter(){
+            var obj = {
+                name : "",
+                email:"",
+                pas :"",
+                cpas:"",
+                phone:"",
+                otp:""
+
+            }
+            for(a in obj ){
+                obj[a] = document.getElementById(a).value
+            }
+            amazon.push(obj)
+            localStorage.setItem("amazon",JSON.stringify(amazon ))
+
+            window.location.href= "login.html"
+        }
+    </script>
+</body>
+</html>

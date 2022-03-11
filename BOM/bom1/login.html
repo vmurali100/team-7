@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">StudentName</label>
+        <input type="text" name="" id="sname"> <br><br>
+        <label for="">Class</label>
+        <input type="text" name="" id="class"> <br><br>
+
+        <button type="button" onclick="Submitform()">Submit</button>
+        <p style="color: red; display: none;">Please </p>
+    </form>
+
+    <script>
+        function Submitform(){
+            var one = {
+                sname: "",
+                class: ""
+                
+            }
+            for(a in one){
+                one[a] = document.getElementById(a).value
+            } 
+            var array = JSON.parse(localStorage.getItem("array"))
+
+            let check = array.find((hai)=>{
+                return hai.sname=== one.sname && hai.class===one.class
+
+            })
+            if(check){
+                window.location.href= "Dashbord.html"
+            
+            } else{
+                document.querySelector("p").style.display="block"
+
+            }
+            
+            
+            
+        }
+    </script>
+</body>
+</html>

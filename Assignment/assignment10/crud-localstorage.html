@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">ShirtName</label>
+        <input type="text" name="" id="s"> <br><br>
+        <label for="">PhantName</label>
+        <input type="text" name="" id="p"> <br><br>
+        <label for="">Shoe</label>
+        <input type="text" name="" id="sh"> <br><br>
+        <label for="">Watch</label>
+        <input type="text" name="" id="w"> <br><br>
+        <label for="">Belt</label>
+         <input type="text" name="" id="b"> <br><br>
+         <button type="button" onclick="start()" id="dwn">Ready</button>
+
+         <button type="button" onclick="update()" style="display: none;" id="up">Enter</button>
+    </form>
+        <table border="1">
+            <thead>
+                <th>ShirtName</th>
+                <th>PhantName</th>
+                <th>Shoe</th>
+                <th>Watch</th>
+                <th>Belt</th>
+                <th>EDit</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    <script>
+        var index;
+        party = JSON.parse(localStorage.getItem(party))
+        function start(){
+            var cool = {
+                s : "",
+                p : "",
+                sh : "",
+                w : "",
+                b : ""
+            }
+            for(a in cool){
+            cool[a] = document.getElementById(a).value
+          }
+          party.push(cool)
+          localStorage.setItem("party",JSON.stringify(party))
+          displaycool()
+          clear(cool)
+          edit(i)
+          console.log(party)
+        }
+
+        function displaycool(){
+            document.querySelector("tbody").innerHTML=""
+           party.forEach((cool,i)=>{
+            var mytr = document.createElement("tr")
+                for(a in cool){
+                    mytd = document.createElement("td")
+                    mytd.innerHTML = cool[a]
+                    mytr.appendChild(mytd)
+                
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                var deltd = document.createElement("td")
+                mytr.appendChild(edittd)
+                mytr.appendChild(deltd)
+
+                var editbtn = document.createElement("button")
+                var delbtn = document.createElement("button")
+                edittd.appendChild(editbtn)
+                deltd.appendChild(delbtn)
+
+                editbtn.innerHTML= "edit"
+                delbtn.innerHTML= "delete"
+                editbtn.setAttribute("onclick","edit("+i+")")
+                delbtn.setAttribute("onclick", "deleting("+i+")")
+           })
+
+        }
+        displaycool()
+
+        function clear(cool){
+            for(a in cool ){
+                document.getElementById(a).value= ""
+            }
+        }
+
+
+        function edit(i){
+            index= i
+            document.getElementById("dwn").style.display="none"
+            document.getElementById("up").style.display= "block"
+
+            var s = party[i]
+            for(a in s){
+                document.getElementById(a).value = s[a]
+            }
+        }
+
+        function deleting(i){
+            party.splice(i,1)
+            localStorage.setItem("party",JSON.stringify(party))
+            displaycool()
+        }
+        
+
+        function update(){
+            var cool = {
+                s : "",
+                p : "",
+                sh : "",
+                w : "",
+                b : ""
+            }
+            for(a in cool){
+            cool[a] = document.getElementById(a).value
+          }
+          party(index) = cool
+          localStorage.setItem("party",JSON.stringify(party))
+          displaycool()
+          clear(cool)
+          document.getElementById("dwn").style.display="block"
+            document.getElementById("up").style.display= "none"
+        }
+    </script>
+</body>
+</html>

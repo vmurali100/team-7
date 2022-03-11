@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Banana</label>
+        <input type="text" name="" id="banana"> <br><br>
+        <label for="">Color</label>
+        <input type="text" name="" id="color"> <br><br>
+        <label for="">Cost</label>
+        <input type="text" name="" id="cost">
+        <button type="button" onclick="Enter()" id="hh">Submit</button>
+
+        <button type="button" onclick="update()" style="display: none;" id="up">Re-submit</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>Banana</th>
+            <th>Color</th>
+            <th>Cost</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var index;
+        var hello = JSON.parse(localStorage.getItem("hello"))
+        if( hello == null){
+            hello = []
+        }
+        function Enter(){
+            var hai = {
+                banana:"",
+                color :"",
+                cost :""
+            }
+            for(a in hai){
+                hai[a] = document.getElementById(a).value
+            }
+            hello.push(hai)
+            localStorage.setItem("hello",JSON.stringify(hello))
+            displayhai()
+            clear(hai)
+            edit(i)
+        }
+
+        function displayhai(){
+            document.querySelector("tbody").innerHTML = ""
+            hello.forEach((hai,i) => {
+                var mytr = document.createElement("tr")
+                for(a in hai){
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML= hai[a]
+
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                var deltd = document.createElement("td")
+                mytr.appendChild(edittd)
+                mytr.appendChild(deltd)
+
+                var editbtn = document.createElement("button")
+                var delbtn = document.createElement("button")
+                edittd.appendChild(editbtn)
+                deltd.appendChild(delbtn)
+
+                editbtn.innerHTML = "Edit"
+                delbtn.innerHTML ="Delete"
+                editbtn.setAttribute("onclick","edit("+i+")")
+                delbtn.setAttribute("onclick","deleting("+i+")")
+
+
+            });
+        }
+        displayhai()
+
+        function clear(hai){
+            for(a in hai){
+                document.getElementById(a).value= ""
+            }
+        }
+
+        function edit(i){
+            
+            document.getElementById("hh").style.display="none"
+            document.getElementById("up").style.display= "block"
+            index = i
+            var e = hello[i]
+            for( a in e){
+                document.getElementById(a).value=e[a]
+            }
+        }
+
+        function deleting(i){
+            hello.splice(i,1)
+            localStorage.setItem("hello",JSON.stringify(hello))
+            displayhai()
+        }
+
+        function  update(){
+            var hai = {
+                banana:"",
+                color :"",
+                cost :""
+            }
+            for(a in hai){
+                hai[a] = document.getElementById(a).value
+            }
+            hello[index]= hai
+            localStorage.setItem("hello",JSON.stringify(hello))
+            displayhai()
+            clear(hai)
+            document.getElementById("hh").style.display="block"
+            document.getElementById("up").style.display= "none"
+        }
+    </script>
+</body>
+</html>

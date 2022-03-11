@@ -1,0 +1,51 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin-left: 300px;
+            margin-top: 100px;
+        }
+        img{
+            width: 150px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://thumbs.dreamstime.com/b/man-suit-showing-signboard-text-enter-password-young-caucasian-wearing-grey-white-shirt-black-tie-written-51646258.jpg" alt="">
+    <form action="">
+        <label for="">Password</label>
+        <input type="text" name="" id="pass"> <br><br>
+        <button type="button" onclick="Enter()">Submit</button>
+        <p style="color: red; display: none;">Invalid Password...@</p>
+    </form>
+    <script>
+        function Enter(){
+            var dear = {
+                pass :""
+            }
+            for( a in dear){
+                dear[a]=document.getElementById(a).value
+            }
+            var hai = JSON.parse(localStorage.getItem("hai"))
+
+            let check = hai.find((mn)=>{
+                return mn.pass === dear.pass
+            })
+            if(check){
+                window.location.href="display.html"
+            }
+            else{
+                document.querySelector("p").style.display= "block"
+            }
+        }
+    </script>
+</body>
+</html>
