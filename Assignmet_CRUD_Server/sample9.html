@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Movie Name</label>
+        <input type="text" name="" id="1"><br>
+        <label for="">Hero Name</label>
+        <input type="text" name="" id="2"><br>
+        <label for="">Heroine Name</label>
+        <input type="text" name="" id="3"><br>
+        <label for="">Director</label>
+        <input type="text" name="" id="4"><br>
+        <label for="">Release Date</label>
+        <input type="text" name="" id="5"><br>
+    </form>
+    <button type="button" onclick="Create()">Click Here</button>
+    <br>
+    <table border="1">
+        <thead>
+            <th>Movie Name</th>
+            <th>Hero Name</th>
+            <th>Heroine Name</th>
+            <th>Director</th>
+            <th>Release Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var Film = []
+        function Create(){
+            var Movie = {
+                1:"",
+                2:"",
+                3:"",
+                4:"",
+                5:""
+            }
+            for (a in Movie){
+                Movie[a] = document.getElementById(a).value
+            }
+            console.log(Movie)
+            Film.push(Movie)
+            Read()
+        }
+
+        function Read(){
+            Film.forEach((Movie)=>{
+                var myTr = document.createElement("tr")
+                for (a in Movie){
+                    var myTd = document.createElement("td")
+                    myTr.appendChild(myTd)
+                    myTd.innerHTML = Movie[a]
+                }
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+    </script>
+</body>
+</html>

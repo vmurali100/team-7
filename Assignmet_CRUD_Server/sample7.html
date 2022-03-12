@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Distict : </label>
+        <input type="text" name="" id="distict"> <br><br>
+        <label for="">Papulation : </label>
+        <input type="text" name="" id="papulation"> <br><br>
+        <label for="">Males : </label>
+        <input type="text" name="" id="males"> <br><br>
+        <label for="">Females : </label>
+        <input type="text" name="" id="females"> <br><br>
+        <label for="">Others : </label>
+        <input type="text" name="" id="others"> <br><br>
+       
+        <button type="button" onclick="getUser()" id="addUser">Get Distict</button>
+        <button type="button" onclick="updateUser()" id="updateUserBtn" style="display: none;">Update Distict</button>
+    </form>
+    <br>
+    <table border="1">
+        <thead>
+            <th>Distict</th>
+            <th>Papulation</th>
+            <th>Males</th>
+            <th>Females</th>
+            <th>Others</th>           
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var distict = JSON.parse(localStorage.getItem(distict))
+        if (distict == null) {
+            distict = [];
+            console.log(distict)
+        }
+        // 1.Create a user
+        function getUser() {
+            var employee = {
+                distict: "",
+                papulation: "",
+                males: "",
+                females: "",
+                others: ""
+            }
+
+            for (a in employee) {
+                employee[a] = document.getElementById(a).value
+            }
+            distict.push(employee)
+            localStorage.setItem("distict", JSON.stringify(distict))
+            Alldistict();
+            ClearForm(employee)
+        }
+        // 2.Read a user
+        function Alldistict() {
+            document.querySelector("tbody").innerHTML = ""
+            distict.forEach((employee, i) => {
+                console.log(i)
+                var myTr = document.createElement("tr")
+                document.querySelector("tbody").appendChild(myTr)
+
+                for (a in employee) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = employee[a]
+                    myTr.appendChild(myTd)
+                }
+                var editTd = document.createElement("td")
+                var deleteTd = document.createElement("td")
+
+                var editBtn = document.createElement("button")
+                editBtn.innerHTML = "Edit"
+                editBtn.setAttribute("onclick", "editEmployee(" + i + ")")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.innerHTML = "Delete"
+                deleteBtn.setAttribute("onclick", "deleteEmployee(" + i + ")")
+
+                editTd.appendChild(editBtn)
+                deleteTd.appendChild(deleteBtn)
+
+                myTr.appendChild(editTd);
+                myTr.appendChild(deleteTd)
+            })
+        }
+        // This line excute when Application starts
+        Alldistict()
+
+
+        //   3.Edit a User
+        function editEmployee(i) {
+            index = i
+            document.getElementById("addUser").style.display = "none"
+            document.getElementById("updateUserBtn").style.display = "block"
+            var selectedEmployee = distict[i]
+            for (a in distict[i])
+                document.getElementById(a).value = selectedEmployee[a]
+        }
+
+        // 4.Update a user
+
+        function updateUser() {
+            var employee = {
+                distict: "",
+                papulation: "",
+                males: "",
+                females: "",
+                others: ""
+            };
+            for (a in employee) {
+                employee[a] = document.getElementById(a).value
+            }
+            distict[index] = employee
+            localStorage.setItem("distict", JSON.stringify(distict))
+            Alldistict()
+            ClearForm(employee)
+            document.getElementById("addUser").style.display = "block"
+            document.getElementById("updateUserBtn").style.display = "none"
+        }
+        // 5.Delete a user
+        function deleteEmployee(i) {
+            distict.splice(i, 1)
+            localStorage.setItem("distict", JSON.stringify(distict))
+            Alldistict()
+        }
+        // 6.Clearing the Form
+        function ClearForm(employee) {
+            for (a in employee) {
+                document.getElementById(a).value = ""
+            }
+        }
+    </script> 
+</body>
+
+</html>

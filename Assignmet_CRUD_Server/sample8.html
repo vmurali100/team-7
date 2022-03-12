@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">First Name : </label>
+        <input type="text" name="" id="fname"> <br><br>
+        <label for="">Last Name : </label>
+        <input type="text" name="" id="lname"> <br><br>
+        <label for="">Phon Number : </label>
+        <input type="text" name="" id="phoneNumber"> <br><br>
+        <label for="">Age : </label>
+        <input type="text" name="" id="age"> <br><br>
+        <label for="">DOB : </label>
+        <input type="text" name="" id="DOB"> <br><br>
+        <label for="">Email : </label>
+        <input type="text" name="" id="email"> <br><br>
+        <label for="">City : </label>
+        <input type="text" name="" id="city"> <br><br>
+        <label for="">State : </label>
+        <input type="text" name="" id="state"> <br><br>
+
+        <button type="button" onclick="getUser()" id="addUser">Get User</button>
+        <button type="button" onclick="updateUser()" id="updateUserBtn" style="display: none;">Update User</button>
+    </form>
+    <br>
+    <table border="1">
+        <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Age</th>
+            <th>DOB</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var employees = JSON.parse(localStorage.getItem(employees))
+        if (employees == null) {
+            employees = [];
+            console.log(employees)
+        }
+        // 1.Create a user
+        function getUser() {
+            var employee = {
+                fname: "",
+                lname: "",
+                phoneNumber: "",
+                age: "",
+                DOB: "",
+                email: "",
+                city: "",
+                state: ""
+            }
+ 
+             for (a in employee) {
+                employee[a] = document.getElementById(a).value
+            }
+            employees.push(employee)
+            localStorage.setItem("employees", JSON.stringify(employees))
+            AllEmployees();
+            ClearForm(employee)
+        }
+        // 2.Read a user
+        function AllEmployees() {
+            document.querySelector("tbody").innerHTML = ""
+            employees.forEach((employee, i) => {
+                console.log(i)
+                var myTr = document.createElement("tr")
+                document.querySelector("tbody").appendChild(myTr)
+
+                for (a in employee) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = employee[a]
+                    myTr.appendChild(myTd)
+                }
+                var editTd = document.createElement("td")
+                var deleteTd = document.createElement("td")
+
+                var editBtn = document.createElement("button")
+                editBtn.innerHTML = "Edit"
+                editBtn.setAttribute("onclick", "editEmployee(" + i + ")")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.innerHTML = "Delete"
+                deleteBtn.setAttribute("onclick", "deleteEmployee(" + i + ")")
+
+                editTd.appendChild(editBtn)
+                deleteTd.appendChild(deleteBtn)
+
+                myTr.appendChild(editTd);
+                myTr.appendChild(deleteTd)
+            })
+        }
+        // This line excute when Application starts
+        AllEmployees()
+
+
+    //   3.Edit a User
+        function editEmployee(i) {
+            index=i
+            document.getElementById("addUser").style.display = "none"
+            document.getElementById("updateUserBtn").style.display = "block"
+            var selectedEmployee = employees[i]
+            for (a in employees[i])
+                document.getElementById(a).value = selectedEmployee[a]
+        }
+
+        // 4.Update a user
+       
+        function updateUser() {
+            var employee = {
+                fname: "",
+                lname: "",
+                phoneNumber: "",
+                age: "",
+                DOB: "",
+                email: "",
+                city: "",
+                state: ""
+            };
+            for (a in employee) {
+                employee[a] = document.getElementById(a).value
+            }
+            employees[index] = employee 
+            localStorage.setItem("employees", JSON.stringify(employees))
+            AllEmployees()
+            ClearForm(employee)
+            document.getElementById("addUser").style.display = "block"
+            document.getElementById("updateUserBtn").style.display = "none"
+        }
+        // 5.Delete a user
+        function deleteEmployee(i) {
+            employees.splice(i, 1)
+            localStorage.setItem("employees", JSON.stringify(employees))
+            AllEmployees()
+        }
+        // 6.Clearing the Form
+        function ClearForm(employee) {
+            for (a in employee) {
+                document.getElementById(a).value = ""
+            }
+        }
+    </script>
+</body>
+
+</html>

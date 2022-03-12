@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Car</label>
+        <input type="text" name="" id="a"><br>
+        <label for="">Model</label>
+        <input type="text" name="" id="b"><br>
+        <label for="">Color</label>
+        <input type="text" name="" id="c"><br>
+        <label for="">Price</label>
+        <input type="text" name="" id="d"><br>
+    </form>
+    <button type="button" onclick="Creating()" id="1">Click on me</button>
+    <button type="button" onclick="UpdateCar()" id="2" style="display: none;">Update me</button>
+    <br>
+    <table border="1">
+        <thead>
+            <th>Car</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Price</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var GetInfo;
+        var Info = JSON.parse(localStorage.getItem("Info"))
+        if (Info == null){
+            Info = []
+        }
+        // 1.Create 
+        function Creating(){
+            var Car = {
+                a:"",
+                b:"",
+                c:"",
+                d:""
+            }
+            for (a in Car){
+                Car[a] = document.getElementById(a).value
+            }            
+            Clearing(Car)
+            Info.push(Car)
+            console.log(Car)
+            Reading()
+            localStorage.setItem("Info", JSON.stringify(Info))
+        }
+        // 2.Read
+        function Reading(){
+            Info.forEach((Car,i)=>{
+                var myTr = document.createElement("tr")
+                for (a in Car){
+                    var myTd = document.createElement("td")
+                    myTr.appendChild(myTd)
+                    myTd.innerHTML = Car[a]
+                }
+                document.querySelector("tbody").appendChild(myTr)
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                myTr.appendChild(editTd)
+                editTd.appendChild(editBtn)
+                editBtn.innerHTML = "edit"
+                editBtn.setAttribute("onclick","Editing("+i+")")
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                myTr.appendChild(deleteTd)
+                deleteTd.appendChild(deleteBtn)
+                deleteBtn.innerHTML = "delete"
+                deleteBtn.setAttribute("onclick","Deleting("+i+")")                
+            })
+        }Reading()
+
+        // 3.Clear
+        function Clearing(Car){
+            for (a in Car){
+                document.getElementById(a).value = ""
+            }
+        }
+        // 4.Edit
+        function Editing(i){
+            var editCar = Info[i]
+            for (a in editCar){
+                document.getElementById(a).value = editCar[a]
+            }
+            GetInfo=i
+            document.getElementById("1").style.display="none"
+            document.getElementById("2").style.display="block"
+        }
+        // 5.Update
+        function Updating(){
+            var Car = {
+                a:"",
+                b:"",
+                c:"",
+                d:""
+            }
+            for (a in Car){
+                Car[a] = document.getElementById(a).value
+            }     
+            Clearing(Car)
+            Reading()
+            Info[GetInfo] = Car
+            localStorage.setItem("Info", JSON.stringify(Info))
+            document.getElementById("1").style.display="block"
+            document.getElementById("2").style.display="none"
+        }
+        // 6.Delete
+        function Deleting(i){
+            Info.splice(i,1)
+            localStorage.setItem("Info", JSON.stringify(Info))
+            Reading()
+        }
+    </script>
+</body>
+</html>

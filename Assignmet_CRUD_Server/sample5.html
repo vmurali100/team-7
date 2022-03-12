@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Name</label>
+        <input type="text" name="" id="name"><br>
+        <label for="">Age</label>
+        <input type="text" name="" id="age"><br>
+        <label for="">Email</label>
+        <input type="text" name="" id="email"><br>
+    </form>
+    <button type="button" onclick="CreateValue()" id="b">Click</button>
+    <button type="button" onclick="UpdateUser()" id="c" style="display: none;">Update</button>
+    <br>
+    <table border="1">
+        <thead>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var Sadik;
+
+        var getInfo = JSON.parse(localStorage.getItem("getInfo"))
+        if (getInfo == null) {
+            getInfo = []
+        }
+
+
+        // 1.Create a User
+        function CreateValue() {
+            var Data = {
+                name: "",
+                age: "",
+                email: ""
+            }
+            for (a in Data) {
+                Data[a] = document.getElementById(a).value
+            }
+            console.log(Data)
+            getInfo.push(Data)
+            ReadUser()
+            localStorage.setItem("getInfo", JSON.stringify(getInfo))
+
+
+        }
+        // 2.Read a User
+        function ReadUser() {
+            document.querySelector("tbody").innerHTML=""
+            getInfo.forEach((Data, i) => {
+                var myTr = document.createElement("tr")
+                for (a in Data) {
+                    var myTd = document.createElement("td")
+                    myTr.appendChild(myTd)
+                    myTd.innerHTML = Data[a]
+
+                }
+
+                document.querySelector("tbody").appendChild(myTr)
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                myTr.appendChild(editTd)
+                editTd.appendChild(editBtn)
+                editBtn.innerHTML = "Edit"
+                editBtn.setAttribute("onclick", "EditUser(" + i + ")")
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                myTr.appendChild(deleteTd)
+                deleteTd.appendChild(deleteBtn)
+                deleteBtn.innerHTML = "Delete"
+                deleteBtn.setAttribute("onclick", "DeleteUser(" + i + ")")
+
+            })
+        }
+        ReadUser()
+        // 3.Clear a Form
+        function ClearData(Data) {
+            for (a in Data) {
+                document.getElementById(a).value = ""
+            }
+        }
+        // 4.Edit a user
+        function EditUser(i) {
+            var edit = getInfo[i]
+            Sadik = i
+            for (a in edit) {
+                document.getElementById(a).value = edit[a]
+            }
+            document.getElementById("b").style.display = "none"
+            document.getElementById("c").style.display = "block"
+        }
+        // 5.Delete a User
+        function DeleteUser(i) {
+            getInfo.splice(i, 1)
+            localStorage.setItem("getInfo", JSON.stringify(getInfo))
+            ReadUser()
+
+        }
+        // 6.Update a User
+        function UpdateUser() {
+            var Data = {
+                name: "",
+                age: "",
+                email: ""
+            }
+            for (a in Data) {
+                Data[a] = document.getElementById(a).value
+            }
+            getInfo[Sadik] = Data
+            ClearData(Data)
+            ReadUser()
+            localStorage.setItem("getInfo", JSON.stringify(getInfo))
+            document.getElementById("b").style.display = "block"
+            document.getElementById("c").style.display = "none"
+
+        }
+    </script>
+</body>
+
+</html>

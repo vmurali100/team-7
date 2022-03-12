@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .myHeading {
+            color: red;
+            text-transform: uppercase;
+
+        }
+
+        .some {
+            text-transform: lowercase;
+            color: blue;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <button onclick="change()">Change Color And Style</button>
+    <h2 class="myHeading">Hello Javascrict</h2>
+
+    <ul>
+        <li>Item1</li>
+        <li>Item2</li>
+        <li>Item3</li>
+        <li>Item4</li>
+        <li>Item5</li>
+    </ul>
+    <label for="">Enter Your Name : </label>
+    <input type="text" name="" id="myName" onkeydown="validateName()"> <br>
+    <button >Validate Name</button>
+    <script>
+
+        // 1. Javascrict can help you to create new HTML Elements - DOM
+        // var myHeading = document.createElement("h2");
+        // myHeading.innerText = "Craeted by Javascript";
+        // document.body.appendChild(myHeading)
+
+        // 2. Javascrict Can help you to Change Existing HTML Element Styles ,text, attrubutes
+                // a. Where to Place Javascript Code ?
+                // b. How Javascript can help you to change Styles ,text, attrubutes
+
+        // 3. Javascrict can help you to delete a HTML Element
+        // 4. Javascrict Can help you to Manipulate the DOM
+        // 5. Javascrict Can help you to Validate the HTML Data
+        // 6. Javascrict Can help you to do server communication 
+
+
+    </script>
+    <script>
+        function validateName() {
+            var myName = document.getElementById("myName").value
+            if (myName.length > 6) {
+                console.log("It is very Good Name")
+            } else {
+                console.log("Please Enter a Name more than 6 Characters ")
+            }
+        }
+        // document.querySelector("h2").style.color="blue";
+        document.querySelector("h2").innerText = "Hello From Dynamic JS";
+        // document.querySelector("h2").setAttribute("class","some")
+        document.querySelector("ul").onclick = function (e) {
+            var parentNode = e.target.parentNode
+            parentNode.removeChild(e.target)
+        }
+        function change() {
+            document.querySelector("h2").innerText = "Hello From Dynamic JS";
+            document.querySelector("h2").setAttribute("class", "some")
+
+        }
+
+
+    </script>
+</body>
+
+</html>

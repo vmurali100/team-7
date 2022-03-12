@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Full Name</label>
+        <input type="text" name="" id="A"><br>
+        <label for="">Email</label>
+        <input type="text" name="" id="B"><br>
+        <label for="">Mobile No</label>
+        <input type="text" name="" id="C"><br>
+        <label for="">City</label>
+        <input type="text" name="" id="D"><br>
+        <label for="">State</label>
+        <input type="text" name="" id="E"><br>
+        <label for="">Company</label>
+        <input type="text" name="" id="F"><br>
+    </form>
+    <button type="button" onclick="Creating()" id="R">Please Click</button>
+    <button type="button" onclick="Updating()" id="S" style="display: none;">Update</button>
+    <br>
+    <table border="1">
+        <thead>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Mobile No</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Company</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var Info    
+
+        var Employee = JSON.parse(localStorage.getItem("Employee"))
+        if ( Employee == null){
+            Employee = []
+        }
+        function Creating(){
+            var User = {
+                A:"",
+                B:"",
+                C:"",
+                D:"",
+                E:"",
+                F:""
+            }
+            for (a in User){
+                User[a] = document.getElementById(a).value
+            }
+            console.log(User)
+            Employee.push(User)
+            Clearing(User)
+            Reading()
+            localStorage.setItem("Employee",JSON.stringify(Employee))
+        }
+
+        function Reading(){
+            document.querySelector("tbody").innerHTML = ""
+            Employee.forEach((User,i)=>{
+                var trtr = document.createElement("tr")
+                for (a in User){
+                    var tdtd = document.createElement("td")
+                    trtr.appendChild(tdtd)
+                    tdtd.innerHTML = User[a]
+                }
+                document.querySelector("tbody").appendChild(trtr)
+                var tdEdit = document.createElement("td")
+                var btnEdit = document.createElement("button")
+                trtr.appendChild(tdEdit)
+                tdEdit.appendChild(btnEdit)
+                btnEdit.innerHTML = "Edit"
+                btnEdit.setAttribute("onclick","Editing("+i+")")
+
+                var tdDelete = document.createElement("td")
+                var btnDelete = document.createElement("button")
+                trtr.appendChild(tdDelete)
+                tdDelete.appendChild(btnDelete)                
+                btnDelete.innerHTML = "Delete"
+                btnDelete.setAttribute("onclick","Deleting("+i+")")
+            })
+        }
+        Reading()
+
+        function Clearing(User){
+            for (a in User){
+                document.getElementById(a).value = ""
+            }
+        }
+
+        function Editing(i){ 
+            var edit = Employee[i]
+            for (a in edit){
+                document.getElementById(a).value = edit[a]                
+            }
+            Info=i
+            document.getElementById("R").style.display="none"
+            document.getElementById("S").style.display="block"
+        }
+
+        function Updating(i){
+            var User = {
+                A:"",
+                B:"",
+                C:"",
+                D:"",
+                E:"",
+                F:""
+            }
+            for (a in User){
+                User[a] = document.getElementById(a).value
+            }           
+            Clearing(User)             
+            Reading()      
+            Employee[Info]=User    
+            localStorage.setItem("Employee",JSON.stringify(Employee))
+            document.getElementById("R").style.display="block"
+            document.getElementById("S").style.display="none"
+        }
+
+        function Deleting(i){
+            Employee.splice(i,1)
+            localStorage.setItem("Employee",JSON.stringify(Employee))
+            Reading()
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Fruit Name</label>
+        <input type="text" name="" id="A"><br>
+        <label for="">Vegetable Name</label>
+        <input type="text" name="" id="B"><br>
+        <label for="">Cost</label>
+        <input type="text" name="" id="C"><br>
+    </form>
+    <button type="button" onclick="Create()" id="RRR">Click</button>
+    <button type="button" onclick="Update()" style="display: none;" id="BN">Update me</button>
+    <br>
+    <table border="1">
+        <thead>
+            <th>Fruit Name</th>
+            <th>Vegetable Name</th>
+            <th>Cost</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var index;
+
+        var Items = JSON.parse(localStorage.getItem("Items"))
+        if (Items == null){
+            Items = []
+        }
+
+        function Create(){
+            var Shop = {
+                A:"",
+                B:"",
+                C:""
+            }
+            for (a in Shop){
+                Shop[a] = document.getElementById(a).value
+            }              
+            Items.push(Shop)
+            Clear(Shop)           
+            Read()
+            localStorage.setItem("Items",JSON.stringify(Items))
+        }
+
+        function Read(){
+            document.querySelector("tbody").innerHTML = ""
+            Items.forEach((Shop,i)=>{          
+                var myTr = document.createElement("tr")
+                for (a in Shop){
+                    var myTd = document.createElement("td")
+                    myTr.appendChild(myTd)
+                    myTd.innerHTML = Shop[a]
+                }
+                document.querySelector("tbody").appendChild(myTr)
+                var EditTd = document.createElement("td")
+                var EditBtn = document.createElement("button")
+                myTr.appendChild(EditTd)
+                EditTd.appendChild(EditBtn)
+                EditBtn.innerHTML = "Edit"
+                EditBtn.setAttribute("onclick","edit("+i+")")
+
+                var DeleteTd = document.createElement("td")
+                var DeleteBtn = document.createElement("button")
+                myTr.appendChild(DeleteTd)
+                DeleteTd.appendChild(DeleteBtn) 
+                DeleteBtn.innerHTML = "Delete"
+                DeleteBtn.setAttribute("onclick","deleting("+i+")")
+            })
+        }
+        Read()
+
+        function Clear(Shop){
+            for (a in Shop){
+                document.getElementById(a).value = ""
+            }
+        }
+
+        function edit(i){
+            index = i
+            var e = Items[i]
+            for (a in e){
+                document.getElementById(a).value = e[a]
+            }
+            document.getElementById("RRR").style.display = "none"
+            document.getElementById("BN").style.display ="block"
+        }
+
+        function deleting(i){
+            Items.splice(i,1)
+            Read()
+            localStorage.setItem("Items",JSON.stringify(Items))
+        }
+
+        function Update(){
+            var Shop = {
+                A:"",
+                B:"",
+                C:""
+            }
+            for (a in Shop){
+                Shop[a] = document.getElementById(a).value
+            }           
+            localStorage.setItem("Items",JSON.stringify(Items)) 
+            document.getElementById("RRR").style.display = "block"
+            document.getElementById("BN").style.display = "none" 
+            Items[index]=Shop
+            Clear(Shop)           
+            Read()
+        }
+        console.log(Items)
+    </script>
+</body>
+</html>

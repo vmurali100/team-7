@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Student Name : </label>
+        <input type="text" name="" id="sname"> <br><br>
+        <label for="">Id : </label>
+        <input type="text" name="" id="id"> <br><br>
+        <label for="">Phon Number : </label>
+        <input type="text" name="" id="phoneNumber"> <br><br>
+        <label for="">Class : </label>
+        <input type="text" name="" id="class"> <br><br>
+        <label for="">Subject : </label>
+        <input type="text" name="" id="subject"> <br><br>
+        <label for="">Address : </label>
+        <input type="text" name="" id="address"> <br><br>
+
+
+        <button type="button" onclick="StudentDetails()" id="addUser">Click here</button>
+        <button type="button" onclick="updateStudent()" id="updateUserBtn" style="display: none;">Update
+            Student</button>
+    </form>
+    <br>
+    <table border="1">
+        <thead>
+            <th>Student Name</th>
+            <th>Id</th>
+            <th>Phone Number</th>
+            <th>Class</th>
+            <th>Subject</th>
+            <th>Address</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var index;
+        
+        var Imformation = JSON.parse(localStorage.getItem("Imformation"))
+        if (Imformation == null) {
+            Imformation = []            
+        }
+        // 1.Create a student
+        function StudentDetails() {
+            var student = {
+                sname: "",
+                id: "",
+                phoneNumber: "",
+                class: "",
+                subject: "",
+                address: ""
+            }
+
+            for (a in student) {
+                student[a] = document.getElementById(a).value
+            }
+            Imformation.push(student)            
+            allStudents()
+            Clear(student)
+            localStorage.setItem("Imformation", JSON.stringify(Imformation))
+        }
+        // 2.Read a student
+        function allStudents() {
+            document.querySelector("tbody").innerHTML = ""
+            Imformation.forEach((student, i) => {                
+                var myTr = document.createElement("tr")
+                for (a in student) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = student[a]
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)                               
+                var edtTd = document.createElement("td")
+                var edtBtn = document.createElement("button")
+                myTr.appendChild(edtTd)
+                edtTd.appendChild(edtBtn)
+                edtBtn.innerHTML = "Edit"
+                edtBtn.setAttribute("onclick", "EditStudent(" + i + ")")
+              
+                var dltTd = document.createElement("td")
+                var dltBtn = document.createElement("button")
+                myTr.appendChild(dltTd)
+                dltTd.appendChild(dltBtn)
+                dltBtn.innerHTML = "Delete"
+                dltBtn.setAttribute("onclick", "DeleteStudent(" + i + ")")                
+            })
+        }
+        // This line excute when Application starts
+        allStudents()
+
+
+        //   3.Edit a User
+        function EditStudent(i) {
+            var EDIT = Imformation[i]
+            for (a in EDIT){
+                document.getElementById(a).value = EDIT[a]            
+            }
+            index=i
+            document.getElementById("addUser").style.display = "none"
+            document.getElementById("updateUserBtn").style.display = "block"
+
+        }
+
+        // 4.Update a user
+
+        function updateStudent() {
+            var student = {
+                sname: "",
+                id: "",
+                phoneNumber: "",
+                class: "",
+                subject: "",
+                address: ""
+            };
+            for (a in student) {
+                student[a] = document.getElementById(a).value
+            }
+            Imformation[index] = student
+            localStorage.setItem("Imformation", JSON.stringify(Imformation))
+            allStudents()
+            ClearForm(student)
+            document.getElementById("addUser").style.display = "block"
+            document.getElementById("updateUserBtn").style.display = "none"
+        }
+        // 5.Delete a user
+        function allStudents(i) {
+            Imformation.splice(i, 1)
+            localStorage.setItem("Imformation", JSON.stringify(Imformation))
+            allStudents()
+        }
+        // 6.Clearing the Form
+        function Clear(student) {
+            for (a in student) {
+                document.getElementById(a).value = ""
+            }
+        }
+    </script>
+</body>
+
+</html>
