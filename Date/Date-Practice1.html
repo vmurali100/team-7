@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   h1 {
+    color: yellow;
+    background-color: blue;
+    border: 3px solid;
+    text-align: center;
+    width: 101px;
+    padding: 97px;
+    border-radius: 100px;
+    font-size: 42px;
+}
+img {
+    width: 300px;
+    height: 300px;
+    margin-left: 620px;
+    margin-top: -284px;
+}
+h2{
+    color: red;
+}
+</style>
+<body>
+
+    <h1></h1>
+    <h2></h2>
+    <img src="https://support.apple.com/library/content/dam/edam/applecare/images/en_US/applewatch/watchos5-series4-watch-restart-screen.jpg" alt="">
+
+    <script>
+         setInterval(()=>{
+            var time = new Date()
+            document.querySelector("h1").innerHTML = time.toLocaleTimeString()
+        },1000)      
+    </script>
+</body>
+</html>
