@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        
+        document.write(Date()) + "<br>"
+        var todaysDateandTime=new Date()
+        document.write(todaysDateandTime.toLocaleTimeString()) +"<br>"
+        document.write(todaysDateandTime.toLocaleDateString())
+        document.write(todaysDateandTime.getDate())
+        document.write(todaysDateandTime.getDay())
+    </script><br><br> -->
+
+    <h1 style="color: blue;text-align: center;"></h1>
+    <script>
+        
+       setInterval(() => {
+           var todaydate =new Date()
+           document.querySelector("h1").innerHTML=todaydate.toLocaleTimeString()
+       }, 5000);
+   
+    </script>
+</body>
+</html>
