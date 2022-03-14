@@ -7,37 +7,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>    
+p#a {
+    position: relative;
+    top: 306px;
+    box-shadow: 3px 4px 5px black;
+    width: 200px;
+}
+
+
+p#b {
+    position: relative;
+    top: 272px;
+    box-shadow: 3px 4px 5px black;
+    width: 200px;
+}
+
+p#c {
+    position: relative;
+    top: 242px;
+    box-shadow: 3px 4px 5px black;
+    width: 200px;
+}
+
+
+p#d {
+    position: relative;
+    top: 210px;
+    box-shadow: 3px 4px 5px black;
+    width: 200px;
+}
+</style>
 
 <body>
+    <p id="a"></p> <br><br>
+
+    <p id="b"></p> <br><br>
+
+    <p id="c"></p> <br><br>
+
+    <p id="d"></p> <br><br>
 
     <!-- Variable value a=100; like This -->
     <!-- String value a="100" like This -->
     <script>
 
         // ADDING step 
+        document.getElementById("a").innerHTML="1.Adding  Number :-"
         var surya = 20;
         var sai = "30"
         var add = surya + Number(sai);
-        console.log(add)
+        document.write(add   +"<br><br><br>")
 
-        // SUBTRACT step 
+        // SUBTRACT step
+        document.getElementById("b").innerHTML="2.Subtractring  Number :-" 
         var sadik =100;
         var rehaman="30"
         var sub=sadik-Number(rehaman);
-        console.log(sub)
+        document.write(sub +"<br><br><br>")
 
         // MULTIPLE step 
+        document.getElementById("c").innerHTML="3.Multiplaying  Number :-"
         var rahul=500;
         var kunal="4"
         var multiple=rahul*Number(kunal)
-        console.log(multiple)
+        document.write(multiple +"<br><br><br>")
 
 
         // DIVIDED step 
+        document.getElementById("d").innerHTML="4.Diveding  Number :-"
         var deena=1000;
         var balaji="5"
         var divide=deena/Number(balaji)
-        console.log(divide)
+        document.write(divide +"<br><br><br>")
 
 
     </script>

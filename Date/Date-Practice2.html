@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            border: 2px solid;
+            width: 400px;
+            background-color: lightgray;
+            text-align: center;
+            margin: 0 auto;
+            padding: 33px;
+            font-size: 30px;
+            border-radius: 26px;
+        }
+
+        h2 {
+            border: 2px solid;
+             width: 400px;
+            background-color: lightgray;
+            text-align: center;
+            margin: 0 auto;
+            padding: 33px;
+            font-size: 30px;
+            border-radius: 26px;
+        }
+
+        h3 {
+            border: 2px solid;
+            width: 400px;
+            background-color: lightgray;
+            text-align: center;
+            margin: 0 auto;
+            padding: 33px;
+            font-size: 30px;
+            border-radius: 26px;
+        }
+
+        h4 {
+            border: 2px solid;
+            width: 400px;
+            background-color: lightgray;
+            text-align: center;
+            margin: 0 auto;
+            padding: 33px;
+            font-size: 30px;
+            border-radius: 26px;
+        }
+
+        h5 {
+            border: 2px solid;
+            width: 400px;
+            background-color: lightgray;
+            text-align: center;
+            margin: 0 auto;
+            padding: 33px;
+            font-size: 30px;
+            border-radius: 26px;
+        }
+
+        h6 {
+            border: 2px solid;
+            width: 400px;
+            background-color: lightgray;
+            text-align: center;
+            margin: 0 auto;
+            padding: 33px;
+            font-size: 30px;
+            border-radius: 26px;
+        }
+
+        b {
+            border: 2px solid;
+            width: 400px;
+            background-color: lightgray;
+            text-align: center;
+            margin: 0 auto;
+            padding: 33px;
+            font-size: 30px;
+            border-radius: 26px;
+            margin-left: 384px;
+            position: relative;
+            top: 38px;
+        }
+
+        i {
+            border: 2px solid;
+            width: 400px;
+            background-color: lightgray;
+            text-align: center;
+            margin: 0 auto;
+            padding: 33px;
+            font-size: 30px;
+            border-radius: 26px;
+            margin-left: 384px;
+            position: relative;
+            top: 38px;
+        }
+
+        span {
+            border: 2px solid;
+            width: 400px;
+            background-color: lightgray;
+            text-align: center;
+            margin: 0 auto;
+            padding: 33px;
+            font-size: 30px;
+            border-radius: 26px;
+            margin-left: 384px;
+            position: relative;
+            top: 38px;
+        }
+
+        strong {
+            border: 2px solid;
+            width: 400px;
+            background-color: lightgray;
+            text-align: center;
+            margin: 0 auto;
+            padding: 33px;
+            font-size: 30px;
+            border-radius: 26px;
+            margin-left: 384px;
+            position: relative;
+            top: 38px;
+        }
+
+        sub {
+            border: 2px solid;
+            width: 400px;
+            background-color: lightgray;
+            text-align: center;
+            margin: 0 auto;
+            padding: 33px;
+            font-size: 30px;
+            border-radius: 26px;
+            margin-left: 384px;
+            position: relative;
+            top: 38px;
+        }
+
+        p {
+            margin-left: 406px;
+            text-decoration: underline;
+            font-size: 25px;
+            text-shadow: 0px 1px 4px black;
+        }
+    </style>
+</head>
+
+<body>
+    <p>1.toLocaleTimeString :-</p>
+    <h1 style="color: blue; "></h1>
+
+    <p>2.toLocaleDateString :-</p>
+    <h2 style="color: red;"></h2>
+
+    <p>3.toDateString :-</p>
+    <h3 style="color: skyblue;"></h3>
+
+    <p>4.toTimeString :-</p>
+    <h4 style="color: green;"></h4>
+
+
+    <p>5.toISOString :-</p>
+    <h5 style="color: brown;"></h5>
+
+
+    <p>6.toLocaleString :-</p>
+    <h6 style="color: chartreuse;"></h6>
+
+
+    <p>7.toUTCString :-</p>
+    <b style="color: magenta;"></b> <br><br><br><br><br><br>
+
+    <p>8.toString :-</p>
+    <i style="color: black;"></i> <br><br><br><br><br><br>
+
+
+    <p>9.toJSON :-</p>
+    <span style="color: tomato;"></span> <br><br><br><br><br><br>
+
+
+    <p> 10.getTime :-</p>
+    <strong style="color: peru;"></strong> <br><br><br><br><br><br>
+
+
+    <p>11.getTimezoneOffset :-</p>
+    <sub style="color: aqua;"></sub> <br><br><br><br><br><br>
+    <script>
+        setInterval(() => {
+            var td = new Date()
+            document.querySelector("h1").innerHTML = td.toLocaleTimeString()
+        }, 1000 + "<br><br>")
+
+        setInterval(() => {
+            var td = new Date()
+            document.querySelector("h2").innerHTML = td.toLocaleDateString()
+        })
+
+        setInterval(() => {
+            var td = new Date()
+            document.querySelector("h3").innerHTML = td.toDateString()
+        })
+
+        setInterval(() => {
+            var td = new Date()
+            document.querySelector("h4").innerHTML = td.toTimeString()
+        })
+
+        setInterval(() => {
+            var td = new Date()
+            document.querySelector("h5").innerHTML = td.toISOString()
+        })
+
+        setInterval(() => {
+            var td = new Date()
+            document.querySelector("h6").innerHTML = td.toLocaleString()
+        })
+
+        setInterval(() => {
+            var td = new Date()
+            document.querySelector("b").innerHTML = td.toUTCString()
+        })
+
+        setInterval(() => {
+            var td = new Date()
+            document.querySelector("i").innerHTML = td.toString()
+        })
+
+        setInterval(() => {
+            var td = new Date()
+            document.querySelector("span").innerHTML = td.toJSON()
+        })
+
+        setInterval(() => {
+            var td = new Date()
+            document.querySelector("strong").innerHTML = td.getTime()
+        })
+
+        setInterval(() => {
+            var td = new Date()
+            document.querySelector("sub").innerHTML = td.getTimezoneOffset()
+        })
+
+
+    </script>
+</body>
+
+</html>

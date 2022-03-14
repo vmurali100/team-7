@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="suri"></div>
+    <div id="raju"></div>
+
+    <div id="sai"></div>
+    <div id="sadik"></div>
+    <button type="button" ondblclick="getinfo()">Try it</button>
+    <script>
+
+        //  string- Slice Method 
+        var string = "Apple, Banana, Kiwi";
+        document.getElementById("suri").innerHTML = string.slice(7, 13)
+        document.getElementById("raju").innerHTML = string.slice(15, 19)
+
+            + "<br><br>"
+        // string-Substring Method 
+        var str = "Apple, sapota, grap";
+        document.getElementById("sai").innerHTML = str.substr(7);
+
+        +"<br><br>"
+
+        // string-Replace Method 
+        function getinfo() {
+            document.getElementById("sadik").innerHTML;
+            var re = document.getElementById("sadik").innerHTML = 
+            re.replace("Microsoft", "W3Schools");
+        }
+    </script>
+
+</body >
+
+</html >

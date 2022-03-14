@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    p#ramu {
+        color: blue;
+        box-shadow: 3px 4px 5px black;
+        width: 300px;
+    }
+
+    p#ramu {
+        color: white;
+        background-color: black;
+        box-shadow: 3px 4px 5px black;
+        width: 300px;
+    }
+</style>
+
+<body>
+    <button onclick="dataof()">Try it</button>
+
+    <p id="ramu">Surya SP</p>
+
+    <button onclick="dataon()">enter</button>
+
+    <p id="somu">SURYA PRAKSH</p>
+
+    <script>
+        function dataof() {
+            var content = document.getElementById("ramu").innerHTML;
+            document.getElementById("ramu").innerHTML =
+                content.toUpperCase();
+        }
+
+        function dataon() {
+            var content1 = document.getElementById("somu").innerHTML;
+            document.getElementById("somu").innerHTML =
+                content1.toLowerCase();
+        }
+
+    </script>
+</body>
+
+</html>

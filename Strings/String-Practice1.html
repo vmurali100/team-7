@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    p#\31 {
+        color: red;
+    position: relative;
+    top: 558px;
+    box-shadow: 3px 4px 5px black;
+    width: 300px;
+    text-decoration: underline black;
+}
+p#\32 {
+    color: red;
+    position: relative;
+    top: 547px;
+    box-shadow: 3px 4px 5px black;
+    width: 300px;
+    text-decoration: underline black;
+}
+p#\33 {
+    color: red;
+    position: relative;
+    top: 539px;
+    box-shadow: 3px 4px 5px black;
+    width: 300px;
+    text-decoration: underline black;
+}
+p#\34 {
+    color: red;
+    position: relative;
+    top: 522px;
+    box-shadow: 3px 4px 5px black;
+    width: 300px;
+    text-decoration: underline black;
+}
+p#\35 {
+    color: red;
+    position: relative;
+    top: 511px;
+    box-shadow: 3px 4px 5px black;
+    width: 300px;
+    text-decoration: underline black;
+}
+p#\36 {
+    color: red;
+    position: relative;
+    top: 493px;
+    box-shadow: 3px 4px 5px black;
+    width: 300px;
+    text-decoration: underline black;
+}
+p#\37 {
+    color: red;
+    position: relative;
+    top: 482px;
+    box-shadow: 3px 4px 5px black;
+    width: 300px;
+    text-decoration: underline black;
+}
+</style>
+
+<body>
+    <p id="1"></p> <br><br>
+    <p id="2"></p> <br><br>
+    <p id="3"></p> <br><br>
+    <p id="4"></p> <br><br>
+    <p id="5"></p> <br><br>
+    <p id="6"></p> <br><br>
+    <p id="7"></p> <br><br>
+
+
+    <script>
+        
+        var PersonName1 = "Surya Prakash";
+        document.getElementById("1").innerHTML = "1.String-Length Method :-"
+        document.write(PersonName1.length + "<br><br><br><br>")
+
+
+        // Splite Method
+        document.getElementById("2").innerHTML = "2.String-Splite Method :-"
+        var PersonName = "King Rock Star Surya"
+        var infoname = PersonName.split(" ")
+        document.write(infoname + "<br><br><br><br>")
+
+        // Reverse Method
+        document.getElementById("3").innerHTML = "3.String-Reverse Method :-"
+        var dataname = infoname.reverse().join(" ")
+        document.write(dataname + "<br><br><br><br>")
+
+
+        // Substring Method
+        document.getElementById("4").innerHTML = "4.String-Substring Method :-"
+        var Myname = "Raju bhai"
+        document.write(Myname.substring(6, 10) + "<br><br><br><br>")
+
+        // Substr Method 
+        document.getElementById("5").innerHTML = "5.String-Substr Method :-"
+        var myinfo = "Rehaman Anna"
+        document.write(myinfo.substr(0, 8) + "<br><br><br><br>")
+
+
+        // LastIndexof Method 
+        document.getElementById("6").innerHTML = "6.String-LastIndexof Method :-"
+        var Url = "http://127.0.0.1:5500/Strings/String-Practice1.html/Rajubhai"
+        document.write(Url.lastIndexOf("/") + "<br><br><br><br>")
+
+        // SelectedNumbner Method 
+        document.getElementById("7").innerHTML = "7.String-Selected number Method :-"
+        var selectednumber = Url.substring(Url.lastIndexOf("/") + 1)
+        document.write(selectednumber + "<br><br><br><br>")
+
+    </script>
+</body>
+
+</html>
