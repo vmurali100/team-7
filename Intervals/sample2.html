@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 style="color: blue;
+     background-color: aquamarine; 
+     text-align: center;
+     width: 500px;
+      margin-left: 300px;
+      border-radius: 10%;">Time</h1>
+    <script>
+
+        setInterval(() => {
+            var todaydate = new Date()
+            document.querySelector("h1").innerHTML = todaydate.toLocaleTimeString() + "<br>" + "<br>"
+        }, 2000);
+
+    </script>
+
+    <h2 style="color: rgb(255, 166, 0);
+     text-align: center;
+     background-color: rgb(142, 255, 127); 
+     width: 400px;
+     margin-left: 350px;
+    border-radius: 20%;">Date</h2>
+    <script>
+        setInterval(() => {
+            var Dateonly = new Date()
+            document.querySelector("h2").innerHTML = Dateonly.toLocaleDateString() + "<br>" + "<br>"
+        }, 3000)
+    </script>
+
+    <h3 style="color:rgb(255, 0, 128);
+     text-align: center;
+     background-color: rgb(205, 143, 50); 
+     width: 250px;
+     margin-left: 450px;
+     border-radius: 20%;">Day</h3>
+    <script>
+        setInterval(() => {
+            var thistime = new Date()
+            document.querySelector("h3").innerHTML = thistime.getDay()
+        }, 7000)
+    </script>
+</body>
+
+</html>

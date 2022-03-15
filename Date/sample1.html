@@ -7,24 +7,40 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <script>
+    <script>
         
-        document.write(Date()) + "<br>"
+        document.write(Date()+"<br>"+"<br>") 
         var todaysDateandTime=new Date()
-        document.write(todaysDateandTime.toLocaleTimeString()) +"<br>"
-        document.write(todaysDateandTime.toLocaleDateString())
-        document.write(todaysDateandTime.getDate())
+        document.write(todaysDateandTime.toLocaleTimeString()+"<br>"+"<br>") 
+        document.write(todaysDateandTime.toLocaleDateString()+"<br>"+"<br>")
+        document.write(todaysDateandTime.getDate()+"<br>"+"<br>")
         document.write(todaysDateandTime.getDay())
-    </script><br><br> -->
+    </script><br><br>
 
     <h1 style="color: blue;text-align: center;"></h1>
     <script>
         
        setInterval(() => {
            var todaydate =new Date()
-           document.querySelector("h1").innerHTML=todaydate.toLocaleTimeString()
-       }, 5000);
+           document.querySelector("h1").innerHTML=todaydate.toLocaleTimeString()+"<br>"
+       }, 3000);
    
+    </script>
+
+    <h2 style="color: red;text-align: center;"></h2>
+    <script>
+        setInterval(()=>{
+            var Dateonly=new Date()
+            document.querySelector("h2").innerHTML=Dateonly.toLocaleDateString()+"<br>"
+        },5000)
+    </script>
+
+    <h3 style="color:rgb(255, 0, 128); text-align: center;"></h3>
+    <script>
+        setInterval(()=>{
+            var thistime=new Date()
+            document.querySelector("h3").innerHTML=thistime.getDay()
+        },7000)
     </script>
 </body>
 </html>
