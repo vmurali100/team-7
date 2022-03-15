@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="color: green;" id="one"></h1> 
+    
+    <h1  style="color: blue;" id="two"></h1>
+    <h1 style="border: 1px solid; background-color: yellow; width: 700px;" id="three"></h1>
+    <h1 style="color: red;" id="four"></h1>
+    <h1 style="color: saddlebrown;" id="five"></h1>
+    <h1 style="color: turquoise; border: 2px solid; background-color: tomato; width: 500px;" id="six"></h1>
+     <script>
+        setInterval(()=>{
+           var td = new Date()
+           document.getElementById("one").innerHTML = td.toLocaleTimeString()
+       },1000)
+
+       setInterval(()=>{
+           var sadik=new Date()
+           document.getElementById("two").innerHTML=sadik.toLocaleDateString()
+       })
+
+       setInterval(()=>{
+           var sadik1=new Date()
+           document.getElementById("three").innerHTML=sadik1.toTimeString()
+       })
+
+       setInterval(()=>{
+           var sadik2=new Date()
+           document.getElementById("four").innerHTML=sadik2.toDateString()
+       })
+
+       setInterval(()=>{
+           var sadik3=new Date()
+           document.getElementById("five").innerHTML=sadik3.toString()
+       })
+
+       setInterval(()=>{
+           var sadik4=new Date()
+           document.getElementById("six").innerHTML=sadik4.toJSON()
+       })
+   </script> 
+</body>
+</html>
