@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="user()">play</button>
+    <img src="" alt="">
+    <script>
+        function user() {
+
+            var person = Math.random()
+            var student = Math.round(person)
+        if(student==0){
+            document.querySelector("img").setAttribute("src","https://emojis.wiki/emoji-pics/apple/thumbs-down-apple.png")
+        }
+        else{
+            document.querySelector("img").setAttribute("src","http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/thumbs-up.png")
+        }
+        }
+    </script>
+    <script>
+        
+        // floor
+        var A = Math.floor(6.99)
+        console.log(A)
+        
+        // ceil
+        var B = Math.ceil(7.79)
+        console.log(B)
+
+        // round
+        var C = Math.round(8.15)
+        console.log(C)
+
+        // random
+        var D = Math.random(1.97)
+        console.log(D)
+
+        // trunc
+        var E = Math.trunc(5.45)
+        console.log(E)
+    </script>
+</body>
+
+</html>
