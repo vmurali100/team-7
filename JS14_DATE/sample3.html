@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1{
+        color: red;
+        margin-top: 200px;
+    }
+</style>
+<body>
+    <h1></h1>
+    <img src="https://rukminim1.flixcart.com/image/416/416/wall-clock/c/n/3/ajanta-digital-clock-wooden-finish-border-olc-105-sw-digital-original-imaesfxkvrndyvge.jpeg?q=70" alt="">
+    <script>
+        setInterval(()=>{
+            var Raju = new Date()
+            document.querySelector("h1").innerHTML = Raju.getHours()
+        })
+    </script>
+</body>
+</html>
