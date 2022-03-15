@@ -7,14 +7,13 @@
     <title>Document</title>
 </head>
 <body>
+    <button onclick="Send()">Send OTP</button>
     <script>
-        setTimeout(()=>{
-            console.log("Hello Guys")
-        },2000)
-
-        setInterval(()=>{
-            console.log("How Are You All")
-        },3000)
+       function Send(){
+        var OTP = Math.random()*1000000
+        var Mobile = Math.round(OTP)
+        console.log(Mobile)
+       }
     </script>
 </body>
 </html>
