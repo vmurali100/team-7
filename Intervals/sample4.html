@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<img id="sunraise" src="https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2019/09/epic-sunrise-photos-fog.jpg?fit=1500%2C1001&ssl=1" width="400" height="400" name="image" />
+
+<body>
+    <script>
+        var image = document.getElementById("sunraise");
+        var img_array=["http://png-4.findicons.com/files/icons/1008/quiet/256/java.png","http://icons.iconarchive.com/icons/tpdkdesign.net/refresh-cl/256/System-Java-icon.png"];
+        var index=0;
+        function slide()
+        {
+        
+            document["sunraise"].src = img_array[index];
+            index++;
+            if(index>=img_array.length)
+            {
+            index=0;
+            }
+        }
+        setInterval("slide()",1000);
+        </script>
+       
+</body>
+</html>
