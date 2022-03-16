@@ -1,0 +1,27 @@
+// The setInterval() method calls a function or evaluates an expression at specified intervals. the setInterval()
+// method will continue calling the function until clearInterval() is called or the window is closed. The ID value returned by setInterval()
+// is used as the parameter for the clearInterval() method.
+// The clearInterval method stops the executions of the functions specified in the setInterval() method.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <button>Click me</button><br><br>
+    <!-- <button onclick="clearInterval(clock)">Click me</button><br><br> -->
+    <p id="showClock"></p>
+    <script type="text/javascript">
+        var clock = setInterval(clocktiming, 1000);
+        function clocktiming(){
+            var d = new Date();
+            var temp = d.toLocaleTimeString();
+            document.getElementById('showClock').innerHTML = temp;
+        }
+        
+    </script>
+</body>
+</html>
