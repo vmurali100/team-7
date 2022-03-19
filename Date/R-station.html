@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 981px;
+            border: solid 10px;
+        }
+        h1 {
+       
+       border: solid 2px;
+       border-radius: 10px;
+       background-color: black;
+       color: red;
+       margin: 0 auto;
+       text-align: center;
+       font-size: 20px;
+       height: 47px;
+   }
+
+   b {
+       color: red;
+       position: relative;
+       top: -31px;
+       font-size: 15px;
+
+   }
+   .sample {
+    position: relative;
+    top: -390px;
+    width: 241px;
+    left: 413px;
+    /* font-size: 12px; */
+    /* height: 26px; */
+    font-family: none;
+}
+    </style>
+</head>
+
+<body>
+    <audio src="Indian Railway ! Train Announcement.mp3" controls></audio>
+    <div class="imgd"> <img src="https://w.ndtvimg.com/sites/3/2018/12/19142924/india-railways-cleanliness.jpg" alt="">
+    </div>
+    <div class="sample">
+        <h1></h1>
+        <b>
+            <marquee behavior="" direction="left">Train Number:954231 చిత్తూరు va కాట్పాడి platform number:-2</marquee>
+        </b>
+    </div>
+
+    <script>
+        setInterval(() => {
+            var rrr = new Date()
+            document.querySelector("h1").innerHTML = rrr.toLocaleString()
+
+        })
+    </script>
+</body>
+
+</html>
