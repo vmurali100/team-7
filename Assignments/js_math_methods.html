@@ -1,0 +1,64 @@
+<!-- List of math methods:
+1. ceil(x)
+2. floor(x)
+3. round(x)
+4. trunc(x)
+5. max(x,y,z,...,n)
+6. min(x,y,z...n)
+7. sqrt(x)
+8. cbrt(x)
+9. pow(x,y)
+10.random()
+11.abs(x)
+12.PI -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript math object</title>
+</head>
+<body>
+    <div class="container">
+        <h1>These are the type of math objects</h1>
+    </div>
+    <script>
+        let m = Math;
+        console.log(m);
+        console.log("The value of e is", Math.E);
+        console.log("The value of pi is", Math.PI);
+        console.log("The value of sq. 2 is", Math.SQRT1_2);
+
+        let a = 34.51234;
+        let b = 89;
+        console.log("the rounded values of a and b are", Math.round(a), Math.round(b));
+        console.log("The value of 2 raised to the power 3 is", Math.pow(2,3));
+        console.log("The sq root of 100 is", Math.sqrt(100));
+        console.log("4.7 rounded up to the nearest integer is", Math.ceil(4.7));
+        console.log("The value of 4.7 rounded down to the nearest integer is", Math.floor(4.7));
+        console.log("Absolute value of -3.8 is", Math.abs(-3.8));
+        console.log("The absolute value of tan pi is", Math.tan(3.14));
+        console.log("the maximum among 9,10,11 is", Math.max(9,10,11));
+        // Generating random numbers:
+        let y = Math.random();
+        console.log(y);
+        // Random no. between a and b = a + (b - a)*Math.random()
+        
+        let k = 1;
+        let w = 100;
+        let r1_100 = k + (w - k)*Math.random();
+        console.log("The random no. is ", r1_100);
+
+
+        
+
+
+
+    </script>
+</body>
+</html>
