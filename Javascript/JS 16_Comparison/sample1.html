@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <h2></h2>
+    <script>
+        var userAge = prompt("Enter Your Age !!")
+        document.querySelector("h1").innerHTML = "Your age is " + userAge
+
+        // If age <= 12 ... User is Child.
+        if (userAge <= 12) {
+            document.querySelector("h2").innerHTML = "You Are a Child ... ";
+        } else if (userAge >= 13 && userAge <= 19) {
+            document.querySelector("h2").innerHTML = "You Are a Teenager ... ";
+        }else if(userAge > 19 && userAge <=59){
+            document.querySelector("h2").innerHTML = "You Are a Adult ... ";
+        }else{
+            document.querySelector("h2").innerHTML = "You Are a Senior Citizen ... ";
+        }
+       // If age > 13 <= 19 ..user is Teanager
+       // if age > 19 < 59 .. user is Adult
+       // if age is > >=60 .. user is Senior Citizen
+    </script>
+</body>
+
+</html>
