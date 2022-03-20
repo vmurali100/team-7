@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <h2></h2>
+
+    <script>
+        var userState = prompt("Enter your state or capital");
+
+        document.querySelector("h1").innerHTML = "Your state or capital is : " + userState
+
+        if(userState == "Andhra" || userState == "Telangana"){
+            document.querySelector("h2").innerHTML = "Your language is telugu"
+        }else if(userState == "Maharashta" || userState == "Mumbai"){
+            document.querySelector("h2").innerHTML = "Your language is Marathi"
+        }else{
+            document.querySelector("h2").innerHTML = "Other language"
+        }
+    </script>
+</body>
+</html>

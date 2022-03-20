@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <div id="demo1" style="display: none;">
+        <h2>Maruti Baleno</h2>
+        <img src="./baleno.jpg" alt="" width="400">
+        <P><b>Mileage :</b> 22.94 kmpl</P>
+        <P><b>Engine (upto) :</b> 1197 cc</P>
+        <P><b>BHP :</b> 88.5</P>
+        <P><b>Transmission :</b> Manual/Automatic</P>
+        <P><b>Boot Space :</b> 318</P>
+    </div>
+
+    <div id="demo2" style="display: none;">
+        <h2>Hyundai Creta</h2>
+        <img src="./creta.jpg" alt="" width="400">
+        <P><b>Mileage :</b> 21.4 kmpl</P>
+        <P><b>Engine (upto) :</b> 1497 cc</P>
+        <P><b>BHP :</b> 138.08</P>
+        <P><b>Transmission :</b> Manual/Automatic</P>
+    </div>
+
+    <div id="demo3" style="display: none;">
+        <h2>Kia Seltos</h2>
+        <img src="./kia.jpg" alt="" width="400">
+        <P><b>Mileage :</b> 20.8 kmpl</P>
+        <P><b>Engine (upto) :</b> 1497 cc</P>
+        <P><b>BHP :</b> 138.08</P>
+        <P><b>Transmission :</b> Manual/Automatic</P>
+    </div>
+
+    <div id="demo4" style="display: none;">
+        <h2>Toyota Fortuner</h2>
+        <img src="./toyota.jpg" alt="" width="400">
+        <P><b>Mileage :</b> 10.0 kmpl</P>
+        <P><b>Engine (upto) :</b> 2755 cc</P>
+        <P><b>BHP :</b> 201.15</P>
+        <P><b>Transmission :</b> Manual/Automatic</P>
+    </div>
+
+    <div id="demo5" style="display: none;">
+        <h2>Renault KWID</h2>
+        <img src="./renault.jpg" alt="" width="400">
+        <P><b>Mileage :</b> 22.25 kmpl</P>
+        <P><b>Engine (upto) :</b> 999 cc</P>
+        <P><b>BHP :</b> 67.06</P>
+        <P><b>Transmission :</b> Manual/Automatic</P>
+    </div>
+
+    <h3></h3>
+    <script>
+        var myCar = prompt("Enter car brand");
+
+        document.querySelector("h1").innerHTML = "Car brand is : " + myCar
+
+        if(myCar == "Maruti" || myCar == "maruti"){
+            document.getElementById("demo1").style.display = "block"
+        }else if(myCar == "Hyundai" || myCar == "hyundai"){
+            document.getElementById("demo2").style.display = "block"
+        }else if(myCar == "Kia" || myCar == "kia"){
+            document.getElementById("demo3").style.display = "block"
+        }else if(myCar == "Toyota" || myCar == "toyota"){
+            document.getElementById("demo4").style.display = "block"
+        }else if(myCar == "Renault" || myCar == "renault"){
+            document.getElementById("demo5").style.display = "block"
+        }else{
+            document.querySelector("h3").innerHTML = "Not availabe"
+        }
+
+    </script>
+</body>
+</html>
