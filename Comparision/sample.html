@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+  
+    <h1 id="rrr"></h1>
+
+    <script>
+        var Bikes = prompt("Product price")
+        if (Bikes <= 100000) {
+            window.location.href="https://www.zigwheels.com/newbikes/bikes-under-1-lakh"
+        } else if (Bikes >= 150000 && Bikes <=200000) {
+            window.location.href="https://www.zigwheels.com/newbikes/bikes-under-2-lakhs"
+        } else if(Bikes >400000){
+            window.location.href="https://www.91wheels.com/bikes/above-5-lakh"
+        }else{
+            document.getElementById("rrr").innerHTML="there is no bikes to this price "
+            }
+    </script>
+</body>
+
+</html>
