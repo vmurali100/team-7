@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+   <h2></h2>
+    <script>
+        var TamilActor = prompt("Enter Tamil Hero AGE ...")
+        document.querySelector("h1").innerHTML = "Your Favorate Actor Age is" + TamilActor
+
+        if (TamilActor >= 45 && TamilActor <=50) {
+            document.querySelector("h2").innerHTML  = 
+            " NAME:Vijay"+"<br>"+"SPECIAL NAME:Thalapathy"+"<br>"
+            +"Last Film:Master"+"<br>"+"Comming Film:Beast"+"<br>";
+        } else if (TamilActor >= 66 && TamilActor <= 70) {
+            document.querySelector("h2").innerHTML  =  
+            "  NAME:Rajini"+"<br>"+"SPECIAL NAME:Superstar"+"<br>"
+            +"Last Film:Annatha"+"<br>"+"Comming Film:Thalaivar 169"+"<br>";
+        }else if(TamilActor >= 60 && TamilActor <=65){
+            document.querySelector("h2").innerHTML  = 
+            " NAME:Kamal"+"<br>"+"SPECIAL NAME:Ulaganayagan"+"<br>"
+            +"Last Film:Iru Mugan"+"<br>"+"Comming Film:Vikram"+"<br>";
+        }else{
+            document.querySelector("h2").innerHTML  = 
+            " NAME:Ajith"+"<br>"+"SPECIAL NAME:Thala"+"<br>"
+            +"Last Film:Valimai"+"<br>"+"Comming Film:Thala 60"+"<br>";
+        }
+      
+    </script>
+</body>
+
+</html>
