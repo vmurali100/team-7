@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4></h4>
+    <p></p>
+    <script>
+        var items = prompt("Enter gameitems")
+        document.querySelector("h4").innerHTML="gameitems"+items
+        if(items <=200){
+            document.querySelector("p").innerHTML="Balls"
+            window.location.href= " https://www.bing.com/shop?q=cricket+balls+price+in+below+200&FORM=SHOPPA&originIGUID=1AD9FDCED335445E99A6A3D41C06229C"
+        }
+        else if(items >=300 && items <=900){
+            document.querySelector("p").innerHTML="Wickets"
+            window.location.href = " https://www.amazon.in/s?k=wickets+cricket&hvadid=83082040148459&hvbmt=bp&hvdev=c&hvqmt=p&tag=msndeskstdin-21&ref=pd_sl_f9ct5eaqc_p"
+        }
+        else if(items >=1000 && items<=10000){
+            document.querySelector("p").innerHTML="Bats"
+            window.location.href = " https://www.bing.com/shop?q=cricket+bats+price+in+below+10000&qs=n&form=SHOPSB&sp=-1&pq=cricket+bats+price+in+below+10000&sc=0-33&sk=&cvid=A190C2F692964F4CADA4A87EB89D48C2"
+        }
+        else{
+            document.querySelector("p").innerHTML="None"
+        }
+    </script>
+</body>
+</html>

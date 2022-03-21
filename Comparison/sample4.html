@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url(https://th.bing.com/th/id/OIP.Yi4LsgnLu6FsvGhpSUJibAHaE8?pid=ImgDet&rs=1);
+        }
+    </style>
+</head>
+<body>
+    <h3></h3>
+    <p id="p" style="color: aliceblue; font-size: 150px; text-align: center;"></p>
+    <script>
+        var items = prompt("Gameitems")
+        document.querySelector("h3").innerHTML="Cricket items"+ items
+        if(items<=200){
+            document.getElementById("p").innerHTML= "Ball"
+        }
+        else if(items>=1000 && items<=5000){
+            document.getElementById("p").innerHTML ="Bat"
+        }
+        else if(items>=300 && items<=950){
+            document.getElementById("p").innerHTML ="Wickets"
+        }else{
+            document.getElementById("p").innerHTML="Invalid"
+        }
+    </script>
+</body>
+</html>

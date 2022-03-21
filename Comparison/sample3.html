@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3></h3>
+    <b></b>
+    <p id="one"></p>
+    <!-- <p id="two"></p>
+    <p id="three"></p>
+    <p id="four"></p> -->
+    
+
+    <script>
+
+
+        var players = prompt("Enter Generation")
+        document.getElementById("one").innerHTML="Generation"+ players
+        if(players <=1 ){
+            document.querySelector("b").innerHTML="Generation : 1"+"<br>"
+            document.getElementById("one").innerHTML= "1 : Sachin"+"<br>"+"2 : Sehwag"+"<br>"+"3 : Yuraj"+"<br>"+"4 : Dhoni"+"<br>"+"5 : Harbhajan"
+        }
+        else if(players >=2 || players<=6){
+            document.querySelector("b").innerHTML="Generation : 2"+"<br>"
+            document.getElementById("one").innerHTML= "1 : Kohli"+"<br>"+"2 : rahul"+"<br>"+"3 : dhawan"+"<br>"+"4 : hardik"+"<br>"+"5 : shami"+"<br>"+"6 : rohit"
+        }
+        else{
+            document.getElementById("one").innerHTML="No Players"
+        }
+    </script>
+</body>
+</html>

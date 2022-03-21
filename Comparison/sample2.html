@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+       img{
+           width: 250px;
+           height: 200px;
+       }
+   </style>
+</head>
+
+<body>
+    <h3>Only 1 to 4 Players Available</h3>
+    <p id="one"></p>
+    <p id="two" ><img src="https://th.bing.com/th/id/R.617195a4747ed6ba4da450a7539e4c10?rik=SEQ4SgVcTgjSFA&riu=http%3a%2f%2f1.bp.blogspot.com%2f-8v6Z4NOIEWE%2fUwY0Yhlzx_I%2fAAAAAAAAYzE%2fwXY-ZgjhMxw%2fs1600%2fSachin%2bTendulkar%2bWallpapers%2b2.jpg&ehk=cBTi58mJntDwrVIgkAc8MqWoLlOTcIQ5cZjPTy8tmXE%3d&risl=&pid=ImgRaw&r=0" alt=""></p>
+    <p id="three"><img src="https://th.bing.com/th/id/R.4dd5f0f09e4a855518b31e41a7cd7b25?rik=0LL1f4nbAbE0VA&riu=http%3a%2f%2f3.bp.blogspot.com%2f-BTCt2GrxzQU%2fTgDeheBlzVI%2fAAAAAAAAAf8%2fsjcG_9s1KyA%2fs1600%2fvirender%2bsehwag%2b%2525281%252529.gif&ehk=eZ5Pis9VlQTAfjhLOdccABhl1wLYPXaDIcic8DJ4zBY%3d&risl=&pid=ImgRaw&r=0" alt=""></p>
+    <p id="four"><img src="https://3.bp.blogspot.com/-HCAQdfx5eRM/WDLqZX_zSeI/AAAAAAAAAWw/3jtBLEVPE4oV3NvjHd4BHOUiK64zMMHBwCLcB/s1600/Yuvraj%2BSingh%2BImages1.jpg" alt=""></p>
+    <p id="five"></p>
+    <p id="six"></p>
+    <script>
+        var player = prompt("Enter Player Number")
+        document.getElementById("one").innerHTML = "Player Number" + player
+        
+        if (player <= 1) {
+
+            document.getElementById("two").innerHTML = "Name : M.S Dhoni " + "<br>" + "D.O.B  : 07-07-1981" + "<br>" + "Age : 40Years" + "<br>" + "Place : Uttarakhand"
+        }
+        else if (player >= 2) {
+            document.getElementById("three").innerHTML = "Name : Sachin " + "<br>" + "D.O.B : 24-04-1973" + "<br>" + "Age : 48Years" + "<br>" + "Place : Mumbai"
+        }
+        else if (player >= 3) {
+            document.getElementById("four").innerHTML = "Name : Sehwag " + "<br>" + "D.O.B : 20-10-1978" + "<br>" + "Age : 43Years" + "<br>" + "Place : Delhi"
+
+        }
+        else if (player >= 4) {
+            document.getElementById("five").innerHTML = "Name : Yuvraj " + "<br>" + "D.O.B : 12-12-1981" + "<br>" + "Age : 40Years" + "<br>" + "Place : Chandigarh"
+
+        }
+        else {
+            document.getElementById("six").innerHTML = "There is no Players"
+        }
+    </script>
+</body>
+
+</html>
