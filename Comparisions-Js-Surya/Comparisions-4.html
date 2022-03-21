@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     h3{
+        color: yellow;
+        border: 3px solid;
+        background-color: aquamarine;
+        margin: 0 auto;
+        border-radius: 40px;
+        text-shadow: 2px 3px 4px red;
+        box-shadow: 2px 3px 4px black;
+        text-align: center;
+        font-size: 60px;
+    }
+</style>
+<body>
+    <h3></h3>
+    <script>
+        var Worlds=prompt("Which Contient Belongs to...!!")
+        document.querySelector("h3").innerHTML="World Contient is Matching"+Worlds
+
+        if(Worlds == "Austrial" || Worlds == "Euroupe" || Worlds == "Africa" || Worlds == "Antaritica" || Worlds == "America " || Worlds == "Asia" || Worlds == "NorthAmerica" ){
+            document.querySelector("h3").innerHTML = "This Contient Is Belongs to World .."
+        }else{
+            document.querySelector("h3").innerHTML = "There is no Informations About Your Search ... I dont know !!"
+        }
+
+    </script>
+</body>
+</html>
