@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sea {
+    width: 200px;    
+}
+img {
+    width: 400px;
+    margin-left: 238px;
+    margin-top: -1px;
+}
+    </style>
+</head>
+<body>
+    <h2></h2>    
+    <div class="sea">
+        <img src="" alt="">
+    </div>  
+    <script>
+        var Sea = prompt("Enter Sea Name..")
+        if (Sea == "Arctic" || Sea == "Indian" || Sea == "North Atlantic" || Sea == "South Atlantic" || Sea == "North Pacific" || Sea == "South Pacific"){
+            document.querySelector("h2").innerHTML = "The sea, connected as the world,is the body of salty water that covers approximately 71 percent of the Earth's surface.The Seven Seas include the Arctic, North Atlantic, South Atlantic, North Pacific, South Pacific, Indian, and Southern oceans."
+            document.querySelector("img").setAttribute("src","https://oceanservice.noaa.gov/facts/sea.jpg")
+        }else {
+            document.querySelector("h2").innerHTML = "This is not a Sea.."
+            document.querySelector("img").setAttribute("src","https://image.shutterstock.com/image-vector/emoticon-showing-thumbs-down-dislike-260nw-1075517990.jpg")
+        }
+    </script>
+</body>
+</html>
+
+ 

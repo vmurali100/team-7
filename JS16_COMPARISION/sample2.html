@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <h2></h2>
+    <!-- <div id="A">
+        <img src="https://www.steintree.com/wp-content/themes/yootheme/cache/banner-1-974e1c5c.jpeg" alt="">
+    </div>
+    <div id="B">
+        <img src="https://www.seattle.gov/Images/Departments/Trees/PlantingAndCare/StreetTrees/streettrees.jpg" alt="">
+    </div> -->
+    <script>
+        var Trees = prompt("Please Enter number of Trees !!")
+        document.querySelector("h1").innerHTML = "Number of Trees " + Trees
+
+        if (Trees <= 5) {
+            document.querySelector("h2").innerHTML = "Trres that grow near the house...";
+        } else if (Trees >= 6 && Trees <= 15) {
+            document.querySelector("h2").innerHTML = "Trees on a Street..";
+        } else if (Trees >= 16 && Trees <= 25) {
+            document.querySelector("h2").innerHTML = "Trees That are in one small park..";
+        } else if (Trees >= 26 && Trees <= 40) {
+            document.querySelector("h2").innerHTML = "The Trees that are in a Play Ground..";
+        } else if (Trees >= 41 && Trees <= 55) {
+            document.querySelector("h2").innerHTML = "Trees that are grow the Nurcery..";
+        } else if (Trees >= 56 && Trees <= 75) {
+            document.querySelector("h2").innerHTML = "Trees are in the Forest..";
+        } else if (Trees >= 76) {
+            document.querySelector("h2").innerHTML = "Trees that are in the Amazon Forest.."
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div#sample {
+            width: 250px;
+            height: 250px;
+        }
+        img {
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2></h2>
+    <div id="sample">
+        <img src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg" alt="">
+    </div>
+    <div id="sample1">
+        <img src="" alt="">
+    </div>
+    <h3></h3>
+    <script>
+        var nature = prompt("Please Enter Your Topic..")
+        if (nature == "Nature" || nature == "Natural") {
+            document.querySelector("h2").innerHTML = "Nature, in the broadest sense, is the physical world or universe. Nature can refer to the phenomena of the physical world, and also to life in general. The study of nature is a large, if not the only, part of science. Although humans are part of nature."
+        } else {
+            document.querySelector("h2").innerHTML = "This is not Your Topic.."
+        }
+
+        // var Forest = prompt("Please Enter Forest..")
+        // if (Forest == "Forest" || Forest == "Forests"){
+        //     document.querySelector("h3").innerHTML = "A forest is an area of land dominated by trees.[1] Hundreds of definitions of forest are used throughout the world, incorporating factors such as tree density, tree height, land use, legal standing, and ecological function."
+        // }else{
+        //     document.querySelector("h3").innerHTML = "This is not a Forest"
+        // }
+    </script>
+</body>
+</html>
