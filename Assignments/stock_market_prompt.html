@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stock market prompt</title>
+</head>
+<body>
+    <h1 style="color: blue;"></h1>
+    <h2 style="color: red;"></h2>
+    <script>
+        var market = prompt("Where did the NIFTY index close today?");
+        var market_yesterday = prompt("where did the NIFTY index close yesterday");
+        document.querySelector("h1").innerHTML = "Index closing value today was " + market;
+
+        if(market < market_yesterday){
+            document.querySelector("h2").innerHTML = "Today it was a bear market";
+        }else if(market > market_yesterday){
+            document.querySelector("h2").innerHTML = "Today it was a bullish market";
+        }else if(market == market_yesterday){
+            document.querySelector("h2").innerHTML = "Today it was a neutral market";
+        }
+            
+        
+
+    </script>
+</body>
+
+</html>
