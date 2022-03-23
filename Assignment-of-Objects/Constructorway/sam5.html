@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function items(item1,item2,item3,item4,item5){
+            this.item1=item1,
+            this.item2=item2,
+            this.item3=item3,
+            this.item4=item4,
+            this.item5=item5
+        }
+        var eat= new items("chicken","mutton","fish","prawns","egg")
+        console.log(eat)
+        document.write(eat.item1+"<br>"+eat.item2+"<br>"+eat.item3+"<br>"+eat.item4+"<br>"+eat.item5)
+    </script>
+</body>
+</html>

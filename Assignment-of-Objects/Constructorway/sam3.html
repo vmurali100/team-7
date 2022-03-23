@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function items(FruitName,Color,Price){
+            this.FruitName=FruitName,
+            this.Color=Color,
+            this.Price=Price
+        }
+        var cost= new items("Apple","Red","20Rs")
+        console.log(cost)
+        document.write(cost.FruitName+"<br>"+cost.Color+"<br>"+cost.Price)
+    </script>
+</body>
+</html>
