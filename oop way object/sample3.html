@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. Builtin way of Creating an Object
+        var villagename=new Object({
+            placeone:"paradarami",
+            placetwo:"chittor"
+        })
+        console.log(villagename.placeone+villagename.placetwo)
+        document.write(villagename.placeone+"<br>"+ villagename.placetwo+"<br>")
+
+        // 2.Constructor way of creating an Object
+       function pens(gell,ink,refel){
+           this.gell=gell,
+           this.ink=ink,
+           this.refel=refel
+       } 
+       var colors=new pens("red","blue","black")
+       console.log(colors.gell+pens.ink+pens.refel)
+       document.write(colors.gell+"<br>"+ colors.ink+"<br>"+ colors.refel +"<br>")
+
+       //Class way of creating an object
+       class pencil{
+           constructor(pencilA,pencilB){
+               this.pencilA=pencilA,
+               this.pencilB=pencilB
+           }
+       }
+       var pencilcompany=new pencil("natraj","apsara")
+       console.log(pencilcompany.pencilA+pencilcompany.pencilB )
+       document.write(pencilcompany.pencilA+"<br>"+pencilcompany.pencilB +"<br>")
+
+
+    </script>
+</body>
+</html>

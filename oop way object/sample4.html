@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. Builtin way of Creating an Object
+        var tourist=new Object({
+            aarea:"ooty",
+            barea:"kodaikanal"
+        })
+        console.log(tourist.aarea+tourist.barea)
+        document.write(tourist.aarea+"<br>"+ tourist.barea+"<br>")
+
+        // 2.Constructor way of creating an Object
+       function mobiles(IQOO3,HONER,LENOVA){
+           this.IQOO3=IQOO3,
+           this.HONER=HONER,
+           this.LENOVA=IQOO3
+       } 
+       var model=new mobiles("note3","note4","sixpro")
+       console.log(mobiles.IQOO3+mobiles.HONER+mobiles.LENOVA)
+       document.write(model.IQOO3+"<br>"+model.HONER+ "<br>"+model.LENOVA+"<br>")
+       
+       //Class way of creating an object
+       class pencil{
+           constructor(pencilA,pencilB){
+               this.pencilA=pencilA,
+               this.pencilB=pencilB
+           }
+       }
+       var pencilcompany=new pencil("natraj","apsara")
+       console.log(pencilcompany.pencilA+pencilcompany.pencilB )
+       document.write(pencilcompany.pencilA+"<br>"+pencilcompany.pencilB +"<br>")
+
+
+    </script>
+</body>
+</html>

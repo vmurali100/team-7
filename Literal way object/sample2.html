@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id=correct></ul>
+    <script>
+        var mydeatials={
+           name:"balaji",
+           AGE:22,
+           EDUCATION:"MBA",
+           BIKE:"honda hornet",
+           //MOBILEno:8098086887,
+           //DOB:06011998
+        }
+        // Adding property to an object with . Notation
+        mydeatials.MOBILEno=8098086887
+        // Adding property with []Array brackets
+        mydeatials["DOB"]="06011998"
+
+        document.write("my name :"+ mydeatials.name +"<br>" + 
+        "age:"+ mydeatials.AGE +"<br>" +"education:"+ mydeatials.EDUCATION +"<br>"
+         + "bike:"+ mydeatials.BIKE +"<br>" + "MOBILEno :" + mydeatials.MOBILEno
+         + "<br>" +"dob:"+mydeatials.DOB)
+        
+        // ul in id given 
+        document.getElementById("correct").innerHTML="my name :"+mydeatials.name
+        + "<br>" +  "age:"+ mydeatials.AGE +"<br>" +"education:"+ mydeatials.EDUCATION +"<br>"
+         + "bike:"+ mydeatials.BIKE +"<br>" + "MOBILEno :" + mydeatials.MOBILEno
+         + "<br>" +"dob:"+mydeatials.DOB
+    </script>
+</body>
+</html>

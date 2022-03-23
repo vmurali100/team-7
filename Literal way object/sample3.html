@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- special for id given -->
+    <ul id=village></ul>
+
+    <script>
+        //literal way for objects
+        var myarea={
+          AREANAME:"PARADARAMI",
+          PEOPLE:10000,
+          FAMOUSPLACE:"ESWARAN KOVIL"  ,
+          STREET:"BAZAAR STREET"
+        }
+         // Adding property to an object with . Notation
+         myarea.AREAsize="5KM"
+
+         // Adding property with []Array brackets
+         myarea["MAINSHOP"]="VASAVI COMPLEX"
+
+        document.write("AREA NAME :" + myarea.AREANAMzE + "<br>"
+         + "PEOPLE :" + myarea.PEOPLE + "<br>" +"FAMOUSPLACE :" +myarea.FAMOUSPLACE 
+         + "<br>" + "STREET :" + myarea.STREET + "<br>" + "AREA SIZE :"
+          + myarea.AREAsize + "<br>" + "MAIN SHOP :" +myarea.MAINSHOP )
+
+        // ul in id given  by using
+        document.getElementById ("village").innerHTML="AREA NAME :" + myarea.AREANAME + "<br>"
+         + "PEOPLE :" + myarea.PEOPLE + "<br>" +"FAMOUSPLACE :" +myarea.FAMOUSPLACE 
+         + "<br>" + "STREET :" + myarea.STREET + "<br>" + "AREA SIZE :"
+          + myarea.AREAsize + "<br>" + "MAIN SHOP :" +myarea.MAINSHOP
+    </script>
+</body>
+</html>

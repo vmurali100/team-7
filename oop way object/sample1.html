@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. Builtin way of Creating an Object
+
+        var personName=new Object({
+        fName:"udai",
+        lName:"ks"
+    })
+    console.log(personName.fName,personName.lName)
+    document.write(personName.fName+personName.lName +"<br>")
+
+    // 2.Constructor way of creating an Object
+    function person(fName,lName,age){
+        this.fName=fName,
+        this.lName=lName,
+        this.age=age
+    }
+    var fullName=new person("babu","ks",58)
+    console.log(fullName.fName+fullName.lName)
+    document.write(fullName.fName+fullName.lName+"<br>"+fullName.age +"<br>")
+
+    //Class way of creating an object
+    class bike{
+        constructor(name1,name2){
+            this.bikeName1=name1,
+            this.bikeName2=name2
+        }
+    }
+    var bikeNames=new bike("hero","honda")
+    console.log(bikeNames.bikeName1+bikeNames.bikeName2)
+    document.write(bikeNames.bikeName1 + "<br>"+ bikeNames.bikeName2)
+
+
+
+        
+   </script>
+</body>
+</html>
