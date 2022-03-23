@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Literal way of Creating Object
+        Customer = {
+            name: "Harish",
+            address: "Gandhi nagar",
+            doornumber: "2/25",
+            pin: "517419"
+        }
+        console.log(Customer)
+
+        // OOP-Object Oriented Programing
+        // 1- Creating an Object with Cunstructor Function
+        function Student(Sname, Rollnumber, section) {
+            this.Sname = Sname;
+            this.Rollnumber = Rollnumber;
+            this.section = section
+        }
+        var demo = new Student("Rehamani", "23", "A")
+        console.log(demo)
+        // 2- Creating An Object with Buit in Object
+        var demo1 = new Object({ Sname: "Sadik", Rollnumber: "12", section: "Z" })
+        console.log(demo1)
+        // 3-Creating an Object with class
+        class Stdinfo{
+            constructor(Stdname,Gender,Adhar){
+                this.Stdname=Stdname;
+                this.Gender=Gender;
+                this.Adhar=Adhar
+            }
+        }
+        var Demo2=new Stdinfo("Rajubhai","male","78965412123")
+        console.log(Demo2)
+    </script>
+</body>
+
+</html>
