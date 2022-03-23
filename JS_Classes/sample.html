@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Literal way of creating an Object
+        var person = {
+            fname: "",
+            lname: ""
+        }
+
+        //Object oriented programing
+        //1. create a class
+        //2. Instruction to create an object
+
+        //1. creating an object with constructor function
+
+        function Employee(fname, lname, city) {
+            this.fname = fname;
+            this.lname = lname;
+            this.city = city
+        }
+
+        var emp1 = new Employee("Kunal", "Maingade", "Mumbai")
+        console.log(emp1);
+
+        //2. creating an object with built in object
+
+        var emp2 = new Object({ fname: "Kunal", lname: "Maingade", email: "kunal.mainagde@gmail.com" })
+        console.log(emp2);
+
+        //3. creating an object with class
+        class Student {
+            constructor(fname, lname, section, city) {
+                this.fname = fname;
+                this.lname = lname;
+                this.section = section;
+                this.city = city
+            }
+        }
+
+        var Student1 = new Student("Vishal","Rewale","c","Mumbai")
+        console.log(Student1);
+
+    </script>
+</body>
+
+</html>

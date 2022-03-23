@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1. creating an object with constructor function
+            function Student(fname, lname, age, rollnumber){
+                this.fname = fname;
+                this.lname = lname;
+                this.age = age;
+                this.rollnumber = rollnumber
+            }
+
+            var Student1 = new Student("Vijay", "Kohli", "28", "13")
+            console.log(Student1)
+        //2. creating an object with built in object
+            var user = new Object({empid : "21", name : "Mahesh Solanki", address : "Mumbai"})
+            console.log(user)
+        //3. creating an object with class
+            class State {
+                constructor (name, language, population){
+                    this.name = name;
+                    this.language = language;
+                    this.population = population
+                }
+            }
+
+            var state1 = new State("Maharashtra", "Marathi", "11.42 crores")
+            console.log(state1)
+    </script>
+</body>
+</html>

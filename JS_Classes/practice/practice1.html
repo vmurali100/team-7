@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1. creating an object with constructor function
+            function Country(cname, animal, bird, states){
+                this.cname = cname;
+                this.animal = animal;
+                this.bird = bird;
+                this.states = states
+            }
+
+            var country1 = new Country("India", "Tiger", "Peacock", "28")
+            console.log(country1)
+        //2. creating an object with built in object
+            var car = new Object({name: "fiat", model:"500", color:"white", weight: "850Kg"})
+            console.log(car)
+        //3. creating an object with class
+            class Person {
+                constructor(fname, lname, age, city){
+                    this.fname = fname;
+                    this.lname = lname;
+                    this.age = age;
+                    this.city = city
+                }
+            }
+
+            var person1 = new Person("Manoj", "Singh", "50", "Mumbai")
+            console.log(person1)
+    </script>
+</body>
+</html>
