@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Inheritance  -->
+   <script>
+       class Mobile{
+           constructor(Brand){
+               this.Mobilename=Brand
+           }
+           newmodel(){
+               return 'I have a '+this.Mobilename+ " new mobile"
+           }
+       }
+
+       class Model extends Mobile{
+            constructor(Brand,model){
+                 super(Brand);
+                 this.model=model
+            }
+            show(){
+                return this.newmodel()+", It is a "+this.model+" model"
+            }
+       }
+       
+       const mymobile=new Model("Iqoo","Iqoo3")
+       console.log(mymobile.show())
+    //    const first=new Mobile("Iqoo")
+    //    console.log(first.Mobilename)
+    //    console.log(first.newmodel())
+   </script> 
+</body>
+</html>

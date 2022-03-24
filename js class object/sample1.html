@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class sweet{
+            constructor(Brown,Orange){
+                 this.Brown=Brown;
+                 this.Orange=Orange
+                 this.Yellow="Laddu"
+            }
+            // this is function,but inside class,constructor,it is called method
+            shopname(){
+                return this.Brown+" "+this.Orange+" "+this.Yellow
+            }
+        }
+        // creating object with an instance 
+        const color1=new sweet("Jamoon","Jaangiri") 
+        const color2=new sweet("Alva","Carrot alva")
+        console.log(color1.shopname())
+        console.log(color2)
+
+    </script>
+</body>
+</html>
