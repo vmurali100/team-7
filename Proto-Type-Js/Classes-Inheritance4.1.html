@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class BestFriend{
+            constructor(firstfriend,secondfriend,thirdfriend,fourthfriend,fithfriend){
+                this.firstfriend=firstfriend;
+                this.secondfriend=secondfriend;
+                this.thirdfriend=thirdfriend;
+                this.fourthfriend=fourthfriend;
+                this.fithfriend=firstfriend;
+            }
+            set friendship(myfriend){
+                this.firstfriend=myfriend
+                this.secondfriend=myfriend;
+                this.thirdfriend=myfriend;
+                this.fourthfriend=myfriend;
+                this.fithfriend=myfriend;
+            }
+            get friendship(){
+                 return this.firstfriend+" "+this.secondfriend+" "+this.thirdfriend+" "+this.fourthfriend+" "+this.fithfriend
+            }
+        }
+
+        const friendly= new BestFriend("Raju","Surya","Rehaman","Deena","Sadik")
+
+        document.write(friendly.friendship)
+
+
+    </script>
+</body>
+</html>

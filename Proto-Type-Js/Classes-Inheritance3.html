@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class BestFruit{
+            constructor(apple){
+                this.apple=apple;
+            }
+            add(){
+                return 'My fruit is  '+ this.apple+"  "
+            }
+        }
+
+
+        class Mango extends BestFruit{
+            constructor(apple,Mango){
+                super(apple);
+                this.Mango=Mango;
+            }
+            addplus(){
+                return  this.add()+" "  +this.Mango+" "
+            }
+        } 
+
+
+        class Orange extends Mango{
+            constructor(apple,Mango,Orange){
+                super(apple,Mango);
+                this.Orange=Orange;
+            }
+            addplusanother(){
+                return  this.addplus()+" "  +this.Orange+" "
+            }
+        } 
+
+
+        
+
+        // const fruits= new BestFruit("Apple")
+        // document.write(fruits.add())
+
+        // const fruity = new Mango("apple","Mango")
+        // document.write(fruity.addplus())
+
+        const best =new Orange("apple","Mango","Orange")
+        document.write(best.addplusanother())
+
+        
+
+        
+    </script>
+</body>
+</html>

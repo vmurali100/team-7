@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       class Myfamily {
+           constructor(myname,mynumberno1,myfamilyMainance){
+             this.myname=myname;
+             this.mynumberno1=mynumberno1;
+             this.myfamilyMainance=myfamilyMainance;
+             
+             this.mybiodata="yes"    +"<br><br>"
+
+           }
+           myinfo(){
+               return this.myname+" "+ this.mynumberno1+" "+ this.myfamilyMainance+" "+this.mybiodata+" "
+           }
+       }
+
+       const family =new Myfamily ("1. R Surya","06","Good" )
+
+       const family1 =new Myfamily ("2. J Raju","04","Better")
+
+       const family2 =new Myfamily ("3. Rehaman","08","Average")
+
+       const family3 =new Myfamily ("4. Deena","05","Exellent")
+
+
+       document.write(family.myinfo())
+
+       document.write(family1.myinfo())
+
+       document.write(family2.myinfo())
+
+       document.write(family3.myinfo())
+    </script>
+</body>
+</html>
