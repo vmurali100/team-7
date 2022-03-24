@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Students{
+            constructor(StdName,RollNo,Medaim,Results){
+                this.StdName = StdName;
+                this.RollNo = RollNo;
+                this.Medaim = Medaim;
+                this.Results = Results;
+                this.SchoolName = "ABC School"
+            }
+            Info(){
+                return this.StdName+" "+this.RollNo+" "+this.Medaim+" "+this.Results
+            }
+        }
+        const A = new Students ("Rehaman","7353","English","Pass")
+        const B = new Students ("Deena","4561","Telugu","Pass")
+        const C = new Students ("Mahesh","7894","Thamil","Fail")
+
+        console.log(A.Info())
+        console.log(B.Info())
+        console.log(C.Info())
+    </script>
+</body>
+</html>

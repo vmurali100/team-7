@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Fruits {
+            constructor(FruitName){
+                this.FruitName = FruitName
+            }
+            set fruit(CheapFruit){
+                this.FruitName = CheapFruit
+            }
+            get fruit(){
+                return this.FruitName
+            }
+        }
+        const fname = new Fruits ("Apple")
+        fname.CheapFruit = "Banana"
+        console.log(fname.CheapFruit)
+    </script>
+</body>
+</html>
