@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         class Actor {
+             constructor(A){
+                 this.Name = A ;
+             }
+             present(){
+                 return "I am " + this .Name + "(actor)";
+             }
+         }
+         class Moive extends Actor {
+             constructor(A,Moive){
+                 super(A);
+                 this.Moive = Moive;
+             }
+             show(){
+                 return this .present() + ", How Are You " + this.Moive
+
+             }
+         }
+         const B = new Moive("Ajith kumar","Vijay")
+         console.log (B.show())
+    </script>
+</body>
+</html>
