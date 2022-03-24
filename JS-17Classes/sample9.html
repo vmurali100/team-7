@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.constructor function
+
+        function Student(Name,Email,Mobile,City){
+            this.Name=Name;
+            this.Email=Email;
+            this.mobile=Mobile;
+            this.City=City
+        }
+        var A = new Student("Mohan","mohanmohan@gamil.com","9874561230","Chittoor");
+        console.log(A)
+
+        // 2.built
+
+        var B =new Object({Name:"Mohan",Email:"mohanmohan@gamil.com",Mobile:"9874561230",City:"Chittoor"})
+        console.log(B)
+
+        // 3.class
+
+        class Person{
+            constructor(Fname,Lname,Gender,City){
+                this.Fname=Fname;
+                this.Lname=Lname;
+                this.Gender=Gender;
+                this.City=City
+            }
+        }
+        var C=new Person("Mohan","Kumar","Male","chittoor");
+        console.log(C)
+    </script>
+</body>
+</html>

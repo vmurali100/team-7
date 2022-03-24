@@ -9,34 +9,34 @@
 </head>
 
 <body>
-    <script>
-        //    <!-- 1.constructor function-->
 
+    <script>
+        // <!-- 1.constructor function -->
         function Student(Name, Mobile, Email, City) {
             this.Name = Name;
             this.Mobile = Mobile;
             this.Email = Email;
             this.City = City
         }
-        var A = new Student("Deena", "9640526503", "deenav0003@gamil.com", "Chittoor");
+        var A = new Student("Sadhik", "7849561253", "sadhik52@gamil.com", "Chittoor");
         console.log(A)
 
-        //    <!-- 2.Built -->
+        // 2.Built
 
-        var B = new Object({ Name: "Deena", Mobile: "9640526503", Email: "deenav0003@gamil.com", City: "Chittoor" })
+        var B = new Object({ NAme: "sadhik", Mobile: "98745612132", Email: "sadhik52@gamil.com", City: "Chittoor" })
         console.log(B)
 
-        //    <!-- 3.Class -->
-
+        // 3.class
         class Person {
-            constructor(Fname, Lname, Gender, Pincode) {
+            constructor(Fname, Lname, Gender, City) {
                 this.Fname = Fname;
                 this.Lname = Lname;
                 this.Gender = Gender;
-                this.Pincode = Pincode
+                this.City = City
             }
+
         }
-        var C= new Person("Thala", "Deena", "Male", "759522");
+        var C = new Person("Sadhik", "Bhasa", "Male", "Chittoor")
         console.log(C)
     </script>
 </body>
