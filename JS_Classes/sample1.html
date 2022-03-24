@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Student{
+            constructor(city,state){
+                this.city = city;
+                this.state = state;
+                this.country = "India"
+            }
+            // this is called method
+            address(){
+                return this.city + " " + this.state + " " + this.country
+            }
+        }
+
+        const rahul = new Student("Bengaluru", "karnataka") // creating object with instance
+        const Kunal = new Student("Mumbai", "Maharashtra")
+
+        console.log(rahul.address());
+        console.log(Kunal.address())
+    </script>
+</body>
+</html>
