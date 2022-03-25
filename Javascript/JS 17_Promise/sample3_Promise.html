@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var balajiPromise= new Promise((drinksAvailable , drinksNotAvalable)=>{
+            let allDrinks=["Soda","Vodka","Whisky"]
+            // drinksAvailable(allDrinks)
+            drinksNotAvalable(["Sprite","Thums UP","Fanta"])
+        })
+
+        balajiPromise
+        .then((items)=>{
+            console.log("Available Items : ",items)
+        })
+        .catch((items)=>{
+            console.log("Available Items : ",items)
+        })
+    </script>
+</body>
+</html>
