@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: black;
+        color: white;
+    }
+    #img1 {
+    width: 405px;
+    height: 250px;
+    position: absolute;
+    left: 222px;
+    box-shadow: 4px 4px 5px blanchedalmond;
+    top: 48px;
+    border-radius: 52px;
+}
+#img2 {
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    left: 15px;
+    top: 153px;
+    border-radius: 83px;
+}
+</style>
+<body>
+    <img id="img1" src="" alt="">
+    <img id="img2" src="" alt="">
+    <script>
+        let BankAccount = []
+
+        function enterdata(){
+
+            BankAccount =["Surya Prakash"+"<br>"+"26-3-2022"+"<br>"+"***********234"+"<br>"+"UTBI0326ST"+"<br>"+"available balance -$15,00,893"];
+            processings()
+            document.querySelector("img").setAttribute("src","https://www.whoistheownerof.com/wp-content/uploads/2018/01/Owner-of-Indian-Bank-Wiki-Logo-profile.jpg")
+
+            setTimeout(()=>{
+                document.getElementById("img2").setAttribute("src","https://www.seekpng.com/png/detail/72-722839_success-save-success-png-icon.png")
+
+            },4000)
+                       
+        }
+
+        function processings(){
+            document.write("Hello Sir Welcome To Indian Bank-your A/c Have 12,00,000 debited ****234"+"<br>",BankAccount)
+        }
+
+        enterdata();
+        // processings();
+
+    </script> 
+</body>
+</html>

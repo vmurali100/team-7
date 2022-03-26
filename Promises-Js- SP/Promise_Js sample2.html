@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        var mypromise = new Promise((resolve, reject) => {
+            let brings = ["apple", "banana", "grapes", "mango"]
+            // resolve(brings);
+            let bring =["juice","milk","cofee"]
+            reject(bring)
+        })
+
+          mypromise
+          .then((items)=>{
+              document.write("avalable all Fruits -",items)
+          })
+          .catch((items)=>{
+               document.write("not avalable fruits -",items)
+          })
+
+        
+    </script>
+</body>
+
+</html>
