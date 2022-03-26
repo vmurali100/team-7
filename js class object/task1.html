@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class student{
+            constructor(id,name,username,email,address,phone,website,company){
+                  
+                var address={
+                    "street":"kulas light",
+                    "suite":"apt.556",
+                    "city":"gwenborough",
+                    "zipcode":"92998-3874",
+                }
+
+                var geo={
+                       "lat":"-37.3159",
+                       "ing":"81.1496"
+                }
+               
+                var company={
+                    "name":"Romaguera-Crona",
+                    "catchphrase":"Multi-layered Client- server neural-net",
+                    "bs":"harness real-time e-markets"
+                }
+                this.Id=id
+                this.Name=name,
+                this.Username=username,
+                this.Email=email,
+                this.Address= address,
+                this.Geo=geo,
+                this.Phone=phone,
+                this.Website=website
+                this.Company=company
+            }
+        }
+
+        var sdetails=new student("1","Leanne Graham","Bret",
+        "Sincere@april.biz",this.address,"1-770-736-8031 x56442", 
+        "hildegard.org",this.company)
+
+        // document.write( " : "+ sdetails.Id+" : "+"<br>"+ "name:"+ sdetails.name +"<br>"+
+        // "username:"+ sdetails.username+"<br>"+ "email:"+ sdetails.email+"<br>"+
+        // "address:"+ sdetails.address+"<br>"+"phone:"+sdetails.phone+"<br>"+
+        //  "website:"+ sdetails.website+"<br>"+ "company:"+ sdetails.company)
+
+        console.log(sdetails)
+    </script>
+</body>
+</html>
