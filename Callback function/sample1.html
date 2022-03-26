@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let Allvoters=[]
+        function Voters(){
+            setTimeout(function(){
+                Allvoters=["Chittor","Palamaner","Tirupati","Madhanapalli","Chandragiri"]
+                Vtrnmae()
+            },5000)
+        }
+        function Vtrnmae(){
+            console.log("Total number of Voters in Ward wise",Allvoters)
+        }
+        Voters()
+        Vtrnmae()
+    </script>
+</body>
+</html>
