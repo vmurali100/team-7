@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- call back -->
+    <script>
+        var allcarts = []
+        function getDataFromServer(displaycarts) {
+            var getInfo = new XMLHttpRequest();
+            getInfo.onreadystatechange = function () {
+                if (getInfo.readyState == 4 && getInfo.status == 200) {
+                    allcarts = JSON.parse(getInfo.response)
+                    displaycarts()
+                }
+            }
+
+            getInfo.open("GET", "https://fakestoreapi.com/carts")
+            getInfo.send()
+        }
+
+        function displaycarts(){
+            console.log("All carts ",allcarts)
+        }
+
+        getDataFromServer(displaycarts);
+        
+    </script>
+</body>
+
+</html>
