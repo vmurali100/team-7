@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var sadik = []
+        function sadikf1(){
+            return new Promise((yes,no)=>{
+                var sadikobj = new XMLHttpRequest();
+                sadikobj.onreadystatechange = function(){
+                    if(sadikobj.readyState==4 && sadikobj.status==200){
+                        sadik = JSON.parse(sadikobj.response)
+                        yes(sadik)
+                        no(sadik)
+                    }
+                }
+                sadikobj.open("Get","https://fakestoreapi.com/products")
+                sadikobj.send()
+            })
+        }
+        function sadikf2(){
+            console.log("watch here the data :",sadik)
+        }
+        async function sadikf3(){
+            sadik= await sadikf1()
+            sadikf2()
+        }
+        sadikf3()
+    </script>
+</body>
+</html>

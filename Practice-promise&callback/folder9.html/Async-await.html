@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var naveen=[]
+        function naveenf1(){
+            return new Promise((yes,no)=>{
+                var naveenobj= new XMLHttpRequest();
+                naveenobj.onreadystatechange= function(){
+                    if(naveenobj.readyState==4 && naveen.status==200){
+                        naveen = JSON.parse(naveenobj.response)
+                        yes(naveen)
+                        no(naveen)
+                    }
+                }
+                naveenobj.open("Get", "https://jsonplaceholder.typicode.com/todos")
+                naveenobj.send()
+            })
+        }
+        function naveenf2(){
+            console.log("we can see it here : ",naveen)
+        }
+        async function naveenf3(){
+            naveen = await naveenf1()
+            naveenf2()
+        }
+        naveenf3()
+    </script>
+</body>
+</html>

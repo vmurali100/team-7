@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var babu = []
+        function babuf1(){
+            return new Promise((yes,no)=>{
+                var babuobj = new XMLHttpRequest();
+                babuobj.onreadystatechange = function(){
+                    if(babuobj.readyState==4 && babuobj.status==200){
+                        babu = JSON.parse(babuobj.response)
+                        yes(babu)
+                        no(babu)
+                    }
+                }
+                babuobj.open("Get", "https://fakestoreapi.com/users ")
+                babuobj.send()
+            })
+        }
+        function babuf2(){
+            console.log("find the data here : ",babu)
+
+        }
+        async function babuf3(){
+            babu = await babuf1()
+            babuf2()
+        }
+        babuf3()
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+        var rehaman1 = []
+    function rehamanf1(){
+        return new Promise ((yes,no)=>{
+            var rehaman = new XMLHttpRequest();
+            rehaman.onreadystatechange = function(){
+                if(rehaman.readyState==4 && rehaman.status==200){
+                    rehaman1 = JSON.parse(rehaman.response)
+                    yes(rehaman1)
+                    no(rehaman1)
+                }
+            }
+            rehaman.open("Get","https://jsonplaceholder.typicode.com/albums ")
+            rehaman.send()
+        })
+    }
+    function rehamanf2(){
+        console.log("Data from here :",rehaman1)
+    }
+    async function rehamanf3(){
+        rehaman1 = await rehamanf1()
+        rehamanf2()
+    }
+    rehamanf3()
+   </script>
+</body>
+</html>

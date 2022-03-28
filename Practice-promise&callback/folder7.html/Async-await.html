@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var hari =[]
+        function harif1(){
+            return new Promise((valid,invalid)=>{
+                var hariobj= new XMLHttpRequest();
+                hariobj.onreadystatechange = function(){
+                    if(hariobj.readyState==4 && hariobj.status==200){
+                        hari = JSON.parse(hariobj.response)
+                        valid(hari)
+                        invalid(hari)
+                    }
+                }
+                hariobj.open("Get"," https://jsonplaceholder.typicode.com/photos")
+                hariobj.send()
+            })
+        }
+        function harif2(){
+            console.log("Data is here : ",hari)
+        }
+        async function harif3(){
+            hari = await harif1()
+                harif2()
+            }
+            harif3()
+    </script>
+</body>
+</html>

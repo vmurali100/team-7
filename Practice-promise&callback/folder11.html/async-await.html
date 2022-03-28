@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var ravi = []
+        function ravif1(){
+            return new Promise((yes,no)=>{
+                var raviobj = new XMLHttpRequest();
+                raviobj.onreadystatechange = function(){
+                    if(raviobj.readyState==4 && raviobj.status==200){
+                        ravi= JSON.parse(raviobj.response)
+                        yes(ravi)
+                        no(ravi)
+                    }
+                }
+                raviobj.open("Get","https://fakestoreapi.com/carts ")
+                raviobj.send()
+            })
+        }
+        function ravif2(){
+            console.log("display this data :",ravi)
+        }
+        async function ravif3(){
+            ravi = await ravif1()
+            ravif2()
+        }
+        ravif3()
+    </script>
+</body>
+</html>

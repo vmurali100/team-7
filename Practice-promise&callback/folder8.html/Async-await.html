@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var lokesh = []
+        function lokeshf1(){
+            return new Promise ((top,bottom)=>{
+                var lokeshobj = new XMLHttpRequest();
+                lokeshobj.onreadystatechange = function(){
+                    if(lokeshobj.readyState==4 && lokeshobj.status==200){
+                        lokesh = JSON.parse(lokeshobj.response)
+                        top(lokesh)
+                        bottom(lokesh)
+                    }
+                }
+                lokeshobj.open("Get", " https://jsonplaceholder.typicode.com/todos")
+                lokeshobj.send()
+            })
+        }
+        function lokeshf2(){
+            console.log("we can watch data here ;",lokesh)
+        }
+        async function lokeshf3(){
+            lokesh = await lokeshf1()
+            lokeshf2()
+        }
+        lokeshf3()
+    </script>
+</body>
+</html>
