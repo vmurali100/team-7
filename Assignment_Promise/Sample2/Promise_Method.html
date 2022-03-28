@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var Employee = new Promise((Resolve, Reject) => {
+            let AllEmployees = [
+                {
+                    "id": 11,
+                    "email": "SBelleque@odio.ly",
+                    "username": "GRitchie",
+                    "password": "TIpSR"
+                },
+                {
+                    "id": 12,
+                    "email": "RKlapper@hendrerit.net",
+                    "username": "SHesters",
+                    "password": "9zud8"
+                },
+                {
+                    "id": 13,
+                    "email": "SSpataro@ipsum.com",
+                    "username": "DChatham",
+                    "password": "9umUf"
+                },
+                {
+                    "id": 14,
+                    "email": "JHouston@neque.com",
+                    "username": "IHadley",
+                    "password": "yKXOe"
+                },
+                {
+                    "id": 15,
+                    "email": "RStephens@eros.io",
+                    "username": "KCone",
+                    "password": "av2xI"
+                },
+                {
+                    "id": 16,
+                    "email": "RAlpert@vitae.ly",
+                    "username": "JAltschuler",
+                    "password": "GVKSY"
+                },
+                {
+                    "id": 17,
+                    "email": "DGeis@vitae.org",
+                    "username": "FTarbox",
+                    "password": "UtcbK"
+                },
+                {
+                    "id": 18,
+                    "email": "SDoerfler@lectus.io",
+                    "username": "MCross",
+                    "password": "rf1r8"
+                },
+                {
+                    "id": 19,
+                    "email": "HRager@sit.org",
+                    "username": "BPotate",
+                    "password": "kr6Rs"
+                },
+                {
+                    "id": 20,
+                    "email": "JBodine@sed.gov",
+                    "username": "MRingling",
+                    "password": "zSHZF"
+                }
+            ]
+                // Resolve(AllEmployees)
+                Reject(["Sorry... Employees details are not fond"])
+        })
+
+        Employee
+        .then((Details)=>{
+            console.log("Employees Details are Here",Details)
+        })
+        .catch((Details)=>{
+            console.log("Employees Details are Here",Details)
+        })
+    </script>
+</body>
+
+</html>

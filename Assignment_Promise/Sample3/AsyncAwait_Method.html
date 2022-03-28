@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var Student = []
+        function GET() {
+            return new Promise((Like, Dislike) => {
+                var Names = new XMLHttpRequest();
+                Names.onreadystatechange = function () {
+                    if (Names.readyState == 4 && Names.status == 200) {
+                        Student = JSON.parse(Names.response)
+                        Like(Student)
+                        Dislike(Student)
+                    }
+                }
+                Names.open("GET","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true")
+                Names.send()
+            })
+        }
+
+        function Details(){
+            console.log("All Students Names Done :) ",Student)
+        }
+
+        async function RRR(){
+           Student = await GET();
+           Details()
+        }
+        RRR()
+    </script>
+</body>
+
+</html>

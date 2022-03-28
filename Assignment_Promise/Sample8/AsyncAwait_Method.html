@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var One = []
+        function Two() {
+            return new Promise((Success, Failure) => {
+                var Three = new XMLHttpRequest();
+                Three.onreadystatechange = function () {
+                    if (Three.readyState == 4 && Three.status == 200) {
+                        One = JSON.parse(Three.response)
+                        Success(One)
+                        Failure(One)
+                    }
+                }
+                Three.open("Get", "https://jsonplaceholder.typicode.com/todos")
+                Three.send()
+            })
+        }
+
+        function Four() {
+            console.log("Successfully Done :)...", One)
+        }
+
+        async function Five() {
+            One = await Two()
+            Four()
+        }
+        Five()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var Nonveg = []
+        function Flowers() {
+            return new Promise((Good, Bad) => {
+                var Fruits = new XMLHttpRequest();
+                Fruits.onreadystatechange = function () {
+                    if (Fruits.readyState == 4 && Fruits.status == 200) {
+                        Nonveg = JSON.parse(Fruits.response)
+                        Good(Nonveg)
+                        Bad("Sorry Not Available")
+                    }
+                }
+                Fruits.open("Get", "https://fakestoreapi.com/carts")
+                Fruits.send()
+            })
+        }
+
+        function Leifs() {
+            console.log("Avalable Data Here", Nonveg)
+        }
+
+        async function Veg() {
+            Nonveg = await Flowers()
+            Leifs()
+        }
+        Veg()
+    </script>
+</body>
+
+</html>

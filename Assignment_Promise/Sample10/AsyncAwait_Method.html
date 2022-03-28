@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var employee = []
+        function All() {
+            return new Promise((Friend, Unfriend) => {
+                var User = new XMLHttpRequest();
+                User.onreadystatechange = function () {
+                    if (User.readyState == 4 && User.status == 200) {
+                        employee = JSON.parse(User.response)
+                        Friend(employee)
+                        Unfriend(employee)
+                    }
+                }
+                User.open("Get", "https://fakestoreapi.com/products")
+                User.send()
+            })
+        }
+
+        function matter() {
+            console.log("All Details Complited :)...", employee)
+        }
+
+        async function Love() {
+            employee = await All()
+            matter()
+        }
+        Love()
+    </script>
+</body>
+
+</html>

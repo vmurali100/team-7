@@ -1,0 +1,38 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var Data = []
+            function Getdata(){
+                return new Promise((Resolve,Reject)=>{
+                    var Info = new XMLHttpRequest();
+                    Info.onreadystatechange = function(){
+                        if (Info.readyState == 4 && Info.status == 200){
+                            Data = JSON.parse(Info.response)
+                            Resolve(Data)
+                            // Reject(Data)
+                        }
+                    }
+                    Info.open("Get","http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true")
+                    Info.send()
+                })
+            }
+
+            function User(){
+                console.log("All Users Imformation",Data)
+            }
+
+            async function Ex(){
+                Data = await Getdata()
+                User()
+            }
+            Ex()
+        </script>
+    </body>
+    </html>

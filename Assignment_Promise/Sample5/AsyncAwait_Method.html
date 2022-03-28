@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var Info = []
+        function Get() {
+            return new Promise((Follow, Unfollow) => {
+                var Data = new XMLHttpRequest();
+                Data.onreadystatechange = function () {
+                    if (Data.readyState == 4 && Data.status == 200) {
+                        Info = JSON.parse(Data.response)
+                        Follow(Info)
+                        Unfollow(Info)
+                    }
+                }
+                Data.open("GET", "https://jsonplaceholder.typicode.com/comments")
+                Data.send()
+            })
+        }
+
+        function Name() {
+            console.log("Successfully Complited :) ",Info)
+        }
+
+        async function SR() {
+            Info = await Get();
+            Name()
+        }
+        SR()
+    </script>
+</body>
+
+</html>

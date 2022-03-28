@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var Data = []
+        function GetInfo() {
+            return new Promise((Resolve, Reject) => {
+                var User = new XMLHttpRequest();
+                User.onreadystatechange = function () {
+                    if (User.readyState == 4 && User.status == 200) {
+                        Data = JSON.parse(User.response)
+                        Resolve(Data)
+                        // Reject(Data)
+                    }
+                }
+                User.open("Get", "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+                User.send()
+            })
+        }
+
+        function Info() {
+            console.log("All Users", Data)
+        }
+
+        async function Abc() {
+            Data = await GetInfo();
+            Info()
+        }
+        Abc()
+    </script>
+</body>
+
+</html>

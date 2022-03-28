@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var User = []
+        function Employee() {
+            return new Promise((Good, Bad) => {
+                var Details = new XMLHttpRequest();
+                Details.onreadystatechange = function () {
+                    if (Details.readyState == 4 && Details.status == 200) {
+                        User = JSON.parse(Details.response)
+                        Good(User)
+                        Bad(User)
+                    }
+                }
+                Details.open("GET", "https://jsonplaceholder.typicode.com/albums")
+                Details.send()
+            })
+        }
+
+        function Info() {
+            console.log("User Data is Done :)...", User)
+        }
+
+        async function RELA() {
+            User = await Employee()
+            Info()
+        }
+        RELA()
+    </script>
+</body>
+
+</html>

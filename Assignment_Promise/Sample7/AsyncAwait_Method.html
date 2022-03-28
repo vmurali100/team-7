@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var Animals = []
+        function Birds() {
+            return new Promise((True, False) => {
+                var Insects = new XMLHttpRequest();
+                Insects.onreadystatechange = function () {
+                    if (Insects.readyState == 4 && Insects.status == 200) {
+                        Animals = JSON.parse(Insects.response)
+                        True(Animals)
+                        False(Animals)
+                    }
+                }
+                Insects.open("Get", "https://jsonplaceholder.typicode.com/photos")
+                Insects.send()
+            })
+        }
+
+        function Fishes() {
+            console.log("You Want Data in Bellow...", Animals)
+        }
+
+        async function Earth() {
+            Animals = await Birds()
+            Fishes()
+        }
+        Earth()
+    </script>
+</body>
+
+</html>

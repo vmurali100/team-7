@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var Data = []
+        function Get() {
+            return new Promise((Done, Notdone) => {
+                var Info = new XMLHttpRequest();
+                Info.onreadystatechange = function () {
+                    if (Info.readyState == 4 && Info.status == 200) {
+                        Data = JSON.parse(Info.response)
+                        Done(Data)
+                        Notdone("Sorry...Page not fond")
+                    }
+                }
+                Info.open("GEt", "https://fakestoreapi.com/users")
+                Info.send()
+            })
+        }
+
+        function User() {
+            console.log("All Details Available here", Data)
+        }
+
+        async function You() {
+            Data = await Get()
+            User()
+        }
+        You()
+    </script>
+</body>
+
+</html>

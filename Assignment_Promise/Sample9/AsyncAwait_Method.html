@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var Particulars = []
+        function User() {
+            return new Promise((Ok, NotOk) => {
+                var Data = new XMLHttpRequest();
+                Data.onreadystatechange = function () {
+                    if (Data.readyState == 4 && Data.status == 200) {
+                        Particulars = JSON.parse(Data.response)
+                        Ok(Particulars)
+                        NotOk(Particulars)
+                    }
+                }
+                Data.open("GET", "https://jsonplaceholder.typicode.com/todos")
+                Data.send()
+            })
+        }
+
+        function Get() {
+            console.log("All Users", Particulars)
+        }
+
+        async function DR() {
+            Particulars = await User()
+            Get()
+        }
+        DR()
+    </script>
+</body>
+
+</html>
