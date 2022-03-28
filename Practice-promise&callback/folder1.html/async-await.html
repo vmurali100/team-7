@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       var sadik= []
+       function sadik1(){
+           return new Promise((yes ,no)=>{
+               var obj = new XMLHttpRequest();
+               obj.onreadystatechange = function (){
+                   if(obj.readyState==4 && obj.status==200){
+                       sadik = JSON.parse(obj.response)
+                       yes(sadik)
+                    //    no(sadik)
+                   }
+               }
+               obj.open("Get"," http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+               obj.send()
+            })
+       }
+
+       function sadik2(){
+           console.log("All details are available",sadik)
+       }
+
+       async function sadik3(){
+           sadik = await sadik1()
+           sadik2()
+       }
+       sadik3()
+   </script> 
+</body>
+</html>

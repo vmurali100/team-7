@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var raj = []
+        function rajf1 (){
+            return new Promise ((resolve,reject)=>{
+                var rajobj1 = new XMLHttpRequest();
+                rajobj1.onreadystatechange = function(){
+                    if(rajobj1.readyState==4 && rajobj1.status==200){
+                        raj = JSON.parse(rajobj1.response)
+                        resolve(raj)
+                        // reject(raj)
+                    }
+                }
+                rajobj1.open("Get","https://jsonplaceholder.typicode.com/posts ")
+                rajobj1.send()
+            })
+        }
+        function rajf2 (){
+            console.log("Display any data :",raj)
+        }
+        async function rajf3(){
+            raj = await rajf1()
+            rajf2()
+        }
+        rajf3()
+    </script>
+</body>
+</html>

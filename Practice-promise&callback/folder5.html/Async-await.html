@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var suri = []
+        function surif1(){
+            return new Promise((good,bad)=>{
+                var suriobj = new XMLHttpRequest();
+                suriobj.onreadystatechange = function(){
+                    if(suriobj.readyState==4 && suriobj.status==200){
+                        suri = JSON.parse(suriobj.response)
+                        good(suri)
+                        // bad(suri)
+                    }
+                }
+                suriobj.open("Get", " https://jsonplaceholder.typicode.com/comments")
+                suriobj.send()
+            })
+        }
+        function surif2(){
+            console.log("YOU can see data Now :", suri)
+        }
+        async function surif3(){
+            suri = await surif1()
+            surif2()
+        }
+        surif3()
+    </script>
+</body>
+</html>

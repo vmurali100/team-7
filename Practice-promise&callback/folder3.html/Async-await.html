@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var sai = []
+        function saif1 (){
+            return new Promise((correct,wrong)=>{
+                var saiobj1 = new XMLHttpRequest();
+                saiobj1.onreadystatechange = function(){
+                    if(saiobj1.readyState==4 && saiobj1.status==200){
+                        sai = JSON.parse(saiobj1.response)
+                        correct(sai)
+                        // wrong(sai)
+                    }
+                }
+                saiobj1.open("Get"," http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true")
+                saiobj1.send()
+            
+            })
+        }
+
+        function saif2(){
+            console.log("display data", sai)
+        }
+        async function saif3(){
+            sai = await saif1()
+                saif2()
+            }
+            saif3()
+    </script>
+</body>
+</html>

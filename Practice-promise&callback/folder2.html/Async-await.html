@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        var deena = []
+        function deenaobj (){
+            return new Promise ((yes,no)=>{
+                var deenaobj2= new XMLHttpRequest();
+                deenaobj2.onreadystatechange = function(){
+                    if(deenaobj2.readyState==4 && deenaobj2.status==200){
+                        deena = JSON.parse(deenaobj2.response)
+                        yes(deena)
+                        // no(deena)
+                    }
+                }
+                deenaobj2.open("Get", "  http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true")
+                deenaobj2.send()
+            
+            })  
+        }
+
+            function deena2(){
+                console.log("Watch the data",deena)
+            }
+
+            async function deena3(){
+                deena = await deenaobj()
+                deena2()
+            }
+            deena3()
+    </script>
+</body>
+</html>
