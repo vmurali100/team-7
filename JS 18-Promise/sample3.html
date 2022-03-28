@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Student= new Promise((StudentsAvailable , StudentsNotAvalable)=>{
+            let allStudents=["Sai","Kumar","Prem","VAmsi","Lallu"]
+            
+            StudentsNotAvalable(["Raju","Deena","Rehaman","Surya","Sadhik"])
+        })
+
+        Student
+        .then((person)=>{
+            console.log("Available person : ",person)
+        })
+        .catch((person)=>{
+            console.log("Available person : ",person)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        var Student=[]
+        function Users(){
+            return new Promise((Resolve,Reject)=>{
+                var GetUser=new XMLHttpRequest();
+                GetUser.onreadystatechange=function(){
+                    if(GetUser.readyState==4 && GetUser.status==200){
+                        Student=JSON.parse(GetUser.response)
+                        // DisplayUser()
+                        Resolve(Student)
+                        // Reject(Student)
+
+                    }
+                }
+                GetUser.open("get","http://localhost:3000/users")
+                GetUser.send()
+
+            })
+        }
+        function A(){
+            console.log("All Users",Student)
+        }
+        // Users()
+        // .then(()=>{
+        //     A()
+        // })
+        // .catch(()=>{
+        //     console.log("there no user")
+        // })
+        async function B(){
+            Student=  await Users();
+            A()
+        } 
+        B()
+
+
+    </script>    
+</body>
+</html>
