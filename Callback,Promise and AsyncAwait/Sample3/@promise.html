@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Employee= new Promise((Resolve,Reject)=>{
+            EName=[
+                {
+                    "fname": "Keana",
+                    "lname": "Gerver"
+                },
+                {
+                    "fname": "Inessa",
+                    "lname": "Schacher"
+                },
+                {
+                    "fname": "Erik",
+                    "lname": "Sober"
+                },
+                {
+                    "fname": "Lise",
+                    "lname": "Purdy"
+                },
+                {
+                    "fname": "Jasper",
+                    "lname": "Grant"
+                },
+                {
+                    "fname": "Thorne",
+                    "lname": "Sayin"
+                },
+                {
+                    "fname": "Tilena",
+                    "lname": "Sueri"
+                },
+                {
+                    "fname": "Hector",
+                    "lname": "Collins"
+                },
+                {
+                    "fname": "Vasilis",
+                    "lname": "Heppelmann"
+                },
+                {
+                    "fname": "Dainius",
+                    "lname": "Bartovics"
+                }
+            ]
+            // Resolve(EName)
+            Reject(EName)
+        })
+        Employee
+        .then((info)=>{
+            console.log("Employee Names :-",info)
+        })
+        .catch((info)=>{
+            console.log("Employee Names are not available")
+        })
+    </script>
+</body>
+</html>

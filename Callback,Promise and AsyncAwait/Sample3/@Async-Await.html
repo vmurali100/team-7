@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var GetInfo=[]
+        function Emplyee(){
+            return new Promise((Resolve,Reject)=>{
+                var GetData= new XMLHttpRequest();
+                GetData.onreadystatechange=function(){
+                    if( GetData.readyState==4 && GetData.status==200){
+                        GetInfo=JSON.parse(GetData.response)  
+                        // DisplayEmployee() 
+                        Resolve(GetInfo)  
+                        // Reject(GetInfo)          
+
+                    }
+                } 
+                GetData.open("get","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true")
+                GetData.send()                              
+            })            
+        }
+        function DisplayEmployee(){
+            console.log("Employee Names :-",GetInfo)
+        }
+        // Emplyee()
+        // .then(()=>{
+        //     DisplayEmployee();
+        // })
+        // .catch(()=>{
+        //     console.log("somethig went wrong")
+        // })
+        async function SSS(){
+            GetInfo=await Emplyee()
+            DisplayEmployee()
+        }
+        SSS()
+
+        
+
+    </script>
+</body>
+</html>

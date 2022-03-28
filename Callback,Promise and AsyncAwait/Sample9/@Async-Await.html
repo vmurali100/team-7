@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Emty=[]
+        function Product(){
+            return new Promise((GOOD,BAD)=>{
+                var Getuser=new XMLHttpRequest();
+                Getuser.onreadystatechange=function(){
+                    if( Getuser.readyState==4 && Getuser.status==200){
+                        Emty=JSON.parse(Getuser.response)
+                        GOOD(Emty)
+                    }
+                }
+                Getuser.open("Get","https://fakestoreapi.com/products")
+                Getuser.send()
+            })
+        }
+
+        function Display(){
+            console.log("Products Are :-",Emty)
+        }
+        Product()
+        .then(()=>{
+            Display()
+        })
+        .catch(()=>{
+            console.log("no product")
+        })
+
+    </script>
+</body>
+</html>

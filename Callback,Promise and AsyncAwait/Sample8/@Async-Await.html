@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        YESNO=[]        
+        function todos(){
+            return new Promise((Success,Failure)=>{
+                var Getdata=new XMLHttpRequest();
+                Getdata.onreadystatechange=function(){
+                    if(Getdata.readyState==4 && Getdata.status==200){
+                        YESNO=JSON.parse(Getdata.response)
+                        // Success(YESNO)
+                        Failure("ERROR")
+                    }
+                }
+                Getdata.open("Get","https://jsonplaceholder.typicode.com/todos")
+                Getdata.send()
+            })
+        }
+        function Display(){
+            console.log("YES NO :-",YESNO)
+        }
+        // todos()
+        // .then(()=>{
+        //     Display()  
+        // })
+        // .catch(()=>{
+        //     console.log("ERROR")
+        // })
+        async function mkm(){
+            YESNO= await todos()
+            Display()
+        }
+        mkm()     
+                
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        User = []
+        function Photos() {
+            return new Promise((True, Falls) => {
+                var post = new XMLHttpRequest();
+                post.onreadystatechange = function () {
+                    if (post.readyState == 4 && post.status == 200) {
+                        User = JSON.parse(post.response)
+                        // True(User)
+                        Falls(User)
+                    }
+                }
+                post.open("Get", "https://jsonplaceholder.typicode.com/photos")
+                post.send()
+            })
+        }
+        function Showdata() {
+            console.log("All the Datas are :-", User)
+        }
+        Photos()
+            // .then(() => (
+            //     Showdata()
+            // ))
+            // .catch(() => {
+            //     console.log("There is no data available")
+            // })
+
+            async function RRR(){
+                User= await Photos()
+                Showdata()
+            }
+            RRR()
+            
+    </script>
+</body>
+
+</html>

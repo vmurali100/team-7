@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Person=[]
+        function Product(){
+            return new Promise((Success, failure)=>{
+                var getuser=new XMLHttpRequest();
+                getuser.onreadystatechange=function(){
+                    if( getuser.readyState==4 && getuser.status==200){
+                        Person=JSON.parse(getuser.response)
+                            // Success(Person)
+                            failure("ERROR")
+                    }
+                }
+                getuser.open("Get","https://fakestoreapi.com/carts")
+                getuser.send()
+            })
+        }
+        function display(){
+            console.log("Product Detais are :-",Person)
+        }
+        // Product()
+        // .then(()=>{
+        //     display() 
+        // })
+        // .catch(()=>{
+        //     console.log("Somthig ERROR")
+        // })
+        async function bbb(){
+            Person=await Product()
+            display()
+        }
+        bbb()
+    </script>
+</body>
+</html>
