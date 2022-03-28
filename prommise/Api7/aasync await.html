@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Asyn/await -->
+    <script>
+        var allalbums = []
+
+        function getDataFromServer() {
+            return new Promise((resolve, reject) => {
+                var getInfo = new XMLHttpRequest();
+                getInfo.onreadystatechange = function () {
+                    if (getInfo.readyState == 4 && getInfo.status == 200) {
+                        allalbums = JSON.parse(getInfo.response)
+                        resolve(allalbums)
+                        // reject(allalbums)
+                    }
+                }
+
+                getInfo.open("GET", "https://jsonplaceholder.typicode.com/albums")
+                getInfo.send()
+            })
+        }
+
+        function displayalbums() {
+            console.log("All albums ", allalbums)
+        }
+
+        async function handleData() {
+            allalbums = await getDataFromServer();
+            displayalbums()
+        }
+
+        handleData()
+    </script>
+</body>
+
+</html>

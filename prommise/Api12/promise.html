@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Promise -->
+    <script>
+        var allInformation = []
+
+        // This function need some Extra time to excute
+        function getDataFromServer() {
+            return new Promise((resolve, reject) => {
+                var getInfo = new XMLHttpRequest();
+                getInfo.onreadystatechange = function () {
+                    if (getInfo.readyState == 4 && getInfo.status == 200) {
+                        allInformation = JSON.parse(getInfo.response)
+                        resolve(allInformation)
+                        // reject(allInformation)
+                    }
+                }
+
+                getInfo.open("GET", "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+                getInfo.send()
+            })
+        }
+
+        function displayInformation() {
+            console.log("All Information ", allInformation)
+        }
+
+        getDataFromServer()
+        .then(()=>{
+            displayInformation()
+        })
+        .catch(()=>{
+            console.log("Some Problem Happend")
+        })
+       
+    </script>
+</body>
+
+</html>

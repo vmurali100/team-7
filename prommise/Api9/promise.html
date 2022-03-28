@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Promise -->
+    <script>
+        var allposts = []
+
+        // This function need some Extra time to excute
+        function getDataFromServer() {
+            return new Promise((resolve, reject) => {
+                var getInfo = new XMLHttpRequest();
+                getInfo.onreadystatechange = function () {
+                    if (getInfo.readyState == 4 && getInfo.status == 200) {
+                        allposts = JSON.parse(getInfo.response)
+                        resolve(allposts)
+                        // reject(allposts)
+                    }
+                }
+
+                getInfo.open("GET", "https://jsonplaceholder.typicode.com/posts")
+                getInfo.send()
+            })
+        }
+
+        function displayposts() {
+            console.log("All posts ", allposts)
+        }
+
+        getDataFromServer()
+        .then(()=>{
+            displayposts()
+        })
+        .catch(()=>{
+            console.log("Some Problem Happend")
+        })
+       
+    </script>
+</body>
+
+</html>
