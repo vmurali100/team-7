@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var allUsers = []
+        function getDataFromServer(){
+            return new Promise((resolve, reject)=>{
+                    var getInfo = new XMLHttpRequest();
+                    getInfo.onreadystatechange = function(){
+                    if(getInfo.readyState == 4 && getInfo.status == 200){
+                        allUsers= JSON.parse(getInfo.response)
+                        //resolve(allUsers)
+                        reject()
+                    }
+                }
+                getInfo.open("GET", "http://localhost:3000/users1")
+                getInfo.send()
+            })  
+        }
+
+        function displayUsers(){
+            console.log("Available user : ", allUsers)
+        }
+
+        // getDataFromServer()
+        // .then(()=>{
+        //     displayUsers()
+        // })
+        // .catch(()=>{
+        //     console.log("Some Problem Happend")
+        // })
+
+        async function handleData(){
+            allUsers = await getDataFromServer();
+            displayUsers()
+        }
+        handleData()
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var albumDetails = []
+
+        function getalbumDetails(){
+            return new Promise((resolve, reject)=>{
+                var getInfo = new XMLHttpRequest();
+                getInfo.onreadystatechange = function (){
+                if(getInfo.readyState == 4 && getInfo.status == 200){
+                    albumDetails = JSON.parse(getInfo.response)
+                    resolve(albumDetails);
+                    //reject()
+                }
+            }
+            getInfo.open("GET", "https://jsonplaceholder.typicode.com/albums")
+            getInfo.send()
+            })
+            
+        }
+
+        function displayalbumDetails(){
+            console.log("Album Details : ", albumDetails)
+        }
+
+        getalbumDetails()
+        .then(()=>{
+            displayalbumDetails();
+        })
+        .catch(()=>{
+            console.log("Error data not found")
+        })
+    </script>
+</body>
+</html>

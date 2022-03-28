@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var postDetails = []
+
+        function getpostDetails(){
+            return new Promise((resolve, reject)=>{
+                var getInfo = new XMLHttpRequest();
+                getInfo.onreadystatechange = function (){
+                if(getInfo.readyState == 4 && getInfo.status == 200){
+                    postDetails = JSON.parse(getInfo.response)
+                    resolve(postDetails);
+                    //reject()
+                }
+            }
+            getInfo.open("GET", "https://jsonplaceholder.typicode.com/posts")
+            getInfo.send()
+            })
+            
+        }
+
+        function displaypostDetails(){
+            console.log("Post Details : ", postDetails)
+        }
+
+        async function postData(){
+            postDetails = await getpostDetails();
+            displaypostDetails()
+        }
+
+        postData();
+    </script>
+</body>
+</html>

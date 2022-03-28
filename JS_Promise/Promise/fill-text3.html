@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var studentDetails = []
+
+        function getstudentDetails(){
+            return new Promise((resolve, reject)=>{
+                var getInfo = new XMLHttpRequest();
+                getInfo.onreadystatechange = function (){
+                if(getInfo.readyState == 4 && getInfo.status == 200){
+                    studentDetails = JSON.parse(getInfo.response)
+                    resolve(studentDetails);
+                    //reject()
+                }
+            }
+            getInfo.open("GET", "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true")
+            getInfo.send()
+            })
+            
+        }
+
+        function displaystudentDetails(){
+            console.log("Student Details : ", studentDetails)
+        }
+
+        getstudentDetails()
+        .then(()=>{
+            displaystudentDetails();
+        })
+        .catch(()=>{
+            console.log("Someting get Error")
+        })
+    </script>
+</body>
+</html>

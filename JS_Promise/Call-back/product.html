@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var productDetails = []
+
+        function getproductDetails(displayproductDetails){
+            var getInfo = new XMLHttpRequest();
+                getInfo.onreadystatechange = function (){
+                if(getInfo.readyState == 4 && getInfo.status == 200){
+                    productDetails = JSON.parse(getInfo.response)
+                    displayproductDetails();
+                }
+            }
+            getInfo.open("GET", "https://fakestoreapi.com/products")
+            getInfo.send()
+            
+        }
+
+        function displayproductDetails(){
+            console.log("Product Details : ", productDetails)
+        }
+
+        getproductDetails(displayproductDetails);
+    </script>
+</body>
+</html>
