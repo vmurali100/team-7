@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img:hover{
+        width: 250px;
+        height: 200px;
+    }
+</style>
+<body>
+    <script>
+
+       var moreimage=["https://i.pinimg.com/474x/9a/eb/d2/9aebd252b6d5aadd4d2426e674cdfba8.jpg",
+                      "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/salmon-rose-rose-color-meanings-1548273759.jpg",
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQkcR6J8y-yVDPoHj5zAsUSuNsu0gHLDY2E-ZEJGUfez8w6Ior1oPXN9n_n3FvL-N7w0Q&usqp=CAU",
+                      "https://stylesatlife.com/wp-content/uploads/2019/09/Orange-red-rose.jpg",
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeuRJgrgYCTBodFB-VW_3VuPpllF0-QKH6-Q&usqp=CAU",
+                      "https://ak.picdn.net/shutterstock/videos/10228733/thumb/1.jpg",
+                      "https://cdn.singulart.com/artworks/pictures/cropped/6627/22853/fhd/serie_22853_06d98ea2d0032db09a2e2fe621962223.jpeg",
+                      "https://i.pinimg.com/originals/2f/07/26/2f07266557e29602cb18c3df36078a7a.jpg"]
+                      
+
+
+
+        for(i=0;i<=20;i++){
+            var surya=document.createElement("h1")
+            surya.innerHTML=i+". "+"Surya Prakash"
+            document.body.appendChild(surya)
+        }
+        for(i=0;i<=20;i++){
+         var sruthi=document.createElement("p")
+         sruthi.innerHTML=i+". "+"SSP-SSP"
+         document.body.appendChild(sruthi)
+        }
+        for(i=0;i<=100;i++){
+            var image=document.createElement("img")
+            // var imgurl="https://media.istockphoto.com/photos/single-white-rose-isolated-background-picture-id497483252?k=20&m=497483252&s=612x612&w=0&h=gRRbHTL1vtbw3-uuAPjVvMHU9ML-u4NE6A1xHALw3wE="+i
+            // image.setAttribute("src",imgurl)
+            if(i>8){
+                image.setAttribute("src",moreimage[7])
+            }else{
+                image.setAttribute("src",moreimage[i])
+            }
+            image.style.width = "200px"
+            image.style.height = "130px"
+            image.style.padding = "5px"
+            document.body.appendChild(image)
+            
+        }
+        
+    </script>
+</body>
+</html>

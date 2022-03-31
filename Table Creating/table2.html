@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Type-1 -->
+    <!-- <table border="1">
+        <thead>
+            <th>Image</th>
+            <th>fruit name</th>
+            <th>color</th>
+            <th>Sweet Percentage(.%)</th>
+            <th>Crop Area</th>
+            <th>Teaste</th>
+            <th>Available or not</th>
+            <th>Amount Rs.</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script src="table2.js"></script>
+
+    <script>
+        for (i = 0; i < Raju.length; i++) {
+            var mytr = document.createElement("tr")
+            document.querySelector("tbody").appendChild(mytr)
+            for (a in Raju[i]) {
+                if (a !== "pic") {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = Raju[i][a]
+                    mytr.appendChild(mytd)
+                } else {
+                    var mytd1 = document.createElement("td")
+                    var myimg = document.createElement("img")
+                    myimg.setAttribute("src", Raju[i][a])
+                    mytr.appendChild(mytd1)
+                    mytd1.appendChild(myimg)
+                    myimg.style.cssText = "width:100px;height:50px"
+                }
+            }
+        }  
+    </script><br><br> -->
+
+
+    <!-- Type-2 -->
+    <table border="1">
+        <thead>
+            <th>Image</th>
+            <th>Flower Name</th>
+            <th>Color</th>
+            <th>Smell</th>
+            <th>Charater</th>
+            <th>Crop area</th>
+            <th>Plant yes/no</th>
+        </thead>
+        <tbody id="l">
+
+        </tbody>
+    </table>
+    <script src="./table2.1.js"></script>
+    <script>
+        for (i = 0; i< flower.length; i++) {
+            var mytr1 = document.createElement("tr")
+            document.getElementById("l").appendChild(mytr1)
+
+            for (a in flower[i]) {
+                if (a !== "bom") {
+                    var mytd1 =document.createElement("td")
+                    mytd1.innerHTML = flower[i][a]
+                    mytr1.appendChild(mytd1)
+                } else {
+                    var mytd2 = document.createElement("td")
+                    var image = document.createElement("img")
+                    image.setAttribute("src", flower[i][a])
+                    mytr1.appendChild(mytd2)
+                    mytd2.appendChild(image)
+                    image.style = "width:100;height:50px;"
+                }
+            }
+        }
+    </script><br><br>
+
+     <!-- Type-3 -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Images</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Roll No</th>
+                <th>Address</th>
+                <th>city</th>
+            </tr>
+        </thead>
+        <tbody id="m">
+
+        </tbody>
+
+    </table>
+    <script src="table2.2.js"></script>
+    <script>
+
+        for (i = 0; stud.length; i++) {
+            var mytr = document.createElement("tr")
+            document.getElementById("m").appendChild(mytr)
+            for (a in stud[i]) {
+                if (a !== "com") {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = stud[i][a]
+                    mytr.appendChild(mytd)
+                }
+                else {
+                    var mytd1 = document.createElement("td")
+                    var pict = document.createElement("img")
+                    pict.setAttribute("src", stud[i][a])
+                    mytr.appendChild(mytd1)
+                    mytd1.appendChild(pict)
+                }
+            }
+        }
+    </script> <br><br>
+
+    <!-- Type-4 -->
+    <!-- <table border="1">
+        <thead>
+            <th>Dance Name</th>
+            <th>State</th>
+            <th>Culture</th>
+            <th>Dressing</th>
+            <th>India Yes/No</th>
+            <th>Remarks</th>
+        </thead>
+        <tbody id="c">
+
+        </tbody>
+    </table>
+    <script src="./table2.3.js"></script>
+    <script>
+        for (i = 0; i < dance.length; i++) {
+            var mytr = document.createElement("tr")
+            document.getElementById("c").appendChild(mytr)
+            for (a in dance[i]) {
+                if (a !== "dom") {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = dance[i][a]
+                    mytr.appendChild(mytd)
+                }
+                else {
+                    var mytd = document.createElement("td")
+                    var profile = document.createElement("img")
+                    profile.setAttribute("src", dance[i][a])
+                }
+            }
+        }
+    </script>  -->
+</body>
+
+</html>

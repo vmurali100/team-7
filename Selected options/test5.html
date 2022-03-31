@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <select name="" id="idea" onchange="bring()">
+        <option value="" selected> select Informations</option>
+    </select>
+    <ul>
+
+    </ul>
+
+   <script src="./test5.js"></script>
+
+   <script>
+         var apple={ }
+
+         function named (){
+
+             console.log(FilmActors)
+             FilmActors.forEach(son => {
+                 var opt=document.createElement("option")
+                 opt.setAttribute("value",JSON.stringify(son))
+                 opt.innerHTML= son.Actor
+                 document.querySelector("select").appendChild(opt)
+                 
+             });
+             
+         }
+
+         function bring(){
+             var bunny=document.getElementById("idea").value
+             apple=JSON.parse(bunny)
+             displaying()
+         }
+
+         function displaying(){
+             document.querySelector("ul").innerHTML=""
+             apple.Information.forEach((good)=>{
+                 var myli=document.createElement("li")
+                 myli.innerHTML= good
+                 document.querySelector("ul").appendChild(myli)
+             })
+         }
+         named()
+   </script>
+</body>
+</html>

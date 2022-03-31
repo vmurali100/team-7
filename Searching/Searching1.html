@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="indicate" onkeyup="getdata()">
+    
+    <div id="divider"></div>
+
+    <script src="./Searching1.js"></script>
+
+    <script>
+        var content={}
+
+        function getdata(){
+            var sir=document.getElementById("indicate").value
+            content.flower.find(function(man){
+                return man.flowername == sir
+            })
+            displaydata()
+        }
+
+        function displaydata(){
+            if(content){
+                var raju=""
+                for(a in content){
+                    raju+=content[a]+"<br>"
+                }
+                document.getElementById("divider").innerHTML=raju
+            }else{
+                document.getElementById("divider").innerHTML=""
+            }
+        }
+    </script>
+</body>
+</html>

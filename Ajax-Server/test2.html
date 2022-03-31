@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">S./no</label>
+        <input type="text" name="" id="serial"><br><br>
+        <label for="">Name</label>
+        <input type="text" name="" id="fname"><br><br>
+        <label for="">Class</label>
+        <input type="text" name="" id="cname"><br><br>
+        <label for="">Group</label>
+        <input type="text" name="" id="group"><br><br>
+        <label for="">email</label>
+        <input type="text" name="" id="mail"><br><br>
+        <label for="">Phone number </label>
+        <input type="text" name="" id="pnumber"><br><br>
+        <label for="">City</label>
+        <input type="text" name="" id="city">
+        <input type="text" name="" id="id" hidden>
+    </form>
+    <br>
+    <button type="button" onclick="getdata()" id="submit">Sumitted</button>
+    <button type="button" onclick="" id="update" style="display: none;">Update</button>
+
+    <hr>
+    <table border="1">
+        <thead>
+            <th>S/no</th>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Group</th>
+            <th>email</th>
+            <th>Phone Number</th>
+            <th>City</th>
+            <th>edit</th>
+            <th>delect</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <br>
+
+    <script>
+
+        var surya = JSON.parse(localStorage.getItem("surya"))
+        if (surya == null) {
+            surya = [];
+            console.log(surya)
+        }
+
+
+        // Step 1 to creating  a user
+        function getdata() {
+            var info = {
+                serial: "",
+                fname: "",
+                cname: "",
+                group: "",
+                mail: "",
+                pnumber: "",
+                city: ""
+            }
+
+            for (a in info) {
+                info[a] = document.getElementById(a).value
+            }
+            console.log(info)
+            surya.push(info)
+            localStorage.setItem("surya", JSON.stringify(surya))
+            displaying()
+            cleardata(info)
+        }
+
+
+        //  Step 2 to reading a user
+
+        function displaying() {
+            document.querySelector("tbody").innerHTML = ""
+            surya.forEach((info,i) => {
+                var mytr = document.createElement("tr")
+                for (a in info) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = info[a]
+                    mytr.appendChild(mytd)
+                }
+                var Edittd=document.createElement("td")
+                var Deletetd=document.createElement("td")
+                mytr.appendChild(Edittd)
+                mytr.appendChild(Deletetd)
+
+                var editbutton=document.createElement("button")
+                editbutton.setAttribute("onclick","getedit("+i+")")
+                editbutton.innerHTML="Edit"
+                var deletebutton=document.createElement("button")
+                deletebutton.setAttribute("onclick","getdelete("+i+")")
+                deletebutton.innerHTML="Delete"
+                Edittd.appendChild(editbutton)
+                Deletetd.appendChild(deletebutton)
+                
+
+
+                document.querySelector("tbody").appendChild(mytr)
+
+            })
+        }
+        displaying()
+
+        //   Step 3 edit (or) Update a user
+        function getedit(i){
+            document.getElementById("submit").style.display="none"
+            document.getElementById("update").style.display="block"
+          var raju=surya[i]
+          for(a in raju){
+              document.getElementById(a).value=raju[a]
+          }
+        }
+
+
+        // Step 4 Delete(or) Clear a user
+        function getdelete(i){
+               surya.splice(i,1) 
+               localStorage.setItem("surya", JSON.stringify(surya))
+               displaying()
+        }
+
+        function cleardata(info) {
+            for (a in info) {
+                document.getElementById(a).value = ""
+            }
+        }
+
+
+
+        function update(){
+            var info = {
+                serial: "",
+                fname: "",
+                cname: "",
+                group: "",
+                mail: "",
+                pnumber: "",
+                city: ""
+            }
+
+            for (a in info) {
+                info[a] = document.getElementById(a).value
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Name :</label>
+        <input type="text" name="" id="myname"><br><br>
+        <label for="">Age :</label>
+        <input type="text" name="" id="myage"><br><br>
+        <label for="">Gender :</label>
+        <input type="text" name="" id="mygender"><br><br>
+        <label for="">City :</label>
+        <input type="text" name="" id="mycity"><br><br>
+    </form>
+
+    <button type="button" onclick="getdata()" id="sub">Sumbited</button>
+    <button type="button" onclick="updating()" id="upda" style="display: none;">update</button>
+
+    <table border="2px">
+        <thead >
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>City</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+      //  var main=[]
+      var main=JSON.parse(localStorage.getItem("main"))
+      var index;
+      if(main ==null){
+          main=[];
+          console.log(main)
+      }
+
+        function getdata(){
+            var info={
+                myname:"",
+                myage:"",
+                mygender:"",
+                mycity:""
+            }
+           
+           for (a in info){
+               info[a]=document.getElementById(a).value
+           }
+           console.log(info)
+           main.push(info)
+           localStorage.setItem("main",JSON.stringify(main))
+           clear(info)
+           displaying()
+
+        }
+
+        function displaying(){
+            document.querySelector("tbody").innerHTML=""
+           main.forEach((info,i)=>{
+               var mytr= document.createElement("tr")
+               for(a in info){
+                   var mytd=document.createElement("td")
+                   mytd.innerHTML= info[a]
+                   mytr.appendChild(mytd)
+               }
+               document.querySelector("tbody").appendChild(mytr)
+
+              var edittd=document.createElement("td")
+              var deltd=document.createElement("td")
+              mytr.appendChild(edittd)
+              mytr.appendChild(deltd)
+
+              var editbtn=document.createElement("button")
+              editbtn.setAttribute("onclick","editing("+i+")")
+              editbtn.innerHTML="EDIT"
+              var delbtn=document.createElement("button")
+              delbtn.setAttribute("onclick","delecting("+i+")")
+              delbtn.innerHTML="Delete"
+              edittd.appendChild(editbtn)
+              deltd.appendChild(delbtn)
+
+
+           })
+        }
+        displaying()
+
+        function updating(){
+          var info={
+                myname:"",
+                myage:"",
+                mygender:"",
+                mycity:""
+            }
+           
+           for (a in info){
+               info[a]=document.getElementById(a).value
+           }
+        } 
+
+        function editing(i){
+            index=i
+            document.getElementById("sub").style.display="none"
+            document.getElementById("upda").style.display="block"
+            var empty=main[i]
+            for(a in empty){
+                document.getElementById(a).value=empty[a]
+            }
+
+        }
+
+        function delecting(i){
+             main.splice(i,1)
+             localStorage.setItem("main",JSON.stringify(main))
+             displaying()
+        }
+
+         function updating(){
+          var info={
+                myname:"",
+                myage:"",
+                mygender:"",
+                mycity:""
+            }
+           
+           for (a in info){
+               info[a]=document.getElementById(a).value
+           }
+           main[index]=info
+           localStorage.setItem("main",JSON.stringify(main))
+          displaying()
+          clear(info)
+          document.getElementById("sub").style.display="block"
+          document.getElementById("upda").style.display="none"
+
+         }
+
+
+
+
+        function clear(info){
+            for(a in info){
+                document.getElementById(a).value=""
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- normal form creations in HTML code -->
+    <form>
+        <label for="">Email</label>
+        <input type="text" name="" id="fname"> <br><br>
+        <label for="">Password</label>
+        <input type="text" name="" id="lname"><br><br>
+        <label for="">Confirm pass</label>
+        <input type="text" name="" id="pass"><br>
+        <input type="text" name="" id="id" hidden>
+    </form>
+
+    <!-- Normal button crerations -->
+    <button type="button" onclick="getdata()" id="add">Add user</button>
+
+    <button type="button" onclick="updateUser()" id="up" style="display: none;">Update</button>
+
+    <!-- normal create an table in HTML -->
+    <table border="1">
+        <thead>
+            <th>EMail ID</th>
+            <th>Password</th>
+            <th>conmform</th>
+            <th>Id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <!-- Script writing  in Script tag -->
+    <script>
+
+        var users = []
+
+        function getdata() {
+            var user = {
+                fname: "",
+                lname: "",
+                pass: ""
+            }
+
+            for (a in user) {
+                user[a] = document.getElementById(a).value
+            }
+            console.log(user)
+
+            var postuser = new XMLHttpRequest();
+            postuser.onreadystatechange = function () {
+                if (postuser.status == 201 && postuser.readyState == 4) {
+
+                }
+            }
+            postuser.open("Post", "http://localhost:3000/guru")
+            postuser.setRequestHeader("Content-Type", "application/json")
+            postuser.send(JSON.stringify(user))
+        }
+
+
+        function reading() {
+            var getuser = new XMLHttpRequest()
+            getuser.onreadystatechange = function () {
+                if (getuser.readyState == 4 && getuser.status == 200) {
+                    users = JSON.parse(getuser.response)
+                    displaying(users)
+                }
+
+            }
+            var url = "http://localhost:3000/guru"
+            getuser.open("GET", url)
+            getuser.send()
+        }
+
+
+
+        function displaying(users) {
+            for (i = 0; i < users.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in users[0]) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = users[i][a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                var deltd = document.createElement("td")
+                mytr.appendChild(edittd)
+                mytr.appendChild(deltd)
+
+
+                var editbtn = document.createElement("button")
+                editbtn.innerHTML = "EDIT"
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                var delbtn = document.createElement("button")
+                delbtn.innerHTML = "DELETE"
+                delbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                edittd.appendChild(editbtn)
+                deltd.appendChild(delbtn)
+            }
+        }
+        reading()
+
+
+        function edituser(i) {
+            for (a in users[i]) {
+                document.getElementById(a).value = users[i][a]
+            }
+
+            document.getElementById("add").style.display = "none"
+            document.getElementById("up").style.display = "block"
+        }
+
+
+        function deleteUser(i) {
+
+            var postUser = new XMLHttpRequest()
+            postUser.onreadystatechange = function () {
+                if (postUser.status == 200 && postUser.readyState == 4) {
+
+                }
+            }
+            postUser.open("Delete", "http://localhost:3000/guru/" + users[i].id);
+            postUser.send()
+        }
+
+        function updateUser() {
+            var user = {
+                fname: "",
+                lname: "",
+                pass: "",
+                id:""
+            }
+            for (a in user) {
+                user[a] = document.getElementById(a).value
+            }
+
+            var postUser = new XMLHttpRequest()
+            postUser.onreadystatechange = function () {
+                if (postUser.status == 200 && postUser.readyState == 4) {
+
+                    document.getElementById("add").style.display = "block"
+                    document.getElementById("up").style.display = "none"
+                }
+            }
+            postUser.open("Put", "http://localhost:3000/guru/" + user.id);
+            postUser.setRequestHeader("Content-Type", "application/json")
+            postUser.send(JSON.stringify(user))
+
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

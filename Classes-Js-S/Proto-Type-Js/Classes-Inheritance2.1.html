@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Mango{
+            constructor(teaste,color,color1,color2,color3,color4,color5){
+                this.teaste=teaste;
+                this.color=color;
+                this.color1=color1;
+                this.color2=color2;
+                this.color3=color3;
+                this.color4=color4;
+                this.color5=color5;
+            }
+            add(){
+                return 'My favourite colors '+ this.teaste+" And "+this.color+"<br><br> "+this.color1+"<br><br> "+this.color2+" <br><br>"+this.color3+"<br><br> "+this.color4+" <br><br>"+this.color5+" "
+            }
+        }
+
+        const fruit=new Mango("gold","Yellow","red","blue","green","brown","gray")
+
+        document.write(fruit.teaste +" "+ fruit.color +"<br><br>")
+        document.write(fruit.add())
+    </script>
+</body>
+</html>

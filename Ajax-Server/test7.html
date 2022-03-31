@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <form action="">
+         <label for="">Name :</label>
+         <input type="text" name="" id="name"><br><br>
+         <label for="">Age :</label>
+         <input type="text" name="" id="fname"><br><br>
+         <label for="">Group :</label>
+         <input type="text" name="" id="lname"><br><br>
+         <label for="">City :</label>
+         <input type="text" name="" id="sname"><br><br>
+     </form>
+     <button type="button" onclick="Getdata()">Submit</button>
+
+     <table>
+         <thead>
+             <th>Name</th>
+             <th>Age</th>
+             <th>Group</th>
+             <th>City</th>
+             <th>Edit</th>
+             <th>Delete</th>
+         </thead>
+         <tbody>
+
+         </tbody>
+     </table>
+
+     <script>
+         var data=[]
+         function Getdata(){
+             var info={
+                 name:"",
+                 fname:"",
+                 lname:"",
+                 sname:""
+             }
+             for(a in info){
+                 info[a]=document.getElementById(a).value
+             }
+             console.log(info)
+         }
+
+         function display(){
+             data.forEach((info)=>{
+                 var mytr=document.createElement("tr")
+                 for(a in data){
+                     var mytd=document.createElement("td")
+                     mytd.innerHTML=data[a]
+                     mytr.appendChild(mytd)
+                 }
+                 document.querySelector("tbody").appendChild(mytr)
+
+                 var edittd=document.createElement("td")
+                 var deltd=document.createElement("td")
+                 mytr.appendChild(edittd)
+                 mytr.appendChild(deltd)
+
+                 var editbtn=document.createElement("button")
+                 var delbtn=document.createElement("button")
+                 edittd.appendChild(editbtn)
+                 deltd.appendChild(delbtn)
+
+                 editbtn.setAttribute("onclick","Editing()")
+                 delbtn.setAttribute("onclick","Deleting()")
+                 editbtn.innerHTML="Edit"
+                 delbtn.innerHTML="Delete"
+
+             })
+         }
+
+         function Editing(){
+            
+
+         }
+
+
+         function Deleting(){
+         data.splice(i,1)
+         
+
+         }
+
+
+         function clearing(){
+               for(a in )
+         }
+     </script>
+</body>
+</html>

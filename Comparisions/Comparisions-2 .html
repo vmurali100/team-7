@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3></h3>
+    <h4></h4>
+    <table border="1">
+      <thead>
+          <th></th>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+        var Attendence = prompt("Attendence Progreess Enter Roll Number...!!")
+        document.querySelector("h4").innerHTML = "This Attendence is Regarding to This Mounth-'March'" + Attendence
+
+        if (Attendence <= 4) {
+          document.querySelector("h3").innerHTML="Tue-1, Wed-2, Thur-3, Friday-4"   
+          window.location.href="data1.html"                         
+        } else if (Attendence >= 5 && Attendence <= 18) {
+            document.querySelector("h3").innerHTML="Sat-5,Sun-6,Mon-7,Tue-8, Wed-9, Thur-10, Friday-11, Sat-12, Sun-13, Mon-14, Tue-15, Wed-16, Thur-17,Friday-18"
+            window.location.href="data2.html" 
+        } else if (Attendence > 19 && Attendence <= 25) {
+            document.querySelector("h3").innerHTML=" Sat-19, Sun-20, Mon-21, Tue-22, Wed-23, Thur-24,Friday-25"
+            window.location.href="data3.html" 
+        } else if (Attendence >= 26 && Attendence <= 30) {
+            document.querySelector("h3").innerHTML="Sat-26,Sun-27,Mon-28,Tue-29, Wed-30,"
+            window.location.href="data4.html" 
+        } else if (Attendence >= 31) {
+            document.querySelector("h3").innerHTML="Thur-31"
+        } else if ( Attendence  <= 32) {
+            document.querySelector("h3").innerHTML="This is Invaild Date to Recoginize Attendence Of Roll"
+            window.location.href="data5.html" 
+        } else {
+            document.querySelector("h3").innerHTML="This is Invaild Date to Recoginize Attendence Of Roll"
+        }
+    </script>
+</body>
+
+</html>
