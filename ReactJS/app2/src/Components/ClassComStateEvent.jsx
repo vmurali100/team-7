@@ -43,7 +43,7 @@ export default class ClassCompStateEvent extends Component {
 
 
         let { person, students } = this.state
-        return <div>
+        return <>
             <button onClick={this.showMessage}>Show Message</button>
             <h2>{this.state.message}</h2>
             <hr />
@@ -61,6 +61,6 @@ export default class ClassCompStateEvent extends Component {
                     return <li key={i}>{std}</li>
                 })}
             </ul>
-        </div>
+        </>
     }
 }
