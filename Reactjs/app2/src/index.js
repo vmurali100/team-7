@@ -1,17 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import Balaji from './Balaji';
-// import News from './News';
-import {Sample} from './Functional component/Sample';
-import Wellcome from './Class component/Welcome'
+import './index.css';
+import App from './App';
+// import All from './String obj Array/All';
+import Event from './String obj Array/Event';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    { /* <Balaji /> */ }
-    {/* <News/> */}
-    <Sample/>
-    <Wellcome/>
+    <App />
+    {/* <All/> */}
+    <Event/>
   </React.StrictMode>,
   document.getElementById('root')
 );
