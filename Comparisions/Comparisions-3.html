@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h2{
+        color: yellow;
+        border: 3px solid;
+        background-color: aquamarine;
+        margin: 0 auto;
+        border-radius: 40px;
+        text-shadow: 2px 3px 4px red;
+        box-shadow: 2px 3px 4px black;
+        text-align: center;
+        font-size: 60px;
+    }
+</style>
+<body>
+    <h2></h2>
+    <script>
+
+        var freshfruits= prompt(" Fresh fruits--Available 0r Not Inthis Districts ..?")
+        document.querySelector("h2").innerHTML = "Yes Available....!"+freshfruits
+
+        if(freshfruits == "Chittoor" || freshfruits == "Guntur" || freshfruits == "Anamnthapuram"  || freshfruits == "Kurnool" || freshfruits == "Srikakulam"  || freshfruits == "West Godavari"  || freshfruits == "Krishana"  || freshfruits == "prakasham"  || freshfruits == "Kadapa" || freshfruits == "Kakinada"  || freshfruits == "Nellore" || freshfruits == "vishakapatam" ){
+            document.querySelector("h2").innerHTML = "Yes Available....!"+freshfruits
+        }else if(freshfruits =="nalagonda" || freshfruits == "khammam" || freshfruits == "kamareddy" || freshfruits == "mulugu"  || freshfruits == "peddapalli"  || freshfruits == "suryapet"  || freshfruits == "jangon"  || freshfruits == "adilabad"  || freshfruits == "nizamabad" || freshfruits == "gadwal" || freshfruits == "medak" || freshfruits == "nirmal"  ){
+            document.querySelector("h2").innerHTML = "Available But Some Areas Only ....! !!"
+        }else{
+            document.querySelector("h2").innerHTML = "There is Not Available That Kind Of Fruits ....! !!"
+        }
+    </script>  
+</body>
+</html>

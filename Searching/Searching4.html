@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+      <select name="" id="idea" onchange="getdata()">
+          <option value="" selected></option>
+      </select>
+      <ul>
+
+      </ul>
+
+
+      <script src="./Searching4.js"></script>
+
+      <script>
+        var saraoja={ }
+
+        function data(){
+            console.log(IndianActors)
+            IndianActors.forEach(suri => {
+                var opt=document.createElement("option")
+                opt.setAttribute("value",JSON.stringify(suri))
+                opt.innerHTML=suri.Languege
+                document.querySelector("select").appendChild(opt)
+                
+            });
+        }
+
+
+        function getdata(){
+            var info=document.getElementById("idea").value
+            saraoja=JSON.parse(info)
+            displaydata()
+        }
+
+
+        function displaydata(){
+            document.querySelector("ul").innerHTML=""
+            saraoja.Actors.forEach((cherry)=>{
+                var myli=document.createElement("li")
+                myli.innerHTML= cherry
+                document.querySelector("ul").appendChild(myli)
+            })
+            
+        }
+        data()
+
+      </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <!-- Creating Form in HTML  -->
+   <form>
+    <label for="">S.No :-</label>
+    <input type="text" name="" id="no"><br><br>
+    <label for="">Name :-</label>
+    <input type="text" name="" id="fname"><br><br>
+    <label for="">Number :-</label>
+    <input type="text" name="" id="fnumber"><br><br>
+    <label for="">City :-</label>
+    <input type="text" name="" id="fcity"><br><br>
+    <label for="">Mail :-</label>
+    <input type="text" name="" id="fmail"><br><br>
+    <label for="">Password :-</label>
+    <input type="text" name="" id="pass"><br><br>
+</form>
+<button type="button" onclick="mydata()" id="Submit">Submit</button>    
+<button type="button" onclick="updatevalue()" id="update" style="display: none;">Update</button>
+
+
+<!-- Creating table In HTML -->
+
+<table border="1">
+    <thead>
+        <th>S./No</th>
+        <th>Name</th>
+        <th>Number</th>
+        <th>City</th>
+        <th>Mail</th>
+        <th>Password</th>
+        <th>edit</th>
+        <th>delete</th>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table> 
+
+<script>
+
+    // var surya=[]
+    var surya=JSON.parse(localStorage.getItem(surya))
+    var index;
+    if(surya==null){
+        surya=[];
+    }
+    function mydata(){
+        var content = {
+                no: "",
+                fname: "",
+                fnumber: "",
+                fcity: "",
+                fmail: "",
+                pass: ""
+            }
+
+            for (a in content) {
+                content[a] = document.getElementById(a).value
+            }
+            console.log(content)
+            clear(content)
+            display()
+            surya.push(content)
+            localStorage.setItem(("surya"),JSON.stringify(surya))
+    }
+
+
+    function display(){
+        document.querySelector("tbody").innerHTML=""
+       surya.forEach((content)=>{
+           var mytr=document.createElement("tr")
+           for(a in content){
+               var mytd=document.createElement("td")
+               mytd.innerHTML=content[a]
+               mytr.appendChild(mytd)
+           }
+           document.querySelector("tbody").appendChild(mytr)
+       })
+    }
+    display()
+
+
+    function clear(content){
+        for(a in content){
+            document.getElementById(a).value= ""
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form>
+        <label for="">S.no</label>
+        <input type="text" name="" id="serial"> <br><br>
+        <label for="">Name</label>
+        <input type="text" name="" id="fname"><br><br>
+        <label for="">Number</label>
+        <input type="text" name="" id="fnumber"> <br><br>
+        <label for="">City</label>
+        <input type="text" name="" id="fcity"><br><br>
+        <label for="">Pincode</label>
+        <input type="text" name="" id="fpincode">
+        <input type="text" name="" id="id" hidden>
+    </form>
+
+    <button type="button" onclick="createdata() " id="add">Add USER</button>
+
+    <button type="button" onclick="updateuser()" id="up" style="display: none;">Update</button>
+
+    <table border="1">
+        <thead>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Number</th>
+            <th>City</th>
+            <th>Pincode</th>
+            <th>Id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <script>
+        //  create a varible for an 
+        var info = []
+
+        // first functions to create a User "C"
+        // 1
+        function createdata() {
+            var content = {
+                serial: "",
+                fname: "",
+                fnumber: "",
+                fcity: "",
+                fpincode: ""
+            }
+            for (a in content) {
+                content[a] = document.getElementById(a).value
+            }
+            var postdata = new XMLHttpRequest()
+            postdata.onreadystatechange = function () {
+                if (postdata.status == 201 && postdata.readyState == 4) {
+                
+                }
+            }
+            postdata.open("Post", "http://localhost:3000/sadik")
+            postdata.setRequestHeader("Content-Type","application/json")
+            postdata.send(JSON.stringify(content))
+        }
+
+
+
+        //  second functions to read value of a User  "R"
+        //  2
+        function Readuser() {
+            var getdata = new XMLHttpRequest()
+            getdata.onreadystatechange = function () {
+                if (getdata.readyState == 4 && getdata.status == 200) {
+                    info = JSON.parse(getdata.response)
+                    displayintable(info)
+                }
+            }
+            var url = "http://localhost:3000/sadik"
+            getdata.open("Get", url)
+            getdata.send()
+        }
+
+
+        //  third functions to display of a value in User "D"
+        // 3
+        function displayintable(info) {
+            for (i = 0; i < info.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in info[0]) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = info[i][a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                var deltd = document.createElement("td")
+                mytr.appendChild(edittd)
+                mytr.appendChild(deltd)
+
+                var editbtn = document.createElement("button")
+                var delbtn = document.createElement("button")
+                edittd.appendChild(editbtn)
+                deltd.appendChild(delbtn)
+
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                delbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                editbtn.innerHTML = "EDIT"
+                delbtn.innerHTML = "DELETE"
+            }
+        }
+        Readuser()
+
+
+        // fourth function to Edit  value of user  "E" 
+        // 4       
+        function edituser(i) {
+            for (a in info[i]) {
+               document.getElementById(a).value = info[i][a]
+            }
+            document.getElementById("add").style.display = "none"
+            document.getElementById("up").style.display = "block"
+        }
+
+        //  fifth function to delete value of User "D"
+        // 5
+        function deleteuser(i) {
+            var postdata = new XMLHttpRequest()
+            postdata.onreadystatechange = function () {
+                if (postdata.status == 200 && postdata.readyState == 4) {
+
+                }
+            }
+            postdata.open("Delete", "http://localhost:3000/sadik/" + info[i].id)
+            postdata.send()
+
+        }
+
+        // six function to update a value a user "U"
+        // 6
+        function updateuser() {
+            var content = {
+                serial: "",
+                fname: "",
+                fnumber: "",
+                fcity: "",
+                fpincode: "",
+                id:""
+            }
+            for (a in content) {
+                content[a] = document.getElementById(a).value
+            }
+            var postdata = new XMLHttpRequest()
+            postdata.onreadystatechange = function () {
+                if (postdata.status == 200 && postdata.readyState == 4) {
+
+                    document.getElementById("add").style.display = "none"
+                    document.getElementById("up").style.display = "block"
+
+                }
+            }
+            postdata.open("POST", "http://localhost:3000/sadik/" + content[i].id)
+            postdata.setRequestHeader("Content-Type", "application/json")
+            postdata.send(JSON.stringify(content))
+            
+        }
+
+    </script>
+
+</body>
+
+</html>

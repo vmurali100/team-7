@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head> 
+<style>
+  p{
+      color: red;
+      text-shadow:2px  3px 4px black;
+      width: 200px;
+      text-decoration: underline;
+      box-shadow: 2px 3px 4px black;
+  }
+</style>
+<body>
+    <p>1.) getMonth() :-</p>
+    <div id="mounth"></div> <br>
+    <p>2.) getDate() :-</p>
+    <div id="date"></div> <br>
+    <p>3.) getHours() :-</p>
+    <div id="hour"></div> <br>
+    <p>4.) getMinutes() :-</p>
+    <div id="minite"></div> <br>
+    <p>5.) getMilliseconds() :-</p>
+    <div id="millimini"></div> <br>
+    <p>6.) getSeconds() :-</p>
+    <div id="seconds"></div> <br>
+    <p>7.) getDay() :-</p>
+    <div id="day"></div> <br>
+    <p>8.) getFullYear() :-</p>
+    <div id="fullyear"></div> <br>
+    <p>9.) getTime() :-</p>
+    <div id="time"></div> <br>
+    <p>10.) getUTCDate() :-</p>
+    <div id="UTCdate"></div> <br>
+    <p>11.) getUTCDay() :-</p>
+    <div id="UTCday"></div> <br>
+    <p>12.) getUTCFullYear() :-</p>
+    <div id="UTCfullyear"></div> <br>
+    <p>13.) getHours() :-</p>
+    <div id="UTChours"></div> <br>
+    <p>14.) getUTCMilliseconds() :-</p>
+    <div id="UTCmilliseconds"></div> <br>
+    <p>15.) getUTCMinutes() :-</p>
+    <div id="UTCminites"></div> <br>
+    <p>16.) getUTCMonth() :-</p>
+    <div id="UTCmounth"></div> <br>
+    <p>17.) getUTCSeconds() :-</p>
+    <div id="UTCsecond"></div> <br>
+    
+
+    <script>
+        setInterval(()=>{
+            var mounth= new Date()
+             document.getElementById("mounth").innerHTML=mounth.getMonth()
+        })
+        
+
+        setInterval(()=>{
+            var Dates= new Date()
+             document.getElementById("date").innerHTML=Dates.getDate()
+        })
+
+        
+        setInterval(()=>{
+            var hour= new Date()
+             document.getElementById("hour").innerHTML=hour.getHours()
+        })
+
+        
+        setInterval(()=>{
+            var Minites= new Date()
+             document.getElementById("minite").innerHTML=Minites.getMinutes()
+        })
+
+        
+        setInterval(()=>{
+            var millim= new Date()
+             document.getElementById("millimini").innerHTML=millim.getMilliseconds()
+        })
+
+        
+        setInterval(()=>{
+            var Second= new Date()
+             document.getElementById("seconds").innerHTML=Second.getSeconds()
+        })
+
+        
+        setInterval(()=>{
+            var Day= new Date()
+             document.getElementById("day").innerHTML=Day.getDay()
+        })
+
+        
+        setInterval(()=>{
+            var year= new Date()
+             document.getElementById("fullyear").innerHTML=year.getFullYear()
+        })
+
+        
+        setInterval(()=>{
+            var time= new Date()
+             document.getElementById("time").innerHTML=time.getTime()
+        })
+
+        
+        setInterval(()=>{
+            var UTCdates= new Date()
+             document.getElementById("UTCdate").innerHTML=UTCdates.getUTCDate()
+        })
+
+        
+        setInterval(()=>{
+            var UTCDay= new Date()
+             document.getElementById("UTCday").innerHTML=UTCDay.getUTCDay()
+        })
+
+        
+        setInterval(()=>{
+            var UTCfullyear= new Date()
+             document.getElementById("UTCfullyear").innerHTML=UTCfullyear.getUTCFullYear()
+        })
+
+        
+        setInterval(()=>{
+            var UTChour= new Date()
+             document.getElementById("UTChours").innerHTML=UTChour.getUTCHours()
+        })
+
+        
+        setInterval(()=>{
+            var UTCmilli= new Date()
+             document.getElementById("UTCmilliseconds").innerHTML=UTCmilli.getUTCMilliseconds()
+        })
+
+        
+        setInterval(()=>{
+            var UTCminites= new Date()
+             document.getElementById("UTCminites").innerHTML=UTCminites.getUTCMinutes()
+        })
+
+        
+        setInterval(()=>{
+            var UTCmounth= new Date()
+             document.getElementById("UTCmounth").innerHTML=UTCmounth.getUTCMonth()
+        })
+
+        
+        setInterval(()=>{
+            var UTCsecond= new Date()
+             document.getElementById("UTCsecond").innerHTML=UTCsecond.getUTCSeconds()
+        })
+
+        
+        
+    </script>
+</body>
+</html>

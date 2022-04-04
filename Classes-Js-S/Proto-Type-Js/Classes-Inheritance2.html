@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Mango{
+            constructor(teaste,color){
+                this.teaste=teaste;
+                this.color=color;
+            }
+            add(){
+                return 'My fruit is Very '+ this.teaste+" And "+this.color+" "
+            }
+        }
+
+        const fruit=new Mango("FullSweety","Yellow")
+
+        document.write(fruit.teaste +" "+ fruit.color +"<br><br>")
+        document.write(fruit.add())
+    </script>
+</body>
+</html>

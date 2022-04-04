@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Date Of Birth</th>
+                <th>Mobile Number</th>
+                <th>Address</th>
+                <th>Pin code</th>
+                <th>Account Number</th>
+                <th>Signature</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+      for(i=0;i<10;i++){
+          var colums=document.createElement("tr")
+
+          var tr1=document.createElement("td")
+          tr1.innerHTML="01"
+          var tr2=document.createElement("td")
+          tr2.innerHTML="Surya SP"
+          var tr3=document.createElement("td")
+          tr3.innerHTML="22"
+          var tr4=document.createElement("td")
+          tr4.innerHTML="Male"
+          var tr5=document.createElement("td")
+          tr5.innerHTML="03-03-2000"
+          var tr6=document.createElement("td")
+          tr6.innerHTML="8500153801"
+          var tr7=document.createElement("td")
+          tr7.innerHTML="Chittoor"
+          var tr8=document.createElement("td") 
+          tr8.innerHTML="517001"
+          var tr9=document.createElement("td")
+          tr9.innerHTML="**** **** *189"
+          var tr10=document.createElement("td")
+          tr10.innerHTML="R Surya Prakash"
+
+          colums.appendChild(tr1)
+          colums.appendChild(tr2)
+          colums.appendChild(tr3)
+          colums.appendChild(tr4)
+          colums.appendChild(tr5)
+          colums.appendChild(tr6)
+          colums.appendChild(tr7)
+          colums.appendChild(tr8)
+          colums.appendChild(tr9)
+          colums.appendChild(tr10)
+
+        document.querySelector("tbody").appendChild(colums)
+      }
+      
+    </script>
+    
+</body>
+</html>

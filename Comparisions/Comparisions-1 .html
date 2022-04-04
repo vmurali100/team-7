@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <b></b> <br>
+    <p></p>
+ 
+
+    <script>
+        var Fruits = prompt("Searching.....!!!!!!")
+     
+        document.querySelector("b").innerHTML = "Wait Processing ...About Fruits" + Fruits
+
+        if (Fruits <= 200) {
+
+            document.querySelector("p").innerHTML = "Below 200 Rs. price Fresh Fruits quantity"
+            window.location.href  = "https://www.flipkart.com/search?q=Fresh+indian+Fruits++&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&sort=price_asc "
+            
+
+        } else if (Fruits >= 201 && Fruits <= 500) {
+
+            document.querySelector("p").innerHTML = "Above 201 Rs.price Fresh Fruits" + "<br>" + "Below 500 Rs. Price Fresh Fruits"
+            window.location.href = "https://www.flipkart.com/search?q=Fresh++Fruits++&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.price_range.from%3D200&p%5B%5D=facets.price_range.to%3D500"
+
+        } else if (Fruits > 501 && Fruits <= 1000) {
+
+            document.querySelector("p").innerHTML = "Above 501 Rs.price Fresh Fruits" + "<br>" + "Below 1000 Rs. Price Fresh Fruits"
+            window.location.href = "https://www.flipkart.com/search?q=Fresh++Fruits++&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.price_range.from%3D500&p%5B%5D=facets.price_range.to%3D1000"
+
+        } else if (Fruits >= 1200 && Fruits <= 1500) {
+
+            document.querySelector("p").innerHTML = "Above 1200 Rs.price Fresh Fruits" + "<br>" + "Below 1500 Rs. Price Fresh Fruits"
+            window.location.href = "https://www.flipkart.com/search?q=fresh+fruits+vegetables&sid=h1m%2Cum7%2Csd1%2Ckkl&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_2_23_na_na_ps&otracker1=AS_QueryStore_OrganicAutoSuggest_2_23_na_na_ps&as-pos=2&as-type=RECENT&suggestionId=fresh+fruits+vegetables%7CPlant+Seeds&requestId=ca0a2997-8337-4922-b504-6d66c49623cb&as-searchtext=fresh+fruits+vegetables&p%5B%5D=facets.price_range.from%3D1000&p%5B%5D=facets.price_range.to%3D2000"
+
+        } else {
+
+            document.querySelector("p").innerHTML = "There Is No Fruits On that Price ...Sorry !! Thank you for Consulting .."
+            window.location.href = "https://www.flipkart.com/search?q=fresh+fruits+vegetables&sid=h1m%2Cum7%2Csd1%2Ckkl&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_2_23_na_na_ps&otracker1=AS_QueryStore_OrganicAutoSuggest_2_23_na_na_ps&as-pos=2&as-type=RECENT&suggestionId=fresh+fruits+vegetables%7CPlant+Seeds&requestId=ca0a2997-8337-4922-b504-6d66c49623cb&as-searchtext=fresh+fruits+vegetables&p%5B%5D=facets.price_range.from%3D5000&p%5B%5D=facets.price_range.to%3DMax"
+        }
+    </script>
+</body>
+
+</html>

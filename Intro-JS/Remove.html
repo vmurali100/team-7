@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>   </h1>
+    <p></p>
+
+          <ul>
+              <li>1.Apple Fruit</li>
+              <li>2.Mango Fruit</li>
+              <li>3.Ornge Fruit</li>
+              <li>4'Grape Fruit</li>
+              <li>5'Sapota Fruit</li>
+              <li>6'Banana Fruit</li>
+              <li>7'Gova Fruit</li>
+              <li>8.Papayya Fruit</li>
+              <li>9.Panasa Fruit</li>
+              <li>10.black Berry Fruit</li>
+            </ul>
+    
+    <script>
+     
+            document.querySelector("h1").innerText="Different kinds of Fruits"
+            document.querySelector("p").innerText="when on Click the content  and remove (0r) delect"
+    document.querySelector("ul").onclick=function(e){
+        var parentNode=e.target.parentNode
+        parentNode.removeChild(e.target)
+    }
+    </script>
+</body>
+</html>

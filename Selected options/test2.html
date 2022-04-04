@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <select name="" id="sure" onchange="call()">
+        <option value="" selected>Selected OK</option>
+    </select>
+    <ul>
+
+    </ul>
+
+    <script src="./test2.js"></script>
+
+    <script>
+        var surya={}
+
+        function calling(){
+             console.log(number)
+         
+             number.forEach(some => {
+                 var opt=document.createElement("option")
+                 opt.setAttribute("value",JSON.stringify(some))
+                 opt.innerHTML=some.data
+                 document.querySelector("select").appendChild(opt)
+                 
+             });
+        }
+
+        function call(){
+            var name=document.getElementById("sure").value
+            surya=JSON.parse(name)
+            display()
+        }
+
+
+        function display(){
+            
+            document.querySelector("ul").innerHTML=""
+            surya.super.forEach((fun)=>{
+                var myli=document.createElement("li")
+                myli.innerHTML=fun
+                document.querySelector("ul").appendChild(myli)
+
+            })
+        }
+        calling()
+    </script>
+</body>
+</html>

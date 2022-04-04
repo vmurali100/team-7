@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <select name="" id="bow" onchange="getdata()">
+        <option value="" selected>Select Data</option>
+    </select>
+    <ul> </ul>
+
+    <script src="./test6.js"></script>
+
+    <script>
+        var very={ }
+        
+        function info() {
+            console.log(subject)
+
+            subject.forEach(sun => {
+                var opt=document.createElement("option")
+                opt.setAttribute("value",JSON.stringify(sun))
+                opt.innerHTML=sun.flowers
+                document.querySelector("select").appendChild(opt)
+                
+            })
+        }
+
+        function getdata(){
+            var now=document.getElementById("bow").value
+            very=JSON.parse(now)
+            displaydata()
+        }
+
+        function displaydata(){
+
+            document.querySelector("ul").innerHTML=""
+            very.names.forEach((good)=>{
+                var myli=document.createElement("li")
+                myli.innerHTML= good
+              document.querySelector("ul").appendChild(myli)
+            })
+        }
+
+        info()
+    </script>
+    
+</body>
+</html>

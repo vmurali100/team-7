@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select name="" id="name" onchange="mega()">
+        <option value="" selected>Select detail</option>
+    </select>
+
+    <ul>
+
+    </ul>
+    <script src="./Searching3.js"></script>
+
+    <script>
+
+        var surya = {}
+
+        function raju() {
+            console.log(schoolStudent);
+
+            schoolStudent.forEach((deena) => {
+                var opt = document.createElement("option")
+                opt.setAttribute("value", JSON.stringify(deena))
+                opt.innerHTML = deena.school
+                document.querySelector("select").appendChild(opt)
+
+            });
+        }
+
+        function mega() {
+            var name = document.getElementById("name").value
+            surya = JSON.parse(name)
+            sam()
+        }
+
+        function sam() {
+            document.querySelector("ul").innerHTML = ""
+            surya.students.forEach((sup) => {
+                
+                var myli = document.createElement("li")
+                myli.innerHTML = sup
+                document.querySelector("ul").appendChild(myli)
+            })
+
+        }
+        raju()
+    </script>
+</body>

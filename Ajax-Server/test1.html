@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Name :</label>
+        <input type="text" name="" id="a"><br><br>
+        <label for="">Number :</label>
+        <input type="text" name="" id="b"><br><br>
+        <label for="">City :</label>
+        <input type="text" name="" id="c"><br><br>
+        <label for="">PinCode :</label>
+        <input type="text" name="" id="d"><br><br>
+    </form>
+
+    <button type="button" onclick="getinfo()" id="but">Button</button>
+    <button type="button" onclick="update()" id="nut" style="display:none">Update</button>
+
+    <table border="1">
+        <thead>
+            <th>Name</th>
+            <th>Number</th>
+            <th>City</th>
+            <th>Pincode</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        //    var detail=[]
+        var detail = JSON.parse(localStorage.getItem("detail"))
+        var index;
+        if (detail == null) {
+            detail = []
+        }
+
+        function getinfo() {
+            var data = {
+                a: "",
+                b: "",
+                c: "",
+                d: ""
+            }
+            for (a in data) {
+                data[a] = document.getElementById(a).value
+            }
+            console.log(data)
+            detail.push(data)
+            localStorage.setItem("detail", JSON.stringify(detail))
+            displaying()
+            clearing(data)
+        }
+
+        function displaying() {
+            document.querySelector("tbody").innerHTML = ""
+            detail.forEach((data, i) => {
+                var mytr = document.createElement("tr")
+                for (a in data) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = data[a]
+                    mytr.appendChild(mytd)
+
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+                var edittd = document.createElement("td")
+                var deletetd = document.createElement("td")
+                mytr.appendChild(edittd)
+                mytr.appendChild(deletetd)
+
+                var editbtn = document.createElement("button")
+                editbtn.setAttribute("onclick", "getediting(" + i + ")")
+                editbtn.innerHTML = "EDIT"
+                var delbtn = document.createElement("button")
+                delbtn.setAttribute("onclick", "getdel(" + i + ")")
+                delbtn.innerHTML = "DELETE"
+                edittd.appendChild(editbtn)
+                deletetd.appendChild(delbtn)
+
+
+
+            })
+        }
+
+        displaying()
+
+        function getediting(i) {
+            index=i
+            document.getElementById("but").style.display="none"
+            document.getElementById("nut").style.display="block"
+           var suri= detail[i]
+           for(a in suri){
+               document.getElementById(a).value =suri[a]
+           }
+        }
+
+        function getdel(i) {
+            detail.splice(i, 1)
+            localStorage.setItem("detail", JSON.stringify(detail))
+            displaying()
+        }
+
+        function update(){
+            var data = {
+                a: "",
+                b: "",
+                c: "",
+                d: ""
+            }
+            for (a in data) {
+                data[a] = document.getElementById(a).value
+            }
+            detail[index]=data
+            localStorage.setItem("detail", JSON.stringify(detail))
+            displaying()
+            clearing(data)
+            document.getElementById("but").style.display="block"
+            document.getElementById("nut").style.display="none"
+        }
+
+        function clearing(data) {
+            for (a in data) {
+                document.getElementById(a).value = ""
+            }
+        }
+    </script>
+</body>
+</html>

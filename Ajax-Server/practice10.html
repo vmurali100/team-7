@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="">name</label>
+        <input type="text" name="" id="a"> <br><br>
+        <label for="">class</label>
+        <input type="text" name="" id="b"><br><br>
+        <label for="">group</label>
+        <input type="text" name="" id="c"> <br><br>
+        <label for="">city</label>
+        <input type="text" name="" id="d"><br><br>
+        <label for="">number</label>
+        <input type="text" name="" id="e">
+        <input type="text" name="" id="id" hidden>
+    </form>
+
+    <button type="button" onclick="Creating()" id="s">add</button>
+
+    <button type="button" onclick=" updating()" id="t" style="display: none;">UPDATE</button>
+
+    <table border="1">
+        <thead>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Group</th>
+            <th>City</th>
+            <th>Number</th>
+            <th>Id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+
+<script>
+
+    var myinfo = []
+    function Creating() {
+        var data = {
+            a: "",
+            b: "",
+            c: "",
+            d: "",
+            e: ""
+        }
+        for (a in data) {
+            data[a] = document.getElementById(a).value
+        }
+
+        var posting = new XMLHttpRequest()
+        posting.onreadystatechange = function () {
+            if (posting.status == 201 && posting.readyState == 4) {
+
+            }
+        }
+        posting.open("Post", "http://localhost:3000/naveen")
+        posting.setRequestHeader("Content-Type", "application/json")
+        posting.send(JSON.stringify(data))
+    }
+
+
+
+    function Reading() {
+        var read = new XMLHttpRequest()
+        read.onreadystatechange = function () {
+            if (read.readyState == 4 && read.status == 200) {
+                myinfo = JSON.parse(read.response)
+                Displaying(myinfo)
+            }
+
+        }
+        var url = "http://localhost:3000/naveen"
+        read.open("Get", url)
+        read.send()
+    }
+
+
+    function Displaying(myinfo) {
+        for (i = 0; i < myinfo.length; i++) {
+            var mytr = document.createElement("tr")
+            for (a in myinfo[0]) {
+                var mytd = document.createElement("td")
+                mytd.innerHTML = myinfo[i][a]
+                mytr.appendChild(mytd)
+            }
+            document.querySelector("tbody").appendChild(mytr)
+
+            var edittd = document.createElement("td")
+            var deltd = document.createElement("td")
+            mytr.appendChild(edittd)
+            mytr.appendChild(deltd)
+
+            var editbtn = document.createElement("button")
+            var delbtn = document.createElement("button")
+            edittd.appendChild(editbtn)
+            deltd.appendChild(delbtn)
+
+            editbtn.setAttribute("onclick", "edituser(" + i + ")")
+            delbtn.setAttribute("onclick", "deleteuser(" + i + ")")
+            editbtn.innerHTML = "EDIT"
+            delbtn.innerHTML = "DELETE"
+        }
+    }
+    Reading()
+
+
+    function edituser(i) {
+        for (a in myinfo[i]) {
+            document.getElementById(a).value = myinfo[i][a]
+        }
+        document.getElementById("s").style.display = "none"
+        document.getElementById("t").style.display = "block"
+
+        
+    }
+
+
+    function deleteuser(i) {
+        var posting = new XMLHttpRequest()
+        posting.onreadystatechange = function () {
+            if (posting.status == 200 && posting.readyState == 4) {
+
+            }
+        }
+        posting.open("DELETE", "http://localhost:3000/naveen/" + myinfo[i].id)
+        posting.send()
+
+    }
+
+    function updating() {
+        var data = {
+            a: "",
+            b: "",
+            c: "",
+            d: "",
+            e: "",
+            id:""
+        }
+        for (a in data) {
+            data[a] = document.getElementById(a).value
+        }
+
+        var posting = new XMLHttpRequest()
+        posting.onreadystatechange = function () {
+            if (posting.status == 200 && posting.readyState == 4) {
+                document.getElementById("s").style.display="block"
+                document.getElementById("t").style.display="none"
+
+            }
+        }
+        posting.open("PUT", "http://localhost:3000/naveen/" + data.id)
+        posting.setRequestHeader("Content-Type", "application/json")
+        posting.send(JSON.stringify(data))
+    }
+</script>
+
+</html>

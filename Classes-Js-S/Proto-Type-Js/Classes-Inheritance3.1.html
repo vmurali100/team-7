@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class  Student{
+            constructor(lname){
+                this.lname=lname;
+            }
+            adding(){
+            return  'My First name  is  '+ this.lname+"  "
+            }
+        }
+
+        class lname extends Student{
+            constructor(lname,email){
+                super(lname);
+                this.email=email;
+            }
+            adding1(){
+                return this.adding()+" "+this.email+" "
+            }
+        }
+
+        class email extends lname{
+            constructor(lname,email,id){
+               super(lname,email)
+               this.id=id;
+            }
+            adding2(){
+                 return this.adding1()+" "+this.id+" "
+            }
+        }
+
+        class password extends email{
+            constructor(lname,email,id,password){
+                super(lname,email,id)
+                this.password=password
+            }
+            adding3(){
+                return this.adding2()+" "+this.password
+            }
+        }
+
+        const data = new password("Surya Praksh" , "suryasplucky@gamail.com" , "200" , " ********* ")
+
+        document.write(data.adding3())
+
+
+    </script>
+</body>
+</html>

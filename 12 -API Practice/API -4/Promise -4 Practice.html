@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let myuser = []
+
+        function getDataFromServer() {
+            return new Promise((resolve, reject) => {
+                var getinng = new XMLHttpRequest();
+                getinng.onreadystatechange = function () {
+                    if (getinng.readyState == 4 && getinng.status == 200) {
+                        myuser = JSON.parse(getinng.response)
+
+                        resolve(myuser)
+
+                        // reject(myuser)
+
+                    }
+                   
+                }
+
+                getinng.open("GET", "https://jsonplaceholder.typicode.com/todos")
+                getinng.send()
+            })
+        }
+
+        function displayUsers() {
+            for (a in myuser) {
+                document.write(a + " : " + myuser[a] + "<br>")
+            }
+            console.log("All Users ", myuser)
+        }
+
+        getDataFromServer()
+            .then(() => {
+                displayUsers()
+            })
+            .catch(() => {
+                console.log("Some Problem Happend")
+            })
+
+    </script>
+</body>
+
+</html>

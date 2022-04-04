@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var myinfo = []
+
+        function getData(displaying) {
+            var getinng = new XMLHttpRequest();
+            getinng.onreadystatechange = function () {
+                if (getinng.readyState == 4 && getinng.status == 200) {
+                    myinfo = JSON.parse(getinng.response)
+                    displaying()
+                }
+            }
+
+            getinng.open("GET", "http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true")
+            getinng.send()
+        }
+
+        function displaying(){
+            for (a in myinfo) {
+                document.write(a + " : " + myinfo[a] + "<br>")
+            }
+            console.log("All Users ",myinfo)
+        }
+
+        getData(displaying);
+        
+    </script>
+</body>
+
+</html>
