@@ -9,10 +9,10 @@ export default class One extends Component{
         }
     }
     render(){
-        return <Child person={this.state}/>
-    //    return <div>
-    //        <h3>Name : {this.state.Name}</h3>
-    //        <h3>Age : {this.state.Age}</h3>
-    //    </div>
+        // return <Child person={this.state}/>
+       return <div>
+           <h3>Name : {this.state.Name}</h3>
+           <h3>Age : {this.state.Age}</h3>
+       </div>
     }
 }

@@ -2,16 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import Balaji from './Balaji';
 // import News from './News';
-import {Sample} from './Functional component/Sample';
-import Wellcome from './Class component/Welcome'
+// import {Sample} from './Functional component/Sample';
+// import Wellcome from './Class component/Welcome'
 import reportWebVitals from './reportWebVitals';
+// import Ten from './Functional component/F5';
+import Nine from './Functional component/F5'
 
 ReactDOM.render(
   <React.StrictMode>
     { /* <Balaji /> */ }
     {/* <News/> */}
-    <Sample/>
-    <Wellcome/>
+    {/* <Sample/>
+    <Wellcome/> */}
+    {/* <Ten/> */}
+    <Nine/>
   </React.StrictMode>,
   document.getElementById('root')
 );
