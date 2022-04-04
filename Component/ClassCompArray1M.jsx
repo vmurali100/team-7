@@ -4,21 +4,15 @@ export default class ClassArray extends Component{
     constructor(){
         super()
         this.state = {
-            Cars : {
-                carName:"Kia",
-                model:"Carens",
-                price:"10,00,000",
-                color:"Red",
-                madein:"India"
-            }
+            Friends : ["Sadik","Deena","Raju","Surya","Rehaman"]
         }
     }
     render(){     
-        let {Cars} = this.state  
+        let {Friends} = this.state  
         return <div>
             <ul>
-                {Object.values(Cars).map((Info,i)=>{
-                   return <li key={i}>{Info}</li>
+                {Friends.map((Names,i)=>{
+                   return <li key={i}>{Names}</li>
                 })}
             </ul>
         </div>

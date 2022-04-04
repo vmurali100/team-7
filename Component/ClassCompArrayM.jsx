@@ -4,20 +4,15 @@ export default class ArrayMethod extends Component{
     constructor(){
         super()
         this.state = {
-            User : {
-                fname:"Sayed",
-                lname:"Rehaman",
-                age:"24 years",
-                mail:"sayedrehaman456@gmail.com"
+           Family : ["Father","Mother","Brother","Sister"]
             }
         }
-    }
     render(){     
-        let {User} = this.state  
+        let {Family} = this.state  
         return <div>
             <ul>
-                {Object.values(User).map((val,i)=>{
-                   return <li key={i}>{val}</li>
+                {Family.map((Mem,i)=>{
+                   return <li key={i}>{Mem}</li>
                 })}
             </ul>
         </div>
