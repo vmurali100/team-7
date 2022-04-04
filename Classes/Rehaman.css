@@ -1,0 +1,40 @@
+.Sample{
+    width: 100%;
+    overflow: auto;
+    /* background: url(https://i.pinimg.com/originals/85/ec/df/85ecdf1c3611ecc9b7fa85282d9526e0.jpg); */
+    opacity: 10;
+    height: 500px;
+}
+.Sample .Child{
+    width: 20%;
+    float: left;
+    margin-left:40px;
+    margin-top: -30px;
+    
+}
+.pics{
+    width: 230px;
+    height: 250px;
+}
+.morming{
+    font-size: 50px;
+    color: red;
+    text-align: center;
+    margin-top: 30px;
+    border: 2px solid white;
+    width: 600px;
+    margin-left: 200px;
+    border-radius: 20px;
+    background-color: rgb(27, 141, 141);
+}
+.night{
+    font-size: 30px;
+    color: white;
+}
+.anchior{
+    margin-left: 120px;
+}
+.Rehaman{
+    width: 120px;
+
+}

@@ -1,0 +1,79 @@
+.container {
+    background-color: hotpink;
+    width: 1100px;
+    margin: 0 auto;
+    overflow: auto;
+    border: 1px solid;
+    border-radius: 24px;
+    box-shadow: -1px -2px 23px;
+}
+.one {
+    width: 543px;
+    float: left;
+    text-align: center;
+    border-right: 2px solid white;
+}
+.second {
+    width: 555px;
+    float: right;
+    text-align: center;
+}
+.footer {
+    width: 500px;
+    overflow: auto;
+    margin: 0 auto;
+}
+p.left {
+    width: 250px;
+    float: left;
+    text-align: center;
+    line-height: 2;
+}
+p.right {
+    width: 250px;
+    float: right;
+    text-align: center;
+    line-height: 2;
+}
+img.as {
+    width: 527px;
+    height: 160px;
+    border-radius: 36px;
+    margin-top: 7px;
+    box-shadow: 3px 4px 5px blue;
+}
+img.bs {
+    width: 107px;
+    border-radius: 23px;
+    margin-top: 10px;
+    box-shadow: 1px 2px 42px 12px gold;
+    margin-left: 406px;
+}
+img.cs {
+    width: 122px;
+    height: 155px;    
+    margin-top: -166px;
+    margin-right: 389px;
+    box-shadow: 1px 2px 42px 12px red;
+    border-radius: 36px;
+}
+img.ds {
+    width: 251px;
+    margin-left: -22px;
+    margin-top: 30px;
+    border-radius: 40px;
+    box-shadow: 2px 3px 4px black;
+}
+.head {
+    text-decoration: underline;
+    margin-top: 43px;
+    color: red;
+}
+.bold {
+    text-shadow: 2px 3px 7px cornflowerblue;
+    font-family: sans-serif;
+}
+.italik {
+    font-family: fantasy;
+    text-shadow: 2px 1px 5px darkgreen;
+}

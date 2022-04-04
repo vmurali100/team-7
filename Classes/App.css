@@ -1,0 +1,13 @@
+.mainhead{
+    color: brown;
+    text-align: center;
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+.large{
+    text-align: center;
+    font-size: 20px;
+}
+strong{
+    color: crimson;
+}
