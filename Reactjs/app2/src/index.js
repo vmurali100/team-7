@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 // import All from './String obj Array/All';
-import Event from './String obj Array/Event';
+// import Event from './String obj Array/Event';
+import ClassEvent from './String obj Array/ClassEvent';
+import Funstring from './String obj Array/Funcomstate/Funstring'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
     {/* <All/> */}
-    <Event/>
+    {/* <Event/> */}
+    <ClassEvent/>
+    <Funstring/>
   </React.StrictMode>,
   document.getElementById('root')
 );
