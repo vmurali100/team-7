@@ -1,12 +1,11 @@
-import {usestate} from 'react'
-
+import{useState} from "react"
 export default function Funstring(){
-    const [myname,setmyname]= usestate("");
-    const changemyname=()=>{
-        setmyname("Balaji Kidambi")
+    const [myName,setmyName] = useState("")
+    const Changename=()=>{
+        setmyName("Balaji Kidambi")
     }
-    return<>
-        <button onClick={changemyname}>My Name</button>
-        <h2>Full Name is :{myname}</h2>
-    </>
+  return <>
+    <button onClick={ Changename}>Change Name</button>
+     <h2>Full Name is : {myName}</h2>
+  </>  
 }

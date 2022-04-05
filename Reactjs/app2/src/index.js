@@ -4,7 +4,6 @@ import App from './App';
 // import All from './String obj Array/All';
 // import Event from './String obj Array/Event';
 import ClassEvent from './String obj Array/ClassEvent';
-import Funstring from './String obj Array/Funcomstate/Funstring'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -13,7 +12,6 @@ ReactDOM.render(
     {/* <All/> */}
     {/* <Event/> */}
     <ClassEvent/>
-    <Funstring/>
   </React.StrictMode>,
   document.getElementById('root')
 );
