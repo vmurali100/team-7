@@ -17,7 +17,7 @@ export class Info extends Component {
     officeemployee = () => {
         let newState = {...this.state }
         newState.employee = {
-            fname: "Thala",
+            fname: "Thala",  
             lname: "deena",
             email: "deenav003@gamil.com"
         }

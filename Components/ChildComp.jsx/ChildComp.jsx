@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import  { Component } from 'react';
 
-export default class ChildComp extends Component {
+export   class ChildComp extends Component {
  constructor(props){
      super()
  }
     render() {
     return <div>
-        <button onClick={this.props.open}>open</button>
-        <h2 style={{color:"red"}}>{this.props.msg}</h2>
+        <button onClick={this.props.ChangeMsg}>Change Message</button>
+        <h2 >{this.props.msg}</h2>
     </div>
       
     
