@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
+import MethodsAsProps from './V15MethodsProps1'
 
-export default class MethodsProps extends Component {
-    constructor(){
-        super()
+export  class MethodsProps extends Component {
+    constructor(props){
+        super(props)
         this.state = {
-            ParentName : "Parent"
+            EmployeeName : " Bava I love you "
         }
+        this.ChangeProps=this.ChangeProps.bind(this)
     }
 
-    greetParent(){
-        alert("Hello"+ this.state.ParentName)
+    ChangeProps(){
+        alert('Hello'+this.state.EmployeeName)
     }
   render() {
     return (
-      <div></div>
+      <div>
+        <MethodsAsProps  ChangeProps={this.ChangeProps}/>
+      </div>
     )
   }
 }
