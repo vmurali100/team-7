@@ -1,6 +1,9 @@
 import React from "react"
 
-const Video9props2=props=>{
-return <h1> hello raju{props.name}</h1>
+const Myname=( props)=>{
+    console.log(props)
+return(
+    <h1>Surname:{props.surname} name :{props.name}</h1>
+)
 }
-export default Video9props2
+export default Myname
