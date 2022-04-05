@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 // import All from './String obj Array/All';
 // import Event from './String obj Array/Event';
-import ClassEvent from './String obj Array/ClassEvent';
+import ClassEvent from './String obj Array/Classcomstate.jsx/ClassEvent';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
