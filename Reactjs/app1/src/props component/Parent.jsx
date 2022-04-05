@@ -1,6 +1,7 @@
 import { Component } from "react";
+import {Child} from "./Child";
 
-export default class One extends Component{
+export default class Parent extends Component{
     constructor(){
         super()
         this.state={
@@ -9,8 +10,9 @@ export default class One extends Component{
         }
     }
     render(){
-        // return <Child person={this.state}/>
+       
        return <div>
+            <Child person={this.state}/>
            <h3>Name : {this.state.Name}</h3>
            <h3>Age : {this.state.Age}</h3>
        </div>

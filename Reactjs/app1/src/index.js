@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 // import Balaji from './Balaji';
 // import News from './News';
 // import {Sample} from './Functional component/Sample';
-// import Wellcome from './Class component/Welcome'
+import Wellcome from './Class component/Welcome'
 import reportWebVitals from './reportWebVitals';
 // import Ten from './Functional component/F5';
 import Nine from './Functional component/F5'
@@ -13,9 +13,9 @@ ReactDOM.render(
     { /* <Balaji /> */ }
     {/* <News/> */}
     {/* <Sample/>
-    <Wellcome/> */}
     {/* <Ten/> */}
     <Nine/>
+    <Wellcome/>
   </React.StrictMode>,
   document.getElementById('root')
 );
