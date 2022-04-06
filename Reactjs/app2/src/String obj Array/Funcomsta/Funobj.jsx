@@ -4,7 +4,7 @@ export default function Funobj(){
     const showperson=()=>{
         setperson({
             Happy:'Be happy',
-            Sad:'Be sad'
+            Sad:'so sad'
         })
     }
   return <>
