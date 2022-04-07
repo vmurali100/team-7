@@ -25,7 +25,7 @@ export default class One extends Component {
               <button onClick={()=> this.Debit()}>Debit</button>
               <button onClick={()=> this. Credit() }> Credit</button >
           </div >
-        )
+        ) 
           
         
       }
