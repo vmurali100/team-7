@@ -1,12 +1,11 @@
 import './App.css';
-import Funcomp from './Overall/Funcomp'
-import Classcomp from './Overall/Classcomp'
+import Child from './Overall/3 B props';
+
 
 
 function App() {
   return (
-    <Funcomp/>,
-    <Classcomp/>
+   <Child/>
   );
 }
 

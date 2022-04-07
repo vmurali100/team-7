@@ -13,8 +13,6 @@ export default class Parent extends Component{
        
        return <div>
             <Child person={this.state}/>
-           <h3>Name : {this.state.Name}</h3>
-           <h3>Age : {this.state.Age}</h3>
        </div>
     }
 }

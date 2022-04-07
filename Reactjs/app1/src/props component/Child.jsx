@@ -6,8 +6,8 @@ export default class Child extends Component{
     }
         render(){
             return <div>
-            <h3>Name : {this.props.Name}</h3>
-            <h3>Age : {this.props.Age}</h3>
+            <h3>Name : {this.props.person.Name}</h3>
+            <h3>Age : {this.props.person .Age}</h3>
         </div>
         }
 }
