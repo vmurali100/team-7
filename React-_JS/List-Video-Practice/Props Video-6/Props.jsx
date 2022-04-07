@@ -6,8 +6,8 @@ export class Moon extends Component{
             <div >
                 
                  <h1>Raju Deena Rehaman Balaji{props.name}{props.age}</h1>
-                 {/* {props. DeenaComponent}
-                 {props.RajuDeatails} */}
+                 {props. DeenaComponent}
+                 {props.RajuDeatails}
             </div>
            
         )
