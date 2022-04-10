@@ -2,7 +2,7 @@ import{useState} from "react"
 export default function Funstring(){
     const [myName,setmyName] = useState("")
     const Changename=()=>{
-        setmyName("Baan Baan")
+        setmyName("Thalapathy Vijay")
     }
   return <>
     <button onClick={ Changename}>Change Name</button>

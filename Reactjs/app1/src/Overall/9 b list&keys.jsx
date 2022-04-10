@@ -3,14 +3,14 @@ export default class Classarray extends component{
     constructor(){
         super()
         this.state={
-            Friends:["vijay","ajith","surya","rajini"]
+            Snaks:["Choki","Lays","Boonda","Vadai"]
         }
     }
     render(){
-        let{Friends}=this.state
+        let{Snaks}=this.state
         return <>
         <ul>
-           {Friends.map((frd,i)=>{
+           {Snaks.map((frd,i)=>{
                return<li key={i}>{frd}</li>
            })}
         </ul>

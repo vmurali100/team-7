@@ -4,8 +4,8 @@ export default class Classobj1 extends component{
         super()
         this.state={
             person:{
-                Happy:'Be happy',
-                Sad:'Be sad'
+                School:'Student',
+                Staff:'Medam'
             }
         }
     }

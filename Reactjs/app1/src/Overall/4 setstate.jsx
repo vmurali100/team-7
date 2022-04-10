@@ -11,7 +11,7 @@ export default class ClassEvent extends Component {
     // so copy the value,then change the value and reasign the value
     showme = () => {
         let newstate = { ...this.state }  //copy of state
-        newstate.Inform = "How are u all" //assign new value to the inform
+        newstate.Inform = "Pasitive enery is most powerfull " //assign new value to the inform
         this.setState(newstate) // updating the exisiting state
     }
     

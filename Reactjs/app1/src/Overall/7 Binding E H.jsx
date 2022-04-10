@@ -4,17 +4,17 @@ export default class Bindiing extends Component{
     constructor(){
         super()
         this.state={
-            message:'Hello'
+            Tiffen:'Idli'
         }
     }
     Bindiing=()=>{
         this.setState({
-            message:"Goodbye"
+            Tiffen:"Pongal"
         })
     }
     render(){
         return <>
-        {this.state.message}
+        {this.state.Tiffen}
         <button onClick={this.Bindiing}>Click</button>
         </>
     }

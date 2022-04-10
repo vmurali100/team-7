@@ -2,7 +2,7 @@ import { Component } from "react";
 
 export default class Eventhandling extends Component{
     Clickhandler(){
-        <h1>Hello Everyone</h1>
+        <h1>Happy Moment of every action</h1>
     }
     render(){
         return <>
