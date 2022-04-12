@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        A=[]
+        function Student(){
+            return new Promise((Yes,No)=>{
+                var getUser=new XMLHttpRequest();
+                getUser.onreadystatechange=function(){
+                    if(getUser.readyState == 4 && getUser.status==200){
+                        A=JSON.parse(getUser.response)
+                        Yes(A)
+                        // no(Student)
+                    } 
+                }
+                getUser.open("Get","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+                getUser.send()                
+            })
+        }
+        function Display(){
+            console.log("All Student Are :-",A)
+        }
+        // A()
+        // .then(()=>{
+        //     console.log("Available Student are",A)
+        // }).0
+ 0       // .catch(()=>{
+        //     console.log("ERROR",)
+        // })
+        
+        
+        async function Person(){
+            A = await Student()
+            Display()
+        }
+        Person()
+    </script>
+</body>
+</html>

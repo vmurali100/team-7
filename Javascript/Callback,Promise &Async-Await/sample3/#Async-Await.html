@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        C = []
+        function Employee() {
+            return new Promise((follow, unfollow) => {
+                var getUser = new XMLHttpRequest();
+                getUser.onreadystatechange = function () {
+                    if (getUser.readyState == 4 && getUser.status == 200) {
+                        C = JSON.parse(getUser.response)
+                        follow(C)
+                        //    unfollow (Employee)
+                    }
+                }
+
+                getUser.open("Get", "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true")
+                getUser.send()
+
+            })
+        }
+        function Display() {
+            console.log("All Employee Are :-", C)
+        }
+        // C()
+        // .then(()=>{
+        //     console.log("Available Employee are:-",C)
+        // })
+        // .catch(()=>{
+        //     console.log("ERROR")
+        // })
+        async function Person() {
+            C = await Employee()
+            Display()
+        }
+        Person()
+    </script>
+</body>
+
+</html>

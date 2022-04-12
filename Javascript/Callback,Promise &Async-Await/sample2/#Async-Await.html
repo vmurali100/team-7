@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var B = []
+        function User() {
+            return new Promise((Happy, Sad) => {
+                var GetUser = new XMLHttpRequest();
+                GetUser.onreadystatechange = function () {
+                    if (GetUser.readyState == 4 && GetUser.status == 200) {
+                        B = JSON.parse(GetUser.response)
+                        Happy(B)
+                        // Sad(User)
+
+                    }
+                }
+                GetUser.open("Get", "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+                GetUser.send()
+            })
+        }
+        function Display() {
+            console.log("All Users", B)
+        }
+        // User()
+        // .then(()=>{
+        //     console.log("Available Users are",B)
+        // })
+        // .catch(()=>{
+        //     console.log("Users are not available")
+        // })
+        async function person() {
+            B = await User()
+            Display()
+        }
+        person()
+
+    </script>
+</body>
+
+</html>

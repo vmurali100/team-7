@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        J=[]
+        function Amazon(){
+            return new Promise((Online,Offline)=>{
+                var getUser=new XMLHttpRequest();
+                getUser.onreadystatechange=function(){
+                    if(getUser.readyState == 4 && getUser.status==200){
+                        J=JSON.parse(getUser.response)
+                        Online (J)
+                        // Offline(Amazon)
+                    } 
+                }
+                getUser.open("Get","https://fakestoreapi.com/carts")
+                getUser.send()                
+            })
+        }
+        function Display(){
+            console.log("All Amazon Available :-",J)
+        }
+        // J()
+        // .then(()=>{
+        //     console.log("Available Amazon are",J)
+        // })
+        // .catch(()=>{
+        //     console.log("ERROR")
+        // })
+        
+        
+        async function Person(){
+            J = await Amazon()
+            Display()
+        }
+        Person()
+    </script>
+</body>
+</html>

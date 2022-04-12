@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        E=[]
+        function Bike(){
+            return new Promise((Go,Stop)=>{
+                var getUser=new XMLHttpRequest();
+                getUser.onreadystatechange=function(){
+                    if(getUser.readyState == 4 && getUser.status==200){
+                        E=JSON.parse(getUser.response)
+                        Go (E)
+                        // Stop(Bike)
+                    } 
+                }
+                getUser.open("Get","https://jsonplaceholder.typicode.com/comments")
+                getUser.send()                
+            })
+        }
+        function Display(){
+            console.log("All Bike Are :-",E)
+        }
+        // E()
+        // .then(()=>{
+        //     console.log("Available Bike are",E)
+        // })
+        // .catch(()=>{
+        //     console.log("ERROR")
+        // })
+        
+        
+        async function Person(){
+            E = await Bike()
+            Display()
+        }
+        Person()
+    </script>
+</body>
+</html>
