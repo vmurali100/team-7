@@ -8,30 +8,27 @@ export default class User extends Component {
     super(props)
   }
   // 1.Mounting 
- componentWillMount() {
+  componentWillMount() {
     console.log("ComponentWillMount Cycle")
   }
   // 2.Updating
-  shouldComponentUpdate(){
+  shouldComponentUpdate() {
     console.log("shouldComponentUpdate Cycle")
-    
    return false
   }
-  componentDidCatch(){
+  componentDidCatch() {
     console.log("componentDidCatch Cycle")
   }
-  componentDidUpdate(){
+  componentDidUpdate() {
     console.log("componentDidUpdate Cycle")
   }
-  
+
   // 3.Un Mounting
 
   render() {
     console.log("Component Render Cycle")
     return <div>
-      {this.props.myname =="" ? <Hello/>:<Deena myname={this.props.myname}/> }
-    
-
+      {this.props.myname == "" ? <Hello /> : <Deena myname={this.props.myname} />}
     </div>
   }
   componentDidMount() {
