@@ -15,7 +15,7 @@ export const HOComponent = (EmptyC) => {
         }
         Decreament = () => {
             this.setState({
-                Money: this.props.Money - 1
+                Money: this.state.Money - 1
             })
         }
         render() {
@@ -26,5 +26,6 @@ export const HOComponent = (EmptyC) => {
             />
         }
     }
-    return <NewComponent />
+    return NewComponent
 }
+export default HOComponent
