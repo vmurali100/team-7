@@ -16,9 +16,7 @@ export default class Example1 extends Component {
         this.setState({user:newuser})
     }
     handlesubmit=(e)=>{
-        let newexample={...this.state.example}
-        newexample[e.target.name]=e.target.value
-        this.setState({example:newexample})
+        console.log(this.state.user)
     }
     render() {
         return <>

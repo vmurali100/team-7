@@ -5,6 +5,7 @@ import App from './App';
 // import Event from './String obj Array/Event';
 // import ClassEvent from './String obj Array/Classcomstate.jsx/ClassEvent';
 import Example1 from "./CRUD/Example1"
+import Register from './CRUD/Example2'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -14,6 +15,7 @@ ReactDOM.render(
     {/* <Event/> */}
     {/* <ClassEvent/> */}
     <Example1/>
+    <Register/>
   </React.StrictMode>,
   document.getElementById('root')
 );
