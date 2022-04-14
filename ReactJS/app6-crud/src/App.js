@@ -4,6 +4,7 @@ import User from './Components/User';
 import NewUser from './Components/NewUser';
 import UsersTable from './Components/UsersTable';
 import AllUsers from './Components/AllUsers';
+import JyothiComponent from './Components/JyothiComponent';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
      {/* <NewUser/> */}
      {/* <UsersTable/> */}
      {/* <AllUsers/> */}
+     <JyothiComponent/>
     </div>
   );
 }
