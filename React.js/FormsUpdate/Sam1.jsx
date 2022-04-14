@@ -26,7 +26,7 @@ export default class Sam1 extends Component {
   render() {
     return (
      <div id='one' style={{'backgroundColor':'blue','width':'500px','height':'550px'}}>
-          <h2 style={{'color':'white'}}>Register your account</h2>
+          <h2 style={{'color':'white',position:'relative',top:'7px'}}>Register your account</h2>
           <div style={{'border':'2px solid',width:'400px',backgroundColor:'white','margin':'0 auto'}}>
           <label style={{'margin-right':'320px'}} htmlFor="">Name</label> <br />
           <input type="text" name="Name"  placeholder='Enter your full name...' style={{'margin-right':'5px','width':'350px','height':'25px'}} value={this.state.Name} onChange={(e)=>{this.handlechange(e)}} id="" /> <br /><br />
