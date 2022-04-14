@@ -9,20 +9,39 @@ export default class User extends Component {
         email: "",
         username: "",
       },
+      allUsers:[
+       
+      ]
     };
   }
 
-  handleChange=(e)=>{
-      let newUser = {...this.state.user};
-      newUser[e.target.name] = e.target.value
-      this.setState({user:newUser})
-  }
+  handleChange = (e) => {
+    let newUser = { ...this.state.user };
+    newUser[e.target.name] = e.target.value;
+    this.setState({ user: newUser });
+  };
 
-  handleSubmit=()=>{
-      console.log(this.state.user)
+  handleSubmit = () => {
+    let newUsers = [...this.state.allUsers]
+    newUsers.push({...this.state.user})
+    this.setState({allUsers:newUsers})
+    this.handleClear()
+  };
+
+  handleClear=()=>{
+    this.setState({user:{
+      email: "",
+      username: "",
+    }})
+  }
+  handleDelete=(i)=>{
+    let newUsers = this.state.allUsers.filter((user,index)=>{
+      return i !== index
+    })
+    this.setState({allUsers:newUsers})
   }
   render() {
-    return (    
+    return (
       <div>
         <h2>Welcome to CRUD Application </h2>
 
@@ -30,7 +49,6 @@ export default class User extends Component {
 
         <div className="container">
           <div className="row">
-            <div className="col"></div>
             <div className="col">
               <form>
                 <div className="mb-3">
@@ -42,9 +60,10 @@ export default class User extends Component {
                     className="form-control"
                     name="email"
                     value={this.state.user.email}
-                    onChange={(e)=>{this.handleChange(e)}}
+                    onChange={(e) => {
+                      this.handleChange(e);
+                    }}
                   />
-                 
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputPassword1" className="form-label">
@@ -55,17 +74,45 @@ export default class User extends Component {
                     className="form-control"
                     name="username"
                     value={this.state.user.username}
-                    onChange={(e)=>{this.handleChange(e)}}
-
+                    onChange={(e) => {
+                      this.handleChange(e);
+                    }}
                   />
                 </div>
 
-                <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={this.handleSubmit}
+                >
                   Submit
                 </button>
               </form>
             </div>
-            <div className="col"></div>
+            <div className="col">
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Email</th>
+                    <th>User Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.allUsers.map((person,i)=>{
+                    return <tr>
+                      <td>{i+1}</td>
+                      <td>{person.email}</td>
+                      <td>{person.username}</td>
+                      <td><button class="btn btn-warning">Edit</button></td>
+                      <td><button class="btn btn-danger" onClick={()=>{this.handleDelete(i)}}>Delete</button></td>
+                    </tr>
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
