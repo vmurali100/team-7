@@ -1,0 +1,71 @@
+.parent2 {
+    background-color: aliceblue;
+    width: 537px;
+    overflow: auto;
+    height: 370px;
+    margin-left: 8px;
+    background-color: rgb(46, 2, 87);
+    position: relative;
+    top: 8px;
+    float: left;
+}
+.Child2a {
+    background-color: rgb(254, 183, 5);
+    width: 274px;
+    float: left;
+    height: 370px;
+}
+h3 {
+    margin-left: 33px;
+    position: relative;
+    top: 100px;
+    margin-top: -8px;
+}
+h2 {
+    margin-left: 33px;
+    position: relative;
+    top: 96px;
+}
+.Child2b {
+    width: 263px;
+    float: right;
+    height: 370px;
+    background-color: white;
+}
+div#root1 {
+    background-color: rgb(43, 6, 56);
+    height: 501px;
+}
+form {
+    margin-left: 25px;
+    margin-top: 20px;
+}
+button#ABC1 {
+    width: 155px;
+    background-color: rgb(43, 6, 56);
+    color: white;
+    margin-top: 44px;
+}
+svg.bi.bi-envelope-fill {
+    color: white;
+    margin-top: -202px;
+    margin-left: 37px;
+}
+.Rehaman {
+    background-color: aquamarine;
+    overflow: auto;
+    height: 501px;
+}
+.Sadik {
+    float: right;
+    width: 500px;
+    margin-right: 10px;
+}
+table.table {
+    margin-top: 8px;
+    width: 500px;
+    margin-right: 10px;
+}
+input#\31 10 {
+    height: 45px;
+}

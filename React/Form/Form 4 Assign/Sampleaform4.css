@@ -1,0 +1,29 @@
+.Child4 {
+    margin-left: 266px;
+    width: 500px;
+    background-color: white;
+    position: relative;
+    top: 15px;
+    height: 465px;
+}
+h4 {
+    margin-left: 58px;
+}
+form#az {
+    margin-left: 25px;
+}
+/* input[type="text"] {
+    width: 426px;
+}
+input[type="text"] {
+    width: 426px;
+} */
+.Parent4 {
+    background-color: rgb(219, 160, 89);
+    height: 501px;
+}
+button#MNO1 {
+    width: 426px;
+    background-color: blue;
+    color: white;
+}

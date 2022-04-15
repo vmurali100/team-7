@@ -1,0 +1,62 @@
+.BigParent {
+    background-color: rgb(209, 152, 76);
+    height: 508px;
+    overflow: auto;
+}
+.ParentA1 {
+    margin-left: 349px;
+    background-color: #04147d;
+    width: 400px;
+    height: 476px;
+    position: relative;
+    top: 10px;
+    float: left;
+}
+.ParenytB1 {
+    float: right;
+    width: 550px;
+}
+.Child1 {
+    width: 268px;
+    background-color: white;
+    margin-left: 59px;
+    margin-top: 26px;
+    height: 366px;
+}
+table#asd {
+    width: 268px;
+    margin-left: 13px;
+}
+table.Ramu {
+    width: 900px;
+    margin-left: 20px;
+    position: relative;
+    top: 20px;
+}
+h3#A1 {
+    margin-left: 52px;
+    position: relative;
+    top: 12px;
+    color: white;
+}
+button {
+    width: 240px;
+    color: white;
+    background-color: green;
+}
+p {
+    margin-top: 7px;
+    margin-left: 4px;
+}
+input[type="text"] {
+    width: 238px;
+    background-color: rgb(226, 217, 217);
+}
+table#dsa {
+    width: 470px;
+}
+.container {
+    width: 1100px;
+    position: relative;
+    top: 20px;
+}
