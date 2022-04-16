@@ -19,10 +19,12 @@ export default class Register extends Component {
         this.setState({user:newuser})
     }
     handlesubmit=(e)=>{
-        let newexample={...this.state.example}
-        newexample[e.target.name]=e.target.value
-        this.setState({example:newexample})
-    }
+    //     let newexample={...this.state.example}
+    //     newexample[e.target.name]=e.target.value
+    //     this.setState({example:newexample})
+    console.log(this.state.user)
+     }
+    
     render() {
         return <>
             <h2>Register Your account</h2>
