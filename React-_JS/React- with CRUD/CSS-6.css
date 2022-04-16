@@ -1,0 +1,67 @@
+.bigcontainer {
+    /* background-color: black; */
+    width: 700px;
+    margin: 0 auto;
+}
+
+.head {
+    background-color: rgba(0, 0, 0, 0.86);
+    color: white;
+    overflow: auto;
+}
+h3 {
+    width: 190px;
+    float: left;
+    margin-left: 9px;
+}
+nav {
+    width: 498px;
+    float: right;
+}
+ul {
+    list-style-type: none;
+}
+li {
+    display: inline;
+    margin: 10px;
+}
+.secondary {
+    margin-top: -22px;
+    width: 700px;
+    background-color: darkgray;
+}
+.secondary h1 {
+    margin-left: -497px;
+    margin-top: 18px;
+}
+input[type="tel"] {
+    width: 658px;
+    padding: 12px;
+    margin-left: 8px;
+}
+input[type="number"] {
+    padding: 12px;
+    width: 113px;
+}
+.fir input[type="text"] {
+    width: 265px;
+}
+button.edittttt {
+    background-color: blue;
+    width: 80px;
+    color: white;
+}button.warning {
+    background-color: rgb(230, 29, 18);
+    width: 80px;
+    color: rgb(12, 11, 11);
+}
+.raj {
+    width: 100%;
+    overflow: auto;
+}
+.tablee {
+    width: 50%;
+    float: right;
+    margin-top: 59px;
+    background-color: aquamarine;
+}

@@ -1,0 +1,24 @@
+.Some {
+    width: 571px;
+    background-color: whitesmoke;
+    margin: 0 auto;
+}
+button.edittttt {
+    background-color: blue;
+    width: 80px;
+    color: white;
+}button.warning {
+    background-color: rgb(230, 29, 18);
+    width: 80px;
+    color: rgb(12, 11, 11);
+}
+.raj {
+    width: 100%;
+    overflow: auto;
+}
+.tablee {
+    width: 50%;
+    float: right;
+    margin-top: 59px;
+    background-color: aquamarine;
+}

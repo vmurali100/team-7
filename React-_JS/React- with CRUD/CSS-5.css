@@ -1,0 +1,29 @@
+.megan {
+    width: 710px;
+    margin: 0 auto;
+    background-color: whitesmoke;
+}.megan button {
+    width: 211px;
+    margin-left: 232px;
+    background-color: orange;
+    color: black;
+}
+button.edittttt {
+    background-color: blue;
+    width: 80px;
+    color: white;
+}button.warning {
+    background-color: rgb(230, 29, 18);
+    width: 80px;
+    color: rgb(12, 11, 11);
+}
+.raj {
+    width: 100%;
+    overflow: auto;
+}
+.tablee {
+    width: 50%;
+    float: right;
+    margin-top: 59px;
+    background-color: aquamarine;
+}

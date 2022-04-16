@@ -1,0 +1,87 @@
+.maincon {
+    background-color: darkgoldenrod;
+    width: 870px;
+    margin: 0 auto;
+    padding: 1px;
+}
+
+.first {
+    width: 350px;
+    float: left;
+}
+.first input[type="text"] {
+    width: 300px;
+}
+.second {
+    width: 380px;
+    float: right;
+    margin-top: -38px;
+}
+.second input[type="text"] {
+    width: 300px;
+}
+.mega {
+    color: black;
+    background-color: lightgrey;
+    margin: 54px;
+}
+h1 {
+    text-align: center;
+}
+form {
+    width: 730px;
+    margin: 0 auto;
+    overflow: auto;
+}
+.first p {
+    margin-left: 25px;
+    color: red;
+    float: left;
+}
+.second p {
+    margin-left: 25px;
+    color: red;
+    float: left;
+}
+label.cit {
+    margin-left: -178px;
+}
+input.togg {
+    margin-left: -155px;
+    margin-top: 46px;
+}
+input[type="file"] {
+    margin-left: 23px;
+}
+select {
+    margin-left: 25px;
+    width: 318px;
+    padding: 12px;
+}
+input.to {
+    margin-top: 39px;
+}
+.maincon button {
+    margin-left: 304px;
+    width: 156px;
+    margin: 10px;
+}
+button.edittttt {
+    background-color: blue;
+    width: 80px;
+    color: white;
+}button.warning {
+    background-color: rgb(230, 29, 18);
+    width: 80px;
+    color: rgb(12, 11, 11);
+}
+.raj {
+    width: 100%;
+    overflow: auto;
+}
+.tablee {
+    width: 50%;
+    float: right;
+    margin-top: 59px;
+    background-color: aquamarine;
+}

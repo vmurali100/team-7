@@ -1,0 +1,58 @@
+.Container {
+    background-color: blue;
+    width: 573px;
+    margin: 0 auto;
+    height: 728px;
+    float: left;
+}
+.Container h1 {
+    text-align: center;
+    color: white;
+    padding: 34px;
+}
+.middle form {
+    width: 509px;
+    margin-left: 34px;
+    background-color: white;
+    margin-top: -40px;
+    height: 605px;
+}
+label {
+    margin-left: 23px;
+    font-size: 23px;
+}
+input[type="text"] {
+    margin-left: 23px;
+    width: 438px;
+    padding: 11px;
+}
+button {
+    width: 473px;
+    background-color: green;
+    margin-left: 14px;
+    padding: 6px;
+    color: white;
+    font-size: 17px;
+}
+p{
+    text-align: center;
+}
+button.edittttt {
+    background-color: blue;
+    width: 80px;
+    color: white;
+}button.warning {
+    background-color: rgb(230, 29, 18);
+    width: 80px;
+    color: rgb(12, 11, 11);
+}
+.raj {
+    width: 100%;
+    overflow: auto;
+}
+.tablee {
+    width: 50%;
+    float: right;
+    margin-top: 59px;
+    background-color: aquamarine;
+}
