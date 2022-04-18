@@ -4,8 +4,9 @@ import App from './App';
 // import All from './String obj Array/All';
 // import Event from './String obj Array/Event';
 // import ClassEvent from './String obj Array/Classcomstate.jsx/ClassEvent';
-// import Example1 from "./CRUD/Example1"
-import Register from './CRUD/Example2'
+import Example1 from "./CRUD/Example1"
+// import Register from './CRUD/Example2'
+// import Table from './CRUD/Table'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -14,8 +15,9 @@ ReactDOM.render(
     {/* <All/> */}
     {/* <Event/> */}
     {/* <ClassEvent/> */}
-    {/* <Example1/> */}
-    <Register/>
+    <Example1/>
+    {/* <Table /> */}
+    {/* <Register/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

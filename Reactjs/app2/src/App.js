@@ -5,6 +5,7 @@ import React from "react"
 // import Fconrender from "./String obj Array/Funcomsta/Fconditionalrender"
 // import Sample from './String obj Array/butterfiy/Sample'
 // import Sample1 from './String obj Array/butterfiy/Sample1'
+
 import Hovercounter from './HIgher Order Com/sample1/Hovercount'
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
      <Fconrender/> */}
      {/* <Sample/>
      <Sample1/> */}
-     <Hovercounter/>
+     
+     {/* <Hovercounter/>
      <hr/>
-     <Clickcounter/>
+     <Clickcounter/> */}
     </div>
   );
 }
