@@ -2,28 +2,31 @@
     margin-left: 266px;
     width: 500px;
     background-color: white;
-    position: relative;
-    top: 15px;
     height: 465px;
 }
 h4 {
     margin-left: 58px;
 }
-form#az {
-    margin-left: 25px;
+form#La {
+    margin-left: 40px;
 }
-/* input[type="text"] {
-    width: 426px;
-}
-input[type="text"] {
-    width: 426px;
-} */
 .Parent4 {
-    background-color: rgb(219, 160, 89);
+    background-color: rgb(95, 221, 95);
     height: 501px;
 }
 button#MNO1 {
     width: 426px;
     background-color: blue;
     color: white;
+}
+h4 {
+    margin-left: 65px;
+    position: relative;
+    top: 6px;
+}
+input[type="text"] {
+    width: 426px;
+}
+table.table.table-dark.table-hover {
+    margin-top: 13px;
 }

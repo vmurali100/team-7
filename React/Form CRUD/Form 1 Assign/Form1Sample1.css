@@ -39,7 +39,7 @@ h3#A1 {
     top: 12px;
     color: white;
 }
-button {
+button#az {
     width: 240px;
     color: white;
     background-color: green;
@@ -48,10 +48,10 @@ p {
     margin-top: 7px;
     margin-left: 4px;
 }
-input[type="text"] {
+/* input[type="text"] {
     width: 238px;
     background-color: rgb(226, 217, 217);
-}
+} */
 table#dsa {
     width: 470px;
 }

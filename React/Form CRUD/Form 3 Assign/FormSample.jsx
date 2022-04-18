@@ -36,6 +36,12 @@ export default class FormSample extends Component {
             }
         })
     }
+    ChangeDel=(i)=>{
+        let DelBtn = this.state.Info.filter((Employee,index)=>{
+            return i !== index            
+        })
+        this.setState({Info:DelBtn})
+    }
     render() {
         return (
             <div className='Rehaman'>
@@ -75,7 +81,9 @@ export default class FormSample extends Component {
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Email</th>
-                                <th>Comment</th>                                
+                                <th>Comment</th>           
+                                <th>Edit</th>             
+                                <th>Delete</th>        
                             </tr>
                         </thead>
                         <tbody>
@@ -86,6 +94,8 @@ export default class FormSample extends Component {
                                     <td>{Friend.lname}</td>
                                     <td>{Friend.mail}</td>
                                     <td>{Friend.comment}</td>
+                                    <td><button className="btn btn-warning">Edit</button></td>
+                                    <td><button className="btn btn-danger" onClick={()=>{this.ChangeDel(i)}}>Delete</button></td>
                                 </tr>
                             })}
                         </tbody>

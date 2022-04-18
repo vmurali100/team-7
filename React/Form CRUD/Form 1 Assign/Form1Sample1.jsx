@@ -40,6 +40,12 @@ export default class Form1Sample1 extends Component {
             }
         })
     }
+    DeleteBtn=(i)=>{
+        let NewDel = this.state.AllData.filter((User,index)=>{
+            return i !== index
+        })
+        this.setState({AllData:NewDel})
+    }
     render() {
         return (
             <div className='BigParent'>
@@ -62,7 +68,7 @@ export default class Form1Sample1 extends Component {
                             <label htmlFor="">Comfirm password</label><br />
                             <input type="text" name="ConfirmPass" id="" value={this.state.User.ConfirmPass} onChange={(e) => { this.HandleChange(e) }} placeholder='Enter your password again...' /><br /><br />
 
-                            <button type='button' onClick={this.DataSubmit}>Sign up</button>
+                            <button type='button' id='az' onClick={this.DataSubmit}>Sign up</button>
 
                             <p>Already have an account?
                                 <a href="https://getbootstrap.com/docs/5.1/content/tables/">Sign in.</a>
@@ -80,6 +86,8 @@ export default class Form1Sample1 extends Component {
                                 <th>Email address</th>
                                 <th>Password</th>
                                 <th>Comfirm password</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -91,6 +99,8 @@ export default class Form1Sample1 extends Component {
                                     <td>{Empty.EmailAddress}</td>
                                     <td>{Empty.Password}</td>
                                     <td>{Empty.ConfirmPass}</td>
+                                    <td><button className="btn btn-primary">Edit</button></td>
+                                    <td><button className="btn btn-primary active" aria-current="page" onClick={()=>{this.DeleteBtn(i)}}>Delete</button></td>
                                 </tr>
                             })}
                         </tbody>
