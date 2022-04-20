@@ -14,7 +14,8 @@ export default class Sample4 extends Component {
                 conp: '',
                 msg: ''
             },
-            Mydataform4: []
+            Allform4: [],
+            Spindex:null
         }
     }
 
@@ -24,15 +25,7 @@ export default class Sample4 extends Component {
         this.setState({ form4: newUser });
     };
 
-    submited = () => {
-        // console.log(this.state.form4)
-        let newdata = [...this.state.Mydataform4]
-        newdata.push({ ...this.state.form4 })
-        this.setState({ Mydataform4: newdata })
-        this.clearsuri()
-    }
-
-    clearsuri = () => {
+    Clearform = () => {
         this.setState({
             form4: {
                 name: '',
@@ -45,12 +38,40 @@ export default class Sample4 extends Component {
         })
     }
 
+    componentDidMount=()=>{
+        let Allform4 =JSON.parse(localStorage.getItem('Allform4' ))
+        if(Allform4){
+            this.setState({Allform4:Allform4})
+        }
+    }    
+
+    Editted=(i)=>{
+        this.setState({form4:this.state.Allform4[i]})
+        this.setState({Spindex:i})
+    }
+
     delt = (i) => {
-        let deleting = this.state.Mydataform4.filter((form4, index) => {
+        let deleting = this.state.Allform4.filter((form4, index) => {
             return i !== index
         });
-        this.setState({ Mydataform4: deleting })
+        this.setState({ Allform4: deleting })
 
+    }  
+
+    handlesubmited=()=>{
+        let NewUser = [...this.state.Allform4]
+        NewUser.push({...this.state.form4})
+        this.setState({Allform4:NewUser})
+        localStorage.setItem("Allform4",JSON.stringify(NewUser))
+        this.Clearform()
+    }  
+
+    handleupdate=()=>{
+        let NewUser=[...this.state.Allform4];
+        NewUser[this.state.Spindex]=this.state.form4;
+        this.setState({Allform4:NewUser,Spindex:null})
+        localStorage.setItem("Allform4",JSON.stringify(NewUser))
+        this.Clearform()
     }
     render() {
         return (
@@ -72,7 +93,7 @@ export default class Sample4 extends Component {
                         <label htmlFor="">Message</label><br /><br />
                         <input type="text" name="msg" id="" placeholder='Message' value={this.state.form4.msg} onChange={(e) => { this.handleChange(e); }} /><br /><br />
 
-                        <button type='button' onClick={this.submited}>Send</button>
+                        {this.state.Spindex ?<button onClick={this.handleupdate}>Update</button>:<button type='button' onClick={this.handlesubmited}>Sign up</button> }
                     </form>
                 </div>
                 <div className='tablee'>
@@ -91,7 +112,7 @@ export default class Sample4 extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.Mydataform4.map((suri, i) => {
+                            {this.state.Allform4.map((suri, i) => {
                                 return <tr>
                                     <td>{i + 1}</td>
                                     <td>{suri.name}</td>
@@ -100,7 +121,7 @@ export default class Sample4 extends Component {
                                     <td>{suri.password}</td> 
                                     <td>{suri.conp}</td> 
                                     <td>{suri.msg}</td>                                
-                                    <td><button className='edittttt'>Edit</button></td>
+                                    <td><button className='edittttt'  onClick={() => { this.Editted(i) }}>Edit</button></td>
                                     <td><button className='warning' onClick={() => { this.delt(i) }}>Delete</button></td>
                                 </tr>
                             })}

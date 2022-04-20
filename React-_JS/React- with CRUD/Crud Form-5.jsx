@@ -17,7 +17,9 @@ export default class Sample5 extends Component {
                 num: ''
 
             },
-            Mydataform5:[]
+            Allform5:[],
+
+            Spindex:null
         }
     }
 
@@ -27,15 +29,9 @@ export default class Sample5 extends Component {
         this.setState({ form5: newUser });
     };
 
-    submited = () => {
-        // console.log(this.state.form5)
-        let newdata = [...this.state.Mydataform5]
-        newdata.push({ ...this.state.form5 })
-        this.setState({ Mydataform5: newdata })
-        this.clearsuri()
-    }
+    
 
-    clearsuri = () => {
+    Clearform = () => {
         this.setState({
             form5: {
                 fname: '',
@@ -50,13 +46,40 @@ export default class Sample5 extends Component {
             },
         })
     }
+    componentDidMount=()=>{
+        let Allform5 =JSON.parse(localStorage.getItem('Allform5' ))
+        if(Allform5){
+            this.setState({Allform5:Allform5})
+        }
+    }    
+
+    Editted=(i)=>{
+        this.setState({form5:this.state.Allform5[i]})
+        this.setState({Spindex:i})
+    }
 
     delt = (i) => {
-        let deleting = this.state.Mydataform5.filter((form5, index) => {
+        let deleting = this.state.Allform5.filter((form5, index) => {
             return i !== index
         });
-        this.setState({ Mydataform5: deleting })
+        this.setState({ Allform5: deleting })
 
+    }  
+
+    handlesubmited=()=>{
+        let NewUser = [...this.state.Allform5]
+        NewUser.push({...this.state.form5})
+        this.setState({Allform5:NewUser})
+        localStorage.setItem("Allform5",JSON.stringify(NewUser))
+        this.Clearform()
+    }  
+
+    handleupdate=()=>{
+        let NewUser=[...this.state.Allform5];
+        NewUser[this.state.Spindex]=this.state.form5;
+        this.setState({Allform5:NewUser,Spindex:null})
+        localStorage.setItem("Allform5",JSON.stringify(NewUser))
+        this.Clearform()
     }
 
     render() {
@@ -82,7 +105,7 @@ export default class Sample5 extends Component {
                         <label htmlFor="">Contact.No  </label>
                         <input type="text" name="num" id="" placeholder='(678)' value={this.state.form5.num} onChange={(e) => { this.handleChange(e); }} /> <br /><br />
 
-                        <button type='button' onClick={this.submited}>SUBMIT</button>
+                        {this.state.Spindex ?<button onClick={this.handleupdate}>Update</button>:<button type='button' onClick={this.handlesubmited}>Sign up</button> }
                     </form>
                 </div>
 
@@ -104,7 +127,7 @@ export default class Sample5 extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.Mydataform5.map((suri, i) => {
+                            {this.state.Allform5.map((suri, i) => {
                                 return <tr>
                                     <td>{i + 1}</td>
                                     <td>{suri.fname}</td>
@@ -115,7 +138,7 @@ export default class Sample5 extends Component {
                                     <td>{suri.conp}</td>
                                     <td>{suri.mail}</td>
                                     <td>{suri.num}</td>
-                                    <td><button className='edittttt'>Edit</button></td>
+                                    <td><button className='edittttt'  onClick={() => { this.Editted(i) }}>Edit</button></td>
                                     <td><button className='warning' onClick={() => { this.delt(i) }}>Delete</button></td>
                                 </tr>
                             })}

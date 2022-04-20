@@ -20,7 +20,8 @@ export default class Sample2 extends Component {
                 radi2: ''
 
             },
-            MydataForm2:[]
+            Allform2 :[],
+            Spindex:i
 
         }
     }
@@ -29,17 +30,9 @@ export default class Sample2 extends Component {
         let newUser = { ...this.state.form2 };
         newUser[e.target.name] = e.target.value;
         this.setState({ form2: newUser });
-    };
+    };   
 
-    submited = () => {
-        // console.log(this.state.form2)
-        let newdata = [...this.state.MydataForm2]
-        newdata.push({ ...this.state.form2 })
-        this.setState({ MydataForm2: newdata })
-        this.clearsuri()
-    }
-
-    clearsuri = () => {
+    Clearform = () => {
         this.setState({
             form2: {
                 fname: '',
@@ -56,12 +49,41 @@ export default class Sample2 extends Component {
         })
     }
 
+    
+    componentDidMount=()=>{
+        let Allform2 =JSON.parse(localStorage.getItem('Allform2' ))
+        if(Allform2){
+            this.setState({Allform2:Allform2})
+        }
+    }    
+
+    Editted=(i)=>{
+        this.setState({form2:this.state.Allform2[i]})
+        this.setState({Spindex:i})
+    }
+
     delt = (i) => {
-        let deleting = this.state.MydataForm2.filter((form2, index) => {
+        let deleting = this.state.Allform2.filter((form2, index) => {
             return i !== index
         });
-        this.setState({ MydataForm2: deleting })
+        this.setState({ Allform2: deleting })
 
+    }  
+
+    handlesubmited=()=>{
+        let NewUser = [...this.state.Allform2]
+        NewUser.push({...this.state.form2})
+        this.setState({Allform2:NewUser})
+        localStorage.setItem("Allform2",JSON.stringify(NewUser))
+        this.Clearform()
+    }  
+
+    handleupdate=()=>{
+        let NewUser=[...this.state.Allform2];
+        NewUser[this.state.Spindex]=this.state.form2;
+        this.setState({Allform2:NewUser,Spindex:null})
+        localStorage.setItem("Allform2",JSON.stringify(NewUser))
+        this.Clearform()
     }
     render() {
         return (
@@ -104,7 +126,7 @@ export default class Sample2 extends Component {
                             </div>
                         </form>
                         <hr />
-                        <button type='button' onClick={this.submited}>Submit form</button>
+                        {this.state.Spindex ?<button onClick={this.handleupdate}>Update</button>:<button type='button' onClick={this.handlesubmited}>Sign up</button> }
                     </div>
 
                 </div>
@@ -125,7 +147,7 @@ export default class Sample2 extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.MydataForm2.map((suri, i) => {
+                            {this.state.Allform2.map((suri, i) => {
                                 return <tr>
                                     <td>{i + 1}</td>
                                     <td>{suri.fname}</td>
@@ -134,7 +156,7 @@ export default class Sample2 extends Component {
                                     <td>{suri.password}</td>
                                     <td>{suri.city}</td>
                                     <th>{suri.data}</th>
-                                    <td><button className='edittttt'>Edit</button></td>
+                                    <td><button className='edittttt' onClick={() => { this.Editted(i) }}>Edit</button></td>
                                     <td><button className='warning' onClick={() => { this.delt(i) }}>Delete</button></td>
                                 </tr>
                             })}

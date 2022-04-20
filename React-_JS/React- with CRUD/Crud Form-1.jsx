@@ -3,6 +3,7 @@ import './Css1.css'
 
 
 export default class Sample1 extends Component {
+
     constructor(props) {
         super(props)
 
@@ -14,7 +15,10 @@ export default class Sample1 extends Component {
                 password: '',
                 conp: ''
             },
-            Mydata: []
+
+            Allmiddle: [],
+
+            Spindex:null
         }
     }
 
@@ -24,15 +28,7 @@ export default class Sample1 extends Component {
         this.setState({ middle: newUser });
     };
 
-    chagebutton = () => {
-        // console.log(this.state.middle)
-        let newdata = [...this.state.Mydata]
-        newdata.push({ ...this.state.middle })
-        this.setState({ Mydata: newdata })
-        this.clearsuri()
-    }
-
-    clearsuri = () => {
+    Clearform = () => {
         this.setState({
             middle: {
                 name: '',
@@ -41,15 +37,47 @@ export default class Sample1 extends Component {
                 password: '',
                 conp: ''
             },
+           
         })
+    }
+    
+
+     
+
+    componentDidMount=()=>{
+        let Allmiddle =JSON.parse(localStorage.getItem('Allmiddle' ))
+        if(Allmiddle){
+            this.setState({Allmiddle:Allmiddle})
+        }
+    }    
+
+    Editted=(i)=>{
+        this.setState({middle:this.state.Allmiddle[i]})
+        this.setState({Spindex:i})
     }
 
     delt = (i) => {
-        let deleting = this.state.Mydata.filter((middle, index) => {
+        let deleting = this.state.Allmiddle.filter((middle, index) => {
             return i !== index
         });
-        this.setState({ Mydata: deleting })
+        this.setState({ Allmiddle: deleting })
 
+    }  
+
+    handlesubmited=()=>{
+        let NewUser = [...this.state.Allmiddle]
+        NewUser.push({...this.state.middle})
+        this.setState({Allmiddle:NewUser})
+        localStorage.setItem("Allmiddle",JSON.stringify(NewUser))
+        this.Clearform()
+    }  
+
+    handleupdate=()=>{
+        let NewUser=[...this.state.Allmiddle];
+        NewUser[this.state.Spindex]=this.state.middle;
+        this.setState({Allmiddle:NewUser,Spindex:null})
+        localStorage.setItem("Allmiddle",JSON.stringify(NewUser))
+        this.Clearform()
     }
 
     render() {
@@ -70,7 +98,7 @@ export default class Sample1 extends Component {
                             <label htmlFor="">Confirm Password</label> <br /><br />
                             <input type="text" name="conp" id="" placeholder='Enter your password again...' value={this.state.middle.conp} onChange={(e) => { this.handleChange(e); }} /> <br /><br />
 
-                            <button type='button' onClick={this.chagebutton}>Sign up</button>
+                              {this.state.Spindex ?<button onClick={this.handleupdate}>Update</button>:<button type='button' onClick={this.handlesubmited}>Sign up</button> }
 
                             <p>Already have an account? <a href="#">Sign in</a></p>
 
@@ -93,7 +121,7 @@ export default class Sample1 extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.Mydata.map((suri, i) => {
+                            {this.state.Allmiddle.map((suri, i) => {
                                 return <tr>
                                     <td>{i + 1}</td>
                                     <td>{suri.name}</td>
@@ -101,7 +129,7 @@ export default class Sample1 extends Component {
                                     <td>{suri.mail}</td>
                                     <td>{suri.password}</td>
                                     <td>{suri.conp}</td>
-                                    <td><button className='edittttt'>Edit</button></td>
+                                    <td><button className='edittttt' onClick={() => { this.Editted(i) }} >Edit</button></td>
                                     <td><button className='warning' onClick={() => { this.delt(i) }}>Delete</button></td>
                                 </tr>
                             })}

@@ -19,7 +19,10 @@ export default class Sample6 extends Component {
                 state: '',
                 pcode: '',
                 count: ''
-            }
+            },
+            Allform6:[],
+
+            Spindex:null
 
         }
     }
@@ -30,15 +33,7 @@ export default class Sample6 extends Component {
         this.setState({ form6: newUser });
     };
 
-    submited = () => {
-        // console.log(this.state.form6)
-        let newdata = [...this.state.Mydataform6]
-        newdata.push({ ...this.state.form6 })
-        this.setState({ Mydataform6: newdata })
-        this.clearsuri()
-    }
-
-    clearsuri = () => {
+    Clearform = () => {
         this.setState({
             form6: {
                 error: '',
@@ -52,17 +47,44 @@ export default class Sample6 extends Component {
                 state: '',
                 pcode: '',
                 count: ''
-            },
-            Mydataform6:[]
+            },          
         })
     }
 
+    componentDidMount=()=>{
+        let Allform6 =JSON.parse(localStorage.getItem('Allform6' ))
+        if(Allform6){
+            this.setState({Allform6:Allform6})
+        }
+    }    
+
+    Editted=(i)=>{
+        this.setState({form6:this.state.Allform6[i]})
+        this.setState({Spindex:i})
+    }
+
     delt = (i) => {
-        let deleting = this.state.Mydataform6.filter((form6, index) => {
+        let deleting = this.state.Allform6.filter((form6, index) => {
             return i !== index
         });
-        this.setState({ Mydataform6: deleting })
+        this.setState({ Allform6: deleting })
 
+    }  
+
+    handlesubmited=()=>{
+        let NewUser = [...this.state.Allform6]
+        NewUser.push({...this.state.form6})
+        this.setState({Allform6:NewUser})
+        localStorage.setItem("Allform6",JSON.stringify(NewUser))
+        this.Clearform()
+    }  
+
+    handleupdate=()=>{
+        let NewUser=[...this.state.Allform6];
+        NewUser[this.state.Spindex]=this.state.form6;
+        this.setState({Allform6:NewUser,Spindex:null})
+        localStorage.setItem("Allform6",JSON.stringify(NewUser))
+        this.Clearform()
     }
     render() {
         return (
@@ -147,7 +169,7 @@ export default class Sample6 extends Component {
 
                         </select>
 
-                        <button type='button' onClick={this.submited}>Click</button>
+                        {this.state.Spindex ?<button onClick={this.handleupdate}>Update</button>:<button type='button' onClick={this.handlesubmited}>Sign up</button> }
                         <br /><br />
                         <hr />
 
@@ -178,7 +200,7 @@ export default class Sample6 extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.Mydataform6.map((suri, i) => {
+                            {this.state.Allform6.map((suri, i) => {
                                 return <tr>
                                     <td>{i + 1}</td>
                                     <td>{suri.error}</td>
@@ -192,7 +214,7 @@ export default class Sample6 extends Component {
                                     <td>{suri.state}</td>
                                     <td>{suri.pcode}</td>
                                     <td>{suri.count}</td>
-                                    <td><button className='edittttt'>Edit</button></td>
+                                    <td><button className='edittttt'  onClick={() => { this.Editted(i) }}>Edit</button></td>
                                     <td><button className='warning' onClick={() => { this.delt(i) }}>Delete</button></td>
                                 </tr>
                             })}

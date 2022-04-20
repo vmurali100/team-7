@@ -12,7 +12,8 @@ export default class Sample3 extends Component {
               mail:'',
               comment:''
             },
-            Mydataform3:[]
+            Allform3:[],
+            Spindex:null
         }
     }
 
@@ -22,15 +23,7 @@ export default class Sample3 extends Component {
         this.setState({ form3:newUser });
     };
 
-    submited = () => {
-        // console.log(this.state.form3)
-        let newdata = [...this.state.Mydataform3]
-        newdata.push({ ...this.state.form3 })
-        this.setState({ Mydataform3: newdata })
-        this.clearsuri()
-    }
-
-    clearsuri = () => {
+    Clearform = () => {
         this.setState({
             form3:{
                 fname:'',
@@ -41,12 +34,40 @@ export default class Sample3 extends Component {
         })
     }
 
+    componentDidMount=()=>{
+        let Allform3 =JSON.parse(localStorage.getItem('Allform3' ))
+        if(Allform3){
+            this.setState({Allform2:Allform3})
+        }
+    }    
+
+    Editted=(i)=>{
+        this.setState({form3:this.state.Allform3[i]})
+        this.setState({Spindex:i})
+    }
+
     delt = (i) => {
-        let deleting = this.state.Mydataform3.filter((form3, index) => {
+        let deleting = this.state.Allform3.filter((form3, index) => {
             return i !== index
         });
-        this.setState({ Mydataform3: deleting })
+        this.setState({ Allform3: deleting })
 
+    }  
+
+    handlesubmited=()=>{
+        let NewUser = [...this.state.Allform3]
+        NewUser.push({...this.state.form3})
+        this.setState({Allform3:NewUser})
+        localStorage.setItem("Allform3",JSON.stringify(NewUser))
+        this.Clearform()
+    }  
+
+    handleupdate=()=>{
+        let NewUser=[...this.state.Allform3];
+        NewUser[this.state.Spindex]=this.state.form3;
+        this.setState({Allform3:NewUser,Spindex:null})
+        localStorage.setItem("Allform3",JSON.stringify(NewUser))
+        this.Clearform()
     }
 
     render() {
@@ -69,7 +90,7 @@ export default class Sample3 extends Component {
                          <label htmlFor="">Commment</label><br /><br />
                          <textarea name="comment" id="" cols="60" rows="5" value={this.state.form3.comment} onChange={(e) => { this.handleChange(e); }}></textarea> <br /><br />
 
-                         <button type='button' onClick={this.submited}>Submit</button>
+                         {this.state.Spindex ?<button onClick={this.handleupdate}>Update</button>:<button type='button' onClick={this.handlesubmited}>Sign up</button> }
                      </form>
                  </div>
             </div>
@@ -87,14 +108,14 @@ export default class Sample3 extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.Mydataform3.map((suri, i) => {
+                            {this.state.Allform3.map((suri, i) => {
                                 return <tr>
                                     <td>{i + 1}</td>
                                     <td>{suri.fname}</td>
                                     <td>{suri.lname}</td>
                                     <td>{suri.mail}</td>
                                     <td>{suri.comment}</td>                                  
-                                    <td><button className='edittttt'>Edit</button></td>
+                                    <td><button className='edittttt'  onClick={() => { this.Editted(i) }}>Edit</button></td>
                                     <td><button className='warning' onClick={() => { this.delt(i) }}>Delete</button></td>
                                 </tr>
                             })}
