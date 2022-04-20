@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 export default class Sample2 extends Component {
+
     constructor(props) {
         super(props)
 
@@ -11,7 +12,9 @@ export default class Sample2 extends Component {
                 FatherName: "",
                 phoneNumber: ""
             },
-            StudentData: []
+            StudentData: [],
+            Sindex: null
+
         }
     }
     ChangeHandler = (e) => {
@@ -24,6 +27,7 @@ export default class Sample2 extends Component {
         const newData = [...this.state.StudentData]
         newData.push({ ...this.state.StudentList })
         this.setState({ StudentData: newData })
+        localStorage.setItem("StudentData", JSON.stringify(newData))
         this.ClearForm()
     }
     ClearForm = () => {
@@ -36,12 +40,30 @@ export default class Sample2 extends Component {
             }
         })
     }
-    DeleteHandler=(i)=>{
-        const newData=this.state.StudentData.filter((StudentList,index)=>{
+    EditHandler = (i) => {
+        this.setState({ StudentList: this.state.StudentData[i] })
+        this.setState({ Sindex: i })
+
+    }
+    DeleteHandler = (i) => {
+        const newData = this.state.StudentData.filter((StudentList,index) => {
             return i !== index
         })
-        this.setState({StudentData:newData})
-    } 
+        this.setState({ StudentData: newData })
+    }
+    componentDidMount = () => {
+        let newData = JSON.parse(localStorage.getItem("StudentData"))
+        if (newData) {
+            this.setState({ StudentData: newData })
+        }
+    }
+    UpdateHandler = () => {
+        const newData = [...this.state.StudentData]
+        newData[this.state.Sindex] = this.state.StudentList;
+        this.setState({ StudentData: newData, Sindex: null })
+        localStorage.setItem("StudentData", JSON.stringify(newData))
+        this.ClearForm()
+    }
     render() {
         return (
             <div class="container">
@@ -64,13 +86,17 @@ export default class Sample2 extends Component {
                                 <td><label htmlFor="">phoneNumber</label></td>
                                 <td><input type="text" name="phoneNumber" value={this.state.StudentList.phoneNumber} onChange={(e) => { this.ChangeHandler(e) }} /></td>
                             </tr>
-                            <button type='button' onClick={this.ClickHandler}>Click</button>
+                            {this.state.Sindex ? <button type='button' onClick={this.UpdateHandler}>Update</button>  :  <button type='button' onClick={this.ClickHandler}>Click</button> }
+                              
+                              
+                            
+
                         </form>
                     </div>
                     <div class="col">
                         <table class="table table-success table-striped">
                             <thead>
-                                <tr>
+                                <tr> <th>Sl/No</th>
                                     <th>Student Name</th>
                                     <th>IdNumber</th>
                                     <th>Father Name</th>
@@ -87,8 +113,8 @@ export default class Sample2 extends Component {
                                         <td>{User.Idnumber}</td>
                                         <td>{User.FatherName}</td>
                                         <td>{User.phoneNumber}</td>
-                                        <td><button type='button' >Edit</button></td>
-                                        <td><button type='button' onClick={() => { this.DeleteHandler(i) }}></button></td>
+                                        <td><button type='button' onClick={() => { this.EditHandler(i) }}>Edit</button></td>
+                                        <td><button type='button' onClick={() => { this.DeleteHandler(i) }}>Delete</button></td>
                                     </tr>
 
                                 })}
