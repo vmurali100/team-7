@@ -12,7 +12,8 @@ export default class FormSample extends Component {
                 mail: "",
                 comment: "",
             },
-            Info:[]
+            Info: [],
+            sindex: null
         }
     }
     SubmitAll = (e) => {
@@ -20,13 +21,18 @@ export default class FormSample extends Component {
         NewEmployee[e.target.name] = e.target.value
         this.setState({ Employee: NewEmployee })
     }
+
+
     SubmitButton = () => {
         let AllEmployees = [...this.state.Info]
-        AllEmployees.push({...this.state.Employee})
-        this.setState({Info:AllEmployees})
+        AllEmployees.push({ ...this.state.Employee })
+        this.setState({ Info: AllEmployees })
+        localStorage.setItem("Info", JSON.stringify(AllEmployees))
         this.ClearForm()
     }
-    ClearForm=()=>{
+
+
+    ClearForm = () => {
         this.setState({
             Employee: {
                 fname: "",
@@ -36,12 +42,36 @@ export default class FormSample extends Component {
             }
         })
     }
-    ChangeDel=(i)=>{
-        let DelBtn = this.state.Info.filter((Employee,index)=>{
-            return i !== index            
-        })
-        this.setState({Info:DelBtn})
+
+
+    ChangeEdit = (i) => {
+        this.setState({ Employee: this.state.Info[i] })
+        this.setState({ sindex: i })
     }
+
+
+    ChangeDel = (i) => {
+        let DelBtn = this.state.Info.filter((Employee, index) => {
+            return i !== index
+        })
+        this.setState({ Info: DelBtn })
+    }
+
+    componentDidMount() {
+        let Emp = JSON.parse(localStorage.getItem("Info"))
+        if (Emp) {
+            this.setState({ Info: Emp })
+        }
+    }
+
+    UpdateButton = () => {
+        let AllEmployees = [...this.state.Info]
+        AllEmployees[this.state.sindex] = this.state.Employee;
+        this.setState({ Info: AllEmployees, sindex: null })
+        localStorage.setItem("Info", JSON.stringify(AllEmployees))
+        this.ClearForm()
+    }
+    
     render() {
         return (
             <div className='Rehaman'>
@@ -69,7 +99,8 @@ export default class FormSample extends Component {
                             <label htmlFor="">Comment :</label><br />
                             <input id="110" type="text" name="comment" value={this.state.Employee.comment} onChange={(e) => { this.SubmitAll(e) }} /><br /><br />
 
-                            <button type='button' id='ABC1' onClick={this.SubmitButton}>Submit</button>
+                            {this.state.sindex ? <button type='button' id='ABC1' onClick={this.UpdateButton}>Update</button> : <button type='button' id='ABC1' onClick={this.SubmitButton}>Submit</button>}
+
                         </form>
                     </div>
                 </div>
@@ -81,21 +112,21 @@ export default class FormSample extends Component {
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Email</th>
-                                <th>Comment</th>           
-                                <th>Edit</th>             
-                                <th>Delete</th>        
+                                <th>Comment</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.Info.map((Friend,i)=>{
+                            {this.state.Info.map((Friend, i) => {
                                 return <tr>
-                                    <td>{i+1}</td>
+                                    <td>{i + 1}</td>
                                     <td>{Friend.fname}</td>
                                     <td>{Friend.lname}</td>
                                     <td>{Friend.mail}</td>
                                     <td>{Friend.comment}</td>
-                                    <td><button className="btn btn-warning">Edit</button></td>
-                                    <td><button className="btn btn-danger" onClick={()=>{this.ChangeDel(i)}}>Delete</button></td>
+                                    <td><button className="btn btn-warning" onClick={() => { this.ChangeEdit(i) }}>Edit</button></td>
+                                    <td><button className="btn btn-danger" onClick={() => { this.ChangeDel(i) }}>Delete</button></td>
                                 </tr>
                             })}
                         </tbody>

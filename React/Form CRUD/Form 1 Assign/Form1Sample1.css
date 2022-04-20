@@ -1,4 +1,4 @@
-.BigParent {
+/* .BigParent {
     background-color: rgb(209, 152, 76);
     height: 508px;
     overflow: auto;
@@ -24,8 +24,10 @@
     height: 366px;
 }
 table#asd {
-    width: 268px;
-    margin-left: 13px;
+    width: 253px;
+    margin-left: 16px;
+    position: relative;
+    top: 7px;
 }
 table.Ramu {
     width: 900px;
@@ -48,10 +50,9 @@ p {
     margin-top: 7px;
     margin-left: 4px;
 }
-/* input[type="text"] {
-    width: 238px;
-    background-color: rgb(226, 217, 217);
-} */
+input[type="text"] {
+    width: 240px;
+}
 table#dsa {
     width: 470px;
 }
@@ -59,4 +60,4 @@ table#dsa {
     width: 1100px;
     position: relative;
     top: 20px;
-}
+} */
