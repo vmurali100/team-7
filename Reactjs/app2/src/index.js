@@ -8,7 +8,8 @@ import App from './App';
 // import Example1 from "./CRUD/Example1"
 // import Register from './CRUD/Example2'
 // import Table from './CRUD/Table'
-import AllCRUD from './CRUD/All';
+// import AllCRUD from './CRUD/All';
+import Server from './CRUD/Server'
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -19,7 +20,8 @@ ReactDOM.render(
     {/* <ClassEvent/> */}
     {/* <Example1/> */}
     {/* <Table /> */}
-    <AllCRUD/>
+    {/* <AllCRUD/> */}
+    <Server/>
     {/* <Register/> */}
   </React.StrictMode>,
   document.getElementById('root')
