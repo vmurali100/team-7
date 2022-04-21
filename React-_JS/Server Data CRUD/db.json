@@ -1,0 +1,46 @@
+{
+  "people": [
+    {
+      "fname": "",
+      "lname": "",
+      "password": "",
+      "city": "",
+      "id": 1
+    },
+    {
+      "fname": "",
+      "lname": "",
+      "password": "",
+      "city": "",
+      "id": 2
+    },
+    {
+      "fname": "",
+      "lname": "",
+      "password": "",
+      "city": "",
+      "id": 3
+    },
+    {
+      "fname": "",
+      "lname": "",
+      "password": "",
+      "city": "",
+      "id": 4
+    },
+    {
+      "fname": "",
+      "lname": "",
+      "password": "",
+      "city": "",
+      "id": 5
+    },
+    {
+      "fname": "",
+      "lname": "",
+      "password": "",
+      "city": "",
+      "id": 6
+    }
+  ]
+}
