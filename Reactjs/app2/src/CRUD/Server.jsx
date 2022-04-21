@@ -49,8 +49,7 @@ export default class Server extends Component {
         })
     }
     handleEdit = (i) => {
-        this.setState({ user: this.state.allusers[i] })
-        this.setState({ sIndex: null })
+        this.setState({ user: this.state.allusers[i],sIndex: i })
     }
     handleupdate = () => {
        axios.put("http://localhost:3000/server"+this.state.user.id,this.state.user)
@@ -89,7 +88,7 @@ export default class Server extends Component {
                                     this.handlechange(e)
                                 }} />
                             </div>
-                            {this.state.sIndex ? <button type="button" className="btn btn-primary" onClick={this.handleupdate}>Update</button> :
+                            {this.state.sIndex !==null ? <button type="button" className="btn btn-primary" onClick={this.handleupdate}>Update</button> :
                             <button type="button" className="btn btn-primary" onClick={this.handlesubmit}>Submit</button>
                             }
                         </form>
