@@ -1,0 +1,40 @@
+.parentone {
+    width: 300px;
+    height: 250px;
+    float: left;
+    border: 2px solid;
+    margin-left: 10px;
+    background-color: aqua;
+}
+form {
+    /* margin-top: 20px; */
+    margin-left: 15px;
+}
+h4 {
+    text-align: center;
+    color: magenta;
+}
+label {
+    color: navy;
+}
+input#one {
+    margin-left: 5px;
+}
+input#two {
+    margin-left: 9px;
+}
+input#three {
+    margin-left: 5px;
+}
+input[type="text"] {
+    background-color: black;
+}
+button {
+    background-color: black;
+    color: red;
+}
+
+.parenttwo {
+    float: left;
+    margin-left: 20px;
+}
