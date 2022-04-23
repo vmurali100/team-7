@@ -9,7 +9,8 @@ import App from './App';
 // import Register from './CRUD/Example2'
 // import Table from './CRUD/Table'
 // import AllCRUD from './CRUD/All';
-import Server from './CRUD/Server'
+// import Server from './CRUD/Server'
+import Maincomponent from "./React context/Props drill/Main comp"
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -21,7 +22,8 @@ ReactDOM.render(
     {/* <Example1/> */}
     {/* <Table /> */}
     {/* <AllCRUD/> */}
-    <Server/>
+    {/* <Server/> */}
+    <Maincomponent/>
     {/* <Register/> */}
   </React.StrictMode>,
   document.getElementById('root')
