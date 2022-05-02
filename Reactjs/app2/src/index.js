@@ -10,7 +10,7 @@ import App from './App';
 // import Table from './CRUD/Table'
 // import AllCRUD from './CRUD/All';
 // import Server from './CRUD/Server'
-import Maincomponent from "./React context/Props drill/Main comp"
+// import Maincomponent from "./React context/Props drill/Main comp"
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -23,7 +23,10 @@ ReactDOM.render(
     {/* <Table /> */}
     {/* <AllCRUD/> */}
     {/* <Server/> */}
-    <Maincomponent/>
+    {/* <Maincomponent/> */}
+    <BrowserRouter>
+    <Main/>
+    </BrowserRouter>
     {/* <Register/> */}
   </React.StrictMode>,
   document.getElementById('root')
