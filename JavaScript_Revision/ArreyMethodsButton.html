@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="Demo"></div>
+    <button type="button" onclick="StudentPush()"> Click</button>
+    <button type="button" onclick="StudentUnshift()"> Click</button>
+
+    <script>
+        var Students=["SuryaKumarYadav","RavindraJadeja","IshanKishan","ViratKholi","DineshKarthik"]
+
+        function DispalyArray(){
+            var Student=""
+            Students.forEach(function(Hello){
+                 Student+=Hello +"<br>"
+            })
+            document.getElementById("Demo").innerHTML=Student
+        }
+        DispalyArray()
+
+        function StudentPush(){
+            Students.push("HardikPandia")
+            DispalyArray()
+        }
+         function StudentUnshift(){
+            Students.unshift("SanjeevSamSon")
+            DispalyArray()
+        }
+        
+
+    </script>
+</body>
+</html>
