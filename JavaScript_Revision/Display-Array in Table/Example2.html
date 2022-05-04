@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>email</th>
+            <th>username</th>
+            <th>password</th>
+        </thead>
+       <tbody>
+
+       </tbody>
+    </table>
+    <script>
+        var Employee=[
+    {
+        "id": 55,
+        "email": "WWade@sed.com",
+        "username": "RHaft",
+        "password": "EnJ8s"
+    },
+    {
+        "id": 56,
+        "email": "CFenton@egestas.gov",
+        "username": "CFrets",
+        "password": "ecNDr"
+    },
+    {
+        "id": 57,
+        "email": "MMoudry@tempor.net",
+        "username": "MHellman",
+        "password": "ezix4"
+    },
+    {
+        "id": 58,
+        "email": "AMixon@eros.net",
+        "username": "LKatz",
+        "password": "4dFzP"
+    },
+    {
+        "id": 59,
+        "email": "DLakritz@risus.org",
+        "username": "LPace",
+        "password": "kdVKk"
+    },
+    {
+        "id": 60,
+        "email": "PNagel@risus.ly",
+        "username": "AMorgan",
+        "password": "T1Tyg"
+    },
+    {
+        "id": 61,
+        "email": "OSeverson@libero.io",
+        "username": "DOrellana",
+        "password": "S1luY"
+    },
+    {
+        "id": 62,
+        "email": "AHaiduke@morbi.net",
+        "username": "KBeverage",
+        "password": "wWhcq"
+    },
+    {
+        "id": 63,
+        "email": "GVrtis@sapien.net",
+        "username": "LAlbright",
+        "password": "KDNxs"
+    },
+    {
+        "id": 64,
+        "email": "TColin@amet.com",
+        "username": "MMajewski",
+        "password": "X1Cpv"
+    }
+]
+
+    for(i = 0;i < 10; i++){
+        var mytr=document.createElement("tr")
+        var mytd1=document.createElement("td")
+        mytd1.innerHTML=i+1+ " "+Employee[i].id
+
+        var mytd2=document.createElement("td")
+        mytd2.innerHTML=i+1+ " "+Employee[i].email
+
+        var mytd3=document.createElement("td")
+        mytd3.innerHTML=i+1+" "+Employee[i].username
+
+        var mytd4=document.createElement("td")
+        mytd4.innerHTML=i+1+" "+Employee[i].password
+
+        mytr.appendChild(mytd1)
+        mytr.appendChild(mytd2)
+        mytr.appendChild(mytd3)
+        mytr.appendChild(mytd4)
+
+        document.querySelector("tbody").appendChild(mytr)
+    }
+    </script>
+
+
+</body>
+</html>

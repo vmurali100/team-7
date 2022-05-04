@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table border="1">
+        <thead>
+            <th>fname</th>
+            <th>lname</th>
+            <th>tel</th>
+            <th>address</th>
+            <th>city</th>
+            <th>Zip</th>
+
+
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <script>
+        var UserDetails = [
+            {
+                "fname": "Alla",
+                "lname": "Walters",
+                "tel": "(302)484-0139",
+                "address": "347 Risus Ave",
+                "city": "Boynton Beach",
+                "state": "WA",
+                "zip": 77306
+            },
+            {
+                "fname": "Pamela",
+                "lname": "Adams",
+                "tel": "(947)292-6916",
+                "address": "1942 Sapien Dr",
+                "city": "El Dorado",
+                "state": "MO",
+                "zip": 56962
+            },
+            {
+                "fname": "Antionette",
+                "lname": "Taylor",
+                "tel": "(541)642-5148",
+                "address": "6146 At Ct",
+                "city": "Fargo",
+                "state": "MS",
+                "zip": 99014
+            },
+            {
+                "fname": "Rania",
+                "lname": "Haugland",
+                "tel": "(733)757-0761",
+                "address": "7383 Pulvinar Ct",
+                "city": "Kyle",
+                "state": "NJ",
+                "zip": 93753
+            },
+            {
+                "fname": "Pelagija",
+                "lname": "Hatton",
+                "tel": "(535)097-7138",
+                "address": "3387 Aenean Ct",
+                "city": "Malibu",
+                "state": "WI",
+                "zip": 13141
+            },
+            {
+                "fname": "Dawn",
+                "lname": "Lewis",
+                "tel": "(999)191-6149",
+                "address": "2739 Lacus Ct",
+                "city": "Arvada",
+                "state": "IA",
+                "zip": 17780
+            },
+            {
+                "fname": "Tiziana",
+                "lname": "Marzolf",
+                "tel": "(552)810-7401",
+                "address": "1165 Adipiscing St",
+                "city": "Roxboro",
+                "state": "WV",
+                "zip": 77542
+            },
+            {
+                "fname": "Brenda",
+                "lname": "Jackson",
+                "tel": "(884)692-2293",
+                "address": "456 Scelerisque Ln",
+                "city": "Pasadena",
+                "state": "NJ",
+                "zip": 64145
+            },
+            {
+                "fname": "Juanito",
+                "lname": "Schotuen",
+                "tel": "(991)373-1865",
+                "address": "7175 Vitae St",
+                "city": "Oklahoma City",
+                "state": "SC",
+                "zip": 12347
+            },
+            {
+                "fname": "Luciana",
+                "lname": "Plourde",
+                "tel": "(401)721-3158",
+                "address": "5019 Nullam St",
+                "city": "North Kingstown",
+                "state": "ID",
+                "zip": 38566
+            }
+        ]
+            for( i = 0; i < 10; i++){
+                var mytr=document.createElement("tr")
+
+                var myTd1=document.createElement("td")
+                myTd1.innerHTML=i+1+ " "+UserDetails[i].fname
+
+                var mytd2=document.createElement("td")
+                mytd2.innerHTML=i+1+ " "+UserDetails[i].lname
+
+                var mytd3=document.createElement("td")
+                mytd3.innerHTML=i+1+ " "+UserDetails[i].tel
+
+                var mytd4=document.createElement("td")
+                mytd4.innerHTML=i+1+ " "+UserDetails[i].address
+
+                var mytd5=document.createElement("td")
+                mytd5.innerHTML= i+1+ " "+UserDetails[i].city
+
+                var mytd6=document.createElement("td")
+                mytd6.innerHTML=i+1+ " "+ UserDetails[i].zip
+
+                mytr.appendChild(myTd1)
+                mytr.appendChild(mytd2)
+                mytr.appendChild(mytd3)
+                mytr.appendChild(mytd4)
+                mytr.appendChild(mytd5)
+                mytr.appendChild(mytd6)
+                document.querySelector("tbody").appendChild(mytr)
+            }
+
+
+    </script>
+</body>
+
+</html>
