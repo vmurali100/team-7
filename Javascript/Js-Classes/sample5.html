@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  Literal way of creating Object
+        var Department={
+            DepartmentName:"Quality",
+            Shift:"Us shift",
+            TotalWorkers:"823"
+        }
+        console.log(Department)
+        // OOP-Object Orinted Programing
+        // 1- Creating an Object with Constructor function
+        function Sportsman(name,jurrsyno,country,game){
+            this.name=name;
+            this.jurrsyno=jurrsyno;
+            this.country=country;
+            this.game=game;
+        }
+        var Info=new Sportsman("ronaldo","21","SouthAfrica","Football")
+        console.log(Info)
+        // 2- Creating an Object with Built in Object
+        var Info2=new Object({name:"Rehaman",jurrsyno:"01",country:"Pakistan",game:"Boxing"})
+        console.log(Info2)
+        // 3- Creating an Object with Class
+        class Cricket{
+            constructor(name,country,game,age){
+                this.name=name;
+                this.country=country;
+                this.game=game;
+                this.age=age;
+            }
+        }
+        var Info3=new Cricket("Schin Tendulkar","Indian","Cricket","61")
+        console.log(Info3)
+    </script>
+</body>
+</html>

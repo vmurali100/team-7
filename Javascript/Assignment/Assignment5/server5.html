@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">S/no</label>
+        <input type="text" name="" id="sn"><br><br>
+        <label for="">name</label>
+        <input type="text" name="" id="fname"><br><br>
+        <label for="">number</label>
+        <input type="text" name="" id="fnumber"><br><br>
+        <label for="">city</label>
+        <input type="text" name="" id="fcity">
+        <input type="text" name="" id="id" hidden>
+    </form>
+
+    <button type="button" onclick="getdata()" id="y">ADD Persons</button>
+
+    <button type="button" onclick="Updateing()" id="z" style="display: none;">Update</button>
+
+    <table border="1">
+        <thead>
+            <th>S/no</th>
+            <th>Name</th>
+            <th>Number</th>
+            <th>City</th>
+            <th>ID</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+
+          var data=[]
+         function getdata(){
+             var info={
+                 sn:"",
+                 fname:"",
+                 fnumber:"",
+                 fcity:""
+             }
+             for(a in info){
+                 info[a]=document.getElementById(a).value
+             }
+             var post=new XMLHttpRequest()
+             post.onreadystatechange=function(){
+                 if(post.status==201 && post.readyState==4){
+
+                 }
+             }
+             post.open("POST","http://localhost:3000/rehamani")
+             post.setRequestHeader("Content-Type","application/json")
+             post.send(JSON.stringify(info))
+         }
+
+
+         function reading(){
+             var read=new XMLHttpRequest()
+             read.onreadystatechange=function(){
+                 if(read.readyState==4 && read.status==200){
+                     data=JSON.parse(read.response)
+                     display(data)
+                 }
+             }
+             var url="http://localhost:3000/rehamani"
+             read.open("GET",url)
+             read.send()
+         }
+
+
+         function display(data){
+             for(i=0;i<data.length;i++){
+                 var mytr=document.createElement("tr")
+                 for(a in data[0]){
+                     var mytd=document.createElement("td")
+                     mytd.innerHTML=data[i][a]
+                     mytr.appendChild(mytd)
+                 }
+                 document.querySelector("tbody").appendChild(mytr)
+
+                 var edittd=document.createElement("td")
+                 var deltd=document.createElement("td")
+                 mytr.appendChild(edittd)
+                 mytr.appendChild(deltd)
+
+                 var editbtn=document.createElement("button")
+                 editbtn.setAttribute("onclick","edituser("+i+")")
+                 editbtn.innerHTML="EDIT"
+                 var delbtn=document.createElement("button")
+                 delbtn.setAttribute("onclick","deleteuser("+i+")")
+                 delbtn.innerHTML="DELETE"
+                 edittd.appendChild(editbtn)
+                 deltd.appendChild(delbtn)
+             }
+         }
+         reading()
+
+
+         function edituser(i){
+              for (a in data[i]){
+                  document.getElementById(a).value=data[i][a]
+              }
+              document.getElementById("y").style.display="none"
+              document.getElementById("z").style.display="block"
+         }
+         
+
+         function deleteuser(i){
+            var post=new XMLHttpRequest()
+             post.onreadystatechange=function(){
+                 if(post.status==200 && post.readyState==4){
+
+                 }
+             }
+             post.open("DELETE","http://localhost:3000/rehamani/"+data[i].id)             
+             post.send()     
+         }
+
+
+         function Updateing(){
+            var info={
+                 sn:"",
+                 fname:"",
+                 fnumber:"",
+                 fcity:"",
+                 id:""
+             }
+             for(a in info){
+                 info[a]=document.getElementById(a).value
+             }
+             var post=new XMLHttpRequest()
+             post.onreadystatechange=function(){
+                 if(post.status==200 && post.readyState==4){
+                    document.getElementById("y").style.display="block"
+                    document.getElementById("z").style.display="none"
+                 }
+             }
+             post.open("PUT","http://localhost:3000/rehamani/"+info.id)
+             post.setRequestHeader("Content-Type","application/json")
+             post.send(JSON.stringify(info))
+
+         }
+
+
+    </script>
+</body>
+
+</html>

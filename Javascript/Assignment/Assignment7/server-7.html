@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">writerName</label>
+        <input type="text" name="" id="a"><br>
+
+        <label for="">Novels</label>
+        <input type="text" name="" id="b"><br>
+
+        <label for="">Poems</label>
+        <input type="text" name="" id="c"><br>
+
+        <label for="">ShortStoris</label>
+        <input type="text" name="" id="d">
+        <input type="text" name="" id="id" hidden>
+    </form>
+    <button type="button" onclick="Createvalue()" id="1">Enter</button>
+    <button type="button" onclick="UpdateUser()" id="2" style="display: none;">update</button>
+    <table border="1">
+        <thead>
+            <th>writerName</th>
+            <th>Novels</th>
+            <th>Poems</th>
+            <th>ShortStoris</th>
+            <th>Id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var emty = []
+        function Createvalue() {
+            var writer = {
+                a: "",
+                b: "",
+                c: "",
+                d: ""
+            }
+            for (a in writer) {
+                writer[a] = document.getElementById(a).value
+            }
+            console.log(writer)
+            var post = new XMLHttpRequest();
+            post.onreadystatechange = function () {
+                if (post.status == 201 && post.readyState == 4) {
+
+                }
+            }
+            post.open("POST", "http://localhost:3000/sai")
+            post.setRequestHeader("Content-Type", "application/json")
+            post.send(JSON.stringify(writer))
+        }
+
+        //  ReadValue
+        function ReadValue() {
+            var getdata = new XMLHttpRequest();
+            getdata.onreadystatechange = function () {
+                if (getdata.readyState == 4 && getdata.status == 200) {
+                    Emty = JSON.parse(getdata.response)
+                    DisplayValue()
+                }
+            }
+            var url = "http://localhost:3000/sai"
+            getdata.open("GET", url)
+            getdata.send()
+        }
+        // DisplayValue
+        function DisplayValue() {
+            for (i = 0; i < Emty.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in Emty[0]) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = Emty[i][a]
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                var EditTd = document.createElement("td")
+                var EditBtn = document.createElement("button")
+                mytr.appendChild(EditTd)
+                EditTd.appendChild(EditBtn)
+                EditBtn.innerHTML = "Edit"
+                EditBtn.setAttribute("onclick", "EditUser(" + i + ")")
+
+                var DeleteTd = document.createElement("td")
+                var DeleteBtn = document.createElement("button")
+                mytr.appendChild(DeleteTd)
+                DeleteTd.appendChild(DeleteBtn)
+                DeleteBtn.innerHTML = "Delete"
+                DeleteBtn.setAttribute("onclick", "DeleteUser(" + i + ")")
+            }
+        }
+        ReadValue()
+
+        // EditUser
+        function EditUser(i) {
+            for (a in Emty[i]) {
+                document.getElementById(a).value = Emty[i][a]
+            }
+            document.getElementById("1").style.display = "none"
+            document.getElementById("2").style.display = "block"
+
+        }
+        // DeleteUser
+        function DeleteUser(i) {
+            var post = new XMLHttpRequest();
+            post.onreadystatechange = function () {
+                if (post.status == 200 && post.readyState == 4) {
+
+                }
+            }
+            post.open("Delete", "http://localhost:3000/sai/" + Emty[i].id)
+            post.send()
+
+
+        }
+        // UpdateUser
+        function UpdateUser() {
+            var writer = {
+                a: "",
+                b: "",
+                c: "",
+                d: "",
+                id:""
+            }
+            for (a in writer) {
+                writer[a] = document.getElementById(a).value
+            }
+            console.log(writer)
+            var post = new XMLHttpRequest();
+            post.onreadystatechange = function () {
+                if (post.status == 200 && post.readyState == 4) {
+                    document.getElementById("1").style.display = "block"
+                    document.getElementById("2").style.display = "none"
+                }
+            }
+            post.open("Put", "http://localhost:3000/sai/" + writer.id)
+            post.setRequestHeader("Content-Type", "application/json")
+            post.send(JSON.stringify(writer))
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

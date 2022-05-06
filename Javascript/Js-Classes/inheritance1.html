@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="pass" style="border: solid; width: 220px;height: 20px; background: red; "></p>
+    <script>
+        class Hospetal{
+            constructor(Doctor){
+                this.Doctor=Doctor
+            }
+            present(){
+                return 'He is a '+this.Doctor
+            }
+        }
+        class Opp extends Hospetal{
+            constructor(Doctor,opp){
+                super(Doctor)
+                this.opp=opp
+            }
+            show(){
+                return this.present() +', He did '+this.opp
+            }
+        }
+        let ourDtr=new Opp("Docter","Operation")
+        document.getElementById("pass").innerHTML=ourDtr.show();
+    </script>
+</body>
+</html>

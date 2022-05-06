@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Sample = []
+        function Story() {
+            return new Promise((Success, failure) => {
+                var postdata = new XMLHttpRequest();
+                postdata.onreadystatechange = function () {
+                    if (postdata.readyState == 4 && postdata.status == 200) {
+                        Sample = JSON.parse(postdata.response)
+                        // displayData()
+                        Success(Sample)
+                        // failure(Sample)
+                    }
+                }
+                postdata.open("Get", "https://jsonplaceholder.typicode.com/posts")
+                postdata.send()
+            })
+        }
+        function displayData() {
+            console.log("Stoties are  :-", Sample)
+        }
+        Story()
+            // .then(() => {
+            //     displayData()
+            // })
+            // .catch(() => {
+            //     console.log("No Stories")
+            // })
+
+            async function ZZZ(){
+                Sample=await Story()
+                displayData()
+            }
+            ZZZ()
+    </script>
+</body>
+
+</html>

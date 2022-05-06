@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Literal way of Creating Object
+        var Train={
+            Train:"Venkatadri Express",
+            Timing:"6AM",
+            From:"Chittoor",
+            To:"Secindrabad"
+        }
+        console.log(Train)
+
+        // OOP-Object Oriented Programing 
+        // 1- Creating an Object with Constructor finction
+        function Flight(Flightname,ArraivingTime,from,to){
+            this.Flightname=Flightname;
+            this.ArraivingTime=ArraivingTime;
+            this.from=from;
+            this.to=to;
+        }
+        var example=new Flight("Indigo","6:30pm","USA","UK")
+        console.log(example)
+        // 2- Creating an Object with built in Object
+        var Example2=new Object({Flightname:"SpiceJet",ArraivingTime:"12.15AM",from:"Pakistan",to:"Kachagistan"})
+        console.log(Example2)
+        // 3- Creating an Object with Class
+        class Indigo{
+            constructor(ArraivingTime,from,to,returnTime){
+                this.ArraivingTime=ArraivingTime;
+                this.from=from;
+                this.to=to;
+                this.returnTime=returnTime;
+            }
+        }
+        var Example3=new Indigo("2.30pm","Chaina","Russia","Thursday morning 6.30Am")
+        console.log(Example3)
+    </script>
+</body>
+</html>

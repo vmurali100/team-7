@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Literal Way of Creating object
+        var teamMate={
+            name:"Surya",
+            mobilenumber:"996999664",
+            address:"Andrapradesh"
+        }
+        console.log(teamMate)
+
+        // Object Oriented Programing
+        // 1- Creating an Object with  Cunstructor Function
+        function Hero(name,age,industry){
+            this.name=name;
+            this.age=age;
+            this.industry=industry
+        }
+        var example=new Hero("Thalapathy vijayt","46","Tamil")
+        console.log(example)
+
+        // 2- Creating an Object with Built in Object
+        var Sample=Object({name:"Prabash", age:"42",industry:"Telugu"})
+        console.log(Sample)
+        // 3- Creating an Object with Class
+        class Heroname{
+            constructor(name,age,industry,languege){
+                this.name=name;
+                this.age=age;
+                this.industry=industry;
+                this.languege=languege;
+            }            
+        }
+        var sample=new Heroname("Mohanlal","56","Malayalam","Malayalam,English,Tamil")
+        console.log(sample)
+
+    </script>
+</body>
+</html>

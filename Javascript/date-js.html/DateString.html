@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          h4 {
+                height: 30px;
+                width: 160px;
+                border: solid 2px;
+                border-radius: 50px;
+                background-color: black;
+                color: red;
+                margin: 0 auto;
+                text-align: center;
+            }
+            h1 {
+                height: 30px;
+                width: 223px;
+                border: solid 2px;
+                border-radius: 50px;
+                background-color: black;
+                color: red;
+                margin: 0 auto;
+                text-align: center;
+            }
+            h2 {
+                height: 30px;
+                width: 160px;
+                border: solid 2px;
+                border-radius: 50px;
+                background-color: black;
+                color: red;
+                margin: 0 auto;
+                text-align: center;
+            }
+            h3 {
+                height: 30px;
+                width: 160px;
+                border: solid 2px;
+                border-radius: 50px;
+                background-color: black;
+                color: red;
+                margin: 0 auto;
+                text-align: center;
+            }
+            h5 {
+                height: 30px;
+                width: 180px;
+                border: solid 2px;
+                border-radius: 50px;
+                background-color: black;
+                color: red;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+          
+    </style>
+</head>
+<body>
+    
+    <h4><b>toLocaleDate    String:-</b></h4>    
+  <h1></h1>
+  <h2></h2>
+  <h3></h3>
+  <h5></h5>
+    <script>
+        setInterval(()=>{
+            var rrr=new Date()
+            document.querySelector("h4").innerHTML=rrr.toLocaleDateString()
+
+        })
+
+        setInterval(()=>{
+            var rrr=new Date
+            document.querySelector("h1").innerHTML=rrr.getTime()
+
+        },1000)
+
+        setInterval(()=>{
+            var rrr=new Date()
+            document.querySelector("h2").innerHTML=rrr.toLocaleTimeString()
+
+        },600000)
+
+        setInterval(()=>{
+            var rrr=new Date()
+            document.querySelector("h3").innerHTML=rrr.getMonth()
+
+        },1000)
+
+        setInterval(()=>{
+            var rrr=new Date()
+            document.querySelector("h5").innerHTML=rrr.toJSON()
+
+        })
+    </script>
+</body>
+</html>

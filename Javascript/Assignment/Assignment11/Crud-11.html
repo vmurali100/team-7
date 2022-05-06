@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">ExaminationCenter</label>
+        <input type="text" name="" id="ExaminationCenter"><br>
+
+        <label for="">Examinor</label>
+        <input type="text" name="" id="Examinor"><br>
+
+        <label for="">RoomNumber</label>
+        <input type="text" name="" id="RoomNumber">
+    </form>
+    <button type="button" onclick="Create()" id="1">Enter</button>
+    <button type="button" onclick="update()" id="2" style="display: none;">update</button>
+
+    <table border="1">
+        <thead>
+            <th>ExaminationCenter</th>
+            <th>Examinor</th>
+            <th>RoomNumber</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var info;
+        var Emty = JSON.parse(localStorage.getItem("Emty"))
+        if (Emty == null) {
+            Emty = []
+        }
+        // create
+        function Create() {
+            var raju = {
+                ExaminationCenter: "",
+                Examinor: "",
+                RoomNumber: ""
+            }
+            for (a in raju) {
+                raju[a] = document.getElementById(a).value
+            }
+            console.log(raju)
+            Emty.push(raju)
+            Display()
+            clearForm(raju)
+            localStorage.setItem("Emty", JSON.stringify(Emty))
+
+        }
+        // Display
+        function Display() {
+            document.querySelector("tbody").innerHTML = ""
+
+            Emty.forEach((raju, i) => {
+                var mytr = document.createElement("tr")
+                for (a in raju) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = raju[a]
+
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                var EditTd = document.createElement("td")
+                var EditBtn = document.createElement("button")
+                mytr.appendChild(EditTd)
+                EditTd.appendChild(EditBtn)
+                EditBtn.innerHTML = "Edit"
+                EditBtn.setAttribute("onclick", "EditData(" + i + ")")
+
+
+                var DeleteTd = document.createElement("td")
+                var DeleteBtn = document.createElement("button")
+                mytr.appendChild(DeleteTd)
+                DeleteTd.appendChild(DeleteBtn)
+                DeleteBtn.innerHTML = "Delete"
+                DeleteBtn.setAttribute("onclick", "DeleteData(" + i + ")")
+            })
+
+        }
+        Display()
+
+        // clearForm
+        function clearForm(raju) {
+            for (a in raju) {
+                document.getElementById(a).value = ""
+            }
+        }
+        // Edit
+        function EditData(i) {
+            var lahari = Emty[i]
+            for (a in lahari) {
+                document.getElementById(a).value = lahari[a]
+            }
+            info = i
+            document.getElementById("1").style.display = "none"
+            document.getElementById("2").style.display = "block"
+        }
+        // Delete
+        function DeleteData(i) {
+            Emty.splice(i, 1)
+            Display()
+
+
+        }
+        //  update
+        function update() {
+            var raju = {
+                ExaminationCenter: "",
+                Examinor: "",
+                RoomNumber: ""
+            }
+            for (a in raju) {
+                raju[a] = document.getElementById(a).value
+            }
+            Emty[info] = raju
+            Display()
+            clearForm(raju)
+
+            localStorage.setItem("Emty", JSON.stringify(Emty))
+            document.getElementById("1").style.display = "block"
+            document.getElementById("2").style.display = "none"
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>

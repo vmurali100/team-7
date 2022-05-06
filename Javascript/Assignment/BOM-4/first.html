@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+    width: 120px;
+    margin-left: 69px;
+}
+    </style>
+</head>
+
+<body style="background: rgb(221, 9, 133); border: solid; width: 255px; height: 230px; margin: 0 auto;margin-top: 52px;">
+
+    <table style="background-color:rgb(83, 3, 50);width: 255px;height: 230px; ">
+        <form action="">
+            <tr>
+                <td> <label for="">Name</label></td>
+                <td> <input type="text" name="" id="name"></td>
+            </tr>
+            <tr>
+                <td> <label for="">Email</label></td>
+                <td> <input type="text" name="" id="mail"></td>
+            </tr>
+            <tr>
+                <td> <label for="">Password</label></td>
+                <td> <input type="text" name="" id="password"></td>
+
+            </tr>
+            <tr>
+                <td> <label for="">Phone Number</label></td>
+                <td><input type="text" name="" id="number"></td>
+            </tr>
+
+            <tr>
+                <td> <label for="">Languege</label></td>
+                <td><input type="text" name="" id="languege"></td>
+            </tr>
+            <tr>
+                <td> <label for="">Zip code</label></td>
+                <td><input type="text" name="" id="code"></td>
+            </tr>
+        </form>
+
+    </table>
+    <button type="button" onclick="getvalue()">Register</button>
+    <script>
+        getinfo=JSON.parse(localStorage.getItem("getinfo"))
+        if(getinfo==null){
+            getinfo=[]
+        }
+        function  getvalue(){
+            var info={
+                name:"",
+                mail:"",
+                password:"",
+                number:"",
+                languege:"",
+                code:""
+            }
+            for(a in info){
+                info[a]=document.getElementById(a).value
+            }
+            console.log(info)
+            getinfo.push(info)
+            localStorage.setItem("getinfo",JSON.stringify(getinfo))
+            window.location.href="second.html"
+            
+
+        }
+    </script>
+</body>
+
+</html>

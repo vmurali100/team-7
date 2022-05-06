@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">writerName</label>
+        <input type="text" name="" id="a"><br>
+
+        <label for="">Novels</label>
+        <input type="text" name="" id="b"><br>
+
+        <label for="">Poems</label>
+        <input type="text" name="" id="c"><br>
+
+        <label for="">ShortStoris</label>
+        <input type="text" name="" id="d">
+    </form>
+    <button type="button" onclick="CreateUser()" id="1">Enter</button>
+    <button type="button" onclick="UpdateUser()" id="2" style="display: none;">update</button>
+    <table border="1">
+        <thead>
+            <th>writerName</th>
+            <th>Novels</th>
+            <th>Poems</th>
+            <th>ShortStoris</th>            
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        var getinfo;
+        var info=JSON.parse(localStorage.getItem("info"))
+            if( info ==null){
+                info=[]
+            }
+        
+
+        // CreateUser
+        function CreateUser(){
+            var writer = {
+                a: "",
+                b: "",
+                c: "",
+                d: ""
+            }
+            for (a in writer) {
+                writer[a] = document.getElementById(a).value
+            }
+            console,console.log(writer);
+            info.push(writer)
+            ReadUser()
+            clearForm(writer)
+            localStorage.setItem("info",JSON.stringify(info))
+        }
+
+        // ReadUser
+        function ReadUser(){
+            document.querySelector("tbody").innerText=""
+
+            info.forEach((writer,i) => {
+                var mytr=document.createElement("tr")
+                for(a in writer){
+                    var mytd=document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML=writer[a]
+                }
+                var EditTd=document.createElement("td")
+                var EditBtn=document.createElement("button")
+                mytr.appendChild(EditTd)
+                EditTd.appendChild(EditBtn)
+                EditBtn.innerHTML="Edit"
+                EditBtn.setAttribute("onclick", "EditData("+i+")")
+
+
+                var DeleteTd=document.createElement("td")
+                var DeleteBtn=document.createElement("button")
+                mytr.appendChild(DeleteTd)
+                DeleteTd.appendChild(DeleteBtn)
+                DeleteBtn.innerHTML="Delete"
+                DeleteBtn.setAttribute("onclick","DeleteData("+i+")")
+                document.querySelector("tbody").appendChild(mytr)
+                
+            });
+
+        }
+        ReadUser()
+        // clearForm
+        function  clearForm(writer){
+            for(a in writer){
+                document.getElementById(a).value=""
+            }
+        }
+
+        // EditData
+        function EditData(i){
+            var Raju=info[i]
+            for(a in Raju){
+                document.getElementById(a).value=Raju[a]
+            }
+            getinfo=i
+            document.getElementById("1").style.display="none"
+            document.getElementById("2").style.display="block"
+
+        }
+
+        // DeleteData
+
+        function DeleteData(i){
+            info.splice(i,1)
+            localStorage.setItem("info",JSON.stringify(info))
+            ReadUser()
+        }
+
+        function UpdateUser(){
+            var writer = {
+                a: "",
+                b: "",
+                c: "",
+                d: ""
+            }
+            for (a in writer) {
+                writer[a] = document.getElementById(a).value
+            }
+           info[getinfo]=writer
+            ReadUser()
+            clearForm(writer)
+            localStorage.setItem("info",JSON.stringify(info))
+            document.getElementById("1").style.display="block"
+            document.getElementById("2").style.display="none"
+
+
+        }
+
+        
+        
+
+
+
+    </script>
+    
+</body>
+
+</html>

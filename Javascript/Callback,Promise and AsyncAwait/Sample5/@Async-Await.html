@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Demo = []
+        function Persondt() {
+            return PersonDetails = new Promise((True, Falls) => {
+                var getuser = new XMLHttpRequest();
+                getuser.onreadystatechange = function () {
+                    if (getuser.readyState == 4 && getuser.status == 200) {
+                        Demo = JSON.parse(getuser.response)
+                        True(Demo)
+                        // Falls(Demo)
+                    }
+                }
+                getuser.open("Get", "https://jsonplaceholder.typicode.com/comments")
+                getuser.send()
+            })
+        }
+        function displayuser() {
+            console.log("PersonDetails :-", Demo)
+        }
+        // Persondt() 
+        // .then(()=>{
+        //     displayuser() 
+        // }) 
+        // .catch(()=>{
+        //     console.log("No Details")
+        // })
+
+        async function DDD(){
+            Demo= await Persondt()
+            displayuser()
+        }
+        DDD()
+        
+        
+    </script>
+</body>
+
+</html>

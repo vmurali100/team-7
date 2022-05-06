@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       var Raju=[]
+       function Info(){
+           return new Promise((Yes,no)=>{
+               var student=new XMLHttpRequest();
+               student.onreadystatechange=function(){
+                   if(student.readyState==4 && student.status==200){
+                       Raju=JSON.parse(student.response)
+                    //    displayData()
+                    Yes(Raju)
+                    // no(["ERROR:NO DATA"])
+                   }
+               }
+               student.open("Get","http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true")
+               student.send()
+           })
+       }
+       function displayData(){
+           console.log("all user:-",Raju)
+       }
+    //    Info() 
+    //    .then(()=>{
+    //        displayData()
+    //    })
+    //    .catch("ERROR:NO DATA")
+
+       async function Acv(){
+           Raju=await Info()
+           displayData()
+       }
+       Acv()
+
+   </script> 
+</body>
+</html>

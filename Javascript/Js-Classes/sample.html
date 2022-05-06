@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Literal Way of creating Object
+        var Employee={
+            name:"Rajubhjai",
+            id:"5201",
+            shift:"night"
+        }
+        console.log(Employee)
+
+
+        // OOP-Object Oriented Programing
+
+    //   1-  Creating  an object with Constructor function
+    function User(username,password,email,mobilenumber){
+        this.username=username;
+        this.password=password;
+        this.email=email;
+        this.mobilenumber=mobilenumber;
+    }
+    var Userdata=new User("Jayasankar Raju","517419","rajubhai7341@gmail","9182844890")
+    console.log(Userdata)
+    //  2- Creating an Object with Buit in Object
+    var User1=new Object({username:"Thala Deena",password:"98745",email:"Thaladeena2210@gmail.com",mobilenumber:"889554814"})
+    console.log(User1)
+    // 3- Create an Object with Class
+    class team{
+        constructor(username,password,email,mobilenumber){
+            this.username=username;
+            this.password=password;
+            this.email=email;
+            this.mobilenumber=mobilenumber;
+        }        
+    }
+    var exp= new team("rehaman","253410","rehaman420@gmail.com","886548544")
+    console.log(exp)
+
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <form action="">
+            <legend>
+                <h1>Swip Machine</h1>
+            </legend>
+            <tr>
+                <td> <label for="">Debit Card</label></td>
+                <td> <input type="text" name="" id="Dnumber"></td>
+            </tr>
+            <tr>
+                <td> <label for="">Amount</label></td>
+                <td> <input type="text" name="" id="Amount"></td>
+            </tr>
+            <tr>
+                <td> <label for="">Phone Number</label></td>
+                <td> <input type="text" name="" id="pnumber"></td>
+
+            </tr>
+            <tr>
+                <td> <label for="">OTP</label></td>
+                <td><input type="text" name="" id="OTP"></td>
+            </tr>
+        </form>
+    </table>
+    <button type="button" onclick="getUser()">Enter</button>
+    <script>
+    Rohini=JSON.parse(localStorage.getItem("Rohini"))
+    if(Rohini===null){
+        Rohini=[]
+    }
+        function getUser() {
+            var Raju = {
+                Dnumber: "",
+                Amount: "",
+                pnumber: "",
+                OTP: ""
+            }
+            for( a in Raju){
+                Raju[a]=document.getElementById(a).value
+            }
+            console.log(Raju)
+            Rohini.push(Raju)
+            localStorage.setItem("Rohini",JSON.stringify(Rohini))
+            window.location.href="practice2.html"
+
+
+        }
+    </script>
+
+</body>
+
+</html>

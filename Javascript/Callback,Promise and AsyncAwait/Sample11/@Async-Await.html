@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Users = []
+        function User() {
+            return new Promise((Follow, Unfollow) => {
+                var getUser = new XMLHttpRequest();
+                getUser.onreadystatechange = function () {
+                    if (getUser.readyState == 4 && getUser.status == 200) {
+                        Users = JSON.parse(getUser.response)
+                        // Follow(Users)
+                        Unfollow(["ERROR"])
+                    }
+                }
+                getUser.open("Get", "https://fakestoreapi.com/users")
+                getUser.send()
+            })
+        }
+        function Display() {
+            console.log("All users are :-", Users)
+        }
+        // User()
+        //     .then(() => {
+        //         Display()
+        //     })
+        //     .catch(() => {
+        //         console.log("ERROR")
+        //     })
+
+        async function RRR() {
+            Users = await User()
+            Display()
+        }
+        RRR()
+
+    </script>
+</body>
+
+</html>
