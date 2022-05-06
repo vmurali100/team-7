@@ -28,6 +28,9 @@ ReactDOM.render(
     <Main/>
     </BrowserRouter>
     {/* <Register/> */}
+    <Provider store={store}>
+    <Create />
+  </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
