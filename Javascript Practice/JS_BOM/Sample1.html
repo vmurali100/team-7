@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">First Name : </label>
+        <input type="text" name="fname" id=""><br><br>
+        <label for="">Last Name : </label>
+        <input type="text" name="lname" id=""><br><br>
+        <label for="">Age : </label>
+        <input type="text" name="age" id=""><br><br>
+        <label for="">Email : </label>
+        <input type="text" name="mail" id=""><br><br>
+        <label for="">Mobile No : </label>
+        <input type="text" name="mobile" id=""><br><br>
+    </form>
+    <button type="button" onclick="SubmitBtn()">Submit</button>
+    <script>
+        var Users = JSON.parse(localStorage.getItem("Users"))
+        if (Users == null)
+            Users = []
+
+        function SubmitBtn() {
+            var User = {
+                fname: "",
+                lname: "",
+                age: "",
+                mail: "",
+                mobile: ""
+            }
+            for (a in User) {
+                User[a] = document.getElementsByName(a).value
+            }
+            Users.push(User)
+            localStorage.setItem("Users", JSON.stringify(Users))
+
+            window.location.href = "Sample2.html"
+        }
+    </script>
+</body>
+
+</html>

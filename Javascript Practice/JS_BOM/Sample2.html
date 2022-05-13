@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Email : </label>
+        <input type="text" name="" id="mail"><br><br>
+        <label for="">Mobile : </label>
+        <input type="text" name="" id="mobile"><br><br>
+    </form>
+    <button type="button" onclick="ClickBtn()">Click</button>
+    <p style="color: red; display: none;">Invalid Email Id Please enter correct mail</p>
+    <script>
+        function ClickBtn() {
+            var user = {
+                mail: "",
+                mobile: ""
+            }
+            for (a in user) {
+                user[a] = document.getElementById(a).valu
+            }
+            var Users = JSON.parse(localStorage.getItem("Users"))
+
+            let check = Users.find((Hii) => {
+                return Hii.mail === user.mail && Hii.mobile === user.mobile
+            })
+            if (check) {
+                window.location.href = "Sample3.html"
+            } else {
+                document.querySelector("p").style.display = "block"
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
