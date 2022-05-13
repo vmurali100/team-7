@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Bus-station</label>
+        <input type="text" name="" id="busstation"> <br>
+
+        <label for=""> Root</label>
+        <input type="text" name="" id="root"> <br>
+
+        <label for=""> passId</label>
+        <input type="text" name="" id="pass"> <br>
+
+        <label for="">Name</label>
+        <input type="text" name="" id="name">
+
+    </form>
+    <button type="button" onclick="createUser()" id="Click">Click</button>
+    <button type="button" onclick="UpdateUser()" id="Update" style="display: none;">Update</button>
+
+
+
+
+    <table border="1">
+        <thead>
+            <th>Bus-station</th>
+            <th>Root</th>
+            <th>passId</th>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var info;
+        Students = JSON.parse(localStorage.getItem('Students'))
+        if (Students == null) {
+            Students = []
+        }
+
+        function createUser() {
+            Student = {
+                busstation: "",
+                root: "",
+                pass: "",
+                name: ""
+
+            }
+            for (a in Student) {
+                Student[a] = document.getElementById(a).value
+            }
+            console.log(Student)
+            Students.push(Student)
+            DisplayUser()
+            ClearForm(Student)
+            localStorage.setItem("Students", JSON.stringify(Students))
+        }
+        function DisplayUser() {
+            document.querySelector('tbody').innerHTML = ""
+            Students.forEach((Student, i) => {
+                var mytr = document.createElement('tr')
+                for (a in Student) {
+                    var mytd = document.createElement('td')
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = Student[a]
+                }
+                var EditTd = document.createElement('td')
+                var EditBtn = document.createElement('button')
+                mytr.appendChild(EditTd)
+                EditTd.appendChild(EditBtn)
+                EditBtn.innerHTML = "Edit"
+                EditBtn.setAttribute("onclick", "EditUser(" + i + ")")
+
+
+
+                var DeleteTd = document.createElement('td')
+                var DeleteBtn = document.createElement('button')
+                mytr.appendChild(DeleteTd)
+                DeleteTd.appendChild(DeleteBtn)
+                DeleteBtn.innerHTML = "Delete"
+                DeleteBtn.setAttribute("onclick", "DeleteUser(" + i + ")")
+
+                document.querySelector('tbody').appendChild(mytr)
+
+            })
+        }
+        DisplayUser()
+        function ClearForm(Student) {
+            for (a in Student) {
+                document.getElementById(a).value = ""
+            }
+        }
+        function EditUser(i) {
+            var Data = Students[i]
+            for (a in Students[i]) {
+                document.getElementById(a).value = Data[a]
+            }
+            nifo = i
+            document.getElementById('Click').style.display = 'none'
+            document.getElementById('Update').style.display = 'block'
+
+        }
+
+        function DeleteUser(i) {
+            Students.splice(i, 1)
+            localStorage.getItem("Students", JSON.stringify(Students))
+            DisplayUser()
+
+        }
+        function UpdateUser(Student) {
+            Student = {
+                busstation: "",
+                root: "",
+                pass: "",
+                name: ""
+
+            }
+            for (a in Student) {
+                Student[a] = document.getElementById(a).value
+            }
+            Students[info] = Student
+            localStorage.getItem("Students", JSON.stringify(Students))
+            DisplayUser()
+            ClearForm(Student)
+
+            document.getElementById('Click').style.display = 'block'
+            document.getElementById('Update').style.display = 'none'
+
+        }
+
+    </script>
+</body>
+
+</html>
