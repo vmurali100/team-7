@@ -18,5 +18,38 @@
       "username": "rajkumar",
       "id": 3
     }
+  ],
+  "apElectionsResults":[
+    {
+      "constituencyName":"ICHCHAPURAM",
+      "totalParties":["TDP","YSRCP","JSP","INC","BJP","IND"],
+      "Total_Votes":[
+        {"TDP":"79,992"},
+        {"YSRCP":"79,992"},
+        {"JSP":"79,992"},
+        {"INC":"79,992"}, 
+        {"BJP":"79,992"},
+        {"IND":"79,992"}
+      ],
+      "level":[
+        {"TDP":"Winner"},
+        {"YSRCP":"Runner Up"},
+        {"JSP":"3rd"},
+        {"INC":"79,992"}, 
+        {"BJP":"79,992"},
+        {"IND":"79,992"}
+      ],
+      "Vote_Rate_%":[
+        {"TDP":"46.00%"},
+        {"YSRCP":"42.00%"},
+        {"JSP":"3rd"},
+        {"INC":"79,992"}, 
+        {"BJP":"79,992"},
+        {"IND":"79,992"}
+      ]
+    }
+
   ]
+
+  
 }
