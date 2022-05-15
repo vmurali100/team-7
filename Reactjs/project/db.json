@@ -1,0 +1,222 @@
+{
+    "APElectionsResults": [
+        {
+            "ConstituencyName": "Chodavaram",
+            "Candidate's Name": [
+                "Karanam Dharmasri",
+                "Kalidindi Surya Naga Sanyasi Raju",
+                "P.v.s.n.raju",
+                "Nota",
+                "Gunuru Venkata Rao",
+                "Venkata Appalaraju Ganapathiraju",
+                "Molli Venkata Ramana",
+                "Padavala Chakravarthy",
+                "Ramachandra Rao Vankayala",
+                "Golukonda Srinivasarao"
+            ],
+            "Party": [
+                "YSRCP",
+                "TDP",
+                "JSP",
+                "None Of The Above",
+                "INC",
+                "IND",
+                "BJP",
+                "India Praja Bandhu Party",
+                "IND",
+                "Jana Jagruti Party"
+            ],
+            "Level": [
+                        {"YSRCP":"Winner"},
+                        {"TDP":"Runner"},
+                        {"JSP":"3rd"},
+                        {"None Of The Above":"4th"},
+                        {"INC":"5th"},
+                        {"IND":"6th"},
+                        {"BJP":"7th"},
+                        {"India Praja Bandhu Party":"8th"},
+                        {"IND":"9th"},
+                        {"Jana Jagruti Party":"10th"}
+                ],
+                "Vote": [
+                    {"YSRCP":"94,215"},
+                    {"TDP":"66,578"},
+                    {"JSP":"5,300"},
+                    {"None Of The Above":"5,036"},
+                    {"INC":"1,188"},
+                    {"IND":"928"},
+                    {"BJP":"625"},
+                    {"India Praja Bandhu Party":"315"},
+                    {"IND":"291"},
+                    {"Jana Jagruti Party":"248"}
+                ],
+                "VoteRate%": [
+                    {"YSRCP":"54.00%"},
+                    {"TDP":"38.00%"},
+                    {"JSP":"3.00%"},
+                    {"None Of The Above":"3.00%"},
+                    {"INC":"1.00%"},
+                    {"IND":"1.00%"},
+                    {"BJP":"0.00%"},
+                    {"India Praja Bandhu Party":"0.00%"},
+                    {"IND":"0.00%"},
+                    {"Jana Jagruti Party":"0.00%"}
+                ],
+                "Margin": [
+                   
+                ]
+            },
+            {
+                "ConstituencyName": "V.MADUGULA",
+                "Candidate's Name": [
+                    "Budi Mutyala Naidu",
+                    "Gavireddi Ramanaidu",
+                    "Nota",
+                    "Sanyasinaidu Gavireddy",
+                    "Boddu Srinivasa",
+                    "Matala Ari Naidu",
+                    "Mandala Santhoshi Subha Lakshmi",
+                    "Allu Bhanumathi",
+                    "Challa Yerru Naidu",
+                    "Barla Krishna",
+                    "Tadi Veera Jagadeeswari",
+                    "Bandaru Venkataramana"
+                ],
+                "Party": [
+                    "YSRCP",
+                    "TDP",
+                    "None Of The Above",
+                    "jsp",
+                    "INC",
+                    "IND",
+                    "BJP",
+                    "IND",
+                    "IND",
+                    "PP",
+                    "PPOL",
+                    "Jana Jagruti Party"
+                ],
+                "Level": [
+                            {"YSRCP":"Winner"},
+                            {"TDP":"Runner"},
+                            {"None Of The Above":"3rd"},
+                            {"JSP":"4th"},
+                            {"INC":"5th"},
+                            {"IND":"6th"},
+                            {"BJP":"7th"},
+                            {"IND":"8th"},
+                            {"IND":"9th"},
+                            {"PP":"10th"},
+                            {"PPOI":"11th"},
+                            {"Jana Jagruti Party":"12th"}
+                    ],
+                    "Vote": [
+                        {"YSRCP":"78830"},
+                        {"TDP":"62,438"},
+                        {"None Of The Above":"4,672"},
+                        {"JSP":"3,745"},
+                        {"INC":"1,657"},
+                        {"IND":"957"},
+                        {"BJP":"796"},
+                        {"IND":"601"},
+                        {"IND":"292"},
+                        {"PP":"243"},
+                        {"PPOI":"195"},
+                        {"Jana Jagruti Party":"183"}
+                    ],
+                    "VoteRate%": [
+                        {"YSRCP":"51.00%"},
+                        {"TDP":"40.00%"},
+                        {"None Of The Above":"3.00%"},
+                        {"JSP":"2.00%"},
+                        {"INC":"1.00%"},
+                        {"IND":"1.00%"},
+                        {"BJP":"1.00%"},
+                        {"IND":"0.00%"},
+                        {"IND":"0.00%"},
+                        {"PP":"0.00%"},
+                        {"PPOI":"0.00%"},
+                        {"Jana Jagruti Party":"0.00%"}
+                    ],
+                    "Margin": [
+                       
+                    ]
+                },
+                {
+                    "ConstituencyName": "ARAKU VALLEY",
+                    "Candidate's Name": [
+                        "Chetti. Palguna",
+                        "Donnu Dora Siyyari",
+                        "Kidari. Sravan Kuma",
+                        "P. Raja Rao",
+                        "Surendra Killo",
+                        "Nota",
+                        "Surya Narayana Jarsingi",
+                        "Adapa Bonju Naidu",
+                        "Vengada Anil Kumar Majj",
+                        "Pachipenta Santha Kumari",
+                        "Rajendra Prasad Bukka",
+                        "Devika Padi"
+                    ],
+                    "Party": [
+                        "YSRCP",
+                        "IND",
+                        "TDP",
+                        "IND",
+                        "CPI(M)",
+                        "None Of The Above",
+                        "IND",
+                        "BJP",
+                        "IND",
+                        "INC",
+                        "IND",
+                        "Jana Jagruti Party"
+                    ],
+                    "Level": [
+                                {"YSRCP":"Winner"},
+                                {"IND":"Runner"},
+                                {"TDP":"3rd"},
+                                {"IND":"4th"},
+                                {"CPI(M)":"5th"},
+                                {"None Of The Above":"6th"},
+                                {"IND":"7th"},
+                                {"BJP":"8th"},
+                                {"IND":"9th"},
+                                {"INC":"10th"},
+                                {"IND":"11th"},
+                                {"Jana Jagruti Party":"12th"}
+                        ],
+                        "Vote": [
+                            {"YSRCP":"53,101"},
+                            {"IND":"27.660"},
+                            {"TDP":"19,929"},
+                            {"IND":"10,875"},
+                            {"CPI(M)":"10,455"},
+                            {"None Of The Above":"10,117"},
+                            {"IND":"10,177"}
+                            {"BJP":"9,980"},
+                            {"IND":"4,887"},
+                            {"INC":"2,546"},
+                            {"IND":"2,035"},
+                            {"Jana Jagruti Party":"1,508"}
+                        ],
+                        "VoteRate%": [
+                            {"YSRCP":"34.00%"},
+                            {"IND":"18.00%"},
+                            {"TDP":"13.00%"},
+                            {"CPI(M)":"7.00%"},
+                            {"INC":"7.00%"},
+                            {"IND":"6.00%"},
+                            {"BJP":"6.00%"},
+                            {"IND":"3.00%"},
+                            {"IND":"3.00%"},
+                            {"PP":"2.00%"},
+                            {"PPOI":"1.00%"},
+                            {"Jana Jagruti Party":"1.00%"}
+                        ],
+                        "Margin": [
+                           
+                        ]
+                    }       
+        ]
+    }

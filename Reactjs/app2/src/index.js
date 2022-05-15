@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import Chi1 from './Preparation/Parenttochild'
 // import All from './CRUD/All';
 // import All from './String obj Array/All';
 // import Event from './String obj Array/Event';
@@ -24,13 +25,15 @@ ReactDOM.render(
     {/* <AllCRUD/> */}
     {/* <Server/> */}
     {/* <Maincomponent/> */}
-    <BrowserRouter>
+    {/* <BrowserRouter>
     <Main/>
     </BrowserRouter>
     {/* <Register/> */}
-    <Provider store={store}>
+    {/* <Provider store={store}>
     <Create />
-  </Provider>
+  </Provider> */ }
+  {/* <par2/> */}
+  <Chi1/>
   </React.StrictMode>,
   document.getElementById('root')
 );
