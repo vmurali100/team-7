@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <tr>
+            <td><label for="">MobileName</label></td>
+            <td><input type="text" name="" id="MobileName"></td>
+        </tr> <br>
+
+        <tr>
+            <td><label for="">RAM</label></td>
+            <td><input type="text" name="" id="RAM"></td>
+        </tr> <br>
+
+        <tr>
+            <td><label for="">Storage</label></td>
+            <td><input type="text" name="" id="Storage"></td>
+        </tr> <br>
+
+        <tr>
+            <td><label for="">Color</label></td>
+            <td><input type="text" name="" id="Color"></td>
+            <input type="text" name="" id="id" hidden>
+        </tr>
+
+    </form>
+    <button type="button" onclick="CreateUser()" id="click"> Click</button>
+    <button type="button" onclick="DeleteUser()" id="update" style="display: none;"> Update</button>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>MobileName</th>
+                <th>RAM</th>
+                <th>Storage</th>
+                <th>Color</th>
+                <th>Id</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var StoreArrey = []
+
+        function CreateUser() {
+            var Mobile = {
+                MobileName: "",
+                RAM: "",
+                Storage: "",
+                Color: ""
+            }
+            for (a in Mobile) {
+                Mobile[a] = document.getElementById(a).value
+            }
+            console.log(Mobile)
+            var postUser = new XMLHttpRequest()
+            postUser.onreadystatechange = function () {
+                if (postUser.status == 201 & postUser.readyState == 4) {
+
+                }
+            }
+            postUser.open("post", "http://localhost:3000/Accseseries")
+            postUser.setRequestHeader("Content-Type", "application/json")
+            postUser.send(JSON.stringify(Mobile))
+        }
+
+        function displayUser() {
+            var Getdata = new XMLHttpRequest()
+            Getdata.onreadystatechange = function () {
+                if (Getdata.readyState == 4 & Getdata.status == 200) {
+                  StoreArrey=JSON.parse(Getdata.response)
+                  StoreTable(StoreArrey)
+
+                }
+            }
+            var url = "http://localhost:3000/Accseseries"
+            Getdata.open("Get", url)
+            Getdata.send()
+        }
+
+
+        function StoreTable(StoreArrey) {
+            for (i = 0; i < StoreArrey.length; i++) {
+                var mytr = document.createElement("tr")
+                for (a in StoreArrey[0]) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = StoreArrey[i][a]
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                var editTd = document.createElement("td")
+                var deleteTd = document.createElement("td")
+                mytr.appendChild(editTd)
+                mytr.appendChild(deleteTd)
+
+                var editBtn = document.createElement("button");
+                editBtn.innerHTML = "EDIT"
+                editBtn.setAttribute("onclick", "EditUser(" + i + ")")
+                var deleteBtn = document.createElement("button");
+                deleteBtn.innerHTML = "DELETE"
+                deleteBtn.setAttribute("onclick", "DeleteUser(" + i + ")")
+                editTd.appendChild(editBtn)
+                deleteTd.appendChild(deleteBtn)
+            }
+        }
+        displayUser()
+        function EditUser(i) {
+            for (a in StoreArrey[i]) {
+                document.getElementById(a).value = StoreArrey[i][a]
+            }
+            document.getElementById("click").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+        }
+        function DeleteUser(i) {
+            var postUser = new XMLHttpRequest()
+            postUser.onreadystatechange = function () {
+                if (postUser.status == 200 & postUser.readyState == 4) {
+
+                }
+            }
+            postUser.open("Delete", "http://localhost:3000/Accseseries/" + StoreArrey[i].id);
+            postUser.send()
+
+        }
+        function UpdateUser() {
+            var Mobile = {
+                MobileName: "",
+                RAM: "",
+                Storage: "",
+                Color: "",
+                id:""
+            }
+            for (a in Mobile) {
+                Mobile[a] = document.getElementById(a).value
+            }
+            // console.log(Mobile)
+            var postUser = new XMLHttpRequest()
+            postUser.onreadystatechange = function () {
+                if (postUser.status == 200 & postUser.readyState == 4) {
+                    document.getElementById("click").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+
+                }
+            }
+            postUser.open("Put", "http://localhost:3000/Accseseries/" + Mobile.id)
+            postUser.setRequestHeader("Content-Type", "application/json")
+            postUser.send(JSON.stringify(Mobile))
+
+        }
+    </script>
+
+</body>
+
+</html>
