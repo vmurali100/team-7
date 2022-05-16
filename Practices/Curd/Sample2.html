@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <tr>
+            <td><label for="fname">FirstName</label></td>
+            <td><input type="text" name="" id="fname"></td>
+        </tr> <br>
+        <tr>
+            <td><label for="lname">LastName</label></td>
+            <td><input type="text" name="" id="lname"></td>
+        </tr> <br>
+        <tr>
+            <td><label for="email">Email</label></td>
+            <td><input type="text" name="" id="email"></td>
+        </tr><br>
+        <tr>
+            <td><label for="password"> Password</label></td>
+            <td><input type="text" name="" id="password"></td>
+        </tr> <br>
+    </form>
+    <button type="button" onclick="createvalue()" id="Click">Click</button>
+    <button type="button" onclick="UpdataUser()" id="Update" style="display:none">Update</button>
+
+    <table border="1">
+        <thead>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+
+
+        Users = JSON.parse(localStorage.getItem('Users'))
+
+        var index;
+        if (Users==null) {
+            Users=[];
+        }
+
+        function createvalue() {
+            var User = {
+                fristName: "",
+                lastName: "",
+                Email: "",
+                password: ""
+            }
+            for (a in User) {
+                User[a] = document.getElementById(a).value
+            }
+            // console.log(User)
+            Users.push(User)
+            DisplayUser()
+
+            ClearForm(User)
+            localStorage.setItem("Users", JSON.stringify(Users))
+        }
+
+        function DisplayUser() {
+
+            document.querySelector("tbody").innerHTML = ""
+
+            Users.forEach((User,i)=>{
+                var mytr = document.createElement('tr')                
+                for (a in User) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = User[a]
+                    mytr.appendChild(mytd)
+                }
+
+                      var EditTd = document.createElement('td')
+                var EditBtn = document.createElement('button')
+                mytr.appendChild(EditTd)
+                EditTd.appendChild(EditBtn)
+                EditBtn.innerHTML = 'Edit'
+                EditBtn.setAttribute('onclick', 'EditUser(' + i + ')')
+
+                var Deletetd = document.createElement('td')
+                var DeleteBtn = document.createElement('button')
+                mytr.appendChild(Deletetd)
+                Deletetd.appendChild(DeleteBtn)
+                DeleteBtn.innerHTML = 'Delete'
+                DeleteBtn.setAttribute('onclick', 'DeleteUser(' + i + ')')
+                document.querySelector('tbody').appendChild(mytr)
+            })
+
+        }
+
+        DisplayUser()
+
+        function ClearForm(User) {
+            for (a in User) {
+                document.getElementById(a).value = ""
+            }
+        }
+        function EditUser(i) {
+            document.getElementById("Click").style.display = "none"
+            document.getElementById("Update").style.display = "block"
+            index = i
+
+            var Person = Users[i]
+            for (a in Users [i]) {
+                document.getElementById(a).value = Person[a]
+            }
+
+
+        }
+        function DeleteUser(i) {
+            Users.splice(i, 1)
+            localStorage.setItem("Users", JSON.stringify(Users))
+            DisplayUser()
+        }
+        function UpdataUser(User) {
+            var User = {
+                fristName: "",
+                lastName: "",
+                Email: "",
+                password: ""
+            }
+            for (a in User) {
+                User[a] = document.getElementById(a).value
+            }
+            Users[index]=User
+            localStorage.setItem("Users", JSON.stringify(Users))
+            DisplayUser()
+            ClearForm(User)
+            document.getElementById('Click').style.display = 'block'
+            document.getElementById('Update').style.display = 'none'
+
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html> 
