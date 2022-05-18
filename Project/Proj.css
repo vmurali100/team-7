@@ -1,0 +1,115 @@
+#Container{
+    width: 1061px;
+    margin: 0 auto;
+    overflow: 0 auto;
+    overflow: auto;
+}
+
+div#Parent {
+    width: 1061px;
+    margin: 0 auto;
+    overflow: 0 auto;
+    overflow: auto;
+}
+.child {
+    float: left;
+    width: 172px;
+}
+img {
+    height: 70px;
+    width: 178px;
+}
+.child1 {
+    width: 888px;
+    float: right;
+    margin-top: -21px;
+}
+h5 {
+    background: gray;
+    text-align: center;
+    font-size: 24px;
+    width: 815px;
+    color: red;
+}
+.sChild-B {
+    border: solid;
+    width: 812px;
+    margin-top: -31px;
+    border-color: yellow;
+}
+nav.sChild-C {
+    width: 816px;
+    margin-top: -16px;
+    background-color: red;
+}
+li {
+    display: inline;
+    margin: 12px;
+}
+.sChild-C a {
+    color: white;
+    font-size: 14px;
+}
+.sChild-C a:hover{
+ text-decoration: underline;
+ color: purple;
+}
+
+/* part-1 */
+
+.Child-p1 {
+    width: 700px;
+    font-size: 14px;
+    float: left;
+}
+h1 {
+    font-size: 17px;
+    margin-bottom: 2px;
+    margin-top: -4px;
+}
+.img-a img {
+    width: 41px;
+    height: 24px;
+}
+.Child-p2 {
+    width: 273px;
+    float: right;
+    height: 90px;
+}
+.Child-p2 img {
+    width: 202px;
+    height: 174px;
+}
+div#part1 {
+    margin-top: 41px;
+    overflow: auto;
+}
+
+
+
+/* part2 */
+h3 {
+    text-decoration: underline;
+}
+.part-c1 {
+    width: 700px;
+    font-size: 14px;
+    float: left;
+}
+table {
+    width: 700px;
+    border-collapse: collapse;
+}
+.part-c2 {
+    width: 273px;
+    float: right;
+    margin-right: 57px;
+
+}
+.news-block {
+    background: midnightblue;
+    color: white;
+}
+a.clearfix {
+    color: aliceblue;
+}
