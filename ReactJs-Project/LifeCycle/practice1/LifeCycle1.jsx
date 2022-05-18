@@ -13,7 +13,7 @@ export default class LifeCycle extends Component {
     componentWillMount(){
         console.log('component WillMount Cycle')
     }
-    // 2.Udaring
+    // 2.Udating
     shouldComponentUpdate(){
         console.log('shouldComponentUpdate Cycle')
         return true
