@@ -81,6 +81,7 @@
         function managetable(info) {
             for (i = 0; i < info.length; i++) {
                 var mytr = document.createElement("tr")
+                
                 for (a in info[0]) {
                     var mytd = document.createElement("td")
                     mytd.innerHTML = info[i][a]
