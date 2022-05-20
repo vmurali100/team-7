@@ -1,169 +1,127 @@
 var Constituency=[
     {
-        No :"126-Kadapa",
-        remo:[
-       
-         ]  
-      
+        label: <a  href='https://www.oneindia.com/kadapa-assembly-elections-ap-126/'>126-Kadapa</a>
+    
+    },
+    {        
+        label: <a href='https://www.oneindia.com/kodur-assembly-elections-ap-127/'>127-Kodur</a>
     },
     {
-        No :"127-Kodur",
-        remo:[]
-    },{
-        No :"128-Rayachotti",
-        remo:[]
+        label: <a href='https://www.oneindia.com/rayachoti-assembly-elections-ap-128/'>128-Rayachotti</a>  
     },
     {
-        No :"129-Pulivendala",
-        remo:[]
+        label: <a href='https://www.oneindia.com/pulivendla-assembly-elections-ap-129/'>129-Pulivendala</a>
     },
     {
-        No :"130-Kamalapuram",
-        remo:[]
+        label: <a href='https://www.oneindia.com/kamalapuram-assembly-elections-ap-130/'>130-Kamalapuram</a>
     },
     {
-        No:"131-Jammalamadugu",
-        remo:[]
+        label: <a href='https://www.oneindia.com/jammalamadugu-assembly-elections-ap-131/'>131-Jammalamadugu</a>
     },
     {
-        No :"132-Produtur",
-        remo:[]
+        label: <a href='https://www.oneindia.com/proddatur-assembly-elections-ap-132/'>132-Produtur</a>
     },
     {
-        No:"133-Mydukur",
-        remo:[]
-    },{
-        No:"134-Allogadda",
-        remo:[]
+        label: <a href='https://www.oneindia.com/mydukur-assembly-elections-ap-133/'>133-Mydukur</a>
     },
     {
-        No :"135-Srisailam",
-        remo:[]
+        label: <a href='https://www.oneindia.com/allagadda-assembly-elections-ap-134/'>134-Allogadda</a>
     },
     {
-        No :"136-NasndhiKottur",
-        remo:[]
+        label: <a href='https://www.oneindia.com/srisailam-assembly-elections-ap-135/'>135-Srisailam</a>
     },
     {
-        No:"137-Kurnool",
-        remo:[]
+        label: <a href='https://www.oneindia.com/nandikotkur-assembly-elections-ap-136/'>136-NasndhiKottur</a>
     },
     {
-        No:"138-Ponayam",
-        remo:[]
+        label: <a href='https://www.oneindia.com/kurnool-assembly-elections-ap-137/'>137-Kurnool</a>
     },
     {
-        No :"139-Nandhyala",
-        remo:[]
-    },{
-        No :"140-Banaganpalle",
-        remo:[]
+        label: <a href='https://www.oneindia.com/panyam-assembly-elections-ap-138/'>138-Ponayam</a>
     },
     {
-        No :"141-Dhone",
-        remo:[]
+        label: <a href='https://www.oneindia.com/nandyal-assembly-elections-ap-139/'>139-Nandhyala</a>
     },
     {
-        No :"142-Pattikonda",
-        remo:[]
+        label: <a href='https://www.oneindia.com/banaganapalle-assembly-elections-ap-140/'>140-Banaganpalle</a>
     },
     {
-        No :"143-KOdum",
-        remo:[]
+        label: <a href='https://www.oneindia.com/dhone-assembly-elections-ap-141/'>141-Dhone</a>
     },
     {
-        No :"144-Yemmigoner",
-        remo:[]
+        label: <a href='https://www.oneindia.com/pattikonda-assembly-elections-ap-142/'>142-Pattikonda</a>
     },
     {
-        No :"145-Mamtralayam",
-        remo:[]
+        label: <a href='https://www.oneindia.com/pattikonda-assembly-elections-ap-143/'>143-KOdum</a>
     },
     {
-        No :"146-Adoni",
-        remo:[]
+        label: <a href='https://www.oneindia.com/kodumur-assembly-elections-ap-144/'>144-Yemmigoner</a>
     },
     {
-        No :"147-Alur",
-        remo:[]
+        label: <a href='https://www.oneindia.com/yemmiganur-assembly-elections-ap-145/'>145-Mamtralayam</a>
     },
     {
-        No :"148-Rayadurg",
-        remo:[]
+        label: <a href='https://www.oneindia.com/adoni-assembly-elections-ap-146/'>146-Adoni</a>
     },
     {
-        No :"149-Uravakonda",
-        remo:[]
+        label: <a href='https://www.oneindia.com/alur-assembly-elections-ap-147/'>147-Alur</a>
     },
     {
-        No :"150-Guntak",
-        remo:[]
+        label: <a href='https://www.oneindia.com/rayadurg-assembly-elections-ap-148/'>148-Rayadurg</a>
     },
     {
-        No :"151-Tadipatri",
-        remo:[
-
-        ]
+        label: <a href='https://www.oneindia.com/rayadurg-assembly-elections-ap-149/'>149-Uravakonda</a>
     },
     {
-        No :"152-Siganamala",
-        remo:[]
+        label: <a href='https://www.oneindia.com/guntakal-assembly-elections-ap-150/'>150-Guntak</a>
     },
     {
-        No :"153-Anatayar",
-        remo:[]
+        label: <a href='https://www.oneindia.com/tadipatri-assembly-elections-ap-151/'>151-Tadipatri</a>
     },
     {
-        No :"154-Kailyanadurg",
-        remo:[]
+        label: <a href='https://www.oneindia.com/singanamala-assembly-elections-ap-152/'>152-Siganamala</a>
     },
     {
-        No :"155-Raptadu",
-        remo:[]
+        label: <a href='https://www.oneindia.com/anantapur-urban-assembly-elections-ap-153/'>153-Anatayar</a>
     },
     {
-        No :"156-Madakasi",
-        remo:[]
+        label: <a href='https://www.oneindia.com/kalyandurg-assembly-elections-ap-154/'>154-Kailyanadurg</a>
     },
     {
-        No :"157-Hindupur",
-        remo:[]
+        label: <a href='https://www.oneindia.com/raptadu-assembly-elections-ap-155/'>155-Raptadu</a>
     },
     {
-        No :"158-Penukonda",
-        remo:[]
+        label: <a href='https://www.oneindia.com/madakasira-assembly-elections-ap-156/'>156-Madakasi</a>
     },
     {
-        No :"159-Puttapatri",
-        remo:[]
+        label: <a href='https://www.oneindia.com/hindupur-assembly-elections-ap-157/'>157-Hindupur</a>
     },
     {
-        No :"160-Dharamavaram",
-        remo:[]
+        label: <a href='https://www.oneindia.com/penukonda-assembly-elections-ap-158/'>158-Penukonda</a>
     },
     {
-        No :"161-Kadiri",
-        remo:[]
+        label: <a href='https://www.oneindia.com/puttaparthi-assembly-elections-ap-159/'>159-Puttapatri</a>
     },
     {
-        No :"162-Thamballam Palle",
-        remo:[]
+        label: <a href='https://www.oneindia.com/dharmavaram-assembly-elections-ap-160/'>160-Dharamavaram</a>
     },
     {
-        No :"163-Pileru",
-        remo:[]
+        label: <a href='https://www.oneindia.com/kadiri-assembly-elections-ap-161/'>161-Kadiri</a>
     },
     {
-        No :"164-Madanapalle",
-        remo:[]
+        label: <a href='https://www.oneindia.com/thamballapalle-assembly-elections-ap-162/'>162-Thamballam Palle</a>
     },
     {
-        No :"165-Punganur",
-        remo:[]
+        label: <a href='https://www.oneindia.com/pileru-assembly-elections-ap-163/'>163-Pileru</a>
     },
     {
-        No :"166-Chandragiri",
-        remo:[]
+        label: <a href='https://www.oneindia.com/madanapalle-assembly-elections-ap-164/'>164-Madanapalle</a>
+    },
+    {
+        label: <a href='https://www.oneindia.com/punganur-assembly-elections-ap-165/'>165-Punganur</a>
+    },
+    {
+        label: <a href='https://www.oneindia.com/chandragiri-assembly-elections-ap-166/'>166-Chandragiri</a>
     }
     
     
