@@ -15,7 +15,7 @@ export const HOComponent =(Empty)=>{
             })
         }
         Decrement =()=>{
-            this.setState({
+            this.setState({ 
                 Money:this.state.Money - 1
             })
         }
