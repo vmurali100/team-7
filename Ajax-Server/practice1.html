@@ -48,6 +48,7 @@
                 number: "",
                 group: ""
             }
+
             for (a in user) {
                 user[a] = document.getElementById(a).value
             }
@@ -62,6 +63,8 @@
             postUser.setRequestHeader("Content-Type", "application/json")
             postUser.send(JSON.stringify(user))
         }
+
+
 
         function displaymyinfo() {
             var data = new XMLHttpRequest()
@@ -78,14 +81,20 @@
         }
 
 
+
+
         function managetable(info) {
             for (i = 0; i < info.length; i++) {
+
                 var mytr = document.createElement("tr")
+
                 for (a in info[0]) {
                     var mytd = document.createElement("td")
                     mytd.innerHTML = info[i][a]
                     mytr.appendChild(mytd)
                 }
+
+                
                 document.querySelector("tbody").appendChild(mytr)
 
                 var editTd = document.createElement("td")
@@ -107,6 +116,8 @@
         displaymyinfo()
 
 
+
+
         function editUser(i) {
             for (a in info[i]) {
                 document.getElementById(a).value = info[i][a]
@@ -114,6 +125,8 @@
             document.getElementById("add").style.display = "none"
             document.getElementById("up").style.display = "block"
         }
+
+
 
         function deleteUser(i) {
 
@@ -126,6 +139,8 @@
             postUser.open("Delete", "http://localhost:3000/suri/" + info[i].id);
             postUser.send()
         }
+
+
 
         function updateUser() {
             var user = {
@@ -149,8 +164,6 @@
             postUser.open("Put", "http://localhost:3000/suri/" + user.id);
             postUser.setRequestHeader("Content-Type", "application/json")
             postUser.send(JSON.stringify(user))
-
-
         }
 
 

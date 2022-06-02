@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="">
+        <label for=""> Usern Name :-</label>
+        <input type="text" name="" id="UN"> <br><br>
+        <label for="">Password :-</label>
+        <input type="text" name="" id="P"> <br><br>
+        <label for="">OTP :-</label>
+        <input type="text" name="" id="otp"> <br><br>
+
+        <button type="button" onclick="Valid()">Button</button>
+    </form>
+
+    <script>
+       
+        function Valid(){
+          
+            // Step-1 Way             
+            // var Username = document.getElementById("UN").value
+            // var Password = document.getElementById("P").value
+            // var  OTP = document.getElementById("otp").value
+
+            // var Data={
+            //     Username:Username,
+            //     Password:Password,
+            //     OTP:OTP
+            // }
+
+
+            // Step-2 Way
+            // var Username = document.getElementById("UN").value
+            // var Password = document.getElementById("P").value
+            // var  OTP = document.getElementById("otp").value
+
+            // var Data={
+            //    Username,
+            //    Password,
+            //    OTP,
+            // } 
+
+
+            // Step-3 Way
+                // var Data={
+                // Username:document.getElementById("UN").value,
+                // Password:document.getElementById("P").value,
+                // OTP:document.getElementById("otp").value
+                // }
+
+
+            // Step-4 Way
+                var Data={
+                    UN:"",
+                    P:"",
+                    otp:""
+                }
+
+                for(a in Data){
+                    Data[a]=document.getElementById(a).value
+                }
+            console.log(Data)
+        }
+        Valid()
+    </script>
+
+
+
+</body>
+
+</html>

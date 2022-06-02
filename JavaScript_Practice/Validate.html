@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="">
+        <label for=""> Usern Name :-</label>
+        <input type="text" name="" id="UN" onkeyup="Valid()">
+        <p style="color: red; display: none;" >Please enter a valid Data or Username</p> <br><br>
+        <label for="">Password :-</label>
+        <input type="text" name="" id="P" onkeyup="Valid()">
+        <p id="para1" style="color: red; display: none;" >Please enter a valid Data or Username</p> <br><br>
+        <label for="">OTP :-</label>
+        <input type="text" name="" id="otp" onkeyup="Valid()">
+        <p id="para2" style="color: red; display: none;" >Please enter a valid Data or Username</p> <br><br>
+
+        <button type="button" disabled>Button</button>
+    </form>
+
+    <script>
+
+        function Valid() {
+           var Username = document.getElementById("UN").value
+           var Password = document.getElementById("P").value
+           var  OTP = document.getElementById("otp").value
+
+            if (Username.length>=6) {
+                document.querySelector("p").style.display = "none"
+            } else {
+                document.querySelector("p").style.display = "block"
+            } if (Password.length>=4) {
+                document.getElementById("para1").style.display = "none"
+            } else {
+                document.getElementById("para1").style.display = "block"
+            }
+            if (OTP.length>=3) {
+                document.getElementById("para2").style.display = "none"
+            } else {
+                document.getElementById("para2").style.display = "block"
+            }
+
+            if(Username.length >=6 && Password.length >=4 && OTP.length >= 3){
+                 document.querySelector("button").removeAttribute("disabled")
+            }else{
+                document.querySelector("button").setAttribute("disabled",true)
+            }
+
+          
+
+        }
+        Valid()
+
+    </script>
+
+</body>
+
+</html>
