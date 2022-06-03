@@ -14,4 +14,4 @@ export class Cars extends Component{
     render(){
         return <Chaild2 Details={this.CarNames}/>
     }
-}
+} 
