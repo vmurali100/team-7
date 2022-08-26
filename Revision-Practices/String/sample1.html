@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var myname = "Thala Deena";
+
+        //  length() => will give total number of characters
+        console.log(myname.length) //  Ans:- 11
+
+        //  split()   
+        console.log(myname.split(",")) // Ans:- ["Thala","Deena"]
+
+        //  slice()
+        console.log(myname.slice(0, 5)) // Ans:- Thala
+                      
+        // substring()
+        console.log(myname.substring(0, 5)) // Ans:- Thala
+
+        // substr()
+        console.log(myname.substr(6, 5)) // Ans:-Deena
+
+
+        // indexOf()
+        console.log(myname.indexOf("Deena")) // Ans:-6
+
+        // replace()
+        console.log(myname.replace("Deena", "Ajith")) // Ans:-Thala Ajith
+
+        // toLowerCase()
+        console.log(myname.toLowerCase()) // Ans:-thala deena
+    
+        // toUpperCace()
+        console.log(myname.toLocaleUpperCase()) // Ans:-THALA DEENA     
+           
+        // concat()
+        var A="Thala ";
+        var B="Deena";
+        console.log(A.concat(B)) // Ans:- Thala Deena
+
+   </script>
+</body>
+
+</html>
